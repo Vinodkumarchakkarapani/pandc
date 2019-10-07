@@ -229,17 +229,19 @@ public class WebTest {
 										break;
 									case "contains-text":
 										// Validate Test in filed contains specific text
+										String sTextValue = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getText();
 										try{
 										Assert.assertTrue(
-												Browser.webDriver.findElement(
-														By.cssSelector(testAction.action.fieldName)
-												).getText().contains(testAction.action.fieldValue),
-												"Text in Field (" + testAction.action.fieldName + ") should contain " +
-														testAction.action.fieldValue
+												sTextValue.contains(testAction.action.fieldValue),
+												"Text in Field (" + testAction.action.fieldName + ") should contain [" +
+														testAction.action.fieldValue + "] and Got [" + sTextValue + "]"
 
 										);
 										} catch (AssertionError e) {
-											throw e;
+											throw new Exception("Text in Field (" + testAction.action.fieldName + ") should contain [" +
+													testAction.action.fieldValue + "] but Got [" + sTextValue + "]");
 										}
 										break;
 									case "select-index":
@@ -319,7 +321,7 @@ public class WebTest {
 					gui.testResult.executionEndTime = new Date();
 					qifClient.postGUITestResults(gui);
 					// Assert the Test Status
-					Assert.assertEquals(gui.testResult.status,"Pass");
+					Assert.assertEquals(gui.testResult.status,"Pass","Got Error: " + gui.testResult.error);
 				} catch (Exception error) {
 					logger.error(error);
 					Assert.assertEquals(error.getMessage().length(),0);
