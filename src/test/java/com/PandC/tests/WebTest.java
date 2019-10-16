@@ -10,11 +10,9 @@ import org.apache.logging.log4j.Logger;
 //import org.junit.jupiter.api.BeforeAll;
 //import org.junit.jupiter.api.DynamicTest;
 //import org.junit.jupiter.api.TestFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.Point;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -135,6 +133,7 @@ public class WebTest {
 		}*/
 		// Loop through the GUI Test Cases to add them as Dynamic Tests
 		for (TestCaseGUI testCase : guiTestCases) {
+
 			//guiTests.add(dynamicTest(testCase.description, () -> {
 				logger.info("EXECUTE: " + testCase.description);
 				// Set all the Properties for Test Results
@@ -166,6 +165,8 @@ public class WebTest {
 				try {
 					// Loop through the Test Steps
 					for (TestCaseStep testStep : testCase.testCaseSteps) {
+                        Thread.sleep(2000);
+
 						logger.info("ACTION: Performing the Step Action (" + testStep.stepDescription + ")...");
 						TestStepResult stepResult = new TestStepResult();
 						// Set all the Properties for Test Step Result
@@ -175,7 +176,22 @@ public class WebTest {
 						try {
 							// Loop through the Test Step Actions
 							for (TestStepAction testAction : testStep.testStepActions) {
+
+                               /* ExpectedCondition<Boolean> pageLoadCondition = new
+                                        ExpectedCondition<Boolean>() {
+                                            public Boolean apply(WebDriver driver) {
+                                                return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+                                            }
+                                        };
+                                WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
+                                wait.until(pageLoadCondition);
+                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading'")));
+                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
+                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
+                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));*/
 								// Initialize the Objects required to perform actions
+
+                                logger.info("Test Action Name: " + testAction.action.fieldName+ " (" + testAction.action.fieldValue + ")");
 								int integerValue;
 								Actions actions = new Actions(Browser.webDriver);
 								// Execute the Test Step Action
@@ -252,6 +268,14 @@ public class WebTest {
 										));
 										dropDown.selectByIndex(integerValue);
 										break;
+                                    case "select-visibletext":
+                                        // Field selecting by index action
+                                        String visibleText = testAction.action.fieldValue;
+                                        Select dropDownText = new Select(Browser.webDriver.findElement(
+                                                By.cssSelector(testAction.action.fieldName)
+                                        ));
+                                        dropDownText.selectByVisibleText(visibleText);
+                                        break;
 									case "wait-display":
 										// Waiting for Field to be visible action
 										integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
@@ -261,13 +285,29 @@ public class WebTest {
 											));
 										break;
 									case "wait-enable":
-										// Waiting for Field to be enabled action
-										integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-										(new WebDriverWait(Browser.webDriver, integerValue))
-											.until(ExpectedConditions.elementToBeClickable(
-												By.cssSelector(testAction.action.fieldName)
-											));
-										break;
+                                        // Waiting for Field to be enabled action
+                                        integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+                                        (new WebDriverWait(Browser.webDriver, integerValue))
+                                                .until(ExpectedConditions.elementToBeClickable(
+                                                        By.cssSelector(testAction.action.fieldName)
+                                                ));
+                                        break;
+                                    case "javascriptclick":
+                                        // Waiting for Field to be enabled action
+                                        JavascriptExecutor js =(JavascriptExecutor)Browser.webDriver;
+                                        js.executeScript("arguments[0].click();",Browser.webDriver.findElement(
+                                                By.cssSelector(testAction.action.fieldName)));
+                                        break;
+                                    case "scrolldown":
+                                        // Waiting for Field to be enabled action
+                                        JavascriptExecutor j =(JavascriptExecutor)Browser.webDriver;
+                                        j.executeScript("window.scrollTo(0, 9999)");
+                                        break;
+                                    case "scrollup":
+                                        // Waiting for Field to be enabled action
+                                        JavascriptExecutor jse =(JavascriptExecutor)Browser.webDriver;
+                                        jse.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+                                        break;
 									default:
 										// Unknown action type
 										throw new Exception("Unknown Action Type (" +
