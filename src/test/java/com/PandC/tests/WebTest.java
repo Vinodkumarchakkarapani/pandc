@@ -91,8 +91,9 @@ public class WebTest {
 			logger.info("Setting the Browser Window Size to (" +
 				browserWidth + "x" + browserHeight + ") Resolution...");
 			Browser.webDriver.manage().window().setPosition(new Point(0, 0));
-			Browser.webDriver.manage().window().setSize(new Dimension(browserWidth, browserHeight));
-			Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			//Browser.webDriver.manage().window().setSize(new Dimension(browserWidth, browserHeight));
+			Browser.webDriver.manage().window().maximize();
+			//Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Browser.webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
 			logger.info("Opening the Application URL in the Browser...");
@@ -133,7 +134,7 @@ public class WebTest {
 		}*/
 		// Loop through the GUI Test Cases to add them as Dynamic Tests
 		for (TestCaseGUI testCase : guiTestCases) {
-
+			Thread.sleep(3000);
 			//guiTests.add(dynamicTest(testCase.description, () -> {
 				logger.info("EXECUTE: " + testCase.description);
 				// Set all the Properties for Test Results
@@ -177,7 +178,7 @@ public class WebTest {
 							// Loop through the Test Step Actions
 							for (TestStepAction testAction : testStep.testStepActions) {
 
-                               /* ExpectedCondition<Boolean> pageLoadCondition = new
+                               ExpectedCondition<Boolean> pageLoadCondition = new
                                         ExpectedCondition<Boolean>() {
                                             public Boolean apply(WebDriver driver) {
                                                 return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
@@ -188,7 +189,7 @@ public class WebTest {
                                 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading'")));
                                 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
                                 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
-                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));*/
+                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));
 								// Initialize the Objects required to perform actions
 
                                 logger.info("Test Action Name: " + testAction.action.fieldName+ " (" + testAction.action.fieldValue + ")");
@@ -232,15 +233,37 @@ public class WebTest {
 										Browser.webDriver.findElement(
 											By.cssSelector(testAction.action.fieldName)
 										).sendKeys(testAction.action.fieldValue);
+										Thread.sleep(500);
 										break;
 									case "match-text":
-										if (!Browser.webDriver.findElement(
-											By.cssSelector(testAction.action.fieldName)
-										).getText().trim().equals(testAction.action.fieldValue.trim())) {
+										// Field match-test action
+										Thread.sleep(2000);
+										String sText ="";
+										String sValue ="";
+										String sinnerHTML = "";
+										try {
+											sText = Browser.webDriver.findElement(
+													By.cssSelector(testAction.action.fieldName)
+											).getText().trim();
+										}catch (NullPointerException ex){}
+										try {
+											sValue = Browser.webDriver.findElement(
+													By.cssSelector(testAction.action.fieldName)
+											).getAttribute("value").trim();
+										}catch (NullPointerException ex){}
+										try {
+											sinnerHTML = Browser.webDriver.findElement(
+													By.cssSelector(testAction.action.fieldName)
+											).getAttribute("innerhtml").trim();
+										}catch (NullPointerException ex){}
+										if (!(sText.equals(testAction.action.fieldValue.trim())
+											||sValue.equals(testAction.action.fieldValue.trim())
+												|| sinnerHTML.equals(testAction.action.fieldValue.trim()))) {
 											stepResult.status = "Fail";
 											stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
 												"does not match the value given (" + testAction.action.fieldValue +
 												")";
+
 										}
 										break;
 									case "contains-text":
@@ -308,6 +331,14 @@ public class WebTest {
                                         JavascriptExecutor jse =(JavascriptExecutor)Browser.webDriver;
                                         jse.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
                                         break;
+									case "element-invisible":
+										// Waiting for Field to be invisible action
+										integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+										(new WebDriverWait(Browser.webDriver, integerValue))
+												.until(ExpectedConditions.invisibilityOfElementLocated(
+														By.cssSelector(testAction.action.fieldName)
+												));
+										break;
 									default:
 										// Unknown action type
 										throw new Exception("Unknown Action Type (" +
@@ -346,6 +377,7 @@ public class WebTest {
 						gui.testResult.testStepResults.add(stepResult);
 						logger.info("RESULT: " + stepResult.status + " (" + stepResult.actualResult + ")");
 					}
+
 					// Determine the Test Results
 					if (allPassed) {
 						gui.testResult.status = "Pass";
