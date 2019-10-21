@@ -94,7 +94,7 @@ public class WebTest {
 			//Browser.webDriver.manage().window().setSize(new Dimension(browserWidth, browserHeight));
 			Browser.webDriver.manage().window().maximize();
 			//Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Browser.webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			Browser.webDriver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 
 			logger.info("Opening the Application URL in the Browser...");
 			Browser.webDriver.get(config.app.getProperty("app.gui.url"));
