@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -49,6 +50,11 @@ public class WebTest {
 
 	@BeforeSuite
 	static void setUp() {
+	    List<String> listOfTCstoExecute = Arrays.asList(
+	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+                //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
+                "9. PS013 - Verify user is able to search a record by Status"
+        );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
 		logger.info(new String(new char[80]).replace("\0", "="));
@@ -73,7 +79,16 @@ public class WebTest {
 			project = qifClient.getProject(config.qif.getProperty("qif.project.gui"));
 
 			logger.info("Getting all the GUI Test Cases for the Project (" + project.projectName + ") from QIF...");
-			guiTestCases = qifClient.getGUITestCases(project.projectId);
+			guiTestCases = qifClient.getGUITestCases(project.projectId,false,null);
+			//Execute selected tests only as mentioned in listOfTCstoExecute
+			if(config.app.getProperty("app.gui.executeselectedTCs").toUpperCase().startsWith("T")) {
+				List<TestCaseGUI> guiTestCases_new = new ArrayList<>();
+				for (TestCaseGUI testCase : guiTestCases) {
+					if (listOfTCstoExecute.contains(testCase.description.replace("  ", " ")))
+						guiTestCases_new.add(testCase);
+				}
+				guiTestCases = guiTestCases_new;
+			}
 			guiTestCases.sort((leftCase, rightCase) -> {
 				// Get the Serial Numbers from the Test Case Description
 				Integer leftSerial = Integer.parseInt(
