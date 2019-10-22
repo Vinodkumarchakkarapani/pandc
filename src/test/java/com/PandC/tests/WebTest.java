@@ -53,7 +53,7 @@ public class WebTest {
 	    List<String> listOfTCstoExecute = Arrays.asList(
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
                 //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
-                "9. PS013 - Verify user is able to search a record by Status"
+                "11. PS010 - Verify user is able to search a record by Primary Contact"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
