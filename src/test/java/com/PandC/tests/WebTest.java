@@ -26,6 +26,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -56,7 +58,7 @@ public class WebTest {
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
                 //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
                 //"9. PS013 - Verify user is able to search a record by Status"
-				"14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page"
+				"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -372,6 +374,13 @@ public class WebTest {
 											.until(ExpectedConditions.invisibilityOfElementLocated(
 													By.cssSelector(testAction.action.fieldName)
 											));
+									break;
+								case "enter-lastyearcurrentdate":
+									String expirationDate = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+									Browser.webDriver.findElement(
+											By.cssSelector(testAction.action.fieldName)
+									).sendKeys(expirationDate);
+									Thread.sleep(500);
 									break;
 								default:
 									// Unknown action type
