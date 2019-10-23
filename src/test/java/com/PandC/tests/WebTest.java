@@ -19,12 +19,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -50,10 +53,12 @@ public class WebTest {
 
 	@BeforeSuite
 	static void setUp() {
+		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
                 //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
-                "11. PS010 - Verify user is able to search a record by Primary Contact"
+                //"9. PS013 - Verify user is able to search a record by Status"
+				"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -109,7 +114,7 @@ public class WebTest {
 			//Browser.webDriver.manage().window().setSize(new Dimension(browserWidth, browserHeight));
 			Browser.webDriver.manage().window().maximize();
 			//Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Browser.webDriver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+			Browser.webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
 			logger.info("Opening the Application URL in the Browser...");
 			Browser.webDriver.get(config.app.getProperty("app.gui.url"));
@@ -121,10 +126,19 @@ public class WebTest {
 		}
 	}
 
+	@DataProvider(name = "QIFDP")
+	public Object[][] QIFDP() {
+		// Data proovider for the tests to execute
+		String[][] TestDesc = new String[guiTestCases.size()][1];
+		int i=0;
+		for (TestCaseGUI testCase : guiTestCases)
+			TestDesc[i++][0]=testCase.description;
+		return TestDesc;
+	}
 	//@TestFactory
-	@Test
+	@Test(dataProvider = "QIFDP")
 	//Iterable<DynamicTest> executeTests() {
-	public void QIFTests() throws IOException, ParseException, InterruptedException {
+	public void QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
 
 		/*List<DynamicTest> guiTests = new ArrayList<>();
 		// Make sure the Setup is completed correctly
@@ -148,273 +162,287 @@ public class WebTest {
 			return guiTests;
 		}*/
 		// Loop through the GUI Test Cases to add them as Dynamic Tests
-		for (TestCaseGUI testCase : guiTestCases) {
+		//for (TestCaseGUI testCase : guiTestCases) {
+		//TestCaseGUI testCase = guiTestCases.
+		TestCaseGUI testCase =null;
+		for (TestCaseGUI testCaseTemp : guiTestCases)
+			if(testCaseTemp.description.equals(sTestDescrition))
+				testCase=testCaseTemp;
+		if(testCase==null)
+			return;
 			Thread.sleep(3000);
 			//guiTests.add(dynamicTest(testCase.description, () -> {
-				logger.info("EXECUTE: " + testCase.description);
-				// Set all the Properties for Test Results
-				boolean allPassed = true;
-				String lastError = "";
-				String lastErrorScreen = "";
-				GUITestResult gui = new GUITestResult();
-				gui.testResult.testCaseId = testCase.testCaseId;
-				gui.testResult.moduleId = testCase.moduleId;
-				gui.testResult.subModuleId = testCase.subModuleId;
-				gui.testResult.status = "Broken";
-				gui.testResult.sUT = project.projectName;
-				gui.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
-				gui.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
-				gui.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
-				gui.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
-				gui.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
-				gui.testResult.browserName = config.app.getProperty("app.gui.browserName");
-				gui.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
-				gui.testResult.resolution = config.app.getProperty("app.gui.resolution");
-				gui.testResult.oSName = config.app.getProperty("app.gui.osName");
-				gui.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
-				gui.testResult.appType = config.app.getProperty("app.gui.appType");
-				gui.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
-				gui.testResult.executionStartTime = new Date();
-				gui.testResult.projectId = project.projectId;
-				gui.testResult.environment = config.app.getProperty("app.gui.environment");
-				gui.testResult.runID = config.app.getProperty("app.gui.runID");
-				try {
-					// Loop through the Test Steps
-					for (TestCaseStep testStep : testCase.testCaseSteps) {
-                        Thread.sleep(2000);
+			logger.info("EXECUTE: " + testCase.description);
+			// Set all the Properties for Test Results
+			boolean allPassed = true;
+			String lastError = "";
+			String lastErrorScreen = "";
+			GUITestResult gui = new GUITestResult();
+			gui.testResult.testCaseId = testCase.testCaseId;
+			gui.testResult.moduleId = testCase.moduleId;
+			gui.testResult.subModuleId = testCase.subModuleId;
+			gui.testResult.status = "Broken";
+			gui.testResult.sUT = project.projectName;
+			gui.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
+			gui.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
+			gui.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
+			gui.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
+			gui.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
+			gui.testResult.browserName = config.app.getProperty("app.gui.browserName");
+			gui.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
+			gui.testResult.resolution = config.app.getProperty("app.gui.resolution");
+			gui.testResult.oSName = config.app.getProperty("app.gui.osName");
+			gui.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
+			gui.testResult.appType = config.app.getProperty("app.gui.appType");
+			gui.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
+			gui.testResult.executionStartTime = new Date();
+			gui.testResult.projectId = project.projectId;
+			gui.testResult.environment = config.app.getProperty("app.gui.environment");
+			gui.testResult.runID = config.app.getProperty("app.gui.runID");
+			try {
+				// Loop through the Test Steps
+				for (TestCaseStep testStep : testCase.testCaseSteps) {
+					Thread.sleep(2000);
 
-						logger.info("ACTION: Performing the Step Action (" + testStep.stepDescription + ")...");
-						TestStepResult stepResult = new TestStepResult();
-						// Set all the Properties for Test Step Result
-						stepResult.testCaseStepId = testStep.testCaseStepId;
-						stepResult.status = "Broken";
-						stepResult.executionStartTime = new Date();
-						try {
-							// Loop through the Test Step Actions
-							for (TestStepAction testAction : testStep.testStepActions) {
+					logger.info("ACTION: Performing the Step Action (" + testStep.stepDescription + ")...");
+					TestStepResult stepResult = new TestStepResult();
+					// Set all the Properties for Test Step Result
+					stepResult.testCaseStepId = testStep.testCaseStepId;
+					stepResult.status = "Broken";
+					stepResult.executionStartTime = new Date();
+					try {
+						// Loop through the Test Step Actions
+						for (TestStepAction testAction : testStep.testStepActions) {
 
-                               ExpectedCondition<Boolean> pageLoadCondition = new
-                                        ExpectedCondition<Boolean>() {
-                                            public Boolean apply(WebDriver driver) {
-                                                return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
-                                            }
-                                        };
-                                WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
-                                wait.until(pageLoadCondition);
-                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading'")));
-                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
-                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
-                                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));
-								// Initialize the Objects required to perform actions
+							ExpectedCondition<Boolean> pageLoadCondition = new
+									ExpectedCondition<Boolean>() {
+										public Boolean apply(WebDriver driver) {
+											return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+										}
+									};
+							WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
+							wait.until(pageLoadCondition);
+							wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading'")));
+							wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
+							wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
+							wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));
+							// Initialize the Objects required to perform actions
 
-                                logger.info("Test Action Name: " + testAction.action.fieldName+ " (" + testAction.action.fieldValue + ")");
-								int integerValue;
-								Actions actions = new Actions(Browser.webDriver);
-								// Execute the Test Step Action
-								switch (testAction.action.actionType.toLowerCase()) {
-									case "browse":
-										// Browser opening action
-										Browser.webDriver.get(testAction.action.fieldValue);
-										break;
-									case "click":
-										// Field clicking action
-										Browser.webDriver.findElement(
+							logger.info("Test Action Name: " + testAction.action.fieldName+ " (" + testAction.action.fieldValue + ")");
+							int integerValue;
+							Actions actions = new Actions(Browser.webDriver);
+							// Execute the Test Step Action
+							switch (testAction.action.actionType.toLowerCase()) {
+								case "browse":
+									// Browser opening action
+									Browser.webDriver.get(testAction.action.fieldValue);
+									break;
+								case "click":
+									// Field clicking action
+									Browser.webDriver.findElement(
 											By.cssSelector(testAction.action.fieldName)
-										).click();
-										break;
-									case "mouse-hover":
-										// Field Mouse Hover action
-										actions.moveToElement(Browser.webDriver.findElement(
+									).click();
+									break;
+								case "mouse-hover":
+									// Field Mouse Hover action
+									actions.moveToElement(Browser.webDriver.findElement(
 											By.cssSelector(testAction.action.fieldName)
-										)).perform();
-										break;
-									case "clear":
-										// Field clearing action
-										Browser.webDriver.findElement(
+									)).perform();
+									break;
+								case "clear":
+									// Field clearing action
+									Browser.webDriver.findElement(
 											By.cssSelector(testAction.action.fieldName)
-										).clear();
-										break;
-									case "replace":
-										// Field value replacing action
-										Browser.webDriver.findElement(
+									).clear();
+									break;
+								case "replace":
+									// Field value replacing action
+									Browser.webDriver.findElement(
 											By.cssSelector(testAction.action.fieldName)
-										).sendKeys(
+									).sendKeys(
 											Keys.chord(Keys.CONTROL, "a"),
 											testAction.action.fieldValue
-										);
-										break;
-									case "type":
-										// Field typing action
-										Browser.webDriver.findElement(
+									);
+									break;
+								case "type":
+									// Field typing action
+									Browser.webDriver.findElement(
 											By.cssSelector(testAction.action.fieldName)
-										).sendKeys(testAction.action.fieldValue);
-										Thread.sleep(500);
-										break;
-									case "match-text":
-										// Field match-test action
-										Thread.sleep(2000);
-										String sText ="";
-										String sValue ="";
-										String sinnerHTML = "";
-										try {
-											sText = Browser.webDriver.findElement(
-													By.cssSelector(testAction.action.fieldName)
-											).getText().trim();
-										}catch (NullPointerException ex){}
-										try {
-											sValue = Browser.webDriver.findElement(
-													By.cssSelector(testAction.action.fieldName)
-											).getAttribute("value").trim();
-										}catch (NullPointerException ex){}
-										try {
-											sinnerHTML = Browser.webDriver.findElement(
-													By.cssSelector(testAction.action.fieldName)
-											).getAttribute("innerhtml").trim();
-										}catch (NullPointerException ex){}
-										if (!(sText.equals(testAction.action.fieldValue.trim())
+									).sendKeys(testAction.action.fieldValue);
+									Thread.sleep(500);
+									break;
+								case "match-text":
+									// Field match-test action
+									Thread.sleep(2000);
+									String sText ="";
+									String sValue ="";
+									String sinnerHTML = "";
+									try {
+										sText = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getText().trim();
+									}catch (NullPointerException ex){}
+									try {
+										sValue = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getAttribute("value").trim();
+									}catch (NullPointerException ex){}
+									try {
+										sinnerHTML = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getAttribute("innerhtml").trim();
+									}catch (NullPointerException ex){}
+									if (!(sText.equals(testAction.action.fieldValue.trim())
 											||sValue.equals(testAction.action.fieldValue.trim())
-												|| sinnerHTML.equals(testAction.action.fieldValue.trim()))) {
-											stepResult.status = "Fail";
-											stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+											|| sinnerHTML.equals(testAction.action.fieldValue.trim()))) {
+										stepResult.status = "Fail";
+										stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
 												"does not match the value given (" + testAction.action.fieldValue +
 												")";
 
-										}
-										break;
-									case "contains-text":
-										// Validate Test in filed contains specific text
-										String sTextValue = Browser.webDriver.findElement(
-												By.cssSelector(testAction.action.fieldName)
-										).getText();
-										try{
+									}
+									break;
+								case "contains-text":
+									// Validate Test in filed contains specific text
+									String sTextValue = Browser.webDriver.findElement(
+											By.cssSelector(testAction.action.fieldName)
+									).getText();
+									try{
 										Assert.assertTrue(
 												sTextValue.contains(testAction.action.fieldValue),
 												"Text in Field (" + testAction.action.fieldName + ") should contain [" +
 														testAction.action.fieldValue + "] and Got [" + sTextValue + "]"
 
 										);
-										} catch (AssertionError e) {
-											throw new Exception("Text in Field (" + testAction.action.fieldName + ") should contain [" +
-													testAction.action.fieldValue + "] but Got [" + sTextValue + "]");
-										}
-										break;
-									case "select-index":
-										// Field selecting by index action
-										integerValue = Integer.parseInt(testAction.action.fieldValue);
-										Select dropDown = new Select(Browser.webDriver.findElement(
+									} catch (AssertionError e) {
+										throw new Exception("Text in Field (" + testAction.action.fieldName + ") should contain [" +
+												testAction.action.fieldValue + "] but Got [" + sTextValue + "]");
+									}
+									break;
+								case "select-index":
+									// Field selecting by index action
+									integerValue = Integer.parseInt(testAction.action.fieldValue);
+									Select dropDown = new Select(Browser.webDriver.findElement(
 											By.cssSelector(testAction.action.fieldName)
-										));
-										dropDown.selectByIndex(integerValue);
-										break;
-                                    case "select-visibletext":
-                                        // Field selecting by index action
-                                        String visibleText = testAction.action.fieldValue;
-                                        Select dropDownText = new Select(Browser.webDriver.findElement(
-                                                By.cssSelector(testAction.action.fieldName)
-                                        ));
-                                        dropDownText.selectByVisibleText(visibleText);
-                                        break;
-									case "wait-display":
-										// Waiting for Field to be visible action
-										integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-										(new WebDriverWait(Browser.webDriver, integerValue))
+									));
+									dropDown.selectByIndex(integerValue);
+									break;
+								case "select-visibletext":
+									// Field selecting by index action
+									String visibleText = testAction.action.fieldValue;
+									Select dropDownText = new Select(Browser.webDriver.findElement(
+											By.cssSelector(testAction.action.fieldName)
+									));
+									dropDownText.selectByVisibleText(visibleText);
+									break;
+								case "wait-display":
+									// Waiting for Field to be visible action
+									integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+									(new WebDriverWait(Browser.webDriver, integerValue))
 											.until(ExpectedConditions.visibilityOfElementLocated(
-												By.cssSelector(testAction.action.fieldName)
+													By.cssSelector(testAction.action.fieldName)
 											));
-										break;
-									case "wait-enable":
-                                        // Waiting for Field to be enabled action
-                                        integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-                                        (new WebDriverWait(Browser.webDriver, integerValue))
-                                                .until(ExpectedConditions.elementToBeClickable(
-                                                        By.cssSelector(testAction.action.fieldName)
-                                                ));
-                                        break;
-                                    case "javascriptclick":
-                                        // Waiting for Field to be enabled action
-                                        JavascriptExecutor js =(JavascriptExecutor)Browser.webDriver;
-                                        js.executeScript("arguments[0].click();",Browser.webDriver.findElement(
-                                                By.cssSelector(testAction.action.fieldName)));
-                                        break;
-                                    case "scrolldown":
-                                        // Waiting for Field to be enabled action
-                                        JavascriptExecutor j =(JavascriptExecutor)Browser.webDriver;
-                                        j.executeScript("window.scrollTo(0, 9999)");
-                                        break;
-                                    case "scrollup":
-                                        // Waiting for Field to be enabled action
-                                        JavascriptExecutor jse =(JavascriptExecutor)Browser.webDriver;
-                                        jse.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
-                                        break;
-									case "element-invisible":
-										// Waiting for Field to be invisible action
-										integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-										(new WebDriverWait(Browser.webDriver, integerValue))
-												.until(ExpectedConditions.invisibilityOfElementLocated(
-														By.cssSelector(testAction.action.fieldName)
-												));
-										break;
-									default:
-										// Unknown action type
-										throw new Exception("Unknown Action Type (" +
+									break;
+								case "wait-enable":
+									// Waiting for Field to be enabled action
+									integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+									(new WebDriverWait(Browser.webDriver, integerValue))
+											.until(ExpectedConditions.elementToBeClickable(
+													By.cssSelector(testAction.action.fieldName)
+											));
+									break;
+								case "javascriptclick":
+									// Waiting for Field to be enabled action
+									JavascriptExecutor js =(JavascriptExecutor)Browser.webDriver;
+									js.executeScript("arguments[0].click();",Browser.webDriver.findElement(
+											By.cssSelector(testAction.action.fieldName)));
+									break;
+								case "scrolldown":
+									// Waiting for Field to be enabled action
+									JavascriptExecutor j =(JavascriptExecutor)Browser.webDriver;
+									j.executeScript("window.scrollTo(0, 9999)");
+									break;
+								case "scrollup":
+									// Waiting for Field to be enabled action
+									JavascriptExecutor jse =(JavascriptExecutor)Browser.webDriver;
+									jse.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+									break;
+								case "element-invisible":
+									// Waiting for Field to be invisible action
+									integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+									(new WebDriverWait(Browser.webDriver, integerValue))
+											.until(ExpectedConditions.invisibilityOfElementLocated(
+													By.cssSelector(testAction.action.fieldName)
+											));
+									break;
+								case "enter-lastyearcurrentdate":
+									String expirationDate = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+									Browser.webDriver.findElement(
+											By.cssSelector(testAction.action.fieldName)
+									).sendKeys(expirationDate);
+									Thread.sleep(500);
+									break;
+								default:
+									// Unknown action type
+									throw new Exception("Unknown Action Type (" +
 											testAction.action.actionType + ") provided.");
-								}
 							}
-							// Make the Step Result as Pass only if it was not modified by any executions above
-							if (stepResult.status.equals("Broken")) {
-								stepResult.status = "Pass";
-							}
-							stepResult.actualResult = testStep.expectedResult;
-						} catch (Exception error) {
-							logger.error(error);
-							// Take the Screen Shot from the Browser Instance
-							File screenShot = Browser.takeScreenShot(
+						}
+						// Make the Step Result as Pass only if it was not modified by any executions above
+						if (stepResult.status.equals("Broken")) {
+							stepResult.status = "Pass";
+						}
+						stepResult.actualResult = testStep.expectedResult;
+					} catch (Exception error) {
+						logger.error(error);
+						// Take the Screen Shot from the Browser Instance
+						File screenShot = Browser.takeScreenShot(
 								testStep.testCaseStepId + "_" +
-									fileFormat.format(stepResult.executionStartTime),
+										fileFormat.format(stepResult.executionStartTime),
 								config.app.getProperty("selenium.webdriver.screenshots")
-							);
-							// Upload the Screen Shot to Azure BLOB Storage and set the URL
-							stepResult.screenshotURL = qifClient.uploadScreenShot(
+						);
+						// Upload the Screen Shot to Azure BLOB Storage and set the URL
+						stepResult.screenshotURL = qifClient.uploadScreenShot(
 								config.qif.getProperty("qif.azure.connection"),
 								config.qif.getProperty("qif.azure.container"),
 								screenShot
-							);
-							// Set the Test Step Result Properties
-							stepResult.status = "Fail";
-							stepResult.error = error.getMessage();
-							stepResult.actualResult = error.toString();
-							allPassed = false;
-							lastError = stepResult.error;
-							lastErrorScreen = stepResult.screenshotURL;
-						}
-						// Add the Test Step Result to Test Steps
-						stepResult.executionEndTime = new Date();
-						gui.testResult.testStepResults.add(stepResult);
-						logger.info("RESULT: " + stepResult.status + " (" + stepResult.actualResult + ")");
+						);
+						// Set the Test Step Result Properties
+						stepResult.status = "Fail";
+						stepResult.error = error.getMessage();
+						stepResult.actualResult = error.toString();
+						allPassed = false;
+						lastError = stepResult.error;
+						lastErrorScreen = stepResult.screenshotURL;
 					}
-
-					// Determine the Test Results
-					if (allPassed) {
-						gui.testResult.status = "Pass";
-						gui.testResult.actualResult = testCase.expectedResult;
-					} else {
-						gui.testResult.status = "Fail";
-						gui.testResult.actualResult = lastError;
-						gui.testResult.error = lastError;
-						gui.testResult.errorScreen = lastErrorScreen;
-					}
-					// Send the Test Results to QIF
-					logger.info("Sending the Test Results to QIF...");
-					gui.testResult.executionEndTime = new Date();
-					qifClient.postGUITestResults(gui);
-					// Assert the Test Status
-					Assert.assertEquals(gui.testResult.status,"Pass","Got Error: " + gui.testResult.error);
-				} catch (Exception error) {
-					logger.error(error);
-					Assert.assertEquals(error.getMessage().length(),0);
+					// Add the Test Step Result to Test Steps
+					stepResult.executionEndTime = new Date();
+					gui.testResult.testStepResults.add(stepResult);
+					logger.info("RESULT: " + stepResult.status + " (" + stepResult.actualResult + ")");
 				}
+
+				// Determine the Test Results
+				if (allPassed) {
+					gui.testResult.status = "Pass";
+					gui.testResult.actualResult = testCase.expectedResult;
+				} else {
+					gui.testResult.status = "Fail";
+					gui.testResult.actualResult = lastError;
+					gui.testResult.error = lastError;
+					gui.testResult.errorScreen = lastErrorScreen;
+				}
+				// Send the Test Results to QIF
+				logger.info("Sending the Test Results to QIF...");
+				gui.testResult.executionEndTime = new Date();
+				qifClient.postGUITestResults(gui);
+				// Assert the Test Status
+				Assert.assertEquals(gui.testResult.status,"Pass","Got Error: " + gui.testResult.error);
+			} catch (Exception error) {
+				logger.error(error);
+				Assert.assertEquals(error.getMessage().length(),0);
+			}
 			//}));
-		}
+		//}
 		//return guiTests;
 	}
 
