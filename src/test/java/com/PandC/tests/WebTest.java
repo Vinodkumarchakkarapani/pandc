@@ -56,9 +56,17 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+				"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page"
+//				"20. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//				"21. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
+//				"17. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab"
+//				"18. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
+//				"19. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row"
                 //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
-                //"9. PS013 - Verify user is able to search a record by Status"
-				"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
+                //"9. PS013 - Verify user is able to search a record by Status",
+//				"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
+
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
