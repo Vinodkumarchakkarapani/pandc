@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 //import org.junit.jupiter.api.DynamicTest;
 //import org.junit.jupiter.api.TestFactory;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,8 +23,13 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -56,17 +62,10 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
-				"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page"
-//				"20. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-//				"21. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
-//				"17. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab"
-//				"18. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
-//				"19. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row"
                 //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
-                //"9. PS013 - Verify user is able to search a record by Status",
-//				"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
-
+                //"9. PS013 - Verify user is able to search a record by Status"
+				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
+				"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -247,9 +246,7 @@ public class WebTest {
 									break;
 								case "click":
 									// Field clicking action
-									Browser.webDriver.findElement(
-											By.cssSelector(testAction.action.fieldName)
-									).click();
+									Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
 									break;
 								case "mouse-hover":
 									// Field Mouse Hover action
@@ -369,6 +366,7 @@ public class WebTest {
 									// Waiting for Field to be enabled action
 									JavascriptExecutor j =(JavascriptExecutor)Browser.webDriver;
 									j.executeScript("window.scrollTo(0, 9999)");
+									Thread.sleep(1000);
 									break;
 								case "scrollup":
 									// Waiting for Field to be enabled action
@@ -390,6 +388,71 @@ public class WebTest {
 									).sendKeys(expirationDate);
 									Thread.sleep(500);
 									break;
+								case "wait-alert":
+									integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+									Boolean AlertFound = false;
+									int i=0;
+									while(i++<integerValue)
+									{
+										try
+										{
+											Alert alert = Browser.webDriver.switchTo().alert();
+											AlertFound = true;
+											break;
+										}
+										catch(NoAlertPresentException e)
+										{
+											Thread.sleep(1000);
+											continue;
+										}
+									}
+									Assert.assertTrue(AlertFound,"Alert/File dialog should be displayed");
+									break;
+								case "uploadfile":
+								    if(!testAction.action.fieldName.trim().contains(" ")) {
+                                        StringSelection stringSelection = new StringSelection
+                                                (Paths.get(System.getProperty("user.dir"), "testdata/filesUpload/", testAction.action.fieldName).toString());
+                                        //(System.getProperty("user.dir") + "filesUpload/"+testAction.action.fieldName);
+                                        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                                        clipboard.setContents(stringSelection, null);
+                                    }
+                                    else
+                                    {
+                                        String lstofFile="";
+                                        for (String echFile:testAction.action.fieldName.trim().split(" ")) {
+                                            lstofFile += "\""
+                                                    +Paths.get(System.getProperty("user.dir"), "testdata/filesUpload/", echFile).toString()
+                                                    +"\"";
+                                        }
+                                        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                                        StringSelection stringSelection = new StringSelection(lstofFile);
+                                        clipboard.setContents(stringSelection, null);
+                                    }
+
+									Robot robot = null;
+									try {
+										robot = new Robot();
+									} catch (AWTException e) {
+										e.printStackTrace();
+									}
+									robot.delay(250);
+									robot.keyPress(KeyEvent.VK_CONTROL);
+									robot.keyPress(KeyEvent.VK_V);
+									robot.keyRelease(KeyEvent.VK_V);
+									robot.keyRelease(KeyEvent.VK_CONTROL);
+                                    robot.delay(1000);
+									robot.keyPress(KeyEvent.VK_ENTER);
+									break;
+                                case "sleep":
+                                    Thread.sleep(Integer.parseInt(testAction.action.fieldValue));
+                                    break;
+                                case "clickaction":
+                                    WebElement ele = Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName));
+                                    Actions ob = new Actions(Browser.webDriver);
+                                    ob.click(ele);
+                                    org.openqa.selenium.interactions.Action action1  = ob.build();
+                                    action1.perform();
+                                    break;
 								default:
 									// Unknown action type
 									throw new Exception("Unknown Action Type (" +
