@@ -62,10 +62,17 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+                "26. PS020 - Verify user is displayed the message - \"File Size Exceeds the maximum size (5 MB)\" when user uploads a file more than 5 mb"
+//                "25. PS019 - Verify user is displayed the message - \"Invalid file name. File name should not contain special characters like ~ ` ! @ # $ % ^ & * ( ) + = { } | [ ] : \" ; < > ? , /\" when user uploads a file with special characters"
+//                "24. PS017 - Verify user is able to uncheck and delete the uploaded document"
+//                "16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page"
+//                "22. PS018 - Verify user is not able to upload more than 10 files and displayed the message - Maximum 10 files can be uploaded"
+//                "21. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//                "23. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
                 //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
                 //"9. PS013 - Verify user is able to search a record by Status"
 				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
-				"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page"
+//				"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
