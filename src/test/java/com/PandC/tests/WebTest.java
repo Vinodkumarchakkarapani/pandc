@@ -62,16 +62,8 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-                //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
-                //"9. PS013 - Verify user is able to search a record by Status"
-				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
-				"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page",
-                "22. PS018 - Verify user is not able to upload more than 10 files and displayed the message - Maximum 10 files can be uploaded",
-                "24. PS017 - Verify user is able to uncheck and delete the uploaded document",
-                "25. PS019 - Verify user is displayed the message - \"Invalid file name. File name should not contain special characters like ~ ` ! @ # $ % ^ & * ( ) + = { } | [ ] : \" ; < > ? , /\" when user uploads a file with special characters",
-                "26. PS020 - Verify user is displayed the message - \"File Size Exceeds the maximum size (5 MB)\" when user uploads a file more than 5 mb",
-                "27. PS021 - Verify user is displayed the message - \"Duplicate files are not allowed. A file with same name exists!\" when user uploads a duplicate file ",
-                "28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions"
+                "30. PS026 - Verify user is able to download the template, by clicking on Template button",
+				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -389,13 +381,6 @@ public class WebTest {
 													By.cssSelector(testAction.action.fieldName)
 											));
 									break;
-								case "enter-lastyearcurrentdate":
-									String expirationDate = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-									Browser.webDriver.findElement(
-											By.cssSelector(testAction.action.fieldName)
-									).sendKeys(expirationDate);
-									Thread.sleep(500);
-									break;
 								case "wait-alert":
 									integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
 									Boolean AlertFound = false;
@@ -461,6 +446,75 @@ public class WebTest {
                                     org.openqa.selenium.interactions.Action action1  = ob.build();
                                     action1.perform();
                                     break;
+								case "checkdownladedfile":
+									String DownloadDir = System.getProperty("user.home") + "\\Downloads\\";
+									File dir = new File(DownloadDir);
+									File[] files = dir.listFiles();
+
+									File lastModifiedFile = files[0];
+
+									long length1 = 0;
+									long length2 = 0;
+
+									do {
+										files = dir.listFiles();
+
+										lastModifiedFile = files[0];
+										for (int l = 1; l < files.length; l++) {
+											if (lastModifiedFile.lastModified() < files[l].lastModified()) {
+												lastModifiedFile = files[l];
+											}
+										}
+										System.out.println("in While File Name:" + lastModifiedFile.getName());
+										if(lastModifiedFile.getName().endsWith("crdownload"))
+										{
+											Thread.sleep(10000);
+										}
+										else
+											break;
+									} while (true);
+									dir = new File(DownloadDir);
+									files = dir.listFiles();
+
+									lastModifiedFile = files[0];
+									for (int m = 1; m < files.length; m++) {
+										if (lastModifiedFile.lastModified() < files[m].lastModified()) {
+											lastModifiedFile = files[m];
+										}
+									}
+									try {
+										Thread.sleep(5000);
+									} catch (InterruptedException e) {
+										e.printStackTrace();
+									}
+									files = dir.listFiles();
+
+									lastModifiedFile = files[0];
+									for (int n = 1; n < files.length; n++) {
+										if (lastModifiedFile.lastModified() < files[n].lastModified()) {
+											lastModifiedFile = files[n];
+										}
+									}
+									String filename=lastModifiedFile.getName();
+									if (!(filename.equalsIgnoreCase(testAction.action.fieldValue))) {
+										stepResult.status = "Fail";
+										stepResult.actualResult = "File Name" +
+												" does not match the value given (" + testAction.action.fieldValue +
+												") , Got [" + filename + "]";
+										logger.error(stepResult.actualResult);
+									}
+									break;
+								case "deletedowloadedfile":
+									File file = new File(System.getProperty("user.home") + "\\Downloads\\"+testAction.action.fieldValue);
+									if(file.delete())
+									{
+										System.out.println("File deleted successfully");
+									}
+									else
+									{
+										System.out.println("Failed to delete the file");
+									}
+									break;
 								default:
 									// Unknown action type
 									throw new Exception("Unknown Action Type (" +
