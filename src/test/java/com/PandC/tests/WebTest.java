@@ -62,8 +62,38 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
 	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-                "30. PS026 - Verify user is able to download the template, by clicking on Template button",
-				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+                //"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
+                //"30. PS026 - Verify user is able to download the template, by clicking on Template button"
+				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
+				//"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+                //"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+                //"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page"
+				//"14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page"
+				//"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page",
+				//"17. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
+				//"18. PS027 - Verify user is able to Import a file in \".xls or .xlsx format\" by clicking browse button and then clicking on import button in the downloaded Template format",
+				//"19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row"
+				//"20. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row"
+				//"22. PS018 - Verify user is not able to upload more than 10 files and displayed the message - Maximum 10 files can be uploaded",
+				//"21. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				//"23. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
+//				"24. PS017 - Verify user is able to uncheck and delete the uploaded document",
+//				"25. PS019 - Verify user is displayed the message - \"Invalid file name. File name should not contain special characters like ~ ` ! @ # $ % ^ & * ( ) + = { } | [ ] : \" ; < > ? , /\" when user uploads a file with special characters",
+//				"26. PS020 - Verify user is displayed the message - \"File Size Exceeds the maximum size (5 MB)\" when user uploads a file more than 5 mb",
+//				"27. PS021 - Verify user is displayed the message - \"Duplicate files are not allowed. A file with same name exists!\" when user uploads a duplicate file",
+//				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
+				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
+				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
+//				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
+//				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
+//				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
+//				"34. PS042 - PS042To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
+//				"8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
+//				"9. PS013 - Verify user is able to search a record by Status",
+				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
+				//"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab"
+
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
