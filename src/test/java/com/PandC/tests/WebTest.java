@@ -92,7 +92,27 @@ public class WebTest {
 //				"9. PS013 - Verify user is able to search a record by Status",
 				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
 				//"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
-				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab"
+				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+
+				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
+				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
+				"34. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+				"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
+				"36. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+				"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
+				"38. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
+				"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
+				"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
+				"41. PS065 - To verify user is able to enter the details in Crime-Controls & Underwriting question in Crime Tab",
+				"42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
+				"43. PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
+				"44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
+				"45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
+				"46. PS071 - To verify user is able to enter the details For Program structure in Transit/Cargo/Stock Throughput tab",
+				"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
+				"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
+				"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures"
 
         );
 		// Get the Logger and Configuration details
