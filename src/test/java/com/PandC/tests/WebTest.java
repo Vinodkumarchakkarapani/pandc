@@ -61,9 +61,12 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
-	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-                "30. PS026 - Verify user is able to download the template, by clicking on Template button",
-				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+//	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+//                "30. PS026 - Verify user is able to download the template, by clicking on Template button",
+//				"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
+//				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
+                "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
+				"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -515,7 +518,29 @@ public class WebTest {
 										System.out.println("Failed to delete the file");
 									}
 									break;
-								default:
+								case  "matchcssvalue":
+									String cssBGValue ="";
+									String cssBGCValue ="";
+									try {
+										cssBGCValue = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getCssValue("background-color");
+									}catch (NullPointerException ex){}
+									try {
+										cssBGValue = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getCssValue("background");
+									}catch (NullPointerException ex){}
+									if (!(cssBGValue.equals(testAction.action.fieldValue.trim())
+											||cssBGCValue.equals(testAction.action.fieldValue.trim()))) {
+										stepResult.status = "Fail";
+										stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+												"does not match the value given (" + testAction.action.fieldValue +
+												") , Got [" + cssBGValue + cssBGCValue + "]";
+										logger.error(stepResult.actualResult);
+									}
+									break;
+									default:
 									// Unknown action type
 									throw new Exception("Unknown Action Type (" +
 											testAction.action.actionType + ") provided.");
