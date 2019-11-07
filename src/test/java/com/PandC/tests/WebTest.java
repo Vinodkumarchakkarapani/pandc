@@ -60,19 +60,6 @@ public class WebTest {
 	@BeforeSuite
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
-//	    List<String> listOfTCstoExecute = Arrays.asList(
-//	            "73. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
-//	            "74. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
-//          "83. PS123 - Verify user is able to Preview the details entered by user for Foreign by clicking on Foreign in Preview tab"
-////				"82. PS122 - Verify user is able to Preview the details entered by user for WC Exposures by clicking on WC Exposures in Preview tab"
-////				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
-////                "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
-////                "78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab",
-////                "84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
-////                "85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
-//				//"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab"
-//        );
-
 		List<String> listOfTCstoExecute = Arrays.asList(
 				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
