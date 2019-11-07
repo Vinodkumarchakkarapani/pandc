@@ -61,12 +61,16 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 	    List<String> listOfTCstoExecute = Arrays.asList(
-//	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-//                "30. PS026 - Verify user is able to download the template, by clicking on Template button",
-//				"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
+	            "73. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
+	            "74. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
+          "83. PS123 - Verify user is able to Preview the details entered by user for Foreign by clicking on Foreign in Preview tab"
+//				"82. PS122 - Verify user is able to Preview the details entered by user for WC Exposures by clicking on WC Exposures in Preview tab"
 //				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
-                "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
-				"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab"
+//                "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
+//                "78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab",
+//                "84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
+//                "85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
+				//"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -550,7 +554,33 @@ public class WebTest {
 						if (stepResult.status.equals("Broken")) {
 							stepResult.status = "Pass";
 						}
-						stepResult.actualResult = testStep.expectedResult;
+						if(!stepResult.actualResult.equalsIgnoreCase("")) {
+							allPassed = false;
+							//stepResult.actualResult = testStep.expectedResult;
+
+							// Take the Screen Shot from the Browser Instance
+							File screenShot = Browser.takeScreenShot(
+									testStep.testCaseStepId + "_" +
+											fileFormat.format(stepResult.executionStartTime),
+									config.app.getProperty("selenium.webdriver.screenshots")
+							);
+							// Upload the Screen Shot to Azure BLOB Storage and set the URL
+							stepResult.screenshotURL = qifClient.uploadScreenShot(
+									config.qif.getProperty("qif.azure.connection"),
+									config.qif.getProperty("qif.azure.container"),
+									screenShot
+							);
+							// Set the Test Step Result Properties
+							stepResult.status = "Fail";
+							stepResult.error = stepResult.actualResult;;
+							//stepResult.actualResult = testStep.expectedResult;;
+							allPassed = false;
+							lastError = stepResult.error;
+							lastErrorScreen = stepResult.screenshotURL;
+						}
+						else {
+							stepResult.actualResult = testStep.expectedResult;
+						}
 					} catch (Exception error) {
 						logger.error(error);
 						// Take the Screen Shot from the Browser Instance
