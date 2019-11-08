@@ -94,10 +94,23 @@ public class WebTest {
 				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
 //				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
 				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
-				"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
-				"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
-				"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
-				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab"
+				//"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+				//"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+				//"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
+				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
+				"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+				"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
+				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
+				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
