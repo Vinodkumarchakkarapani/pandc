@@ -90,9 +90,9 @@ public class WebTest {
 //				"34. PS042 - PS042To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
 //				"8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
 //				"9. PS013 - Verify user is able to search a record by Status",
-				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
+//				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
 				//"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
-				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+//				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
 
 				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
@@ -112,7 +112,37 @@ public class WebTest {
 				"46. PS071 - To verify user is able to enter the details For Program structure in Transit/Cargo/Stock Throughput tab",
 				"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
 				"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
-				"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures"
+				"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures",
+				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+				"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+				"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+				"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
+				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
+				"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+				"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+//				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
+				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+//				"68. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
+//				"69. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures",
+				"70. Click on Preview Tab",
+//				"71. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
+//				"72. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
+//                "73. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
+//				"74. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
+//				"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
+//				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
+//				"77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
+//				"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab"
+				"79. PS119 - Verify user is able to Preview the details entered by user for General Information by clicking on General Information in Preview tab",
+				"80. PS120 - Verify user is able to Preview the details entered by user for Property Exposures by clicking on Property Exposures in Preview tab",
+				"81. PS121 - Verify user is able to Preview the details entered by user for Casualty Exposures by clicking on Property Exposures in Preview tab"
 
         );
 		// Get the Logger and Configuration details
