@@ -60,30 +60,31 @@ public class WebTest {
 	@BeforeSuite
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
-	    List<String> listOfTCstoExecute = Arrays.asList(
-	            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-                //"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
-                //"30. PS026 - Verify user is able to download the template, by clicking on Template button"
+		List<String> listOfTCstoExecute = Arrays.asList(
+				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
+				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
-                //"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
-                //"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page"
+				//"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+				//"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page"
 				//"14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page"
 				//"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page",
 				//"17. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
 				//"18. PS027 - Verify user is able to Import a file in \".xls or .xlsx format\" by clicking browse button and then clicking on import button in the downloaded Template format",
 				//"19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row"
-				//"20. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row"
-				//"22. PS018 - Verify user is not able to upload more than 10 files and displayed the message - Maximum 10 files can be uploaded",
+				//"21. PS026 - Verify user is able to download the template, by clicking on Template button",
+				//"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
 				//"21. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"23. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
-//				"24. PS017 - Verify user is able to uncheck and delete the uploaded document",
+//				"24. PS017 - Verify user is able to uncheck and delete the uploaded document"
 //				"25. PS019 - Verify user is displayed the message - \"Invalid file name. File name should not contain special characters like ~ ` ! @ # $ % ^ & * ( ) + = { } | [ ] : \" ; < > ? , /\" when user uploads a file with special characters",
 //				"26. PS020 - Verify user is displayed the message - \"File Size Exceeds the maximum size (5 MB)\" when user uploads a file more than 5 mb",
 //				"27. PS021 - Verify user is displayed the message - \"Duplicate files are not allowed. A file with same name exists!\" when user uploads a duplicate file",
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
-				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				//"31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
 //				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
@@ -145,6 +146,59 @@ public class WebTest {
 				"81. PS121 - Verify user is able to Preview the details entered by user for Casualty Exposures by clicking on Property Exposures in Preview tab"
 
         );
+				//"9. PS013 - Verify user is able to search a record by Status"
+				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
+//				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+				//"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+				//"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+				//"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
+				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
+				"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+				"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
+				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
+				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
+//				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
+//				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
+//				"34. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+//				"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
+//				"36. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+//				"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
+//				"38. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
+//				"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
+//				"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
+//				"41. PS065 - To verify user is able to enter the details in Crime-Controls & Underwriting question in Crime Tab",
+//				"42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
+//				"43. PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
+//				"44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
+//				"45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
+//				"46. PS071 - To verify user is able to enter the details For Program structure in Transit/Cargo/Stock Throughput tab",
+//				"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
+//				"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
+//				"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures"
+//	            "71. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
+//	            "72. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
+//	            "73. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
+//	            "74. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
+//				"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
+//				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
+//              "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
+//              "78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab",
+//				"82. PS122 - Verify user is able to Preview the details entered by user for WC Exposures by clicking on WC Exposures in Preview tab",
+//				"83. PS123 - Verify user is able to Preview the details entered by user for Foreign by clicking on Foreign in Preview tab",
+//            	"84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
+//          	"85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
+		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
 		logger.info(new String(new char[80]).replace("\0", "="));
@@ -595,7 +649,29 @@ public class WebTest {
 										System.out.println("Failed to delete the file");
 									}
 									break;
-								default:
+								case  "matchcssvalue":
+									String cssBGValue ="";
+									String cssBGCValue ="";
+									try {
+										cssBGCValue = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getCssValue("background-color");
+									}catch (NullPointerException ex){}
+									try {
+										cssBGValue = Browser.webDriver.findElement(
+												By.cssSelector(testAction.action.fieldName)
+										).getCssValue("background");
+									}catch (NullPointerException ex){}
+									if (!(cssBGValue.equals(testAction.action.fieldValue.trim())
+											||cssBGCValue.equals(testAction.action.fieldValue.trim()))) {
+										stepResult.status = "Fail";
+										stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+												"does not match the value given (" + testAction.action.fieldValue +
+												") , Got [" + cssBGValue + cssBGCValue + "]";
+										logger.error(stepResult.actualResult);
+									}
+									break;
+									default:
 									// Unknown action type
 									throw new Exception("Unknown Action Type (" +
 											testAction.action.actionType + ") provided.");
@@ -605,7 +681,33 @@ public class WebTest {
 						if (stepResult.status.equals("Broken")) {
 							stepResult.status = "Pass";
 						}
-						stepResult.actualResult = testStep.expectedResult;
+						if(!stepResult.actualResult.equalsIgnoreCase("")) {
+							allPassed = false;
+							//stepResult.actualResult = testStep.expectedResult;
+
+							// Take the Screen Shot from the Browser Instance
+							File screenShot = Browser.takeScreenShot(
+									testStep.testCaseStepId + "_" +
+											fileFormat.format(stepResult.executionStartTime),
+									config.app.getProperty("selenium.webdriver.screenshots")
+							);
+							// Upload the Screen Shot to Azure BLOB Storage and set the URL
+							stepResult.screenshotURL = qifClient.uploadScreenShot(
+									config.qif.getProperty("qif.azure.connection"),
+									config.qif.getProperty("qif.azure.container"),
+									screenShot
+							);
+							// Set the Test Step Result Properties
+							stepResult.status = "Fail";
+							stepResult.error = stepResult.actualResult;;
+							//stepResult.actualResult = testStep.expectedResult;;
+							allPassed = false;
+							lastError = stepResult.error;
+							lastErrorScreen = stepResult.screenshotURL;
+						}
+						else {
+							stepResult.actualResult = testStep.expectedResult;
+						}
 					} catch (Exception error) {
 						logger.error(error);
 						// Take the Screen Shot from the Browser Instance
