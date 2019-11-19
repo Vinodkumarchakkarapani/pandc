@@ -39,6 +39,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 //import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -189,10 +190,14 @@ public class WebTest {
 			}
 			guiTestCases.sort((leftCase, rightCase) -> {
 				// Get the Serial Numbers from the Test Case Description
-				Integer leftSerial = Integer.parseInt(
+				/*Integer leftSerial = Integer.parseInt(
 					leftCase.description.substring(0, leftCase.description.indexOf(".")));
 				Integer rightSerial = Integer.parseInt(
-					rightCase.description.substring(0, rightCase.description.indexOf(".")));
+					rightCase.description.substring(0, rightCase.description.indexOf(".")));*/
+				String lftdigit = Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(leftCase.description).group(1);
+				Double leftSerial = Double.parseDouble(lftdigit);
+				String rightdigit = Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(rightCase.description).group(1);
+				Double rightSerial = Double.parseDouble(rightdigit);
 				// Compare the Serial Numbers for Sorting
 				return leftSerial.compareTo(rightSerial);
 			});
