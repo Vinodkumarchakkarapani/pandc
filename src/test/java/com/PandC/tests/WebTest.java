@@ -195,9 +195,13 @@ public class WebTest {
 					leftCase.description.substring(0, leftCase.description.indexOf(".")));
 				Integer rightSerial = Integer.parseInt(
 					rightCase.description.substring(0, rightCase.description.indexOf(".")));*/
-				String lftdigit = Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(leftCase.description).group(1);
+				String lftdigit = leftCase.description.split(" ")[0]
+						.substring(0, leftCase.description.split(" ")[0].length() - 1);
+					//Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(leftCase.description).group(1);
 				Double leftSerial = Double.parseDouble(lftdigit);
-				String rightdigit = Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(rightCase.description).group(1);
+				String rightdigit = rightCase.description.split(" ")[0]
+						.substring(0, rightCase.description.split(" ")[0].length() - 1);
+						//Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(rightCase.description).group(1);
 				Double rightSerial = Double.parseDouble(rightdigit);
 				// Compare the Serial Numbers for Sorting
 				return leftSerial.compareTo(rightSerial);
