@@ -147,11 +147,12 @@ public class WebTest {
 //				"83. PS123 - Verify user is able to Preview the details entered by user for Foreign by clicking on Foreign in Preview tab",
 //				"84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
 //				"85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
-//                "100. PS039 - To verify user is able to mark Property (Statement of Values) tab as Not Applicable",
+                "100. PS039 - To verify user is able to mark Property (Statement of Values) tab as Not Applicable"
 //                "104. PS054 - To verify user is able to mark Contingent BI/ Dependent tab tab as Not Applicable",
 //                "105. PS062 - To verify user is able to mark Crime Page as as Not Applicable",
-                "101. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
-                "102. PS044 - To verify user is able to Delete a row from the Program Structure Property (Statement of Values) tab"
+//                "101. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
+//                "102. PS044 - To verify user is able to Delete a row from the Program Structure Property (Statement of Values) tab",
+//				"103. PS053 - Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
