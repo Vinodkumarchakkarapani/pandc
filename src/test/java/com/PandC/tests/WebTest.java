@@ -84,7 +84,7 @@ public class WebTest {
 //				"27. PS021 - Verify user is displayed the message - \"Duplicate files are not allowed. A file with same name exists!\" when user uploads a duplicate file",
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
-				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
 //				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
@@ -92,26 +92,26 @@ public class WebTest {
 //				"34. PS042 - PS042To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
 //				"8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
 				//"9. PS013 - Verify user is able to search a record by Status"
-				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
-//				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
-				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
-				//"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
-				//"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
-				//"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
-				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
-				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
-				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
-				"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
-				"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
-				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
-				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
-				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
-				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
-				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
-				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
-				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
-				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
-				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
+//				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
+////				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+//				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+//				//"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+//				//"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+//				//"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+//				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+//				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
+//				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
+//				"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+//				"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+//				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
+//				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+//				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+//				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+//				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+//				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+//				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+//				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
+//				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
@@ -143,6 +143,14 @@ public class WebTest {
 //				"83. PS123 - Verify user is able to Preview the details entered by user for Foreign by clicking on Foreign in Preview tab",
 //            	"84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
 //          	"85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
+//				"18.1. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab",
+//				"18.2. PS029 - Verify user is displayed error message- Please make sure that imported file is as per the standard template. upload files which is not as per the template in Named Insured page in General Information Tab",
+//				"18.3. PS033 - Verify user is displayed error message -Click on Browse to upload file with.xls / .xlsx extension, when user clicks on Import button without browsing the files to upload on Named Insured Page",
+//				"18.4. PS027 - Verify user is able to Import a file in \".xls or .xlsx format\" by clicking browse button and then clicking on import button in the downloaded Template format"
+				//"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
+				"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+                //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
+                "34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -605,7 +613,9 @@ public class WebTest {
 								case  "matchcssvalue":
 									String cssBGValue ="";
 									String cssBGCValue ="";
-									try {
+                                    String cssBGImage ="";
+
+                                    try {
 										cssBGCValue = Browser.webDriver.findElement(
 												By.cssSelector(testAction.action.fieldName)
 										).getCssValue("background-color");
@@ -615,8 +625,14 @@ public class WebTest {
 												By.cssSelector(testAction.action.fieldName)
 										).getCssValue("background");
 									}catch (NullPointerException ex){}
+                                    try {
+                                        cssBGImage = Browser.webDriver.findElement(
+                                                By.cssSelector(testAction.action.fieldName)
+                                        ).getCssValue("background-image");
+                                    }catch (NullPointerException ex){}
 									if (!(cssBGValue.equals(testAction.action.fieldValue.trim())
-											||cssBGCValue.equals(testAction.action.fieldValue.trim()))) {
+											||cssBGCValue.equals(testAction.action.fieldValue.trim())||
+                                            cssBGImage.equals(testAction.action.fieldValue.trim()))) {
 										stepResult.status = "Fail";
 										stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
 												"does not match the value given (" + testAction.action.fieldValue +
