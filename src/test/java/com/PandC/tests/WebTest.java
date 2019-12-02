@@ -1,5 +1,11 @@
 package com.PandC.tests;
 
+import com.galenframework.api.Galen;
+import com.galenframework.reports.GalenTestInfo;
+import com.galenframework.reports.HtmlReportBuilder;
+import com.galenframework.reports.model.LayoutReport;
+import com.galenframework.speclang2.pagespec.SectionFilter;
+import com.galenframework.validation.ValidationResult;
 import com.periscope.qif.client.QIFClient;
 import com.periscope.qif.json.*;
 import com.PandC.lib.Browser;
@@ -28,7 +34,9 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,6 +46,17 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
+import java.util.zip.ZipOutputStream;
+
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.zip.ZipEntry;
+import java.io.FileOutputStream;
+import java.util.zip.ZipOutputStream;
 
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 //import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -64,6 +83,8 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
 				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				//"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search."
+				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default"
 				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
 				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
@@ -86,9 +107,9 @@ public class WebTest {
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab"
-				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab :: 30.0.1. Performance :: 30.0.2. UI Validation",
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab :: 30.0.1. Performance :: 30.0.2. UI Validation",
 				//"32.2. PS040 - To verify the error message Please make sure that imported file is as per the standard template. on uploading a with incorrect details in template"
-				"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab"
+				//"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab"
 				//"31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
 //				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
@@ -302,6 +323,7 @@ public class WebTest {
 			GUITestResult gui_UIVal_Result = new GUITestResult();
 			TestCaseGUI gui_Perf_TC = new TestCaseGUI();
 			TestCaseGUI gui_UIVal_TC = new TestCaseGUI();
+			String UIValidationZipPath= "";
 			gui_Perf_TC.description="";
 			gui_UIVal_TC.description="";
 			gui_Perf_Result.testResult.testCaseId = "";
@@ -311,9 +333,9 @@ public class WebTest {
 					.filter(x->x.description.startsWith(sNo+"P.")).findFirst().orElse(null)!=null)
 				gui_Perf_TC = guiTestCases_performance_Tests.stream()
 						.filter(x->x.description.contains(sNo+"P.")).findFirst().get();
-			if(guiTestCases_performance_Tests.stream()
+			if(guiTestCases_UIValidation_Tests.stream()
 					.filter(x->x.description.startsWith(sNo+"U.")).findFirst().orElse(null)!=null)
-				gui_UIVal_TC = guiTestCases_performance_Tests.stream()
+				gui_UIVal_TC = guiTestCases_UIValidation_Tests.stream()
 						.filter(x->x.description.contains(sNo+"U.")).findFirst().get();
 		String sPerfActualResult="";
 		String sUIActualResult="";
@@ -729,18 +751,85 @@ public class WebTest {
 									break;
 								case "validatetransactiontime":
 									int LoadTime=Integer.parseInt(config.app.getProperty("app.gui.defaultloadtime"));
-									long TransactionTime = ((new Date()).getTime() - iTransactionStartTime)/1000;
+									long TransactionTime = ((new Date()).getTime() - iTransactionStartTime);
 									if(!testAction.action.fieldValue.equals(""))
 										LoadTime = Integer.parseInt(testAction.action.fieldValue);
 									if(TransactionTime > LoadTime) {
 										sPerfActualResult = "Time take for this transaction is [" + TransactionTime
-												+ "] seconds But expected to be less than [" + LoadTime + "] seconds";
+												+ "] milliseconds But expected to be less than [" + LoadTime + "] milliseconds"
+										+ " on Browser: " + config.app.getProperty("selenium.webdriver.name");
 									}
 									else
 									{
 										sPerfActualResult = "Time take for this transaction is [" + TransactionTime
-												+ "] seconds";
+												+ "] milliseconds"
+												+ " on Browser: " + config.app.getProperty("selenium.webdriver.name");
 										PerfromanceTest_pass = true;
+									}
+									break;
+								case "uivalidation":
+									//PropertyConfigurator.configure("./src/log4j.properties");
+									//lib.Assertions Assertions = new lib.Assertions();
+									//Properties properties = new Properties();
+
+									//properties.load(new FileInputStream("./src/test/java/woodruff360UI/objectrepository/"+ORPropertiesFile));
+									LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/"+testAction.action.fieldValue,
+											new SectionFilter(Arrays.asList("desktop"),null),new Properties(), new HashMap<String, Object>());
+									List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
+									GalenTestInfo test = GalenTestInfo.fromString(
+											gui_UIVal_TC.description
+												+ config.app.getProperty("selenium.webdriver.name"));
+									test.getReport().layout(layoutReport,
+											gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+												+config.app.getProperty("selenium.webdriver.name"));
+									tests.add(test);
+									HtmlReportBuilder htmlReportBuilder = new HtmlReportBuilder();
+									String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
+									//Create a report
+									htmlReportBuilder.build(tests, "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp);
+									String folderToZip = "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp;
+									String zipName = "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp+".zip";
+									Path sourceFolderPath = Paths.get(folderToZip);
+									Path zipPath = Paths.get(zipName);
+									ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipPath.toFile()));
+									Files.walkFileTree(sourceFolderPath, new SimpleFileVisitor<Path>() {
+										public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+											zos.putNextEntry(new ZipEntry(sourceFolderPath.relativize(file).toString()));
+											Files.copy(file, zos);
+											zos.closeEntry();
+											return FileVisitResult.CONTINUE;
+										}
+									});
+									zos.close();
+									File zipFile = new File(zipName);
+									UIValidationZipPath =  qifClient.uploadScreenShot(
+											config.qif.getProperty("qif.azure.connection"),
+											config.qif.getProperty("qif.azure.container"),
+											zipFile);
+
+									List<ValidationResult> validationErrorResults = layoutReport.getValidationErrorResults();
+									String UIErrors="";
+									for (ValidationResult validationError : validationErrorResults) {
+										if (!validationError.getError().isOnlyWarn()) {
+											List<String> listofMsgs = validationError.getError().getMessages();
+											for(String eachError:listofMsgs)
+												UIErrors=UIErrors+eachError+"\n";
+											//System.out.println("Mag:" + eachError);
+										}
+									}
+
+									if (layoutReport.errors() > 0)
+									{
+										logger.info("Error Count:" + layoutReport.errors());
+										//Assertions.SoftassertEquals(softAssertion, layoutReport.errors(),0,"UI Validation For:" + sTestName + "  - " +  layoutReport.getScreenshot() + "\nError Messages:" + UIErrors);
+										sUIActualResult="UI Validation Report Location:" +  layoutReport.getScreenshot() + " Error Messages:" + UIErrors;
+									}
+									else {
+										sUIActualResult = "UI Validation Report Location:" + layoutReport.getScreenshot();
+										UIValidationTest_pass=true;
 									}
 									break;
 								default:
@@ -822,8 +911,49 @@ public class WebTest {
 				logger.info("Sending the Test Results to QIF...");
 				gui.testResult.executionEndTime = new Date();
 				qifClient.postGUITestResults(gui);
+
+				// Post results for Performance test case
+				if(!gui_Perf_TC.description.isEmpty())
+				{
+					TestStepResult prefStepResult = new TestStepResult();
+					prefStepResult.actualResult=sPerfActualResult.isEmpty()?
+							"Test Step Not executed due to issue while executing:"+testCase.description : sPerfActualResult;
+					gui_Perf_Result.testResult.actualResult = prefStepResult.actualResult;
+					prefStepResult.error = PerfromanceTest_pass?"":gui_Perf_Result.testResult.actualResult;
+					prefStepResult.executionStartTime = gui.testResult.executionStartTime;
+					gui_Perf_Result.testResult.executionStartTime = prefStepResult.executionStartTime;
+					prefStepResult.executionEndTime = gui.testResult.executionEndTime;
+					gui_Perf_Result.testResult.executionEndTime = prefStepResult.executionEndTime;
+					prefStepResult.status = PerfromanceTest_pass?"Pass":"Fail";
+					gui_Perf_Result.testResult.status = prefStepResult.status;
+					prefStepResult.testCaseStepId = gui_Perf_TC.testCaseSteps.get(0).testCaseStepId;
+					gui_Perf_Result.testResult.testStepResults.add(prefStepResult);
+					qifClient.postGUITestResults(gui_Perf_Result);
+				}
+				// Post results for UI Validation test case
+				if(!gui_UIVal_TC.description.isEmpty())
+				{
+					TestStepResult UIValStepResult = new TestStepResult();
+					UIValStepResult.actualResult=sUIActualResult.isEmpty()?
+							"Test Step Not executed due to issue while executing:"+testCase.description : sUIActualResult;
+					gui_UIVal_Result.testResult.actualResult = UIValStepResult.actualResult;
+					UIValStepResult.error = UIValidationTest_pass?"":gui_UIVal_Result.testResult.actualResult;
+					UIValStepResult.executionStartTime = gui.testResult.executionStartTime;
+					gui_UIVal_Result.testResult.executionStartTime = UIValStepResult.executionStartTime;
+					UIValStepResult.executionEndTime = gui.testResult.executionEndTime;
+					gui_UIVal_Result.testResult.executionEndTime = UIValStepResult.executionEndTime;
+					UIValStepResult.status = UIValidationTest_pass?"Pass":"Fail";
+					gui_UIVal_Result.testResult.status = UIValStepResult.status;
+					UIValStepResult.testCaseStepId = gui_UIVal_TC.testCaseSteps.get(0).testCaseStepId;
+					gui_UIVal_Result.testResult.testStepResults.add(UIValStepResult);
+					UIValStepResult.screenshotURL = UIValidationZipPath;
+					if(!UIValidationTest_pass)
+						gui_UIVal_Result.testResult.errorScreen = UIValStepResult.screenshotURL;
+					qifClient.postGUITestResults(gui_UIVal_Result);
+				}
 				// Assert the Test Status
 				Assert.assertEquals(gui.testResult.status,"Pass","Got Error: " + gui.testResult.error);
+
 			} catch (Exception error) {
 				logger.error(error);
 				Assert.assertEquals(error.getMessage().length(),0);

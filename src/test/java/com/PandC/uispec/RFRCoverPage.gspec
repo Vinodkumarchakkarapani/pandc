@@ -1,0 +1,80 @@
+#Declaring objects with css and xpath locators
+@objects
+  Breadcrumbs                        css    .breadcrumb-tab
+  Header                             css    h1
+  Label-*                            css    label
+  Input-*                            css    input
+  Select-*                           css    select
+  TestArea-*                         css    textarea
+  H4Text-*                           css    h4
+  Alert-*                            css    .spnAlert
+  Button-*                           css    button
+
+
+#ClaimsLossLocationInfo Page
+= ClaimsLossLocationInfo page =
+  #This is for Desktop
+   @on desktop
+
+       #Breadcrumbs properties
+        Breadcrumbs:
+           css display is "block"
+           css color contains "38, 38, 38"
+           css font-size is "12px"
+
+       #Header properties
+        Header:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "24px"
+
+       #Label properties
+        @for [1 - 12, 15 - 19] as index
+            Label-${index}:
+               css display is "inline-block"
+               css color contains "38, 38, 38"
+               css font-size is "12px"
+
+       #Input properties
+        @for [3 - 6, 11 - 13, 15 - 16] as index
+            Input-${index}:
+              css display is "block"
+              css color contains "51, 51, 51"
+              css font-size is "12px"
+
+       #For Input14 properties
+        Input-14:
+           css display is "block"
+           css color contains "51, 51, 51"
+           css font-size is "14px"
+
+       #Select properties
+        Select-*:
+           css display is "block"
+           css color contains "51, 51, 51"
+           css font-size is "12px"
+
+       #Alert properties
+        @for [2 - 6, 9 - 12] as index
+            Alert-${index}:
+               css display is "inline"
+               css color contains "208, 2, 27"
+               css font-size is "12px"
+
+       #For Alert1 properties
+        Alert-1:
+           css display is "block"
+           css color contains "208, 2, 27"
+           css font-size is "12px"
+
+       #Button properties
+        Button-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "12px"
+
+       #For H4Text properties
+        H4Text-*:
+           css display is "block"
+           css color contains "38, 38, 38"
+           css font-size is "14px"
