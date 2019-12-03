@@ -87,7 +87,7 @@ public class WebTest {
 		List<String> listOfTCstoExecute = Arrays.asList(
 				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 				//"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search."
-				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default"
+				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
 				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
 				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
