@@ -44,6 +44,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 import java.util.zip.ZipOutputStream;
@@ -68,6 +69,7 @@ import java.util.zip.ZipOutputStream;
 public class WebTest {
 
 	private static Logger logger;
+	private static Logger logger_performance;
 	private static SimpleDateFormat fileFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
 	private static Configuration config;
 	private static boolean isSetUp = true;
@@ -76,6 +78,7 @@ public class WebTest {
 	private static List<TestCaseGUI> guiTestCases = new ArrayList<>();
 	private static List<TestCaseGUI> guiTestCases_performance_Tests = new ArrayList<>();
 	private static List<TestCaseGUI> guiTestCases_UIValidation_Tests = new ArrayList<>();
+
 
 
 	@BeforeSuite
@@ -179,6 +182,7 @@ public class WebTest {
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
+		logger_performance = LogManager.getLogger("com.PandC._perftests");
 		logger.info(new String(new char[80]).replace("\0", "="));
 		logger.info("Reading the Application Configuration...");
 		config = new Configuration();
@@ -259,6 +263,19 @@ public class WebTest {
 
 			logger.info("Opening the Application URL in the Browser...");
 			Browser.webDriver.get(config.app.getProperty("app.gui.url"));
+			if(browserName.equalsIgnoreCase("edge")) {
+				WebDriverWait wait = new WebDriverWait(Browser.webDriver, 10);
+				try{
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".renewal-button")));
+					Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-toggle")).click();
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".menu-blk .dropdown-menu .log-blk")));
+					Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-menu .log-blk")).click();
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#cUsername")));
+				} catch (TimeoutException| NoSuchElementException e) {
+
+				}
+
+			}
 			isSetUp = true;
 		} catch (Exception error) {
 			logger.error(error);
@@ -768,11 +785,6 @@ public class WebTest {
 									}
 									break;
 								case "uivalidation":
-									//PropertyConfigurator.configure("./src/log4j.properties");
-									//lib.Assertions Assertions = new lib.Assertions();
-									//Properties properties = new Properties();
-
-									//properties.load(new FileInputStream("./src/test/java/woodruff360UI/objectrepository/"+ORPropertiesFile));
 									LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/"+testAction.action.fieldValue,
 											new SectionFilter(Arrays.asList("desktop"),null),new Properties(), new HashMap<String, Object>());
 									List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
@@ -817,7 +829,6 @@ public class WebTest {
 											List<String> listofMsgs = validationError.getError().getMessages();
 											for(String eachError:listofMsgs)
 												UIErrors=UIErrors+eachError+"\n";
-											//System.out.println("Mag:" + eachError);
 										}
 									}
 
@@ -825,10 +836,11 @@ public class WebTest {
 									{
 										logger.info("Error Count:" + layoutReport.errors());
 										//Assertions.SoftassertEquals(softAssertion, layoutReport.errors(),0,"UI Validation For:" + sTestName + "  - " +  layoutReport.getScreenshot() + "\nError Messages:" + UIErrors);
-										sUIActualResult="UI Validation Report Location:" +  layoutReport.getScreenshot() + " Error Messages:" + UIErrors;
+										sUIActualResult="Failed with few mismatches On Browser: "+config.app.getProperty("selenium.webdriver.name")+". Heatmap Attached: " + UIValidationZipPath + "" +
+												"                 Error Messages:" + UIErrors;
 									}
 									else {
-										sUIActualResult = "UI Validation Report Location:" + layoutReport.getScreenshot();
+										sUIActualResult = "All elements displayed as expected On Browser: "+config.app.getProperty("selenium.webdriver.name")+". Heatmap attached: " + UIValidationZipPath ;
 										UIValidationTest_pass=true;
 									}
 									break;
@@ -928,6 +940,8 @@ public class WebTest {
 					gui_Perf_Result.testResult.status = prefStepResult.status;
 					prefStepResult.testCaseStepId = gui_Perf_TC.testCaseSteps.get(0).testCaseStepId;
 					gui_Perf_Result.testResult.testStepResults.add(prefStepResult);
+					logger_performance.info("Step: " + gui_Perf_TC.testCaseSteps.get(0).stepDescription + "\n\t\t\t\t\t\t  "
+							+ "Result: " + gui_Perf_Result.testResult.actualResult);
 					qifClient.postGUITestResults(gui_Perf_Result);
 				}
 				// Post results for UI Validation test case
@@ -945,10 +959,9 @@ public class WebTest {
 					UIValStepResult.status = UIValidationTest_pass?"Pass":"Fail";
 					gui_UIVal_Result.testResult.status = UIValStepResult.status;
 					UIValStepResult.testCaseStepId = gui_UIVal_TC.testCaseSteps.get(0).testCaseStepId;
-					gui_UIVal_Result.testResult.testStepResults.add(UIValStepResult);
 					UIValStepResult.screenshotURL = UIValidationZipPath;
-					if(!UIValidationTest_pass)
-						gui_UIVal_Result.testResult.errorScreen = UIValStepResult.screenshotURL;
+					gui_UIVal_Result.testResult.testStepResults.add(UIValStepResult);
+					gui_UIVal_Result.testResult.errorScreen = UIValStepResult.screenshotURL;
 					qifClient.postGUITestResults(gui_UIVal_Result);
 				}
 				// Assert the Test Status
