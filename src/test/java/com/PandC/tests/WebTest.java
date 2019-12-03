@@ -474,8 +474,6 @@ public class WebTest {
 					try {
 						// Loop through the Test Step Actions
 						for (TestStepAction testAction : testStep.testStepActions) {
-							if(testAction.action.fieldName.equalsIgnoreCase("#btnSaveNCloseNamedInsured"))
-								Thread.sleep(2000);
 							ExpectedCondition<Boolean> pageLoadCondition = new
 									ExpectedCondition<Boolean>() {
 										public Boolean apply(WebDriver driver) {
