@@ -87,7 +87,7 @@ public class WebTest {
 		List<String> listOfTCstoExecute = Arrays.asList(
 				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 				//"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search."
-				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default"
 				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
 				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
@@ -113,7 +113,7 @@ public class WebTest {
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab :: 30.0.1. Performance :: 30.0.2. UI Validation",
 				//"32.2. PS040 - To verify the error message Please make sure that imported file is as per the standard template. on uploading a with incorrect details in template"
 				//"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab"
-				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
 //				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
@@ -206,9 +206,9 @@ public class WebTest {
 //				"18.3. PS033 - Verify user is displayed error message -Click on Browse to upload file with.xls / .xlsx extension, when user clicks on Import button without browsing the files to upload on Named Insured Page",
 //				"18.4. PS027 - Verify user is able to Import a file in \".xls or .xlsx format\" by clicking browse button and then clicking on import button in the downloaded Template format"
 				//"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
-				"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
                 //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
-                "34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
+                //"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -379,11 +379,11 @@ public class WebTest {
 			if(guiTestCases_performance_Tests.stream()
 					.filter(x->x.description.startsWith(sNo+"P.")).findFirst().orElse(null)!=null)
 				gui_Perf_TC = guiTestCases_performance_Tests.stream()
-						.filter(x->x.description.contains(sNo+"P.")).findFirst().get();
+						.filter(x->x.description.startsWith(sNo+"P.")).findFirst().get();
 			if(guiTestCases_UIValidation_Tests.stream()
 					.filter(x->x.description.startsWith(sNo+"U.")).findFirst().orElse(null)!=null)
 				gui_UIVal_TC = guiTestCases_UIValidation_Tests.stream()
-						.filter(x->x.description.contains(sNo+"U.")).findFirst().get();
+						.filter(x->x.description.startsWith(sNo+"U.")).findFirst().get();
 		String sPerfActualResult="";
 		String sUIActualResult="";
 		long iTransactionStartTime = 0;
