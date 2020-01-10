@@ -88,4 +88,3 @@
         ClientOverview:
            css display is "block"
            css color contains "91, 103, 112"
-           css font-size is "14px"

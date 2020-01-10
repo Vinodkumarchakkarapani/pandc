@@ -28,6 +28,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+//import com.PandC.tests.srNOSort;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -86,14 +87,17 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
 				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				//"15.6. PS188 - Validate error message should display for invalid Date on Cover page"
+				//"9. PS013 - Verify user is able to search a record by Status",
+				//"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination"
 				//"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search."
-				"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default"
-				//"15. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
+				//"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+				//"15.5. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
 				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
 				//"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
-				//"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page"
+				//"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
 				//"14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page"
 				//"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page",
 				//"17. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
@@ -110,11 +114,19 @@ public class WebTest {
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab"
-				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab :: 30.0.1. Performance :: 30.0.2. UI Validation",
+				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"32.2. PS040 - To verify the error message Please make sure that imported file is as per the standard template. on uploading a with incorrect details in template"
 				//"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab"
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-				//"31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
+				//"74.5. PS166 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Program Structure",
+				//"74.6. PS167 - Verify user is able to Delete the added row of details in UMB/Excess Tab -Umbrella Liability tab by clicking on Delete under Program Structure",
+				//"74.7. PS168 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Schedule of Underlying",
+				//"74.8. PS169 - Verify user is able to Delete the added row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on Delete under Schedule of Underlying"
+				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
+
+//				"74.1. PS163 - Verify user is able to add another row of details in Foreign Tab, International Revenue & Payroll tab by clicking on add Row under Program Structure",
+//				"74.2. PS164 - Verify user is able to Delete the added row of details in Foreign Tab,International Revenue & Payroll tab by clicking on Delete under Program Structure"
+//				//"31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
 //				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
@@ -165,19 +177,20 @@ public class WebTest {
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
-//				"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+				"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
 //				"34.5. PS051 - To verify user is able to Delete the other Location by clicking on Delete Icon in BI Worksheet Tab",
-//				"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
-//				"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
-//				"36.2. PS056 - To verify the error message \"Click on Browse to upload file with .xls / .xlsx extension\" on uploading a file with incorrect Extn in Contingent BI/ Dependent tab",
-//				"36.4. PS057 - To verify user is able to download the Template in Contingent BI/ Dependent tab",
-//				"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
+				"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
+				"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+				//"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
+				//"36.2. PS056 - To verify the error message \"Click on Browse to upload file with .xls / .xlsx extension\" on uploading a file with incorrect Extn in Contingent BI/ Dependent tab",
+				//"36.4. PS057 - To verify user is able to download the Template in Contingent BI/ Dependent tab",
+				//"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
 
 //				"35. PS049 - To verify user is able to enter the details in BI Worksheet page"
 //				"36. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
-//				"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
+				"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
 //				"37.1. PS061 - Verify the error message \"Please enter the fields marked as mandatory to continue further.\" in Contingent BI/ Dependent tab on clicking continue button without entering mandatory fields",
-//				"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab"
+				"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab"
 //				"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //				"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
 //				"41. PS065 - To verify user is able to enter the details in Crime-Controls & Underwriting question in Crime Tab",
@@ -489,6 +502,7 @@ public class WebTest {
 							// Initialize the Objects required to perform actions
 
 							logger.info("Test Action Name: " + testAction.action.fieldName+ " (" + testAction.action.fieldValue + ")."+ testAction.action.actionType);
+
 							int integerValue;
 							Actions actions = new Actions(Browser.webDriver);
 							// Execute the Test Step Action
