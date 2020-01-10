@@ -9,6 +9,9 @@
   H4Text-*                           css    .cov-area h4
   Alert-*                            css    .cov-area .spnAlert
   Button-*                           css    button
+  RenewalType                        css    #divRenewalType
+  AttchDoc                           css    .cov-area #attachother
+  ClientOverview                     css    .cov-area textarea
 
 
 #RFRCover Page
@@ -43,7 +46,7 @@
               css font-size is "16px"
 
        #Input properties
-        @for [2, 5, 7, 9 - 11, 13 - 15, 17 - 18, 21 - 23, 29, 40] as index
+        @for [2, 5 - 7, 9 - 11, 13 - 15, 17 - 18, 21 - 23, 29, 40] as index
            Input-${index}:
               css display is "block"
               css color contains "91, 103, 112"
@@ -68,3 +71,20 @@
               css display is "block"
               css color contains "255, 255, 255"
               css font-size is "12px"
+
+       #RenewalType properties
+        RenewalType:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #AttchDoc properties
+        AttchDoc:
+           css display is "list-item"
+           css color contains "31, 42, 68"
+           css font-size is "16px"
+
+       #ClientOverview properties
+        ClientOverview:
+           css display is "block"
+           css color contains "91, 103, 112"

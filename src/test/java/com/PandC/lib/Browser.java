@@ -15,6 +15,18 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+
+import org.openqa.selenium.Proxy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+//import net.
 
 /**
  * Library Class for Browser Interactions using Selenium WebDriver
@@ -22,6 +34,7 @@ import java.nio.file.Paths;
 public class Browser {
 
 	public static WebDriver webDriver;
+	//public BrowserMobProxyServer proxy;
 
 	/**
 	 * Initialize the Web Driver for the Browser
@@ -32,6 +45,31 @@ public class Browser {
 		switch (driver.toLowerCase()) {
 			case "chrome":
 				WebDriverManager.chromedriver().setup();
+				//webDriver = new ChromeDriver();
+				//System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "\\src\\drivers\\chromedriver.exe");
+
+
+				/*proxy = new BrowserMobProxyServer();
+				proxy.start();
+
+				Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+				try {
+					String hostIp = Inet4Address.getLocalHost().getHostAddress();
+					seleniumProxy.setHttpProxy(hostIp + ":" + proxy.getPort());
+					seleniumProxy.setSslProxy(hostIp + ":" + proxy.getPort());
+				} catch (UnknownHostException e) {
+					e.printStackTrace();
+				}
+
+				DesiredCapabilities seleniumCapabilities = new DesiredCapabilities();
+				seleniumCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
+				ChromeOptions options = new ChromeOptions();
+				options.merge(seleniumCapabilities);
+				webDriver = new ChromeDriver(options);
+
+				proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);*/
+
+
 				webDriver = new ChromeDriver();
 				break;
 			case "chrome-headless":
@@ -41,6 +79,7 @@ public class Browser {
 				webDriver = new ChromeDriver(chromeOptions);
 				break;
 			case "firefox":
+
 				WebDriverManager.firefoxdriver().setup();
 				webDriver = new FirefoxDriver();
 				break;
@@ -51,10 +90,12 @@ public class Browser {
 				webDriver = new FirefoxDriver(firefoxOptions);
 				break;
 			case "edge":
-				/*WebDriverManager.edgedriver().setup();
-				webDriver = new EdgeDriver();*/
-				System.setProperty("webdriver.ie.driver",System.getProperty("user.dir") + "\\src\\drivers\\MicrosoftWebDriver.exe");
-				System.out.println("edge path:" + System.getProperty("webdriver.ie.driver"));
+				//WebDriverManager.edgedriver().version("5.16299").forceDownload();
+				WebDriverManager.edgedriver().setup();
+
+				//webDriver = new EdgeDriver();
+				//System.setProperty("webdriver.ie.driver",System.getProperty("user.dir") + "\\src\\drivers\\MicrosoftWebDriver.exe");
+				//System.out.println("edge path:" + System.getProperty("webdriver.ie.driver"));
 				webDriver = new EdgeDriver();
 				break;
 			case "headless":
