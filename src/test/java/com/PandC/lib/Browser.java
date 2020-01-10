@@ -1,5 +1,6 @@
 package com.PandC.lib;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -50,7 +51,10 @@ public class Browser {
 				webDriver = new FirefoxDriver(firefoxOptions);
 				break;
 			case "edge":
-				WebDriverManager.edgedriver().setup();
+				/*WebDriverManager.edgedriver().setup();
+				webDriver = new EdgeDriver();*/
+				System.setProperty("webdriver.ie.driver",System.getProperty("user.dir") + "\\src\\drivers\\MicrosoftWebDriver.exe");
+				System.out.println("edge path:" + System.getProperty("webdriver.ie.driver"));
 				webDriver = new EdgeDriver();
 				break;
 			case "headless":
