@@ -4,15 +4,16 @@
   Header                             css    #main-id .new-admin-header
   TabBreadcrumbs                     css    #main-id .container-fluid .breadcrumb-tab
   InfoHeader                         css    #main-id .name-insured
-  Label-*                            css    #myTabContent label
-  Input-*                            css    #myTabContent input
-  Select-*                           css    #myTabContent select
-  TextArea-*                         css    #myTabContent textarea
-  H4Text-*                           css    #myTabContent h4
-  H2Text-*                           css    #myTabContent h2
-  Alert-*                            css    #myTabContent .spnAlert
-  Anchor-*                           css    #myTabContent a
-  Button-*                           css    #myTabContent button
+  Label-*                            css    #main-id label
+  Input-*                            css    #main-id input
+  Select-*                           css    #main-id select
+  TextArea-*                         css    #main-id textarea
+  H4Text-*                           css    #main-id h4
+  H2Text-*                           css    #main-id h2
+  Alert-*                            css    #main-id .spnAlert
+  Anchor-*                           css    #main-id a
+  Button-*                           css    #main-id button
+  TableTd-*                          css    #main-id #tblShipment td
 
 
 #RFRCover Page
@@ -29,80 +30,101 @@
        #Header properties
         Header:
            css display is "block"
-           css color contains "33, 37, 41, 1"
+           css color contains "33, 37, 41"
            css font-size is "16px"
 
        #TabBreadcrumbs properties
         TabBreadcrumbs:
            css display is "block"
-           css color contains "33, 37, 41, 1"
+           css color contains "33, 37, 41"
            css font-size is "16px"
 
        #InfoHeader properties
         InfoHeader:
            css display is "flex"
-           css color contains "33, 37, 41, 1"
+           css color contains "33, 37, 41"
            css font-size is "16px"
 
        #Label properties
-        @for [47] as index
+        @for [86] as index
            Label-${index}:
               css display is "block"
-              css color contains "33, 37, 41, 1"
+              css color contains "33, 37, 41"
               css font-size is "16px"
 
        #Label properties
-        @for [48] as index
+        @for [87 - 88] as index
            Label-${index}:
-              css display is "inline-block"
-              css color contains "255, 255, 255, 1"
+              css display is "block"
+              css color contains "31, 42, 68"
               css font-size is "14px"
 
        #Label properties
-        @for [49, 50 - 61 ] as index
+        @for [89 - 90] as index
+           Label-${index}:
+              css display is "block"
+              css color contains "33, 37, 41"
+              css font-size is "14px"
+
+       #Label properties
+        @for [91] as index
+           Label-${index}:
+              css display is "inline-block"
+              css color contains "255, 255, 255"
+              css font-size is "14px"
+
+       #Label properties
+        @for [92 - 107] as index
            Label-${index}:
               css display is "inline-block"
               css color contains "31, 42, 68"
               css font-size is "14px"
 
        #Input properties
-        @for [127 - 128, 130 - 131, 133 - 134, 136 - 137, 139 - 140, 142 - 143, 145 - 146, 148 - 149, 151 - 152, 154 - 155, 157 -158, 160 -161, 163 - 164, ] as index
+        @for [216 - 271] as index
+           Input-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Input properties
+        @for [274 - 275, 277 - 278, 280 -281, 283 - 284, 286 - 287, 289 - 290, 292 - 293, 295 - 296, 298 - 299, 301 - 302, 304 - 305, 307 - 308, 310 - 311, 313 - 314, 316 - 317, 319 - 320] as index
            Input-${index}:
               css display is "inline-block"
               css color contains "91, 103, 112"
               css font-size is "14px"
 
        #Button properties
-        @for [40-43] as index
+        @for [49-52] as index
            Button-${index}:
               css display is "block"
-              css color contains "255, 255, 255, 1"
+              css color contains "255, 255, 255"
               css font-size is "12px"
 
        #TextArea properties
-        @for [6] as index
+        @for [8 - 10] as index
            TextArea-${index}:
               css display is "block"
               css color contains "91, 103, 112"
               css font-size is "14px"
 
-       #H2Text properties
-        @for [4] as index
-           H2Text-${index}:
-              css display is "block"
-              css color contains "31, 42, 68, 1"
-              css font-size is "18px"
-
-       #H2Text properties
-        @for [5 - 7] as index
-           H2Text-${index}:
-              css display is "block"
-              css color contains "255, 255, 255, 1"
+       #TextArea properties
+        @for [11] as index
+           TextArea-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
               css font-size is "14px"
 
-       #Anchor properties
-        @for [10, 12 - 13] as index
-           Anchor-${index}:
+       #H2Text properties
+        @for [8] as index
+           H2Text-${index}:
               css display is "block"
-              css color contains "0, 123, 255, 1"
-              css font-size is "16px"
+              css color contains "91, 103, 112"
+              css font-size is "18px"
+
+       #TableTd properties
+        @for [1 - 36] as index
+           TableTd-${index}:
+              css display is "table-cell"
+              css color contains "31, 42, 68"
+              css font-size is "14px"

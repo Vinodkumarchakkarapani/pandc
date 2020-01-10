@@ -1,70 +1,151 @@
 #Declaring objects with css and xpath locators
 @objects
-  Breadcrumbs                        css    .breadcrumb-tab
-  Header                             css    h1
-  Label-*                            css    .cov-area label
-  Input-*                            css    .cov-area input
-  Select-*                           css    .cov-area select
-  TestArea-*                         css    .cov-area textarea
-  H4Text-*                           css    .cov-area h4
-  Alert-*                            css    .cov-area .spnAlert
-  Button-*                           css    button
+  Breadcrumbs                        css    #main-id .breadcrumb
+  Header-*                           css    #main-id .new-admin-header
+  Label-*                            css    #main-id label
+  Input-*                            css    #main-id input
+  GridHeader-*                       css    #main-id .dx-header-row
+  Grid                               css    #main-id .dx-datagrid-rowsview
+  Select-*                           css    #main-id select
+  TextArea-*                         css    #main-id textarea
+  H4Text-*                           css    #main-id h4
+  H2Text-*                           css    #main-id h2
+  Anchor-*                           css    #main-id a
+  Button-*                           css    #main-id button
 
 
-#RFRCover Page
-= RFRCover page =
+
+#RFRList Page
+= RFRList page =
   #This is for Desktop
    @on desktop
 
        #Breadcrumbs properties
         Breadcrumbs:
-           css display is "block"
-           css color contains "33, 37, 41"
-           css font-size is "16px"
+           css display is "inline-block"
+           css color contains "8, 31, 44"
+           css font-size is "14px"
 
        #Header properties
-        Header:
-           css display is "block"
-           css color contains "31, 42, 68"
-           css font-size is "18px"
-
-       #Label properties
-        @for [1 - 18, 27] as index
-           Label-${index}:
+        @for [1] as index
+           Header-${index}:
               css display is "block"
-              css color contains "31, 42, 68"
-              css font-size is "14px"
-
-       #Label properties
-        @for [26] as index
-           Label-${index}:
-              css display is "block"
-              css color contains "31, 42, 68"
+              css color contains "33, 37, 41"
               css font-size is "16px"
 
+       #Label properties
+        @for [1] as index
+           Label-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
        #Input properties
-        @for [2, 5, 7, 9 - 11, 13 - 15, 17 - 18, 21 - 23, 29, 40] as index
+        @for [1, 3, 5, 6, 7, 8, 10 - 11] as index
            Input-${index}:
               css display is "block"
               css color contains "91, 103, 112"
               css font-size is "14px"
 
+       #GridHeader properties
+        @for [1] as index
+           GridHeader-${index}:
+              css display is "table-row"
+              css color contains "149, 149, 149"
+              css font-size is "14px"
+
+       #Grid properties
+        Grid:
+           css display is "flex"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
+
        #Select properties
-        @for [1 - 3] as index
+        @for [1] as index
            Select-${index}:
               css display is "block"
               css color contains "91, 103, 112"
               height 30px
 
-       #Button properties
-        Button-1:
-           css display is "inline-block"
-           css color contains "0, 0, 0"
-           css font-size is "14px"
+       #TextArea properties
+        TextArea-*:
+              css display is "block"
+              css color contains "91, 103, 112"
+              height 30px
+
+       #H4Text properties
+        H4Text-*:
+              css display is "block"
+              css color contains "91, 103, 112"
+              height 30px
+
+       #H2Text properties
+        @for [1] as index
+           H2Text-${index}:
+              css display is "block"
+              css color contains "31, 42, 68"
+              height 21px
+
+       #Anchor properties
+        @for [1] as index
+           Anchor-${index}:
+              css display is "block"
+              css color contains "0, 123, 255"
+              height 33px
+
+       #Anchor properties
+        @for [3] as index
+           Anchor-${index}:
+              css display is "block"
+              css color contains "0, 123, 255"
+              height 34px
+
+       #Anchor properties
+        @for [6] as index
+           Anchor-${index}:
+              css display is "block"
+              css color contains "120, 190, 32"
+              height 25px
+
+       #Anchor properties
+        @for [7] as index
+           Anchor-${index}:
+              css display is "block"
+              css color contains "31, 42, 68"
+              height 25px
+
+       #Anchor properties
+        @for [15] as index
+           Anchor-${index}:
+              css display is "block"
+              css color contains "0, 115, 150"
+              height 21px
+
+       #Anchor properties
+        @for [16] as index
+           Anchor-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              height 15px
+
+       #Anchor properties
+        @for [17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55] as index
+           Anchor-${index}:
+              css display is "inline-block"
+              css color contains "0, 123, 255"
+              height 18px
+
+       #Anchor properties
+        @for [18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54] as index
+           Anchor-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              height 15px
 
        #Button properties
-        @for [6 - 7] as index
+        @for [1-3] as index
            Button-${index}:
               css display is "block"
               css color contains "255, 255, 255"
               css font-size is "12px"
+
