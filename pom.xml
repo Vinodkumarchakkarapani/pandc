@@ -195,6 +195,12 @@
             <artifactId>browsermob-core</artifactId>
             <version>2.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.galenframework</groupId>
+            <artifactId>galen-core</artifactId>
+            <version>2.3.7</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

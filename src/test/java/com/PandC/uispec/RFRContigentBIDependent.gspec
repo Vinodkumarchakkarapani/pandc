@@ -1,0 +1,207 @@
+#Declaring objects with css and xpath locators
+@objects
+  Breadcrumbs                        css     .breadcrumb-tab
+  GridContent                        css     #main-id #ContingentDependentTable
+  Label-*                            css     #main-id label
+  Input-*                            css     #main-id input
+  TestArea-*                         css     #main-id textarea
+  Button-*                           css     #main-id button
+  DownloadTemplate-*                 css     #excelDownloadContingent
+  Span-*                             css     #main-id .container-fluid span
+  Anchor-*                           css     #main-id a
+  H2Text-*                           css     #main-id h2
+
+
+
+#RFRContigentBIDependent Page
+= RFRContigentBIDependent page =
+  #This is for Desktop
+   @on desktop
+
+        #Breadcrumbs properties
+         Breadcrumbs:
+            css display is "block"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+        #GridContent properties
+         GridContent:
+            css display is "table"
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+
+        #Label properties
+         Label-44:
+            css display is "block"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+        #Label properties
+         Label-45:
+            css display is "inline-block"
+            css color contains "255, 255, 255"
+            css font-size is "14px"
+
+        #Input properties
+         @for [119 - 120] as index
+            Input-${index}:
+               css display is "block"
+               css color contains "91, 103, 112"
+               css font-size is "14px"
+
+        #TestArea properties
+         TestArea-5:
+            css display is "block"
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+
+        #Button properties
+         @for [29 - 31, 33 - 34] as index
+            Button-${index}:
+               css display is "block"
+               css color contains "255, 255, 255"
+               css font-size is "12px"
+               css background-color contains "49, 155, 66"
+
+        #DownloadTemplate properties
+         DownloadTemplate-*:
+            css color contains "255, 255, 255"
+            css font-size is "12px"
+            css background-color contains "52, 101, 127"
+
+        #Button properties
+         Button-32:
+            css display is "block"
+            css color contains "255, 255, 255"
+            css font-size is "12px"
+            css background-color contains "162, 170, 173"
+
+        #Span properties
+         @for [1] as index
+             Span-${index}:
+                css color contains "8, 31, 44"
+                css font-size is "14px"
+                css display is "inline-block"
+
+        #Span properties
+         @for [2, 4, 6, 8, 10, 12, 14] as index
+             Span-${index}:
+               css color contains "255, 255, 255"
+               css font-size is "16px"
+               css display is "block"
+
+        #Span properties
+         @for [5, 7, 9, 11, 13, 15] as index
+             Span-${index}:
+               css color contains "255, 255, 255"
+               css font-size is "11px"
+               css display is "inline"
+
+        #Span properties
+         @for [16 - 17] as index
+            Span-${index}:
+               css color contains "31, 42, 68"
+               css font-size is "16px"
+               css display is "inline"
+
+        #Span properties
+         @for [44] as index
+            Span-${index}:
+               css color contains "91, 103, 112"
+               css font-size is "12px"
+               css display is "inline-block"
+
+        #Span properties
+         Span-40:
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+            css display is "block"
+
+        #Span properties
+         Span-41:
+            css color contains "31, 42, 68"
+            css font-size is "14px"
+            css display is "block"
+
+        #Span properties
+         Span-46:
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+            css display is "inline-block"
+
+        #Span properties
+         @for [43] as index
+            Span-${index}:
+               css color contains "31, 42, 68"
+               css font-size is "14px"
+               css display is "block"
+
+        #Span properties
+         Span-42:
+            css color contains "255, 0, 0"
+            css font-size is "18px"
+            css display is "inline"
+
+        #Span properties
+         Span-45:
+            css color contains "31, 42, 68"
+            css font-size is "14px"
+            css display is "inline-block"
+
+        #Anchor properties
+         @for [1, 3] as index
+            Anchor-${index}:
+               css display is "block"
+               css color contains "0, 123, 255"
+               css font-size is "16px"
+
+        #Anchor properties
+         Anchor-6:
+            css display is "block"
+            css color contains "120, 190, 32"
+            css font-size is "14px"
+
+        #Anchor properties
+         Anchor-7:
+            css display is "block"
+            css color contains "31, 42, 68"
+            css font-size is "14px"
+
+        #Anchor properties
+         @for [15 - 16] as index
+            Anchor-${index}:
+               css display is "block"
+               css color contains "0, 115, 150"
+               css font-size is "14px"
+
+        #Anchor properties
+         @for [17 - 23] as index
+            Anchor-${index}:
+               css display is "block"
+               css color contains "255, 255, 255"
+               css font-size is "16px"
+
+        #Anchor properties
+         Anchor-26:
+            css display is "block"
+            css color contains "73, 80, 87"
+            css font-size is "14px"
+
+        #Anchor properties
+         @for [24 - 25, 27 - 29] as index
+            Anchor-${index}:
+               css display is "block"
+               css color contains "255, 255, 255"
+               css font-size is "14px"
+
+        #Anchor properties
+         Anchor-38:
+            css display is "block"
+            css color contains "255, 255, 255"
+            css font-size is "12px"
+
+        #H2Text properties
+         H2Text-3:
+          css display is "block"
+          css color contains "31, 42, 68"
+          css font-size is "18px"

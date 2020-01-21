@@ -115,7 +115,10 @@ public class WebTest {
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab"
 				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-				//"32.2. PS040 - To verify the error message Please make sure that imported file is as per the standard template. on uploading a with incorrect details in template"
+				//"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+			//	"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+			//	"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
+
 				//"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab"
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"74.5. PS166 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Program Structure",
@@ -141,18 +144,18 @@ public class WebTest {
 				//"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
 //				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
 //				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
-//				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
-//				"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
-//				"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+				//"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab"
+				//"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+				//"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
 //				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
 //				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
 //				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
 //				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
 //				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
-//				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
-//				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+				//"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+				//"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
 //				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
-//				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
+				//"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
 //				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
 ////				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
@@ -177,10 +180,10 @@ public class WebTest {
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
-				"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
 //				"34.5. PS051 - To verify user is able to Delete the other Location by clicking on Delete Icon in BI Worksheet Tab",
-				"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
-				"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+				//"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
+				"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab"
 				//"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
 				//"36.2. PS056 - To verify the error message \"Click on Browse to upload file with .xls / .xlsx extension\" on uploading a file with incorrect Extn in Contingent BI/ Dependent tab",
 				//"36.4. PS057 - To verify user is able to download the Template in Contingent BI/ Dependent tab",
@@ -188,9 +191,9 @@ public class WebTest {
 
 //				"35. PS049 - To verify user is able to enter the details in BI Worksheet page"
 //				"36. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
-				"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
+				//"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
 //				"37.1. PS061 - Verify the error message \"Please enter the fields marked as mandatory to continue further.\" in Contingent BI/ Dependent tab on clicking continue button without entering mandatory fields",
-				"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab"
+				//"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab"
 //				"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //				"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
 //				"41. PS065 - To verify user is able to enter the details in Crime-Controls & Underwriting question in Crime Tab",
@@ -317,7 +320,6 @@ public class WebTest {
 				} catch (TimeoutException| NoSuchElementException e) {
 
 				}
-
 			}
 			isSetUp = true;
 		} catch (Exception error) {
@@ -339,7 +341,7 @@ public class WebTest {
 	//@TestFactory
 	@Test(dataProvider = "QIFDP")
 	//Iterable<DynamicTest> executeTests() {
-	public void QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
+	public void 	QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
 
 		/*List<DynamicTest> guiTests = new ArrayList<>();
 		// Make sure the Setup is completed correctly
