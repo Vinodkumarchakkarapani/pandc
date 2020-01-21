@@ -1,0 +1,123 @@
+#Declaring objects with css and xpath locators
+@objects
+  Breadcrumbs                        css    .breadcrumb-tab
+  Header                             css    #main-id .new-admin-header
+  TabBreadcrumbs                     css    #main-id .container-fluid .breadcrumb-tab
+  InfoHeader                         css    #main-id .name-insured
+  Label-*                            css    #biContent label
+  Input-*                            css    #biContent input
+  Select-*                           css    #biContent select
+  TextArea-*                         css    #biContent textarea
+  H4Text-*                           css    #biContent h4
+  H2Text-*                           css    #biContent h2
+  Alert-*                            css    #biContent .spnAlert
+  Anchor-*                           css    #biContent a
+  Button-*                           css    #biContent button
+  Span-*                             css    #biContent span
+  Td-*                               css    #biContent td
+
+
+#RFRBIWorkSheet Page
+= RFRBIWorkSheet page =
+  #This is for Desktop
+   @on desktop
+
+       #Breadcrumbs properties
+        Breadcrumbs:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #Header properties
+        Header:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #TabBreadcrumbs properties
+        TabBreadcrumbs:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #InfoHeader properties
+        InfoHeader:
+           css display is "flex"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #Label properties
+        Label-*:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #Input properties
+        @for [1, 3 - 10] as index
+           Input-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Input properties
+        Input-2:
+           css display is "block"
+           css color contains "0, 0, 0"
+           css font-size is "14px"
+
+       #Button properties
+        Button-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "12px"
+
+       #TextArea properties
+        TextArea-*:
+           css display is "block"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
+
+       #H2Text properties
+        H2Text-*:
+           css display is "block"
+           css color contains "31, 42, 68"
+           css font-size is "18px"
+
+       #Anchor properties
+        Anchor-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "12px"
+
+       #Span properties
+        Span-1:
+           css display is "block"
+           css color contains "31, 42, 68"
+           css font-size is "14px"
+
+       #Span properties
+        Span-2:
+           css display is "inline"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
+
+       #Td properties
+        @for [1, 2 , 6 - 11, 15 - 17, 21 - 29] as index
+           Td-${index}:
+              css display is "table-cell"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Td properties
+        @for [3 - 5] as index
+           Td-${index}:
+              css display is "table-cell"
+              css color contains "255, 255, 255"
+              css font-size is "14px"
+
+       #Td properties
+        @for [12 - 14 , 18 - 20 , 30 - 32] as index
+           Td-${index}:
+              css display is "table-cell"
+              css color contains "31, 42, 68"
+              css font-size is "14px"
