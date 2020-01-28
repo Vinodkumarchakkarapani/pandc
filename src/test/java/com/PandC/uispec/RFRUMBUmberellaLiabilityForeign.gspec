@@ -1,0 +1,116 @@
+#Declaring objects with css and xpath locators
+@objects
+  Breadcrumbs                        css    .container-fluid .title-top .d-none
+  Header                             css    #main-id .admin-header-wrapper
+  TabBreadcrumbs                     css    .container-fluid .title-top .breadcrumb-tab
+  NamedInsured                       css    .container-fluid .name-insured
+  TabHeader                          css    #UmbrellaTab
+  Label-*                            css    .container-fluid .tab-grid-container #myTabContent label
+  Input-*                            css    .container-fluid .tab-grid-container #myTabContent input
+  Select-*                           css    .container-fluid .tab-grid-container #myTabContent select
+  TextArea-*                         css    .container-fluid .tab-grid-container #myTabContent textarea
+  H2Text-*                           css    .container-fluid .tab-grid-container #myTabContent h2
+  H1Text-*                           css    .container-fluid .tab-grid-container #myTabContent h1
+  Span-*                             css    .container-fluid .tab-grid-container #myTabContent span
+  Anchor-*                           css    .container-fluid .tab-grid-container #myTabContent a
+  Button-*                           css    .container-fluid .tab-grid-container #myTabContent button
+  Table                              css    .container-fluid .tab-grid-container #myTabContent  #tblInternationalTravel
+  TblHeading-*                       css    .container-fluid .tab-grid-container #myTabContent  #tblInternationalTravel tr .bold
+
+
+#RFRUMBUmberellaLiabilityForeign Page
+= RFRUMBUmberellaLiabilityForeign page =
+  #This is for Desktop
+   @on desktop
+
+       #Breadcrumbs properties
+        Breadcrumbs:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #Header properties
+        Header:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #TabBreadcrumbs properties
+        TabBreadcrumbs:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #NamedInsured properties
+        NamedInsured:
+           css display is "flex"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #TabHeader properties
+        TabHeader:
+           css display is "block"
+           css color contains "73, 80, 87"
+           css font-size is "14px"
+
+       #Label properties
+        Label-*:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #Input properties
+        Input-*:
+           css display is "block"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
+
+       #Button properties
+        Button-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "12px"
+
+       #TextArea properties
+        TextArea-*:
+           css display is "inline-block"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
+
+       #H1Text properties
+        H1Text-*:
+           css display is "block"
+           css color contains "31, 42, 68"
+           css font-size is "18px"
+
+       #H2Text properties
+        H2Text-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "14px"
+
+       #Span properties
+        Span-*:
+           css display is "block"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
+
+       #Anchor properties
+        Anchor-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "12px"
+
+       #Table properties
+        Table:
+           css display is "table"
+           css color contains "31, 42, 68"
+           css font-size is "14px"
+
+       #TblHeading properties
+        TblHeading-*:
+           css display is "table-cell"
+           css color contains "31, 42, 68"
+           css font-size is "14px"
+
+
