@@ -16,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 //import org.junit.jupiter.api.BeforeAll;
 //import org.junit.jupiter.api.DynamicTest;
 //import org.junit.jupiter.api.TestFactory;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.interactions.Actions;
@@ -86,7 +88,7 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				//"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 				//"15.6. PS188 - Validate error message should display for invalid Date on Cover page"
 				//"9. PS013 - Verify user is able to search a record by Status",
 				//"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination"
@@ -114,7 +116,7 @@ public class WebTest {
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab"
-				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
 			//	"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
 			//	"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
@@ -180,7 +182,7 @@ public class WebTest {
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
-				"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
+				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
 //				"34.5. PS051 - To verify user is able to Delete the other Location by clicking on Delete Icon in BI Worksheet Tab",
 				//"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
 				//"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
@@ -227,6 +229,7 @@ public class WebTest {
 				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
                 //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
                 //"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
+				"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -479,6 +482,9 @@ public class WebTest {
 			try {
 				// Loop through the Test Steps
 				int iStepNum = 1;
+
+				XSSFWorkbook currentExcelWorkbook = new XSSFWorkbook();
+				String sCurrentExcelSheetName = "";
 				for (TestCaseStep testStep : testCase.testCaseSteps) {
 					Thread.sleep(2000);
 
@@ -896,6 +902,66 @@ public class WebTest {
 									else {
 										sUIActualResult = "All elements displayed as expected On Browser: "+config.app.getProperty("selenium.webdriver.name")+". Heatmap attached: " + UIValidationZipPath ;
 										UIValidationTest_pass=true;
+									}
+									break;
+								case "setcurrentexcel":
+									currentExcelWorkbook = new XSSFWorkbook(new FileInputStream(
+											System.getProperty("user.home")
+											+ "\\Downloads\\"+ testAction.action.fieldValue));
+									break;
+								case "setcurrentexcelsheet":
+									sCurrentExcelSheetName =testAction.action.fieldValue;
+									break;
+								case "matchexcelcellvalue":
+									int iRow = Integer
+											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
+									int iColumn = com.PandC.lib.excelOperation.convertName2ColumnIndex(
+											testAction.action.fieldName.split(",")[1].trim()
+									);
+									String sActualValue="";
+									try{
+										switch (currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+												.getRow(iRow).getCell(iColumn).getCellType()) {
+											case XSSFCell.CELL_TYPE_NUMERIC:
+
+												sActualValue =String.valueOf(currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+														.getRow(iRow).getCell(iColumn).getNumericCellValue());
+												break;
+											case XSSFCell.CELL_TYPE_STRING:
+
+												sActualValue = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+														.getRow(iRow).getCell(iColumn).getStringCellValue();
+												break;
+											default:
+												break;
+										}
+									}
+									catch(NullPointerException ex){
+									}
+									if (!(sActualValue.equals(testAction.action.fieldValue.trim()))) {
+										stepResult.status = "Fail";
+										stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
+												"does not match the value given (" + testAction.action.fieldValue +
+												") , Got [" + sActualValue + "]";
+										logger.error(stepResult.actualResult);
+
+									}
+									break;
+								case "matchexcelcellformat":
+									int iRowNo = Integer
+											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
+									int iColumnNo = com.PandC.lib.excelOperation.convertName2ColumnIndex(
+											testAction.action.fieldName.split(",")[1].trim()
+									);
+									String sActualFormat=currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+											.getRow(iRowNo).getCell(iColumnNo).getCellStyle().getDataFormatString();
+
+									if (!(sActualFormat.equals(testAction.action.fieldValue.trim()))) {
+										stepResult.status = "Fail";
+										stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
+												"does not match the value given (" + testAction.action.fieldValue +
+												") , Got [" + sActualFormat + "]";
+										logger.error(stepResult.actualResult);
 									}
 									break;
 								default:
