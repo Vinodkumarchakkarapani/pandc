@@ -27,4 +27,20 @@ public class excelOperation {
         }
         return value;
     }
+
+    public static String getColumn(String sLocation){
+        StringBuffer alpha = new StringBuffer();
+        for (int i=0; i<sLocation.length(); i++)
+            if(Character.isAlphabetic(sLocation.charAt(i)))
+                alpha.append(sLocation.charAt(i));
+        return alpha.toString();
+    }
+
+    public static int getRow(String sLocation){
+        StringBuffer num = new StringBuffer();
+        for (int i=0; i<sLocation.length(); i++)
+            if(Character.isDigit(sLocation.charAt(i)))
+                num.append(sLocation.charAt(i));
+        return Integer.parseInt(num.toString());
+    }
 }

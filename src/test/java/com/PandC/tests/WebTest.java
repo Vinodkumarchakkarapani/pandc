@@ -229,7 +229,8 @@ public class WebTest {
 				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
                 //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
                 //"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
-				"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
+				//"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
+                "86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -913,10 +914,11 @@ public class WebTest {
 									sCurrentExcelSheetName =testAction.action.fieldValue;
 									break;
 								case "matchexcelcellvalue":
-									int iRow = Integer
-											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
+									int iRow = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName)-1;
+											//Integer.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
 									int iColumn = com.PandC.lib.excelOperation.convertName2ColumnIndex(
-											testAction.action.fieldName.split(",")[1].trim()
+											com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
+											//testAction.action.fieldName.split(",")[1].trim()
 									);
 									String sActualValue="";
 									try{
@@ -938,20 +940,24 @@ public class WebTest {
 									}
 									catch(NullPointerException ex){
 									}
-									if (!(sActualValue.equals(testAction.action.fieldValue.trim()))) {
+									if (!(sActualValue.replaceAll("[\\t\\n\\r]+"," ")
+											.trim().equals(
+											testAction.action.fieldValue.trim()))) {
 										stepResult.status = "Fail";
 										stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
 												"does not match the value given (" + testAction.action.fieldValue +
-												") , Got [" + sActualValue + "]";
+												") , Got [" + sActualValue.replaceAll("[\\t\\n\\r]+"," ").trim() + "]";
 										logger.error(stepResult.actualResult);
 
 									}
 									break;
 								case "matchexcelcellformat":
-									int iRowNo = Integer
-											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
+									int iRowNo =  com.PandC.lib.excelOperation.getRow(testAction.action.fieldName)-1;
+											/*Integer
+											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1*/;
 									int iColumnNo = com.PandC.lib.excelOperation.convertName2ColumnIndex(
-											testAction.action.fieldName.split(",")[1].trim()
+											com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
+											//testAction.action.fieldName.split(",")[1].trim()
 									);
 									String sActualFormat=currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
 											.getRow(iRowNo).getCell(iColumnNo).getCellStyle().getDataFormatString();
