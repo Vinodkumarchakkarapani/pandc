@@ -88,14 +88,14 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-				//"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 				//"15.6. PS188 - Validate error message should display for invalid Date on Cover page"
 				//"9. PS013 - Verify user is able to search a record by Status",
 				//"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination"
 				//"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search."
 				//"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
 				//"15.5. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
-				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
+				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
 				//"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
@@ -228,8 +228,8 @@ public class WebTest {
 				//"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
 				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
                 //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
-                //"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
-				"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
+                "79. PS119 - Verify user is able to Preview the details entered by user for General Information by clicking on General Information in Preview tab",
+				"79.1. Review Tab - Verify the contents of the Named Insured Tab in the Exported Excel by clicking on Export button"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
