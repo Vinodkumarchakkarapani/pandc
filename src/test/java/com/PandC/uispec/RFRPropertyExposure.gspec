@@ -1,0 +1,160 @@
+#Declaring objects with css and xpath locators
+@objects
+  Breadcrumbs                        css     .breadcrumb-tab
+  GridContent                        css     #main-id #tblPropertySovGrid
+  Label-*                            css     #main-id label
+  Input-*                            css     #main-id input
+  TestArea-*                         css     #main-id textarea
+  H4Text-*                           css     #main-id h4
+  Button-*                           css     #main-id button
+  ImportTemplate-*                   css     #excelDownloadSOV
+  Span-*                             css     #main-id .container-fluid span
+
+
+#RFRPropertyExposure Page
+= RFRPropertyExposure page =
+  #This is for Desktop
+   @on desktop
+
+        #Breadcrumbs properties
+         Breadcrumbs:
+            css display is "block"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+        #GridContent properties
+         GridContent:
+            css display is "table"
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+
+        #Label properties
+         Label-1:
+            css display is "block"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+        #Label properties
+         Label-2:
+            css display is "inline-block"
+            css color contains "255, 255, 255"
+            css font-size is "14px"
+
+        #Label properties
+         Label-3:
+            css display is "inline-block"
+            css color contains "31, 42, 68"
+            css font-size is "14px"
+
+        #Label properties
+         Label-4:
+            css display is "inline-block"
+            css color contains "255, 255, 255"
+            css font-size is "14px"
+
+        #Label properties
+         @for [5 - 34] as index
+            Label-${index}:
+               css display is "inline-block"
+               css color contains "91, 103, 112"
+               css font-size is "14px"
+
+        #Input properties
+         Input-2:
+            css display is "block"
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+
+        #Input properties
+         @for [5, 8 - 9, 11 - 12, 14 - 15, 17 - 18, 20 - 21, 23 - 24, 26 - 27, 29 - 30, 32, 33, 35, 36, 38, 39, 41, 42, 44, 45, 47, 48, 50, 51, 53, 54, 56, 57, 59, 60, 62, 63, 65, 66, 68, 69, 71, 72, 74, 75, 77, 78, 80, 81, 83, 84, 86, 87, 89, 90, 92, 93, 95, 96] as index
+            Input-${index}:
+               css display is "inline-block"
+               css color contains "91, 103, 112"
+               css font-size is "14px"
+
+        #TestArea properties
+         TestArea-1:
+            css display is "block"
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+
+        #H4Text properties
+         H4Text-*:
+            css display is "block"
+            css color contains "91, 103, 112"
+            css font-size is "18px"
+
+        #Button properties
+         @for [1 - 2, 6 - 7] as index
+            Button-${index}:
+               css display is "block"
+               css color contains "255, 255, 255"
+               css font-size is "12px"
+               css background-color contains "49, 155, 66"
+
+        #Button properties
+         @for [3 - 5] as index
+            Button-${index}:
+               css display is "block"
+               css color contains "255, 255, 255"
+               css font-size is "12px"
+               css background-color contains "162, 170, 173"
+
+        #ImportTemplate properties
+         ImportTemplate-*:
+            css color contains "255, 255, 255"
+            css font-size is "12px"
+            css background-color contains "52, 101, 127"
+
+        #Span properties
+         @for [1] as index
+             Span-${index}:
+                css color contains "8, 31, 44"
+                css font-size is "14px"
+                css display is "inline-block"
+
+        #Span properties
+         @for [2, 4, 6, 8, 10, 12, 14] as index
+             Span-${index}:
+               css color contains "255, 255, 255"
+               css font-size is "16px"
+               css display is "block"
+
+        #Span properties
+         @for [5, 7, 9, 11, 13, 15] as index
+             Span-${index}:
+               css color contains "255, 255, 255"
+               css font-size is "11px"
+               css display is "inline"
+
+        #Span properties
+         @for [16 - 17] as index
+            Span-${index}:
+               css color contains "31, 42, 68"
+               css font-size is "16px"
+               css display is "inline"
+
+        #Span properties
+         @for [19 - 20] as index
+            Span-${index}:
+               css color contains "91, 103, 112"
+               css font-size is "12px"
+               css display is "inline-block"
+
+        #Span properties
+         Span-18:
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+            css display is "block"
+
+        #Span properties
+         Span-21:
+            css color contains "31, 42, 68"
+            css font-size is "14px"
+            css display is "inline-block"
+
+        #Span properties
+         Span-22:
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+            css display is "inline-block"
