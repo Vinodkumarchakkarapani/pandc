@@ -122,118 +122,126 @@ public class WebTest {
 //				"23. PS018 -  Verify user is not able to upload more than 10 files and displayed the message - Maximum 10 files can be uploaded",
 //				"24. PS017 -  Verify user is able to uncheck and delete the uploaded document",
 //				"25. PS019 - Verify user is displayed the message - \"Invalid file name. File name should not contain special characters like ~ ` ! @ # $ % ^ & * ( ) + = { } | [ ] : \" ; < > ? , /\" when user uploads a file with special characters",
-//"26. PS020 - Verify user is displayed the message - \"File Size Exceeds the maximum size (5 MB)\" when user uploads a file more than 5 mb",
-//"27. PS021 - Verify user is displayed the message - \"Duplicate files are not allowed. A file with same name exists!\" when user uploads a duplicate file",
-//"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
-//"29. PS030 -  Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
-//"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
-        "30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-//				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
-//		"31.2. PS039 - To verify user is able to mark Property (Statement of Values) tab as Not Applicable",
-//		"31.3. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
-//		"31.4. PS044 - To verify user is able to Delete a row from the Program Structure Property (Statement of Values) tab",","
-//		"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
-//		"32.2. PS040 - To verify the error message Please make sure that imported file is as per the standard template. on uploading a with incorrect details in template",
-//		"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab",
-//		"32.4. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
-//		"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
-//		"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
-//		"34.2. PS053 -  Verify the Error Message "Please enter the fields marked as mandatory to continue further." by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab"
-//		"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable",
-//		"34.5. PS051 - To verify user is able to Delete the other Location by clicking on Delete Icon in BI Worksheet Tab",
-//		"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
-//		"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
-//		"36.2. PS056 - To verify the error message Click on Browse to upload file with .xls / .xlsx extension on uploading a file with incorrect Extn in Contingent BI/ Dependent tab",
-//		"36.3. PS054 - To verify user is able to mark Contingent BI/ Dependent tab tab as Not Applicable",
-//		"36.4. PS057 - To verify user is able to download the Template in Contingent BI/ Dependent tab",
-//		"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
-//		"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
-//		"37.1. PS061 - Verify the error message Please enter the fields marked as mandatory to continue further. in Contingent BI/ Dependent tab on clicking continue button without entering mandatory fields",
-//		"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
-//		"38.2. PS062 - To verify user is able to mark Crime Page as as Not Applicable",
-//		"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
-//		"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
-//		"41. PS065 - To verify user is able to enter the details in Crime-Controls & Underwriting question in Crime Tab",
-//		"42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
-//		"43. PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
-//		"44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
-//		"45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
-//		"46. PS071 - To verify user is able to enter the details For Program structure in Transit/Cargo/Stock Throughput tab",
-//		"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
-//		"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
-//		"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures",
-//		"49.1. PS125 - To verify user is able to mark Casualty Exposure - Revenue & Liability Limits tab as Not Applicable",
-//		"49.2. PS126 - Verify user is able to add another row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on add Row under Program Structure",
-//		""49.3. PS127 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on Delete under Program Structure
-//		"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
-//		"50.1. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
-//		"50.2. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
-//		"50.3. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
-//		"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
-//		"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
-//		"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
-//		"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
-//		"54.1. PS128 - To verify user is able to mark Casualty Exposure - Product Liability Tab as Not Applicable",
-//		"54.2. PS129 - Verify user is able to add another row of details in Casualty Exposure Tab, Product Liability Tab by clicking on add Row under Program Structure",
-//		"54.3. PS130- Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Tab by clicking on Delete under Program Structure"
-//		"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
-//		"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
-//		"56.1. PS131 - To verify user is able to mark Casualty Exposure - Product Liability Excess Tab as Not Applicable",
-//		"56.2. PS132 - Verify user is able to add another row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on add Row under Program Structure",
-//		"56.3. PS133 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on Delete under Program Structure",
-//		"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
-//		"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
-//		"58.1 PS134 - To verify user is able to mark Casualty Exposure - Auto Tab as Not Applicable",
-//		"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
-//		"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
-//		"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
-//		"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
-//		"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
-//		"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
-//		"64.1. PS135 - To verify user is able to mark Casualty Exposure - Life Science Tab as Not Applicable",
-//		"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
-//		"65.1. PS136 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability tab as Not Applicable",
-//		"65.2. PS137 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on add Row under Program Structure",
-//		"65.3. PS138 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on Delete under Program Structure",
-//		"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
-//		"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
-//		"68.1. PS139 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability - Excess tab as Not Applicable",
-//		"68.2. PS140 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on add Row under Program Structure",
-//		"68.3. PS141 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on Delete under Program Structure",
-//		"68.4. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
-//		"69. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures",
-//		"70.1. PS156 - To verify user is able to mark WC Exposure - U.S. Workers' Compensation Remuneration Worksheet tab as Not Applicable",
-//		"70.2. PS157 - Verify user is able to add another row of details in WC Exposure Tab,U.S. Workers' Compensation Remuneration Worksheet tab by clicking on add Row under Limits",
-//		"70.3. PS158 - Verify user is able to Delete the added row of details in WC Exposure Tab, U.S. Workers' Compensation Remuneration Worksheet tab by clicking on Delete under Limits",
-//		"70.4. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
-//		"71.1. PS159 - To verify user is able to mark WC Exposure - Supplementary Application tab as Not Applicable",
-//				"71.2. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
-//"72.1. PS160 - To verify user is able to mark Foreign - International Revenue & Payroll tab as Not Applicable",
-//				"72.2. PS161 - Verify user is able to add another row of details in Foreign Tab, International Revenue & Payroll tab by clicking on add Row under International Column grid",
-//"72.3. PS162 - Verify user is able to Delete the added row of details in Foreign Tab,International Revenue & Payroll tab by clicking on Delete under International Travel column grid",
-//"72.4. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
-//"73. PS110 - To verify user is able to Import the file and fill the details with the imported file in Foreign Tab",
-//		"74.1. PS163 - Verify user is able to add another row of details in Foreign Tab, International Revenue & Payroll tab by clicking on add Row under Program Structure",
-//		"74.2. PS164 - Verify user is able to Delete the added row of details in Foreign Tab,International Revenue & Payroll tab by clicking on Delete under Program Structure"
-//				"74.3. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
-//		"74.4. PS165 - To verify user is able to mark UMB/Excess tab - Umbrella Liability tab as Not Applicable",
-//		"74.5. PS166 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Program Structure",
-//		"74.6. PS167 - Verify user is able to Delete the added row of details in UMB/Excess Tab -Umbrella Liability tab by clicking on Delete under Program Structure",
-//		"74.7. PS168 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Schedule of Underlying",
-//		"74.8. PS169 - Verify user is able to Delete the added row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on Delete under Schedule of Underlying",
-//"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
-				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab"
-//				"77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
-//"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab",
-//                "79. PS119 - Verify user is able to Preview the details entered by user for General Information by clicking on General Information in Preview tab",
-//				"80. PS120 - Verify user is able to Preview the details entered by user for Property Exposures by clicking on Property Exposures in Preview tab",
-//"81. PS121 - Verify user is able to Preview the details entered by user for Casualty Exposures by clicking on Casualty Exposures in Preview tab",
-//"82. PS122 - Verify user is able to Preview the details entered by user for WC Exposures by clicking on WC Exposures in Preview tab",
-//"83. PS123 - Verify user is able to Preview the details entered by user for Foreign by clicking on Foreign in Preview tab",
-//"84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
-//				"85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
-//"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
+//				"26. PS020 - Verify user is displayed the message - \"File Size Exceeds the maximum size (5 MB)\" when user uploads a file more than 5 mb",
+//				"27. PS021 - Verify user is displayed the message - \"Duplicate files are not allowed. A file with same name exists!\" when user uploads a duplicate file",
+//				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
+				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
+				//"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab"
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				//"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+			//	"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+			//	"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
 
+				//"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab"
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				//"74.5. PS166 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Program Structure",
+				//"74.6. PS167 - Verify user is able to Delete the added row of details in UMB/Excess Tab -Umbrella Liability tab by clicking on Delete under Program Structure",
+				//"74.7. PS168 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Schedule of Underlying",
+				//"74.8. PS169 - Verify user is able to Delete the added row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on Delete under Schedule of Underlying"
+				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
+
+//				"74.1. PS163 - Verify user is able to add another row of details in Foreign Tab, International Revenue & Payroll tab by clicking on add Row under Program Structure",
+//				"74.2. PS164 - Verify user is able to Delete the added row of details in Foreign Tab,International Revenue & Payroll tab by clicking on Delete under Program Structure"
+//				//"31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
+//				"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
+//				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
+//				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
+//				"34. PS042 - PS042To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
+//				"8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
+				//"9. PS013 - Verify user is able to search a record by Status"
+				//"21. PS026 - Verify user is able to download the template, by clicking on Template button",
+//				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+				//"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+				//"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+				//"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+				//"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+//				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+//				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
+				//"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab"
+				//"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+				//"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+//				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
+//				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+//				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+//				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+//				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+				//"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+				//"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+//				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
+				//"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
+//				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
+////				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
+//				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+//				//"51. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+//				//"52. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+//				//"53. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+//				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+//				"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
+//				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
+//				"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+//				"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+//				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
+//				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+//				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+//				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+//				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+//				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+//				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+//				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
+//				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
+//				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
+//				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
+				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
+//				"34.5. PS051 - To verify user is able to Delete the other Location by clicking on Delete Icon in BI Worksheet Tab",
+				//"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
+				//"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+				//"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
+				//"36.2. PS056 - To verify the error message \"Click on Browse to upload file with .xls / .xlsx extension\" on uploading a file with incorrect Extn in Contingent BI/ Dependent tab",
+				//"36.4. PS057 - To verify user is able to download the Template in Contingent BI/ Dependent tab",
+				//"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
+
+//				"35. PS049 - To verify user is able to enter the details in BI Worksheet page"
+//				"36. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+				//"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
+//				"37.1. PS061 - Verify the error message \"Please enter the fields marked as mandatory to continue further.\" in Contingent BI/ Dependent tab on clicking continue button without entering mandatory fields",
+				//"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
+//				"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
+//				"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
+//				"41. PS065 - To verify user is able to enter the details in Crime-Controls & Underwriting question in Crime Tab",
+				//"42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
+				//"43. PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
+//				"44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
+//				"45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
+//				"46. PS071 - To verify user is able to enter the details For Program structure in Transit/Cargo/Stock Throughput tab",
+				//"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
+				//"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
+				//"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures",
+				//"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+				//"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab"
+//	            "71. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
+//	            "72. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
+//	            "73. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
+//	            "74. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
+//				"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
+//				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
+//              "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
+//              "78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab",
+//				"82. PS122 - Verify user is able to Preview the details entered by user for WC Exposures by clicking on WC Exposures in Preview tab",
+//				"83. PS123 - Verify user is able to Preview the details entered by user for Foreign by clicking on Foreign in Preview tab",
+//            	"84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
+//          	"85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
+//				"18.1. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab",
+//				"18.2. PS029 - Verify user is displayed error message- Please make sure that imported file is as per the standard template. upload files which is not as per the template in Named Insured page in General Information Tab",
+//				"18.3. PS033 - Verify user is displayed error message -Click on Browse to upload file with.xls / .xlsx extension, when user clicks on Import button without browsing the files to upload on Named Insured Page",
+//				"18.4. PS027 - Verify user is able to Import a file in \".xls or .xlsx format\" by clicking browse button and then clicking on import button in the downloaded Template format"
+				//"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
+				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+                //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
+                //"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
+				//"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
+                "86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -917,10 +925,11 @@ public class WebTest {
 									sCurrentExcelSheetName =testAction.action.fieldValue;
 									break;
 								case "matchexcelcellvalue":
-									int iRow = Integer
-											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
+									int iRow = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName)-1;
+											//Integer.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
 									int iColumn = com.PandC.lib.excelOperation.convertName2ColumnIndex(
-											testAction.action.fieldName.split(",")[1].trim()
+											com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
+											//testAction.action.fieldName.split(",")[1].trim()
 									);
 									String sActualValue="";
 									try{
@@ -942,20 +951,24 @@ public class WebTest {
 									}
 									catch(NullPointerException ex){
 									}
-									if (!(sActualValue.equals(testAction.action.fieldValue.trim()))) {
+									if (!(sActualValue.replaceAll("[\\t\\n\\r]+"," ")
+											.trim().equals(
+											testAction.action.fieldValue.trim()))) {
 										stepResult.status = "Fail";
 										stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
 												"does not match the value given (" + testAction.action.fieldValue +
-												") , Got [" + sActualValue + "]";
+												") , Got [" + sActualValue.replaceAll("[\\t\\n\\r]+"," ").trim() + "]";
 										logger.error(stepResult.actualResult);
 
 									}
 									break;
 								case "matchexcelcellformat":
-									int iRowNo = Integer
-											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
+									int iRowNo =  com.PandC.lib.excelOperation.getRow(testAction.action.fieldName)-1;
+											/*Integer
+											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1*/;
 									int iColumnNo = com.PandC.lib.excelOperation.convertName2ColumnIndex(
-											testAction.action.fieldName.split(",")[1].trim()
+											com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
+											//testAction.action.fieldName.split(",")[1].trim()
 									);
 									String sActualFormat=currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
 											.getRow(iRowNo).getCell(iColumnNo).getCellStyle().getDataFormatString();
