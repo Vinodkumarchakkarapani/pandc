@@ -51,52 +51,95 @@
            css font-size is "14px"
 
        #Label properties
-        Label-*:
-           css display is "block"
-           css color contains "33, 37, 41"
-           css font-size is "16px"
+        @for [10-11] as index
+           Label-${index}:
+              css display is "block"
+              css color contains "33, 37, 41"
+              css font-size is "16px"
+
+       #Label properties
+        @for [12, 17] as index
+           Label-${index}:
+              css display is "inline-block"
+              css color contains "255, 255, 255"
+              css font-size is "14px"
+
+       #Label properties
+        @for [13-16, ] as index
+           Label-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
 
        #Input properties
-        Input-*:
-           css display is "inline-block"
-           css color contains "91, 103, 112"
-           css font-size is "14px"
+        @for [27] as index
+           Input-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Input properties
+        @for [30-31, 33-34, 36-37, 39-40] as index
+           Input-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
 
        #Button properties
-        Button-*:
-           css display is "block"
-           css color contains "255, 255, 255"
-           css font-size is "12px"
+        @for [3-4] as index
+           Button-${index}:
+              css display is "block"
+              css color contains "255, 255, 255"
+              css font-size is "12px"
 
        #TextArea properties
-        TextArea-*:
-           css display is "block"
-           css color contains "91, 103, 112"
-           css font-size is "14px"
+        @for [3] as index
+           TextArea-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
 
        #H1Text properties
-        H1Text-*:
-           css display is "block"
-           css color contains "31, 42, 68"
-           css font-size is "18px"
-
-       #H2Text properties
-        H2Text-*:
-           css display is "block"
-           css color contains "255, 255, 255"
-           css font-size is "14px"
+        @for [3-4] as index
+           H1Text-${index}:
+              css display is "block"
+              css color contains "31, 42, 68"
+              css font-size is "18px"
 
        #Span properties
-        Span-*:
-           css display is "block"
-           css color contains "91, 103, 112"
-           css font-size is "14px"
+        @for [7] as index
+           Span-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Span properties
+        @for [8, 11] as index
+           Span-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "12px"
+
+       #Span properties
+        @for [9] as index
+           Span-${index}:
+              css display is "inline-block"
+              css color contains "31, 42, 68"
+              css font-size is "14px"
+
+       #Span properties
+        @for [10] as index
+           Span-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
 
        #Anchor properties
-        Anchor-*:
-           css display is "block"
-           css color contains "255, 255, 255"
-           css font-size is "12px"
+        @for [5-7] as index
+           Anchor-${index}:
+              css display is "block"
+              css color contains "255, 255, 255"
+              css font-size is "12px"
 
 
 
