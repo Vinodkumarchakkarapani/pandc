@@ -4,7 +4,7 @@
   Header                             css    #main-id .admin-header-wrapper
   TabBreadcrumbs                     css    .container-fluid .title-top .breadcrumb-tab
   NamedInsured                       css    .container-fluid .name-insured
-  TabHeader                          css    #UmbrellaTab
+  TabHeader                          css    #ExcessTab
   Label-*                            css    .container-fluid .tab-grid-container #myTabContent label
   Input-*                            css    .container-fluid .tab-grid-container #myTabContent input
   Select-*                           css    .container-fluid .tab-grid-container #myTabContent select
@@ -14,12 +14,9 @@
   Span-*                             css    .container-fluid .tab-grid-container #myTabContent span
   Anchor-*                           css    .container-fluid .tab-grid-container #myTabContent a
   Button-*                           css    .container-fluid .tab-grid-container #myTabContent button
-  Table                              css    .container-fluid .tab-grid-container #myTabContent  #tblInternationalTravel
-  TblHeading-*                       css    .container-fluid .tab-grid-container #myTabContent  #tblInternationalTravel tr .bold
 
-
-#RFRUMBUmberellaLiabilityForeign Page
-= RFRUMBUmberellaLiabilityForeign page =
+#RFRUMBExcessLiability.gspec Page
+= RFRUMBExcessLiability.gspec page =
   #This is for Desktop
    @on desktop
 
@@ -54,102 +51,54 @@
            css font-size is "14px"
 
        #Label properties
-        @for [1] as index
-           Label-${index}:
-              css display is "block"
-              css color contains "33, 37, 41"
-              css font-size is "16px"
-
-       #Label properties
-        @for [2, 8] as index
-           Label-${index}:
-              css display is "inline-block"
-              css color contains "255, 255, 255"
-              css font-size is "14px"
-
-       #Label properties
-        @for [3-7] as index
-           Label-${index}:
-              css display is "inline-block"
-              css color contains "91, 103, 112"
-              css font-size is "14px"
+        Label-*:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
 
        #Input properties
-        @for [4-5, 7-8, 10-11, 13-14, 16-17] as index
-           Input-${index}:
-              css display is "inline-block"
-              css color contains "91, 103, 112"
-              css font-size is "14px"
+        Input-*:
+           css display is "inline-block"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
 
        #Button properties
-        @for [1-2] as index
-           Button-${index}:
-              css display is "block"
-              css color contains "255, 255, 255"
-              css font-size is "12px"
+        Button-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "12px"
 
        #TextArea properties
-        @for [1] as index
-           TextArea-${index}:
-              css display is "block"
-              css color contains "91, 103, 112"
-              css font-size is "14px"
+        TextArea-*:
+           css display is "block"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
 
        #H1Text properties
-        @for [1-2] as index
-           H1Text-${index}:
-              css display is "block"
-              css color contains "31, 42, 68"
-              css font-size is "18px"
+        H1Text-*:
+           css display is "block"
+           css color contains "31, 42, 68"
+           css font-size is "18px"
 
        #H2Text properties
-        @for [1-2] as index
-           H2Text-${index}:
-              css display is "block"
-              css color contains "255, 255, 255"
-              css font-size is "14px"
+        H2Text-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "14px"
 
        #Span properties
-        @for [1] as index
-           Span-${index}:
-              css display is "block"
-              css color contains "91, 103, 112"
-              css font-size is "14px"
-
-       #Span properties
-        @for [2,5] as index
-           Span-${index}:
-              css display is "inline-block"
-              css color contains "91, 103, 112"
-              css font-size is "12px"
-
-       #Span properties
-        @for [3] as index
-           Span-${index}:
-              css display is "inline-block"
-              css color contains "31, 42, 68"
-              css font-size is "14px"
-
-       #Span properties
-        @for [4] as index
-           Span-${index}:
-              css display is "inline-block"
-              css color contains "91, 103, 112"
-              css font-size is "14px"
+        Span-*:
+           css display is "block"
+           css color contains "91, 103, 112"
+           css font-size is "14px"
 
        #Anchor properties
-        @for [1-2] as index
-           Anchor-${index}:
-              css display is "block"
-              css color contains "255, 255, 255"
-              css font-size is "12px"
+        Anchor-*:
+           css display is "block"
+           css color contains "255, 255, 255"
+           css font-size is "12px"
 
-       #Anchor properties
-        @for [3-4] as index
-           Anchor-${index}:
-              css display is "block"
-              css color contains "0, 123, 255"
-              css font-size is "16px"
+
 
 
 
