@@ -88,14 +88,14 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-				//"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 				//"15.6. PS188 - Validate error message should display for invalid Date on Cover page"
 				//"9. PS013 - Verify user is able to search a record by Status",
 				//"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination"
 				//"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search."
 				//"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
 				//"15.5. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
-				//"30. PS026 - Verify user is able to download the template, by clicking on Template button"
+				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"31. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
 				//"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
@@ -116,7 +116,7 @@ public class WebTest {
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 				//"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 				//"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab"
-				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
 			//	"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
 			//	"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
@@ -150,14 +150,14 @@ public class WebTest {
 				//"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
 				//"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
 //				"59. PS089 - To verify user is able to Import the file and fill the details with the imported file Auto tab",
-//				"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
-//				"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
-//				"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
-//				"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
-				//"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
-				//"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+				//"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+				//"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+    			//"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+    			//"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+				//"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab"
+				"65.1. PS136 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability tab as Not Applicable"
 //				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
-				//"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
+				//"67. PS100 - To verify user is abl    e to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
 //				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
 ////				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
@@ -228,9 +228,11 @@ public class WebTest {
 				//"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
 				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
                 //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
+               // "79. PS119 - Verify user is able to Preview the details entered by user for General Information by clicking on General Information in Preview tab",
+				//"79.1. Review Tab - Verify the contents of the Named Insured Tab in the Exported Excel by clicking on Export button"
                 //"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
 				//"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
-                "86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button"
+                //"86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -347,7 +349,7 @@ public class WebTest {
 	//@TestFactory
 	@Test(dataProvider = "QIFDP")
 	//Iterable<DynamicTest> executeTests() {
-	public void 	QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
+	public void QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
 
 		/*List<DynamicTest> guiTests = new ArrayList<>();
 		// Make sure the Setup is completed correctly
