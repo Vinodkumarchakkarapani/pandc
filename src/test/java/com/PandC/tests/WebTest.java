@@ -88,7 +88,7 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-				//"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 				//"15.6. PS188 - Validate error message should display for invalid Date on Cover page"
 				//"9. PS013 - Verify user is able to search a record by Status",
 				//"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination"
@@ -122,7 +122,7 @@ public class WebTest {
 			//	"55. PS084 - To verify user is able to enter the details For Program Structure in Product Liability tab",
 
 				//"32.3. PS041 - To verify user is able to download the Template in Property (Statement of Values) tab"
-				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 				//"74.5. PS166 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Program Structure",
 				//"74.6. PS167 - Verify user is able to Delete the added row of details in UMB/Excess Tab -Umbrella Liability tab by clicking on Delete under Program Structure",
 				//"74.7. PS168 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Schedule of Underlying",
@@ -178,12 +178,12 @@ public class WebTest {
 //				"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
 //				"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
 //				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
-//				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
+				"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
 				//"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"32. PS038 - To verify user is able to Import the file and fill the details with the imported file in Property (Statement of Values) tab",
 //				"33. PS046 - To verify user is able to add comment under Coverage Requirement in Property (Statement of Values) tab",
 				//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab"
-//				"34.5. PS051 - To verify user is able to Delete the other Location by clicking on Delete Icon in BI Worksheet Tab",
+				"34.5. PS051 - To verify user is able to Delete the other Location by clicking on Delete Icon in BI Worksheet Tab",
 				//"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
 				//"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
 				//"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
@@ -191,11 +191,11 @@ public class WebTest {
 				//"36.4. PS057 - To verify user is able to download the Template in Contingent BI/ Dependent tab",
 				//"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
 
-//				"35. PS049 - To verify user is able to enter the details in BI Worksheet page"
+//				"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
 //				"36. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
 				//"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
 //				"37.1. PS061 - Verify the error message \"Please enter the fields marked as mandatory to continue further.\" in Contingent BI/ Dependent tab on clicking continue button without entering mandatory fields",
-				//"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
+//			"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
 //				"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //				"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
 //				"41. PS065 - To verify user is able to enter the details in Crime-Controls & Underwriting question in Crime Tab",
@@ -204,11 +204,11 @@ public class WebTest {
 //				"44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
 //				"45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
 //				"46. PS071 - To verify user is able to enter the details For Program structure in Transit/Cargo/Stock Throughput tab",
-				//"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
-				//"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
-				//"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures",
-				//"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
-				//"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab"
+//				"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
+//				"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
+//				"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures",
+				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+				"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab"
 //	            "71. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
 //	            "72. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
 //	            "73. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
@@ -230,7 +230,7 @@ public class WebTest {
                 //"34.2. PS053 -  Verify the Error Message \"Please enter the fields marked as mandatory to continue further.\" by Clicking on Continue Button without Entering Mandatory Fields in BI Worksheet Tab",
                 //"34.3. PS048 - To verify user is able to mark BI Worksheet page as Not Applicable"
 				//"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
-                "86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button"
+                //"86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -940,13 +940,14 @@ public class WebTest {
 									}
 									catch(NullPointerException ex){
 									}
-									if (!(sActualValue.replaceAll("[\\t\\n\\r]+"," ")
-											.trim().equals(
-											testAction.action.fieldValue.trim()))) {
+									 sActualValue = sActualValue.replaceAll("[\\t\\n\\r]+", " ")
+											.replaceAll("[^\\x00-\\x7F]", " ").trim();
+									if (!(sActualValue.equals(
+											testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim()))) {
 										stepResult.status = "Fail";
 										stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
-												"does not match the value given (" + testAction.action.fieldValue +
-												") , Got [" + sActualValue.replaceAll("[\\t\\n\\r]+"," ").trim() + "]";
+												"does not match the value given (" + testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim() +
+												") , Got [" + sActualValue + "]";
 										logger.error(stepResult.actualResult);
 
 									}
