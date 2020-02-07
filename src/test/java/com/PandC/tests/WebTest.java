@@ -88,7 +88,7 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+//                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //		"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //		"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -102,6 +102,7 @@ public class WebTest {
 //		"12. PS014 - Verify user is displayed General Information page along with - "Cover Page” as default",
 //		"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
 //		"14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page",
+//				"14.1. PS192 - RFR->Cover Page: Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date"
 //				"15.1. PS189 - Validate error message is displayed for From Date on Cover Page",
 //				"15.2. PS190 - Validate the error message on entering Alpha Characters in Years in Business field on Cover Page",
 //				"15.3. PS191 - Validate the Alert Pop Up is displayed properly for Blank Date in Cover Page",
@@ -118,7 +119,7 @@ public class WebTest {
 //				"19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
 //				"20. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
 //				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
-//				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
+//				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension"
 //				"23. PS018 -  Verify user is not able to upload more than 10 files and displayed the message - Maximum 10 files can be uploaded",
 //				"24. PS017 -  Verify user is able to uncheck and delete the uploaded document",
 //				"25. PS019 - Verify user is displayed the message - \"Invalid file name. File name should not contain special characters like ~ ` ! @ # $ % ^ & * ( ) + = { } | [ ] : \" ; < > ? , /\" when user uploads a file with special characters",
@@ -127,7 +128,7 @@ public class WebTest {
 //"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 //"29. PS030 -  Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
 //"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
-                "30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//                "30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
 //		"31.2. PS039 - To verify user is able to mark Property (Statement of Values) tab as Not Applicable",
 //		"31.3. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
@@ -148,8 +149,9 @@ public class WebTest {
 //		"36.4. PS057 - To verify user is able to download the Template in Contingent BI/ Dependent tab",
 //		"36.5. PS059 - To verify user is able to add a Row in Contingent BI/ Dependent tab",
 //		"37. PS055 - To verify user is able to Import the file and fill the details with the imported file in Contingent BI/ Dependent tab",
-//		"37.1. PS061 - Verify the error message Please enter the fields marked as mandatory to continue further. in Contingent BI/ Dependent tab on clicking continue button without entering mandatory fields",
-//		"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
+//		G:\PandC_Project\pandc\testdata\filesUpload\excel\PropertyTabDependentTemplate.xlsx
+// "37.1. PS061 - Verify the error message Please enter the fields marked as mandatory to continue further. in Contingent BI/ Dependent tab on clicking continue button without entering mandatory fields",
+//		"38.1. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab"
 //		"38.2. PS062 - To verify user is able to mark Crime Page as as Not Applicable",
 //		"39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //		"40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
@@ -161,7 +163,7 @@ public class WebTest {
 //		"46. PS071 - To verify user is able to enter the details For Program structure in Transit/Cargo/Stock Throughput tab",
 //		"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Spoilage",
 //		"48. PS075 - To verify user is able to enter the details For Chubb Group in Spoilage tab",
-//		"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures",
+//		"49. PS076 - To verify user is able to enter the details For Travelers Lloyds Insurance Company in Spoilage tab and navigate to Casualty Exposures"
 //		"49.1. PS125 - To verify user is able to mark Casualty Exposure - Revenue & Liability Limits tab as Not Applicable",
 //		"49.2. PS126 - Verify user is able to add another row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on add Row under Program Structure",
 //		""49.3. PS127 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on Delete under Program Structure
@@ -222,7 +224,7 @@ public class WebTest {
 //		"74.7. PS168 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Schedule of Underlying",
 //		"74.8. PS169 - Verify user is able to Delete the added row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on Delete under Schedule of Underlying",
 //"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
-                "76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab"
+//                "76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
 //				"77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
 //"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab",
 //                "79. PS119 - Verify user is able to Preview the details entered by user for General Information by clicking on General Information in Preview tab",
@@ -233,7 +235,10 @@ public class WebTest {
 //"84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
 //				"85. PS118 - Verify user is able to add the details in Request For Quotation tab and submit the request for Quotation"
 //"87. Review Tab - Verify the contents of the Property SOV Tab (Property Tab) in the Exported Excel by clicking on Export button"
-//                "86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button"
+//                "86. Review Tab - Verify the contents of the Revenue & Liability Tab (Casualty Tab) in the Exported Excel by clicking on Export button",
+//				"88. Review Tab - Verify the contents of the BI Worksheet Tab (Property Tab) in the Exported Excel by clicking on Export button",
+//				"89. Review Tab - Verify the contents of the Contingent BI/ Dependent Tab (Property Tab) in the Exported Excel by clicking on Export button"
+				"91. Review Tab - Verify the contents of the U.S. Workers' Compensation Remuneration Worksheet (WC Exposure Tab) in the Exported Excel by clicking on Export button"
 		);
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
