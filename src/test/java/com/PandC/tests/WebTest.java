@@ -155,7 +155,7 @@ public class WebTest {
     			//"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
     			//"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
 				//"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab"
-				"65.1. PS136 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability tab as Not Applicable"
+				"65.1. PS136 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability tab as Not Applicable",
 //				"66. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
 				//"67. PS100 - To verify user is abl    e to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
 //				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
