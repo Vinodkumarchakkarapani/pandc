@@ -89,7 +89,8 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //				"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -241,11 +242,8 @@ public class WebTest {
 //				"91. Review Tab - Verify the contents of the U.S. Workers' Compensation Remuneration Worksheet (WC Exposure Tab) in the Exported Excel by clicking on Export button",
 //				"92. Review Tab - Verify the contents of the Auto Tab (Casualty Exposure Tab) in the Exported Excel by clicking on Export button",
 //				"93. Review Tab - Verify the contents of the Supplementary Application tab (WC Exposure Tab) in the Exported Excel by clicking on Export button",
-//				"94. Review Tab - Verify the contents of the Auto Tab - Driver & Auto list (Casualty Exposure Tab) in the Exported Excel by clicking on Export button",
-//				"95. Review Tab - Verify the contents of the Auto tab - Non-Owned Quest. (Casualty Exposure Tab) in the Exported Excel by clicking on Export button",
-//				"96. Review Tab - Verify the contents of the International Liab Locations (Foreign Tab) in the Exported Excel by clicking on Export button",
 //				"97. CP001 - To verify user navigates to Client Proposal dashboard on clicking Client Proposal Tile in home page",
-//				"98. CP002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb"
+//				"98. CP002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"99. CP006 - Verify user is able to search a record by Modified Date in Client Proposal List Page",
 //				"100. CP007 - Verify user is able to search a record by Status - Draft in Client Proposal List Page",
 //				"101. CP009 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search in Create New Proposal List page",
@@ -258,12 +256,8 @@ public class WebTest {
 //                "108. CP012 - Verify user is able to search a record by Primary Contact in Create New Proposal List Page",
 //				"109. CP013 - Verify user is able to search a record by Submit Date in Create New Proposal List Page",
 //				"110. CP014 - Verify user is able to search a record by Status - Draft in Create New Proposal List Page",
-//				"111. CP015 - Verify user is able to serch a record by Status - Sent For Quotation in Create New Proposal List Page",
-//				"112. CP016 - Verify user is able to navigate to Proposal Home page by clicking on edit icon for client in Create New Proposal List Page",
-//                "113. CP017 - Verify user is able to Create a proposal for Property (Statement of Values) in R&P Coverage page",
-//                "114. CP018 - Verify user is able to Create a proposal for Crime in R&P Coverage page"
-
-		);
+//				"111. CP015 - Verify user is able to serch a record by Status - Sent For Quotation in Create New Proposal List Page"
+ );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
 		logger_performance = LogManager.getLogger("com.PandC._perftests");
@@ -853,69 +847,85 @@ public class WebTest {
                                     if (!(cssBGValue.equals(testAction.action.fieldValue.trim())
                                             || cssBGCValue.equals(testAction.action.fieldValue.trim()) ||
                                             cssBGImage.equals(testAction.action.fieldValue.trim()))) {
-                                        stepResult.status = "Fail";
-                                        stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
-                                                "does not match the value given (" + testAction.action.fieldValue +
-                                                ") , Got [" + cssBGValue + cssBGCValue + "]";
-                                        logger.error(stepResult.actualResult);
-                                    }
-                                    break;
-                                case "transactionstart":
-                                    iTransactionStartTime = (new Date()).getTime();
-                                    break;
-                                case "validatetransactiontime":
-                                    int LoadTime = Integer.parseInt(config.app.getProperty("app.gui.defaultloadtime"));
-                                    long TransactionTime = ((new Date()).getTime() - iTransactionStartTime);
-                                    if (!testAction.action.fieldValue.equals(""))
-                                        LoadTime = Integer.parseInt(testAction.action.fieldValue);
-                                    if (TransactionTime > LoadTime) {
-                                        sPerfActualResult = "Time take for this transaction is [" + TransactionTime
-                                                + "] milliseconds But expected to be less than [" + LoadTime + "] milliseconds"
-                                                + " on Browser: " + config.app.getProperty("selenium.webdriver.name");
-                                    } else {
-                                        sPerfActualResult = "Time take for this transaction is [" + TransactionTime
-                                                + "] milliseconds"
-                                                + " on Browser: " + config.app.getProperty("selenium.webdriver.name");
-                                        PerfromanceTest_pass = true;
-                                    }
-                                    break;
-                                case "uivalidation":
-                                    LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/" + testAction.action.fieldValue,
-                                            new SectionFilter(Arrays.asList("desktop"), null), new Properties(), new HashMap<String, Object>());
-                                    List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
-                                    GalenTestInfo test = GalenTestInfo.fromString(
-                                            gui_UIVal_TC.description
-                                                    + config.app.getProperty("selenium.webdriver.name"));
-                                    test.getReport().layout(layoutReport,
-                                            gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
-                                                    + config.app.getProperty("selenium.webdriver.name"));
-                                    tests.add(test);
-                                    HtmlReportBuilder htmlReportBuilder = new HtmlReportBuilder();
-                                    String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
-                                    //Create a report
-                                    htmlReportBuilder.build(tests, "UIValidation/" + gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
-                                            + config.app.getProperty("selenium.webdriver.name") + "_" + timeStamp);
-                                    String folderToZip = "UIValidation/" + gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
-                                            + config.app.getProperty("selenium.webdriver.name") + "_" + timeStamp;
-                                    String zipName = "UIValidation/" + gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
-                                            + config.app.getProperty("selenium.webdriver.name") + "_" + timeStamp + ".zip";
-                                    Path sourceFolderPath = Paths.get(folderToZip);
-                                    Path zipPath = Paths.get(zipName);
-                                    ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipPath.toFile()));
-                                    Files.walkFileTree(sourceFolderPath, new SimpleFileVisitor<Path>() {
-                                        public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                                            zos.putNextEntry(new ZipEntry(sourceFolderPath.relativize(file).toString()));
-                                            Files.copy(file, zos);
-                                            zos.closeEntry();
-                                            return FileVisitResult.CONTINUE;
-                                        }
-                                    });
-                                    zos.close();
-                                    File zipFile = new File(zipName);
-                                    UIValidationZipPath = qifClient.uploadScreenShot(
-                                            config.qif.getProperty("qif.azure.connection"),
-                                            config.qif.getProperty("qif.azure.container"),
-                                            zipFile);
+										stepResult.status = "Fail";
+										stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+												"does not match the value given (" + testAction.action.fieldValue +
+												") , Got [" + cssBGValue + cssBGCValue + "]";
+										logger.error(stepResult.actualResult);
+									}
+									break;
+								case "transactionstart":
+									iTransactionStartTime = (new Date()).getTime();
+									break;
+								case "validatetransactiontime":
+									int LoadTime=Integer.parseInt(config.app.getProperty("app.gui.defaultloadtime"));
+									long TransactionTime = ((new Date()).getTime() - iTransactionStartTime);
+									if(!testAction.action.fieldValue.equals(""))
+										LoadTime = Integer.parseInt(testAction.action.fieldValue);
+									if(TransactionTime > LoadTime) {
+										sPerfActualResult = "Time take for this transaction is [" + TransactionTime
+												+ "] milliseconds But expected to be less than [" + LoadTime + "] milliseconds"
+										+ " on Browser: " + config.app.getProperty("selenium.webdriver.name");
+									}
+									else
+									{
+										sPerfActualResult = "Time take for this transaction is [" + TransactionTime
+												+ "] milliseconds"
+												+ " on Browser: " + config.app.getProperty("selenium.webdriver.name");
+										PerfromanceTest_pass = true;
+									}
+									break;
+								case "selectfirstelement":
+									robot = null;
+									try {
+										robot = new Robot();
+									} catch (AWTException e) {
+										e.printStackTrace();
+									}
+									robot.delay(250);
+									robot.keyPress(KeyEvent.VK_DOWN);
+									robot.keyRelease(KeyEvent.VK_DOWN);
+									robot.keyPress(KeyEvent.VK_TAB);
+									robot.keyRelease(KeyEvent.VK_TAB);
+									robot.delay(1000);
+									break;
+								case "uivalidation":
+									LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/"+testAction.action.fieldValue,
+											new SectionFilter(Arrays.asList("desktop"),null),new Properties(), new HashMap<String, Object>());
+									List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
+									GalenTestInfo test = GalenTestInfo.fromString(
+											gui_UIVal_TC.description
+												+ config.app.getProperty("selenium.webdriver.name"));
+									test.getReport().layout(layoutReport,
+											gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+												+config.app.getProperty("selenium.webdriver.name"));
+									tests.add(test);
+									HtmlReportBuilder htmlReportBuilder = new HtmlReportBuilder();
+									String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
+									//Create a report
+									htmlReportBuilder.build(tests, "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp);
+									String folderToZip = "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp;
+									String zipName = "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
+											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp+".zip";
+									Path sourceFolderPath = Paths.get(folderToZip);
+									Path zipPath = Paths.get(zipName);
+									ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipPath.toFile()));
+									Files.walkFileTree(sourceFolderPath, new SimpleFileVisitor<Path>() {
+										public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+											zos.putNextEntry(new ZipEntry(sourceFolderPath.relativize(file).toString()));
+											Files.copy(file, zos);
+											zos.closeEntry();
+											return FileVisitResult.CONTINUE;
+										}
+									});
+									zos.close();
+									File zipFile = new File(zipName);
+									UIValidationZipPath =  qifClient.uploadScreenShot(
+											config.qif.getProperty("qif.azure.connection"),
+											config.qif.getProperty("qif.azure.container"),
+											zipFile);
 
                                     List<ValidationResult> validationErrorResults = layoutReport.getValidationErrorResults();
                                     String UIErrors = "";
