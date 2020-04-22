@@ -88,7 +88,8 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-//				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //		"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //		"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -240,21 +241,21 @@ public class WebTest {
 //				"91. Review Tab - Verify the contents of the U.S. Workers' Compensation Remuneration Worksheet (WC Exposure Tab) in the Exported Excel by clicking on Export button",
 //				"92. Review Tab - Verify the contents of the Auto Tab (Casualty Exposure Tab) in the Exported Excel by clicking on Export button",
 //				"93. Review Tab - Verify the contents of the Supplementary Application tab (WC Exposure Tab) in the Exported Excel by clicking on Export button",
-				"97. CP001 - To verify user navigates to Client Proposal dashboard on clicking Client Proposal Tile in home page",
-				"98. CP002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
-				"99. CP006 - Verify user is able to search a record by Modified Date in Client Proposal List Page",
-				"100. CP007 - Verify user is able to search a record by Status - Draft in Client Proposal List Page",
-				"101. CP009 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search in Create New Proposal List page",
-				"102. CP005 - Verify user is able to search a record by Primary Contact in Client Proposal List Page",
-                "103. CP003 - Verify user is able to search a record by Client Name in Client Proposal List Page",
-				"104. CP004 - Verify user is able to search a record by Policy Term in Client Proposal List Page",
-				"105. CP008 - Verify user is able to Navigate to Create New Proposal page dashboard by clicking on Create New Proposal button in Client Proposal List Page",
-				"106. CP010 - Verify user is able to search a record by Client Name in Create New Proposal List Page",
-                "107. CP011 - Verify user is able to search a record by Policy Term in Create New Proposal List Page",
-                "108. CP012 - Verify user is able to search a record by Primary Contact in Create New Proposal List Page",
-				"109. CP013 - Verify user is able to search a record by Submit Date in Create New Proposal List Page",
-				"110. CP014 - Verify user is able to search a record by Status - Draft in Create New Proposal List Page",
-				"111. CP015 - Verify user is able to serch a record by Status - Sent For Quotation in Create New Proposal List Page"
+//				"97. CP001 - To verify user navigates to Client Proposal dashboard on clicking Client Proposal Tile in home page",
+//				"98. CP002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
+//				"99. CP006 - Verify user is able to search a record by Modified Date in Client Proposal List Page",
+//				"100. CP007 - Verify user is able to search a record by Status - Draft in Client Proposal List Page",
+//				"101. CP009 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search in Create New Proposal List page",
+//				"102. CP005 - Verify user is able to search a record by Primary Contact in Client Proposal List Page",
+//                "103. CP003 - Verify user is able to search a record by Client Name in Client Proposal List Page",
+//				"104. CP004 - Verify user is able to search a record by Policy Term in Client Proposal List Page",
+//				"105. CP008 - Verify user is able to Navigate to Create New Proposal page dashboard by clicking on Create New Proposal button in Client Proposal List Page",
+//				"106. CP010 - Verify user is able to search a record by Client Name in Create New Proposal List Page",
+//                "107. CP011 - Verify user is able to search a record by Policy Term in Create New Proposal List Page",
+//                "108. CP012 - Verify user is able to search a record by Primary Contact in Create New Proposal List Page",
+//				"109. CP013 - Verify user is able to search a record by Submit Date in Create New Proposal List Page",
+//				"110. CP014 - Verify user is able to search a record by Status - Draft in Create New Proposal List Page",
+//				"111. CP015 - Verify user is able to serch a record by Status - Sent For Quotation in Create New Proposal List Page"
  );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -867,6 +868,20 @@ public class WebTest {
 												+ " on Browser: " + config.app.getProperty("selenium.webdriver.name");
 										PerfromanceTest_pass = true;
 									}
+									break;
+								case "selectfirstelement":
+									robot = null;
+									try {
+										robot = new Robot();
+									} catch (AWTException e) {
+										e.printStackTrace();
+									}
+									robot.delay(250);
+									robot.keyPress(KeyEvent.VK_DOWN);
+									robot.keyRelease(KeyEvent.VK_DOWN);
+									robot.keyPress(KeyEvent.VK_TAB);
+									robot.keyRelease(KeyEvent.VK_TAB);
+									robot.delay(1000);
 									break;
 								case "uivalidation":
 									LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/"+testAction.action.fieldValue,
