@@ -90,7 +90,7 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
 				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
+		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //				"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -130,9 +130,11 @@ public class WebTest {
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 //				"29. PS030 -  Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
 //				"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
-//				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-//				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
-//				"31.2. PS039 - To verify user is able to mark Property (Statement of Values) tab as Not Applicable",
+//				"30.1. Verify validation error messages on the Name Insured Tab",
+//                "30.2. Verify new application changes on the Name Insured Tab"
+                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
+				"31.2. Verify new application changes on the Property(Statement of Values) Tab"
 //				"31.3. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
 //				"31.4. PS044 - To verify user is able to Delete a row from the Program Structure Property (Statement of Values) tab",
 //				"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
@@ -880,12 +882,12 @@ public class WebTest {
 									} catch (AWTException e) {
 										e.printStackTrace();
 									}
-									robot.delay(250);
+									robot.delay(2000);
 									robot.keyPress(KeyEvent.VK_DOWN);
 									robot.keyRelease(KeyEvent.VK_DOWN);
-									robot.keyPress(KeyEvent.VK_TAB);
-									robot.keyRelease(KeyEvent.VK_TAB);
-									robot.delay(1000);
+									robot.keyPress(KeyEvent.VK_ENTER);
+									robot.keyRelease(KeyEvent.VK_ENTER);
+									robot.delay(2000);
 									break;
 								case "uivalidation":
 									LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/"+testAction.action.fieldValue,
