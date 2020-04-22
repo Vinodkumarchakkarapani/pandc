@@ -89,7 +89,7 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-//				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //				"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -129,9 +129,11 @@ public class WebTest {
 //				"28. PS022 - Verify user is displayed the message - \"Invalid file extension. Only “.pdf”, “.xls, “.xlsx” ,“ .doc .docx” file extensions are supported.\" when user uploads a file other than supported extensions",
 //				"29. PS030 -  Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
 //				"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
-//				"30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-//				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
-//				"31.2. PS039 - To verify user is able to mark Property (Statement of Values) tab as Not Applicable",
+//				"30.1. Verify validation error messages on the Name Insured Tab",
+//                "30.2. Verify new application changes on the Name Insured Tab"
+                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
+				"31.2. Verify new application changes on the Property(Statement of Values) Tab"
 //				"31.3. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
 //				"31.4. PS044 - To verify user is able to Delete a row from the Program Structure Property (Statement of Values) tab",
 //				"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
@@ -242,7 +244,7 @@ public class WebTest {
 //				"94. Review Tab - Verify the contents of the Auto Tab - Driver & Auto list (Casualty Exposure Tab) in the Exported Excel by clicking on Export button",
 //				"95. Review Tab - Verify the contents of the Auto tab - Non-Owned Quest. (Casualty Exposure Tab) in the Exported Excel by clicking on Export button",
 //				"96. Review Tab - Verify the contents of the International Liab Locations (Foreign Tab) in the Exported Excel by clicking on Export button",
-				"97. CP001 - To verify user navigates to Client Proposal dashboard on clicking Client Proposal Tile in home page",
+//				"97. CP001 - To verify user navigates to Client Proposal dashboard on clicking Client Proposal Tile in home page",
 //				"98. CP002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb"
 //				"99. CP006 - Verify user is able to search a record by Modified Date in Client Proposal List Page",
 //				"100. CP007 - Verify user is able to search a record by Status - Draft in Client Proposal List Page",
@@ -250,16 +252,16 @@ public class WebTest {
 //				"102. CP005 - Verify user is able to search a record by Primary Contact in Client Proposal List Page",
 //                "103. CP003 - Verify user is able to search a record by Client Name in Client Proposal List Page",
 //				"104. CP004 - Verify user is able to search a record by Policy Term in Client Proposal List Page",
-				"105. CP008 - Verify user is able to Navigate to Create New Proposal page dashboard by clicking on Create New Proposal button in Client Proposal List Page",
+//				"105. CP008 - Verify user is able to Navigate to Create New Proposal page dashboard by clicking on Create New Proposal button in Client Proposal List Page",
 //				"106. CP010 - Verify user is able to search a record by Client Name in Create New Proposal List Page",
 //                "107. CP011 - Verify user is able to search a record by Policy Term in Create New Proposal List Page",
 //                "108. CP012 - Verify user is able to search a record by Primary Contact in Create New Proposal List Page",
 //				"109. CP013 - Verify user is able to search a record by Submit Date in Create New Proposal List Page",
 //				"110. CP014 - Verify user is able to search a record by Status - Draft in Create New Proposal List Page",
 //				"111. CP015 - Verify user is able to serch a record by Status - Sent For Quotation in Create New Proposal List Page",
-				"112. CP016 - Verify user is able to navigate to Proposal Home page by clicking on edit icon for client in Create New Proposal List Page",
-                "113. CP017 - Verify user is able to Create a proposal for Property (Statement of Values) in R&P Coverage page",
-                "114. CP018 - Verify user is able to Create a proposal for Crime in R&P Coverage page"
+//				"112. CP016 - Verify user is able to navigate to Proposal Home page by clicking on edit icon for client in Create New Proposal List Page",
+//                "113. CP017 - Verify user is able to Create a proposal for Property (Statement of Values) in R&P Coverage page",
+//                "114. CP018 - Verify user is able to Create a proposal for Crime in R&P Coverage page"
 
 		);
 		// Get the Logger and Configuration details
