@@ -72,25 +72,24 @@ import java.util.zip.ZipOutputStream;
  */
 public class WebTest {
 
-	private static Logger logger;
-	private static Logger logger_performance;
-	private static SimpleDateFormat fileFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
-	private static Configuration config;
-	private static boolean isSetUp = true;
-	private static QIFClient qifClient;
-	private static Project project;
-	private static List<TestCaseGUI> guiTestCases = new ArrayList<>();
-	private static List<TestCaseGUI> guiTestCases_performance_Tests = new ArrayList<>();
-	private static List<TestCaseGUI> guiTestCases_UIValidation_Tests = new ArrayList<>();
+    private static Logger logger;
+    private static Logger logger_performance;
+    private static SimpleDateFormat fileFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    private static Configuration config;
+    private static boolean isSetUp = true;
+    private static QIFClient qifClient;
+    private static Project project;
+    private static List<TestCaseGUI> guiTestCases = new ArrayList<>();
+    private static List<TestCaseGUI> guiTestCases_performance_Tests = new ArrayList<>();
+    private static List<TestCaseGUI> guiTestCases_UIValidation_Tests = new ArrayList<>();
 
 
-
-	@BeforeSuite
-	static void setUp() {
-		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
-		List<String> listOfTCstoExecute = Arrays.asList(
-				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
+    @BeforeSuite
+    static void setUp() {
+        // Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
+        List<String> listOfTCstoExecute = Arrays.asList(
+                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //				"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -133,8 +132,8 @@ public class WebTest {
 //				"30.1. Verify validation error messages on the Name Insured Tab",
 //                "30.2. Verify new application changes on the Name Insured Tab"
                 "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
-				"31.2. Verify new application changes on the Property(Statement of Values) Tab"
+                "31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
+                "31.2. Verify new application changes on the Property(Statement of Values) Tab"
 //				"31.3. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
 //				"31.4. PS044 - To verify user is able to Delete a row from the Program Structure Property (Statement of Values) tab",
 //				"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
@@ -257,130 +256,131 @@ public class WebTest {
 //				"109. CP013 - Verify user is able to search a record by Submit Date in Create New Proposal List Page",
 //				"110. CP014 - Verify user is able to search a record by Status - Draft in Create New Proposal List Page",
 //				"111. CP015 - Verify user is able to serch a record by Status - Sent For Quotation in Create New Proposal List Page"
- );
-		// Get the Logger and Configuration details
-		logger = LogManager.getLogger("WebTest");
-		logger_performance = LogManager.getLogger("com.PandC._perftests");
-		logger.info(new String(new char[80]).replace("\0", "="));
-		logger.info("Reading the Application Configuration...");
-		config = new Configuration();
-		String browserName = config.app.getProperty("selenium.webdriver.name");
-		int browserWidth = Integer.parseInt(config.app.getProperty("selenium.webdriver.width"));
-		int browserHeight = Integer.parseInt(config.app.getProperty("selenium.webdriver.height"));
+        );
+        // Get the Logger and Configuration details
+        logger = LogManager.getLogger("WebTest");
+        logger_performance = LogManager.getLogger("com.PandC._perftests");
+        logger.info(new String(new char[80]).replace("\0", "="));
+        logger.info("Reading the Application Configuration...");
+        config = new Configuration();
+        String browserName = config.app.getProperty("selenium.webdriver.name");
+        int browserWidth = Integer.parseInt(config.app.getProperty("selenium.webdriver.width"));
+        int browserHeight = Integer.parseInt(config.app.getProperty("selenium.webdriver.height"));
 
-		// Try to do the QIF activities and Browser initialization
-		try {
-			logger.info("Initializing the QIF Client...");
-			qifClient = new QIFClient(config.qif.getProperty("qif.url.api"));
+        // Try to do the QIF activities and Browser initialization
+        try {
+            logger.info("Initializing the QIF Client...");
+            qifClient = new QIFClient(config.qif.getProperty("qif.url.api"));
 
-			logger.info("Authenticating with QIF...");
-			qifClient.authenticate(
-				config.qif.getProperty("qif.user.name"),
-				config.qif.getProperty("qif.user.password")
-			);
+            logger.info("Authenticating with QIF...");
+            qifClient.authenticate(
+                    config.qif.getProperty("qif.user.name"),
+                    config.qif.getProperty("qif.user.password")
+            );
 
-			logger.info("Getting the Project Details from QIF...");
-			project = qifClient.getProject(config.qif.getProperty("qif.project.gui"));
+            logger.info("Getting the Project Details from QIF...");
+            project = qifClient.getProject(config.qif.getProperty("qif.project.gui"));
 
-			logger.info("Getting all the GUI Test Cases for the Project (" + project.projectName + ") from QIF...");
-			guiTestCases = qifClient.getGUITestCases(project.projectId,false,null);
+            logger.info("Getting all the GUI Test Cases for the Project (" + project.projectName + ") from QIF...");
+            guiTestCases = qifClient.getGUITestCases(project.projectId, false, null);
             List<TestCaseGUI> obsolted_GuiTestCases = new ArrayList<>();
-			for (TestCaseGUI testCase : guiTestCases) {
-			    if (testCase.description.startsWith("[Obsolete]")){
+            for (TestCaseGUI testCase : guiTestCases) {
+                if (testCase.description.startsWith("[Obsolete]")) {
                     obsolted_GuiTestCases.add(testCase);
                     continue;
                 }
-				String sNo=testCase.description.split(" ")[0];
-				if (sNo.matches(".*[a-zA-Z]+.*")) {
-					if (sNo.contains(".P."))
-						guiTestCases_performance_Tests.add(testCase);
-					else if (sNo.contains(".U."))
-						guiTestCases_UIValidation_Tests.add(testCase);
-					//guiTestCases.remove(testCase);
-				}
-			}
-			if(obsolted_GuiTestCases.size()>0)
-			    guiTestCases.removeAll(obsolted_GuiTestCases);
-			for (TestCaseGUI testCase : guiTestCases_performance_Tests)
-				guiTestCases.remove(testCase);
-			for (TestCaseGUI testCase : guiTestCases_UIValidation_Tests)
-				guiTestCases.remove(testCase);
-			//Execute selected tests only as mentioned in listOfTCstoExecute
-			if(config.app.getProperty("app.gui.executeselectedTCs").toUpperCase().startsWith("T")) {
-				List<TestCaseGUI> guiTestCases_new = new ArrayList<>();
-				for (TestCaseGUI testCase : guiTestCases) {
-				    System.out.println("Desc:"+testCase.description);
-					if (listOfTCstoExecute.contains(testCase.description.replace("  ", " ")))
-						guiTestCases_new.add(testCase);
-				}
-				guiTestCases = guiTestCases_new;
-			}
+                String sNo = testCase.description.split(" ")[0];
+                if (sNo.matches(".*[a-zA-Z]+.*")) {
+                    if (sNo.contains(".P."))
+                        guiTestCases_performance_Tests.add(testCase);
+                    else if (sNo.contains(".U."))
+                        guiTestCases_UIValidation_Tests.add(testCase);
+                    //guiTestCases.remove(testCase);
+                }
+            }
+            if (obsolted_GuiTestCases.size() > 0)
+                guiTestCases.removeAll(obsolted_GuiTestCases);
+            for (TestCaseGUI testCase : guiTestCases_performance_Tests)
+                guiTestCases.remove(testCase);
+            for (TestCaseGUI testCase : guiTestCases_UIValidation_Tests)
+                guiTestCases.remove(testCase);
+            //Execute selected tests only as mentioned in listOfTCstoExecute
+            if (config.app.getProperty("app.gui.executeselectedTCs").toUpperCase().startsWith("T")) {
+                List<TestCaseGUI> guiTestCases_new = new ArrayList<>();
+                for (TestCaseGUI testCase : guiTestCases) {
+                    System.out.println("Desc:" + testCase.description);
+                    if (listOfTCstoExecute.contains(testCase.description.replace("  ", " ")))
+                        guiTestCases_new.add(testCase);
+                }
+                guiTestCases = guiTestCases_new;
+            }
 
-			guiTestCases.sort((leftCase, rightCase) -> {
-				// Get the Serial Numbers from the Test Case Description
+            guiTestCases.sort((leftCase, rightCase) -> {
+                // Get the Serial Numbers from the Test Case Description
 				/*Integer leftSerial = Integer.parseInt(
 					leftCase.description.substring(0, leftCase.description.indexOf(".")));
 				Integer rightSerial = Integer.parseInt(
 					rightCase.description.substring(0, rightCase.description.indexOf(".")));*/
-				String lftdigit = leftCase.description.split(" ")[0]
-						.substring(0, leftCase.description.split(" ")[0].length() - 1);
-					//Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(leftCase.description).group(1);
-				Double leftSerial = Double.parseDouble(lftdigit);
-				String rightdigit = rightCase.description.split(" ")[0]
-						.substring(0, rightCase.description.split(" ")[0].length() - 1);
-						//Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(rightCase.description).group(1);
-				Double rightSerial = Double.parseDouble(rightdigit);
-				// Compare the Serial Numbers for Sorting
-				return leftSerial.compareTo(rightSerial);
-			});
-			logger.info("Total GUI Test Cases fetched for Project (" +
-				project.projectName + ") from QIF: " + guiTestCases.size());
+                String lftdigit = leftCase.description.split(" ")[0]
+                        .substring(0, leftCase.description.split(" ")[0].length() - 1);
+                //Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(leftCase.description).group(1);
+                Double leftSerial = Double.parseDouble(lftdigit);
+                String rightdigit = rightCase.description.split(" ")[0]
+                        .substring(0, rightCase.description.split(" ")[0].length() - 1);
+                //Pattern.compile("(\\d+(?:\\.\\d+)?)").matcher(rightCase.description).group(1);
+                Double rightSerial = Double.parseDouble(rightdigit);
+                // Compare the Serial Numbers for Sorting
+                return leftSerial.compareTo(rightSerial);
+            });
+            logger.info("Total GUI Test Cases fetched for Project (" +
+                    project.projectName + ") from QIF: " + guiTestCases.size());
 
-			logger.info("Initializing the Browser on (" + browserName + ") Web Driver...");
-			Browser.initialize(browserName);
-			logger.info("Setting the Browser Window Size to (" +
-				browserWidth + "x" + browserHeight + ") Resolution...");
-			Browser.webDriver.manage().window().setPosition(new Point(0, 0));
-			//Browser.webDriver.manage().window().setSize(new Dimension(browserWidth, browserHeight));
-			Browser.webDriver.manage().window().maximize();
-			//Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Browser.webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+            logger.info("Initializing the Browser on (" + browserName + ") Web Driver...");
+            Browser.initialize(browserName);
+            logger.info("Setting the Browser Window Size to (" +
+                    browserWidth + "x" + browserHeight + ") Resolution...");
+            Browser.webDriver.manage().window().setPosition(new Point(0, 0));
+            //Browser.webDriver.manage().window().setSize(new Dimension(browserWidth, browserHeight));
+            Browser.webDriver.manage().window().maximize();
+            //Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            Browser.webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
-			logger.info("Opening the Application URL in the Browser...");
-			Browser.webDriver.get(config.app.getProperty("app.gui.url"));
-			if(browserName.equalsIgnoreCase("edge")) {
-				WebDriverWait wait = new WebDriverWait(Browser.webDriver, 10);
-				try{
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".renewal-button")));
-					Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-toggle")).click();
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".menu-blk .dropdown-menu .log-blk")));
-					Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-menu .log-blk")).click();
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#cUsername")));
-				} catch (TimeoutException| NoSuchElementException e) {
+            logger.info("Opening the Application URL in the Browser...");
+            Browser.webDriver.get(config.app.getProperty("app.gui.url"));
+            if (browserName.equalsIgnoreCase("edge")) {
+                WebDriverWait wait = new WebDriverWait(Browser.webDriver, 10);
+                try {
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".renewal-button")));
+                    Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-toggle")).click();
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".menu-blk .dropdown-menu .log-blk")));
+                    Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-menu .log-blk")).click();
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#cUsername")));
+                } catch (TimeoutException | NoSuchElementException e) {
 
-				}
-			}
-			isSetUp = true;
-		} catch (Exception error) {
-			logger.error(error);
-			logger.info("Last API Response from QIF:\n" + qifClient.getLastResponse());
-			isSetUp = false;
-		}
-	}
+                }
+            }
+            isSetUp = true;
+        } catch (Exception error) {
+            logger.error(error);
+            logger.info("Last API Response from QIF:\n" + qifClient.getLastResponse());
+            isSetUp = false;
+        }
+    }
 
-	@DataProvider(name = "QIFDP")
-	public Object[][] QIFDP() {
-		// Data proovider for the tests to execute
-		String[][] TestDesc = new String[guiTestCases.size()][1];
-		int i=0;
-		for (TestCaseGUI testCase : guiTestCases)
-			TestDesc[i++][0]=testCase.description;
-		return TestDesc;
-	}
-	//@TestFactory
-	@Test(dataProvider = "QIFDP")
-	//Iterable<DynamicTest> executeTests() {
-	public void QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
+    @DataProvider(name = "QIFDP")
+    public Object[][] QIFDP() {
+        // Data proovider for the tests to execute
+        String[][] TestDesc = new String[guiTestCases.size()][1];
+        int i = 0;
+        for (TestCaseGUI testCase : guiTestCases)
+            TestDesc[i++][0] = testCase.description;
+        return TestDesc;
+    }
+
+    //@TestFactory
+    @Test(dataProvider = "QIFDP")
+    //Iterable<DynamicTest> executeTests() {
+    public void QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
 
 		/*List<DynamicTest> guiTests = new ArrayList<>();
 		// Make sure the Setup is completed correctly
@@ -403,674 +403,654 @@ public class WebTest {
 			);
 			return guiTests;
 		}*/
-		// Loop through the GUI Test Cases to add them as Dynamic Tests
-		//for (TestCaseGUI testCase : guiTestCases) {
-		//TestCaseGUI testCase = guiTestCases.
-        TestCaseGUI testCase =null;
+        // Loop through the GUI Test Cases to add them as Dynamic Tests
+        //for (TestCaseGUI testCase : guiTestCases) {
+        //TestCaseGUI testCase = guiTestCases.
+        TestCaseGUI testCase = null;
 
         for (TestCaseGUI testCaseTemp : guiTestCases)
             if (testCaseTemp.description.equals(sTestDescrition))
                 testCase = testCaseTemp;
 
-            if (testCase == null)
-                return;
-            Thread.sleep(3000);
-            //guiTests.add(dynamicTest(testCase.description, () -> {
-            logger.info("EXECUTE: " + testCase.description);
-            // Set all the Properties for Test Results
-            boolean allPassed = true;
-            String lastError = "";
-            String lastErrorScreen = "";
-            GUITestResult gui = new GUITestResult();
-            GUITestResult gui_Perf_Result = new GUITestResult();
-            GUITestResult gui_UIVal_Result = new GUITestResult();
-            TestCaseGUI gui_Perf_TC = new TestCaseGUI();
-            TestCaseGUI gui_UIVal_TC = new TestCaseGUI();
-            String UIValidationZipPath = "";
-            gui_Perf_TC.description = "";
-            gui_UIVal_TC.description = "";
-            gui_Perf_Result.testResult.testCaseId = "";
-            gui_UIVal_Result.testResult.testCaseId = "";
-            String sNo = testCase.description.split(" ")[0];
-            if (guiTestCases_performance_Tests.stream()
-                    .filter(x -> x.description.startsWith(sNo + "P.")).findFirst().orElse(null) != null)
-                gui_Perf_TC = guiTestCases_performance_Tests.stream()
-                        .filter(x -> x.description.startsWith(sNo + "P.")).findFirst().get();
-            if (guiTestCases_UIValidation_Tests.stream()
-                    .filter(x -> x.description.startsWith(sNo + "U.")).findFirst().orElse(null) != null)
-                gui_UIVal_TC = guiTestCases_UIValidation_Tests.stream()
-                        .filter(x -> x.description.startsWith(sNo + "U.")).findFirst().get();
-            String sPerfActualResult = "";
-            String sUIActualResult = "";
-            long iTransactionStartTime = 0;
-            boolean PerfromanceTest_pass = false;
-            boolean UIValidationTest_pass = false;
-            if (!gui_Perf_TC.description.isEmpty()) {
-                gui_Perf_Result.testResult.testCaseId = gui_Perf_TC.testCaseId;
-                gui_Perf_Result.testResult.moduleId = testCase.moduleId;
-                gui_Perf_Result.testResult.subModuleId = testCase.subModuleId;
-                gui_Perf_Result.testResult.status = "Broken";
-                gui_Perf_Result.testResult.sUT = project.projectName;
-                gui_Perf_Result.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
-                gui_Perf_Result.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
-                gui_Perf_Result.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
-                gui_Perf_Result.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
-                gui_Perf_Result.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
-                gui_Perf_Result.testResult.browserName = config.app.getProperty("app.gui.browserName");
-                gui_Perf_Result.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
-                gui_Perf_Result.testResult.resolution = config.app.getProperty("app.gui.resolution");
-                gui_Perf_Result.testResult.oSName = config.app.getProperty("app.gui.osName");
-                gui_Perf_Result.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
-                gui_Perf_Result.testResult.appType = config.app.getProperty("app.gui.appType");
-                gui_Perf_Result.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
-                gui_Perf_Result.testResult.executionStartTime = new Date();
-                gui_Perf_Result.testResult.projectId = project.projectId;
-                gui_Perf_Result.testResult.environment = config.app.getProperty("app.gui.environment");
-                gui_Perf_Result.testResult.runID = config.app.getProperty("app.gui.runID");
-                gui_Perf_TC.testCaseSteps.sort(new srNOSort());
-            }
-            if (!gui_UIVal_TC.description.isEmpty()) {
-                gui_UIVal_Result.testResult.testCaseId = gui_UIVal_TC.testCaseId;
-                gui_UIVal_Result.testResult.moduleId = testCase.moduleId;
-                gui_UIVal_Result.testResult.subModuleId = testCase.subModuleId;
-                gui_UIVal_Result.testResult.status = "Broken";
-                gui_UIVal_Result.testResult.sUT = project.projectName;
-                gui_UIVal_Result.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
-                gui_UIVal_Result.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
-                gui_UIVal_Result.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
-                gui_UIVal_Result.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
-                gui_UIVal_Result.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
-                gui_UIVal_Result.testResult.browserName = config.app.getProperty("app.gui.browserName");
-                gui_UIVal_Result.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
-                gui_UIVal_Result.testResult.resolution = config.app.getProperty("app.gui.resolution");
-                gui_UIVal_Result.testResult.oSName = config.app.getProperty("app.gui.osName");
-                gui_UIVal_Result.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
-                gui_UIVal_Result.testResult.appType = config.app.getProperty("app.gui.appType");
-                gui_UIVal_Result.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
-                gui_UIVal_Result.testResult.executionStartTime = new Date();
-                gui_UIVal_Result.testResult.projectId = project.projectId;
-                gui_UIVal_Result.testResult.environment = config.app.getProperty("app.gui.environment");
-                gui_UIVal_Result.testResult.runID = config.app.getProperty("app.gui.runID");
-                gui_UIVal_TC.testCaseSteps.sort(new srNOSort());
-            }
-            gui.testResult.testCaseId = testCase.testCaseId;
-            gui.testResult.moduleId = testCase.moduleId;
-            gui.testResult.subModuleId = testCase.subModuleId;
-            gui.testResult.status = "Broken";
-            gui.testResult.sUT = project.projectName;
-            gui.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
-            gui.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
-            gui.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
-            gui.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
-            gui.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
-            gui.testResult.browserName = config.app.getProperty("app.gui.browserName");
-            gui.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
-            gui.testResult.resolution = config.app.getProperty("app.gui.resolution");
-            gui.testResult.oSName = config.app.getProperty("app.gui.osName");
-            gui.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
-            gui.testResult.appType = config.app.getProperty("app.gui.appType");
-            gui.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
-            gui.testResult.executionStartTime = new Date();
-            gui.testResult.projectId = project.projectId;
-            gui.testResult.environment = config.app.getProperty("app.gui.environment");
-            gui.testResult.runID = config.app.getProperty("app.gui.runID");
+        if (testCase == null)
+            return;
+        Thread.sleep(3000);
+        //guiTests.add(dynamicTest(testCase.description, () -> {
+        logger.info("EXECUTE: " + testCase.description);
+        // Set all the Properties for Test Results
+        boolean allPassed = true;
+        String lastError = "";
+        String lastErrorScreen = "";
+        GUITestResult gui = new GUITestResult();
+        GUITestResult gui_Perf_Result = new GUITestResult();
+        GUITestResult gui_UIVal_Result = new GUITestResult();
+        TestCaseGUI gui_Perf_TC = new TestCaseGUI();
+        TestCaseGUI gui_UIVal_TC = new TestCaseGUI();
+        String UIValidationZipPath = "";
+        gui_Perf_TC.description = "";
+        gui_UIVal_TC.description = "";
+        gui_Perf_Result.testResult.testCaseId = "";
+        gui_UIVal_Result.testResult.testCaseId = "";
+        String sNo = testCase.description.split(" ")[0];
+        if (guiTestCases_performance_Tests.stream()
+                .filter(x -> x.description.startsWith(sNo + "P.")).findFirst().orElse(null) != null)
+            gui_Perf_TC = guiTestCases_performance_Tests.stream()
+                    .filter(x -> x.description.startsWith(sNo + "P.")).findFirst().get();
+        if (guiTestCases_UIValidation_Tests.stream()
+                .filter(x -> x.description.startsWith(sNo + "U.")).findFirst().orElse(null) != null)
+            gui_UIVal_TC = guiTestCases_UIValidation_Tests.stream()
+                    .filter(x -> x.description.startsWith(sNo + "U.")).findFirst().get();
+        String sPerfActualResult = "";
+        String sUIActualResult = "";
+        long iTransactionStartTime = 0;
+        boolean PerfromanceTest_pass = false;
+        boolean UIValidationTest_pass = false;
+        if (!gui_Perf_TC.description.isEmpty()) {
+            gui_Perf_Result.testResult.testCaseId = gui_Perf_TC.testCaseId;
+            gui_Perf_Result.testResult.moduleId = testCase.moduleId;
+            gui_Perf_Result.testResult.subModuleId = testCase.subModuleId;
+            gui_Perf_Result.testResult.status = "Broken";
+            gui_Perf_Result.testResult.sUT = project.projectName;
+            gui_Perf_Result.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
+            gui_Perf_Result.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
+            gui_Perf_Result.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
+            gui_Perf_Result.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
+            gui_Perf_Result.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
+            gui_Perf_Result.testResult.browserName = config.app.getProperty("app.gui.browserName");
+            gui_Perf_Result.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
+            gui_Perf_Result.testResult.resolution = config.app.getProperty("app.gui.resolution");
+            gui_Perf_Result.testResult.oSName = config.app.getProperty("app.gui.osName");
+            gui_Perf_Result.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
+            gui_Perf_Result.testResult.appType = config.app.getProperty("app.gui.appType");
+            gui_Perf_Result.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
+            gui_Perf_Result.testResult.executionStartTime = new Date();
+            gui_Perf_Result.testResult.projectId = project.projectId;
+            gui_Perf_Result.testResult.environment = config.app.getProperty("app.gui.environment");
+            gui_Perf_Result.testResult.runID = config.app.getProperty("app.gui.runID");
+            gui_Perf_TC.testCaseSteps.sort(new srNOSort());
+        }
+        if (!gui_UIVal_TC.description.isEmpty()) {
+            gui_UIVal_Result.testResult.testCaseId = gui_UIVal_TC.testCaseId;
+            gui_UIVal_Result.testResult.moduleId = testCase.moduleId;
+            gui_UIVal_Result.testResult.subModuleId = testCase.subModuleId;
+            gui_UIVal_Result.testResult.status = "Broken";
+            gui_UIVal_Result.testResult.sUT = project.projectName;
+            gui_UIVal_Result.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
+            gui_UIVal_Result.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
+            gui_UIVal_Result.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
+            gui_UIVal_Result.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
+            gui_UIVal_Result.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
+            gui_UIVal_Result.testResult.browserName = config.app.getProperty("app.gui.browserName");
+            gui_UIVal_Result.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
+            gui_UIVal_Result.testResult.resolution = config.app.getProperty("app.gui.resolution");
+            gui_UIVal_Result.testResult.oSName = config.app.getProperty("app.gui.osName");
+            gui_UIVal_Result.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
+            gui_UIVal_Result.testResult.appType = config.app.getProperty("app.gui.appType");
+            gui_UIVal_Result.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
+            gui_UIVal_Result.testResult.executionStartTime = new Date();
+            gui_UIVal_Result.testResult.projectId = project.projectId;
+            gui_UIVal_Result.testResult.environment = config.app.getProperty("app.gui.environment");
+            gui_UIVal_Result.testResult.runID = config.app.getProperty("app.gui.runID");
+            gui_UIVal_TC.testCaseSteps.sort(new srNOSort());
+        }
+        gui.testResult.testCaseId = testCase.testCaseId;
+        gui.testResult.moduleId = testCase.moduleId;
+        gui.testResult.subModuleId = testCase.subModuleId;
+        gui.testResult.status = "Broken";
+        gui.testResult.sUT = project.projectName;
+        gui.testResult.releaseName = config.app.getProperty("app.gui.releaseName");
+        gui.testResult.releaseNo = config.app.getProperty("app.gui.releaseNo");
+        gui.testResult.sprintName = config.app.getProperty("app.gui.sprintName");
+        gui.testResult.sprintNo = config.app.getProperty("app.gui.sprintNo");
+        gui.testResult.buildVersion = config.app.getProperty("app.gui.buildVersion");
+        gui.testResult.browserName = config.app.getProperty("app.gui.browserName");
+        gui.testResult.browserVersion = config.app.getProperty("app.gui.browserVersion");
+        gui.testResult.resolution = config.app.getProperty("app.gui.resolution");
+        gui.testResult.oSName = config.app.getProperty("app.gui.osName");
+        gui.testResult.oSVersion = config.app.getProperty("app.gui.osVersion");
+        gui.testResult.appType = config.app.getProperty("app.gui.appType");
+        gui.testResult.appVersion = config.app.getProperty("app.gui.appVersion");
+        gui.testResult.executionStartTime = new Date();
+        gui.testResult.projectId = project.projectId;
+        gui.testResult.environment = config.app.getProperty("app.gui.environment");
+        gui.testResult.runID = config.app.getProperty("app.gui.runID");
 
-            try {
-                // Loop through the Test Steps
-                int iStepNum = 1;
+        try {
+            // Loop through the Test Steps
+            int iStepNum = 1;
 
-                XSSFWorkbook currentExcelWorkbook = new XSSFWorkbook();
-                String sCurrentExcelSheetName = "";
-                for (TestCaseStep testStep : testCase.testCaseSteps) {
-                    Thread.sleep(2000);
+            XSSFWorkbook currentExcelWorkbook = new XSSFWorkbook();
+            String sCurrentExcelSheetName = "";
+            for (TestCaseStep testStep : testCase.testCaseSteps) {
+                Thread.sleep(2000);
 
-                    logger.info("ACTION: Performing the Step Action (" + testStep.stepDescription + ")...");
-                    TestStepResult stepResult = new TestStepResult();
-                    // Set all the Properties for Test Step Result
-                    stepResult.testCaseStepId = testStep.testCaseStepId;
-                    stepResult.status = "Broken";
-                    stepResult.executionStartTime = new Date();
-                    try {
-                        // Loop through the Test Step Actions
-                        for (TestStepAction testAction : testStep.testStepActions) {
-                            ExpectedCondition<Boolean> pageLoadCondition = new
-                                    ExpectedCondition<Boolean>() {
-                                        public Boolean apply(WebDriver driver) {
-                                            return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-                                        }
-                                    };
-                            WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
-                            wait.until(pageLoadCondition);
-                            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading'")));
-                            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
-                            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
-                            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));
-                            // Initialize the Objects required to perform actions
+                logger.info("ACTION: Performing the Step Action (" + testStep.stepDescription + ")...");
+                TestStepResult stepResult = new TestStepResult();
+                // Set all the Properties for Test Step Result
+                stepResult.testCaseStepId = testStep.testCaseStepId;
+                stepResult.status = "Broken";
+                stepResult.executionStartTime = new Date();
+                try {
+                    // Loop through the Test Step Actions
+                    for (TestStepAction testAction : testStep.testStepActions) {
+                        ExpectedCondition<Boolean> pageLoadCondition = new
+                                ExpectedCondition<Boolean>() {
+                                    public Boolean apply(WebDriver driver) {
+                                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+                                    }
+                                };
+                        WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
+                        wait.until(pageLoadCondition);
+                        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading'")));
+                        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
+                        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
+                        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));
+                        // Initialize the Objects required to perform actions
 
-                            logger.info("Test Action Name: " + testAction.action.fieldName + " (" + testAction.action.fieldValue + ")." + testAction.action.actionType);
+                        logger.info("Test Action Name: " + testAction.action.fieldName + " (" + testAction.action.fieldValue + ")." + testAction.action.actionType);
 
-                            int integerValue;
-                            Actions actions = new Actions(Browser.webDriver);
-                            // Execute the Test Step Action
-                            switch (testAction.action.actionType.toLowerCase()) {
-                                case "browse":
-                                    // Browser opening action
-                                    Browser.webDriver.get(testAction.action.fieldValue);
-                                    break;
-                                case "click":
-                                    // Field clicking action
-                                    Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
-                                    break;
-                                case "mouse-hover":
-                                    // Field Mouse Hover action
-                                    actions.moveToElement(Browser.webDriver.findElement(
+                        int integerValue;
+                        Actions actions = new Actions(Browser.webDriver);
+                        // Execute the Test Step Action
+                        switch (testAction.action.actionType.toLowerCase()) {
+                            case "browse":
+                                // Browser opening action
+                                Browser.webDriver.get(testAction.action.fieldValue);
+                                break;
+                            case "click":
+                                // Field clicking action
+                                Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
+                                break;
+                            case "mouse-hover":
+                                // Field Mouse Hover action
+                                actions.moveToElement(Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                )).perform();
+                                break;
+                            case "clear":
+                                // Field clearing action
+                                Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ).clear();
+                                break;
+                            case "replace":
+                                // Field value replacing action
+                                Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ).sendKeys(
+                                        Keys.chord(Keys.CONTROL, "a"),
+                                        testAction.action.fieldValue
+                                );
+                                break;
+                            case "type":
+                                // Field typing action
+                                Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ).sendKeys(testAction.action.fieldValue);
+                                Thread.sleep(500);
+                                break;
+                            case "match-text":
+                                // Field match-test action
+                                Thread.sleep(2000);
+                                String sText = "";
+                                String sValue = "";
+                                String sinnerHTML = "";
+                                try {
+                                    sText = Browser.webDriver.findElement(
                                             By.cssSelector(testAction.action.fieldName)
-                                    )).perform();
-                                    break;
-                                case "clear":
-                                    // Field clearing action
-                                    Browser.webDriver.findElement(
+                                    ).getText().trim();
+                                } catch (NullPointerException ex) {
+                                }
+                                try {
+                                    sValue = Browser.webDriver.findElement(
                                             By.cssSelector(testAction.action.fieldName)
-                                    ).clear();
-                                    break;
-                                case "replace":
-                                    // Field value replacing action
-                                    Browser.webDriver.findElement(
+                                    ).getAttribute("value").trim();
+                                } catch (NullPointerException ex) {
+                                }
+                                try {
+                                    sinnerHTML = Browser.webDriver.findElement(
                                             By.cssSelector(testAction.action.fieldName)
-                                    ).sendKeys(
-                                            Keys.chord(Keys.CONTROL, "a"),
-                                            testAction.action.fieldValue
+                                    ).getAttribute("innerhtml").trim();
+                                } catch (NullPointerException ex) {
+                                }
+                                if (!(sText.equals(testAction.action.fieldValue.trim())
+                                        || sValue.equals(testAction.action.fieldValue.trim())
+                                        || sinnerHTML.equals(testAction.action.fieldValue.trim()))) {
+                                    stepResult.status = "Fail";
+                                    stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+                                            "does not match the value given (" + testAction.action.fieldValue +
+                                            ") , Got [" + sText + sValue + sinnerHTML + "]";
+                                    logger.error(stepResult.actualResult);
+
+                                }
+                                break;
+                            case "contains-text":
+                                // Validate Test in filed contains specific text
+                                String sTextValue = Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ).getText();
+                                try {
+                                    Assert.assertTrue(
+                                            sTextValue.contains(testAction.action.fieldValue),
+                                            "Text in Field (" + testAction.action.fieldName + ") should contain [" +
+                                                    testAction.action.fieldValue + "] and Got [" + sTextValue + "]"
+
                                     );
-                                    break;
-                                case "type":
-                                    // Field typing action
-                                    Browser.webDriver.findElement(
-                                            By.cssSelector(testAction.action.fieldName)
-                                    ).sendKeys(testAction.action.fieldValue);
-                                    Thread.sleep(500);
-                                    break;
-                                case "match-text":
-                                    // Field match-test action
-                                    Thread.sleep(2000);
-                                    String sText = "";
-                                    String sValue = "";
-                                    String sinnerHTML = "";
-                                    try {
-                                        sText = Browser.webDriver.findElement(
+                                } catch (AssertionError e) {
+                                    throw new Exception("Text in Field (" + testAction.action.fieldName + ") should contain [" +
+                                            testAction.action.fieldValue + "] but Got [" + sTextValue + "]");
+                                }
+                                break;
+                            case "select-index":
+                                // Field selecting by index action
+                                integerValue = Integer.parseInt(testAction.action.fieldValue);
+                                Select dropDown = new Select(Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ));
+                                dropDown.selectByIndex(integerValue);
+                                break;
+                            case "select-visibletext":
+                                // Field selecting by index action
+                                String visibleText = testAction.action.fieldValue;
+                                Select dropDownText = new Select(Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ));
+                                dropDownText.selectByVisibleText(visibleText);
+                                break;
+                            case "wait-display":
+                                // Waiting for Field to be visible action
+                                integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+                                (new WebDriverWait(Browser.webDriver, integerValue))
+                                        .until(ExpectedConditions.visibilityOfElementLocated(
                                                 By.cssSelector(testAction.action.fieldName)
-                                        ).getText().trim();
-                                    } catch (NullPointerException ex) {
-                                    }
-                                    try {
-                                        sValue = Browser.webDriver.findElement(
+                                        ));
+                                break;
+                            case "wait-enable":
+                                // Waiting for Field to be enabled action
+                                integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+                                (new WebDriverWait(Browser.webDriver, integerValue))
+                                        .until(ExpectedConditions.elementToBeClickable(
                                                 By.cssSelector(testAction.action.fieldName)
-                                        ).getAttribute("value").trim();
-                                    } catch (NullPointerException ex) {
-                                    }
-                                    try {
-                                        sinnerHTML = Browser.webDriver.findElement(
+                                        ));
+                                break;
+                            case "javascriptclick":
+                                // Waiting for Field to be enabled action
+                                JavascriptExecutor js = (JavascriptExecutor) Browser.webDriver;
+                                js.executeScript("arguments[0].click();", Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)));
+                                break;
+                            case "scrolldown":
+                                // Waiting for Field to be enabled action
+                                JavascriptExecutor j = (JavascriptExecutor) Browser.webDriver;
+                                j.executeScript("window.scrollTo(0, 9999)");
+                                Thread.sleep(1000);
+                                break;
+                            case "scrollup":
+                                // Waiting for Field to be enabled action
+                                JavascriptExecutor jse = (JavascriptExecutor) Browser.webDriver;
+                                jse.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+                                break;
+                            case "element-invisible":
+                                // Waiting for Field to be invisible action
+                                integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+                                (new WebDriverWait(Browser.webDriver, integerValue))
+                                        .until(ExpectedConditions.invisibilityOfElementLocated(
                                                 By.cssSelector(testAction.action.fieldName)
-                                        ).getAttribute("innerhtml").trim();
-                                    } catch (NullPointerException ex) {
-                                    }
-                                    if (!(sText.equals(testAction.action.fieldValue.trim())
-                                            || sValue.equals(testAction.action.fieldValue.trim())
-                                            || sinnerHTML.equals(testAction.action.fieldValue.trim()))) {
-                                        stepResult.status = "Fail";
-                                        stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
-                                                "does not match the value given (" + testAction.action.fieldValue +
-                                                ") , Got [" + sText + sValue + sinnerHTML + "]";
-                                        logger.error(stepResult.actualResult);
-
-                                    }
-                                    break;
-                                case "contains-text":
-                                    // Validate Test in filed contains specific text
-                                    String sTextValue = Browser.webDriver.findElement(
-                                            By.cssSelector(testAction.action.fieldName)
-                                    ).getText();
+                                        ));
+                                break;
+                            case "wait-alert":
+                                integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+                                Boolean AlertFound = false;
+                                int i = 0;
+                                while (i++ < integerValue) {
                                     try {
-                                        Assert.assertTrue(
-                                                sTextValue.contains(testAction.action.fieldValue),
-                                                "Text in Field (" + testAction.action.fieldName + ") should contain [" +
-                                                        testAction.action.fieldValue + "] and Got [" + sTextValue + "]"
-
-                                        );
-                                    } catch (AssertionError e) {
-                                        throw new Exception("Text in Field (" + testAction.action.fieldName + ") should contain [" +
-                                                testAction.action.fieldValue + "] but Got [" + sTextValue + "]");
+                                        Alert alert = Browser.webDriver.switchTo().alert();
+                                        AlertFound = true;
+                                        break;
+                                    } catch (NoAlertPresentException e) {
+                                        Thread.sleep(1000);
+                                        continue;
                                     }
-                                    break;
-                                case "select-index":
-                                    // Field selecting by index action
-                                    integerValue = Integer.parseInt(testAction.action.fieldValue);
-                                    Select dropDown = new Select(Browser.webDriver.findElement(
-                                            By.cssSelector(testAction.action.fieldName)
-                                    ));
-                                    dropDown.selectByIndex(integerValue);
-                                    break;
-                                case "select-visibletext":
-                                    // Field selecting by index action
-                                    String visibleText = testAction.action.fieldValue;
-                                    Select dropDownText = new Select(Browser.webDriver.findElement(
-                                            By.cssSelector(testAction.action.fieldName)
-                                    ));
-                                    dropDownText.selectByVisibleText(visibleText);
-                                    break;
-                                case "wait-display":
-                                    // Waiting for Field to be visible action
-                                    integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-                                    (new WebDriverWait(Browser.webDriver, integerValue))
-                                            .until(ExpectedConditions.visibilityOfElementLocated(
-                                                    By.cssSelector(testAction.action.fieldName)
-                                            ));
-                                    break;
-                                case "wait-enable":
-                                    // Waiting for Field to be enabled action
-                                    integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-                                    (new WebDriverWait(Browser.webDriver, integerValue))
-                                            .until(ExpectedConditions.elementToBeClickable(
-                                                    By.cssSelector(testAction.action.fieldName)
-                                            ));
-                                    break;
-                                case "javascriptclick":
-                                    // Waiting for Field to be enabled action
-                                    JavascriptExecutor js = (JavascriptExecutor) Browser.webDriver;
-                                    js.executeScript("arguments[0].click();", Browser.webDriver.findElement(
-                                            By.cssSelector(testAction.action.fieldName)));
-                                    break;
-                                case "scrolldown":
-                                    // Waiting for Field to be enabled action
-                                    JavascriptExecutor j = (JavascriptExecutor) Browser.webDriver;
-                                    j.executeScript("window.scrollTo(0, 9999)");
-                                    Thread.sleep(1000);
-                                    break;
-                                case "scrollup":
-                                    // Waiting for Field to be enabled action
-                                    JavascriptExecutor jse = (JavascriptExecutor) Browser.webDriver;
-                                    jse.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
-                                    break;
-                                case "element-invisible":
-                                    // Waiting for Field to be invisible action
-                                    integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-                                    (new WebDriverWait(Browser.webDriver, integerValue))
-                                            .until(ExpectedConditions.invisibilityOfElementLocated(
-                                                    By.cssSelector(testAction.action.fieldName)
-                                            ));
-                                    break;
-                                case "wait-alert":
-                                    integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-                                    Boolean AlertFound = false;
-                                    int i = 0;
-                                    while (i++ < integerValue) {
-                                        try {
-                                            Alert alert = Browser.webDriver.switchTo().alert();
-                                            AlertFound = true;
-                                            break;
-                                        } catch (NoAlertPresentException e) {
-                                            Thread.sleep(1000);
-                                            continue;
-                                        }
+                                }
+                                Assert.assertTrue(AlertFound, "Alert/File dialog should be displayed");
+                                break;
+                            case "uploadfile":
+                                if (!testAction.action.fieldName.trim().contains(" ")) {
+                                    StringSelection stringSelection = new StringSelection
+                                            (Paths.get(System.getProperty("user.dir"), "testdata/filesUpload/", testAction.action.fieldName).toString());
+                                    //(System.getProperty("user.dir") + "filesUpload/"+testAction.action.fieldName);
+                                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                                    clipboard.setContents(stringSelection, null);
+                                } else {
+                                    String lstofFile = "";
+                                    for (String echFile : testAction.action.fieldName.trim().split(" ")) {
+                                        lstofFile += "\""
+                                                + Paths.get(System.getProperty("user.dir"), "testdata/filesUpload/", echFile).toString()
+                                                + "\"";
                                     }
-                                    Assert.assertTrue(AlertFound, "Alert/File dialog should be displayed");
-                                    break;
-                                case "uploadfile":
-                                    if (!testAction.action.fieldName.trim().contains(" ")) {
-                                        StringSelection stringSelection = new StringSelection
-                                                (Paths.get(System.getProperty("user.dir"), "testdata/filesUpload/", testAction.action.fieldName).toString());
-                                        //(System.getProperty("user.dir") + "filesUpload/"+testAction.action.fieldName);
-                                        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                                        clipboard.setContents(stringSelection, null);
-                                    } else {
-                                        String lstofFile = "";
-                                        for (String echFile : testAction.action.fieldName.trim().split(" ")) {
-                                            lstofFile += "\""
-                                                    + Paths.get(System.getProperty("user.dir"), "testdata/filesUpload/", echFile).toString()
-                                                    + "\"";
-                                        }
-                                        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                                        StringSelection stringSelection = new StringSelection(lstofFile);
-                                        clipboard.setContents(stringSelection, null);
-                                    }
+                                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                                    StringSelection stringSelection = new StringSelection(lstofFile);
+                                    clipboard.setContents(stringSelection, null);
+                                }
 
-                                    Robot robot = null;
-                                    try {
-                                        robot = new Robot();
-                                    } catch (AWTException e) {
-                                        e.printStackTrace();
-                                    }
-                                    robot.delay(250);
-                                    robot.keyPress(KeyEvent.VK_CONTROL);
-                                    robot.keyPress(KeyEvent.VK_V);
-                                    robot.keyRelease(KeyEvent.VK_V);
-                                    robot.keyRelease(KeyEvent.VK_CONTROL);
-                                    robot.delay(1000);
-                                    robot.keyPress(KeyEvent.VK_ENTER);
-                                    break;
-                                case "sleep":
-                                    Thread.sleep(Integer.parseInt(testAction.action.fieldValue));
-                                    break;
-                                case "clickaction":
-                                    WebElement ele = Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName));
-                                    Actions ob = new Actions(Browser.webDriver);
-                                    ob.click(ele);
-                                    org.openqa.selenium.interactions.Action action1 = ob.build();
-                                    action1.perform();
-                                    break;
-                                case "checkdownladedfile":
-                                    String DownloadDir = System.getProperty("user.home") + "\\Downloads\\";
-                                    File dir = new File(DownloadDir);
-                                    File[] files = dir.listFiles();
+                                Robot robot = null;
+                                try {
+                                    robot = new Robot();
+                                } catch (AWTException e) {
+                                    e.printStackTrace();
+                                }
+                                robot.delay(250);
+                                robot.keyPress(KeyEvent.VK_CONTROL);
+                                robot.keyPress(KeyEvent.VK_V);
+                                robot.keyRelease(KeyEvent.VK_V);
+                                robot.keyRelease(KeyEvent.VK_CONTROL);
+                                robot.delay(1000);
+                                robot.keyPress(KeyEvent.VK_ENTER);
+                                break;
+                            case "sleep":
+                                Thread.sleep(Integer.parseInt(testAction.action.fieldValue));
+                                break;
+                            case "clickaction":
+                                WebElement ele = Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName));
+                                Actions ob = new Actions(Browser.webDriver);
+                                ob.click(ele);
+                                org.openqa.selenium.interactions.Action action1 = ob.build();
+                                action1.perform();
+                                break;
+                            case "checkdownladedfile":
+                                String DownloadDir = System.getProperty("user.home") + "\\Downloads\\";
+                                File dir = new File(DownloadDir);
+                                File[] files = dir.listFiles();
 
-                                    File lastModifiedFile = files[0];
+                                File lastModifiedFile = files[0];
 
-                                    long length1 = 0;
-                                    long length2 = 0;
+                                long length1 = 0;
+                                long length2 = 0;
 
-                                    do {
-                                        files = dir.listFiles();
-
-                                        lastModifiedFile = files[0];
-                                        for (int l = 1; l < files.length; l++) {
-                                            if (lastModifiedFile.lastModified() < files[l].lastModified()) {
-                                                lastModifiedFile = files[l];
-                                            }
-                                        }
-                                        System.out.println("in While File Name:" + lastModifiedFile.getName());
-                                        if (lastModifiedFile.getName().endsWith("crdownload")) {
-                                            Thread.sleep(10000);
-                                        } else
-                                            break;
-                                    } while (true);
-                                    dir = new File(DownloadDir);
+                                do {
                                     files = dir.listFiles();
 
                                     lastModifiedFile = files[0];
-                                    for (int m = 1; m < files.length; m++) {
-                                        if (lastModifiedFile.lastModified() < files[m].lastModified()) {
-                                            lastModifiedFile = files[m];
+                                    for (int l = 1; l < files.length; l++) {
+                                        if (lastModifiedFile.lastModified() < files[l].lastModified()) {
+                                            lastModifiedFile = files[l];
                                         }
                                     }
-                                    try {
-                                        Thread.sleep(5000);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                    files = dir.listFiles();
+                                    System.out.println("in While File Name:" + lastModifiedFile.getName());
+                                    if (lastModifiedFile.getName().endsWith("crdownload")) {
+                                        Thread.sleep(10000);
+                                    } else
+                                        break;
+                                } while (true);
+                                dir = new File(DownloadDir);
+                                files = dir.listFiles();
 
-                                    lastModifiedFile = files[0];
-                                    for (int n = 1; n < files.length; n++) {
-                                        if (lastModifiedFile.lastModified() < files[n].lastModified()) {
-                                            lastModifiedFile = files[n];
-                                        }
+                                lastModifiedFile = files[0];
+                                for (int m = 1; m < files.length; m++) {
+                                    if (lastModifiedFile.lastModified() < files[m].lastModified()) {
+                                        lastModifiedFile = files[m];
                                     }
-                                    String filename = lastModifiedFile.getName();
-                                    if (!(filename.equalsIgnoreCase(testAction.action.fieldValue))) {
-                                        stepResult.status = "Fail";
-                                        stepResult.actualResult = "File Name" +
-                                                " does not match the value given (" + testAction.action.fieldValue +
-                                                ") , Got [" + filename + "]";
-                                        logger.error(stepResult.actualResult);
-                                    }
-                                    break;
-                                case "deletedowloadedfile":
-                                    File file = new File(System.getProperty("user.home") + "\\Downloads\\" + testAction.action.fieldValue);
-                                    if (file.delete()) {
-                                        System.out.println("File deleted successfully");
-                                    } else {
-                                        System.out.println("Failed to delete the file");
-                                    }
-                                    break;
-                                case "matchcssvalue":
-                                    String cssBGValue = "";
-                                    String cssBGCValue = "";
-                                    String cssBGImage = "";
+                                }
+                                try {
+                                    Thread.sleep(5000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                files = dir.listFiles();
 
-                                    try {
-                                        cssBGCValue = Browser.webDriver.findElement(
-                                                By.cssSelector(testAction.action.fieldName)
-                                        ).getCssValue("background-color");
-                                    } catch (NullPointerException ex) {
+                                lastModifiedFile = files[0];
+                                for (int n = 1; n < files.length; n++) {
+                                    if (lastModifiedFile.lastModified() < files[n].lastModified()) {
+                                        lastModifiedFile = files[n];
                                     }
-                                    try {
-                                        cssBGValue = Browser.webDriver.findElement(
-                                                By.cssSelector(testAction.action.fieldName)
-                                        ).getCssValue("background");
-                                    } catch (NullPointerException ex) {
-                                    }
-                                    try {
-                                        cssBGImage = Browser.webDriver.findElement(
-                                                By.cssSelector(testAction.action.fieldName)
-                                        ).getCssValue("background-image");
-                                    } catch (NullPointerException ex) {
-                                    }
-                                    if (!(cssBGValue.equals(testAction.action.fieldValue.trim())
-                                            || cssBGCValue.equals(testAction.action.fieldValue.trim()) ||
-                                            cssBGImage.equals(testAction.action.fieldValue.trim()))) {
-										stepResult.status = "Fail";
-										stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
-												"does not match the value given (" + testAction.action.fieldValue +
-												") , Got [" + cssBGValue + cssBGCValue + "]";
-										logger.error(stepResult.actualResult);
-									}
-									break;
-								case "transactionstart":
-									iTransactionStartTime = (new Date()).getTime();
-									break;
-								case "validatetransactiontime":
-									int LoadTime=Integer.parseInt(config.app.getProperty("app.gui.defaultloadtime"));
-									long TransactionTime = ((new Date()).getTime() - iTransactionStartTime);
-									if(!testAction.action.fieldValue.equals(""))
-										LoadTime = Integer.parseInt(testAction.action.fieldValue);
-									if(TransactionTime > LoadTime) {
-										sPerfActualResult = "Time take for this transaction is [" + TransactionTime
-												+ "] milliseconds But expected to be less than [" + LoadTime + "] milliseconds"
-										+ " on Browser: " + config.app.getProperty("selenium.webdriver.name");
-									}
-									else
-									{
-										sPerfActualResult = "Time take for this transaction is [" + TransactionTime
-												+ "] milliseconds"
-												+ " on Browser: " + config.app.getProperty("selenium.webdriver.name");
-										PerfromanceTest_pass = true;
-									}
-									break;
-								case "selectfirstelement":
-									robot = null;
-									try {
-										robot = new Robot();
-									} catch (AWTException e) {
-										e.printStackTrace();
-									}
-									robot.delay(250);
-									robot.keyPress(KeyEvent.VK_DOWN);
-									robot.keyRelease(KeyEvent.VK_DOWN);
-									robot.keyPress(KeyEvent.VK_TAB);
-									robot.keyRelease(KeyEvent.VK_TAB);
-									robot.delay(1000);
-									break;
-								case "uivalidation":
-									LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/"+testAction.action.fieldValue,
-											new SectionFilter(Arrays.asList("desktop"),null),new Properties(), new HashMap<String, Object>());
-									List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
-									GalenTestInfo test = GalenTestInfo.fromString(
-											gui_UIVal_TC.description
-												+ config.app.getProperty("selenium.webdriver.name"));
-									test.getReport().layout(layoutReport,
-											gui_UIVal_TC.description.substring(0,20).replace(" ","_")
-												+config.app.getProperty("selenium.webdriver.name"));
-									tests.add(test);
-									HtmlReportBuilder htmlReportBuilder = new HtmlReportBuilder();
-									String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
-									//Create a report
-									htmlReportBuilder.build(tests, "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
-											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp);
-									String folderToZip = "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
-											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp;
-									String zipName = "UIValidation/"+ gui_UIVal_TC.description.substring(0,20).replace(" ","_")
-											+config.app.getProperty("selenium.webdriver.name")+"_"+ timeStamp+".zip";
-									Path sourceFolderPath = Paths.get(folderToZip);
-									Path zipPath = Paths.get(zipName);
-									ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipPath.toFile()));
-									Files.walkFileTree(sourceFolderPath, new SimpleFileVisitor<Path>() {
-										public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-											zos.putNextEntry(new ZipEntry(sourceFolderPath.relativize(file).toString()));
-											Files.copy(file, zos);
-											zos.closeEntry();
-											return FileVisitResult.CONTINUE;
-										}
-									});
-									zos.close();
-									File zipFile = new File(zipName);
-									UIValidationZipPath =  qifClient.uploadScreenShot(
-											config.qif.getProperty("qif.azure.connection"),
-											config.qif.getProperty("qif.azure.container"),
-											zipFile);
+                                }
+                                String filename = lastModifiedFile.getName();
+                                if (!(filename.equalsIgnoreCase(testAction.action.fieldValue))) {
+                                    stepResult.status = "Fail";
+                                    stepResult.actualResult = "File Name" +
+                                            " does not match the value given (" + testAction.action.fieldValue +
+                                            ") , Got [" + filename + "]";
+                                    logger.error(stepResult.actualResult);
+                                }
+                                break;
+                            case "deletedowloadedfile":
+                                File file = new File(System.getProperty("user.home") + "\\Downloads\\" + testAction.action.fieldValue);
+                                if (file.delete()) {
+                                    System.out.println("File deleted successfully");
+                                } else {
+                                    System.out.println("Failed to delete the file");
+                                }
+                                break;
+                            case "matchcssvalue":
+                                String cssBGValue = "";
+                                String cssBGCValue = "";
+                                String cssBGImage = "";
 
-                                    List<ValidationResult> validationErrorResults = layoutReport.getValidationErrorResults();
-                                    String UIErrors = "";
-                                    for (ValidationResult validationError : validationErrorResults) {
-                                        if (!validationError.getError().isOnlyWarn()) {
-                                            List<String> listofMsgs = validationError.getError().getMessages();
-                                            for (String eachError : listofMsgs)
-                                                UIErrors = UIErrors + eachError + "\n";
-                                        }
-                                    }
+                                try {
+                                    cssBGCValue = Browser.webDriver.findElement(
+                                            By.cssSelector(testAction.action.fieldName)
+                                    ).getCssValue("background-color");
+                                } catch (NullPointerException ex) {
+                                }
+                                try {
+                                    cssBGValue = Browser.webDriver.findElement(
+                                            By.cssSelector(testAction.action.fieldName)
+                                    ).getCssValue("background");
+                                } catch (NullPointerException ex) {
+                                }
+                                try {
+                                    cssBGImage = Browser.webDriver.findElement(
+                                            By.cssSelector(testAction.action.fieldName)
+                                    ).getCssValue("background-image");
+                                } catch (NullPointerException ex) {
+                                }
+                                if (!(cssBGValue.equals(testAction.action.fieldValue.trim())
+                                        || cssBGCValue.equals(testAction.action.fieldValue.trim()) ||
+                                        cssBGImage.equals(testAction.action.fieldValue.trim()))) {
+                                    stepResult.status = "Fail";
+                                    stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+                                            "does not match the value given (" + testAction.action.fieldValue +
+                                            ") , Got [" + cssBGValue + cssBGCValue + "]";
+                                    logger.error(stepResult.actualResult);
+                                }
+                                break;
+                            case "transactionstart":
+                                iTransactionStartTime = (new Date()).getTime();
+                                break;
+                            case "validatetransactiontime":
+                                int LoadTime = Integer.parseInt(config.app.getProperty("app.gui.defaultloadtime"));
+                                long TransactionTime = ((new Date()).getTime() - iTransactionStartTime);
+                                if (!testAction.action.fieldValue.equals(""))
+                                    LoadTime = Integer.parseInt(testAction.action.fieldValue);
+                                if (TransactionTime > LoadTime) {
+                                    sPerfActualResult = "Time take for this transaction is [" + TransactionTime
+                                            + "] milliseconds But expected to be less than [" + LoadTime + "] milliseconds"
+                                            + " on Browser: " + config.app.getProperty("selenium.webdriver.name");
+                                } else {
+                                    sPerfActualResult = "Time take for this transaction is [" + TransactionTime
+                                            + "] milliseconds"
+                                            + " on Browser: " + config.app.getProperty("selenium.webdriver.name");
+                                    PerfromanceTest_pass = true;
+                                }
+                                break;
+                            case "selectfirstelement":
+                                robot = null;
+                                try {
+                                    robot = new Robot();
+                                } catch (AWTException e) {
+                                    e.printStackTrace();
+                                }
+                                robot.delay(2000);
+                                robot.keyPress(KeyEvent.VK_DOWN);
+                                robot.keyRelease(KeyEvent.VK_DOWN);
+                                robot.keyPress(KeyEvent.VK_ENTER);
 
-                                    if (layoutReport.errors() > 0) {
-                                        logger.info("Error Count:" + layoutReport.errors());
-                                        //Assertions.SoftassertEquals(softAssertion, layoutReport.errors(),0,"UI Validation For:" + sTestName + "  - " +  layoutReport.getScreenshot() + "\nError Messages:" + UIErrors);
-                                        sUIActualResult = "Failed with few mismatches On Browser: " + config.app.getProperty("selenium.webdriver.name") + ". Heatmap Attached: " + UIValidationZipPath + "" +
-                                                "                 Error Messages:" + UIErrors;
-                                    } else {
-                                        sUIActualResult = "All elements displayed as expected On Browser: " + config.app.getProperty("selenium.webdriver.name") + ". Heatmap attached: " + UIValidationZipPath;
-                                        UIValidationTest_pass = true;
-                                    }
-                                    break;
-                                case "setcurrentexcel":
-                                    currentExcelWorkbook = new XSSFWorkbook(new FileInputStream(
-                                            System.getProperty("user.home")
-                                                    + "\\Downloads\\" + testAction.action.fieldValue));
-                                    break;
-                                case "setcurrentexcelsheet":
-                                    sCurrentExcelSheetName = testAction.action.fieldValue;
-                                    break;
-                                case "matchexcelcellvalue":
-                                    int iRow = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName) - 1;
-                                    //Integer.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
-                                    int iColumn = com.PandC.lib.excelOperation.convertName2ColumnIndex(
-                                            com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
-                                            //testAction.action.fieldName.split(",")[1].trim()
-                                    );
-                                    String sActualValue = "";
-                                    try {
-                                        switch (currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
-                                                .getRow(iRow).getCell(iColumn).getCellType()) {
-                                            case XSSFCell.CELL_TYPE_NUMERIC:
 
-                                                sActualValue = String.valueOf(currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
-                                                        .getRow(iRow).getCell(iColumn).getNumericCellValue());
-                                                break;
-                                            case XSSFCell.CELL_TYPE_STRING:
+                                robot.keyRelease(KeyEvent.VK_ENTER);
 
-                                                sActualValue = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
-                                                        .getRow(iRow).getCell(iColumn).getStringCellValue();
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    } catch (NullPointerException ex) {
+                                robot.delay(2000);
+                                break;
+                            case "uivalidation":
+                                LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/" + testAction.action.fieldValue,
+                                        new SectionFilter(Arrays.asList("desktop"), null), new Properties(), new HashMap<String, Object>()
+                                );
+                                List<GalenTestInfo> tests = new LinkedList<GalenTestInfo>();
+                                GalenTestInfo test = GalenTestInfo.fromString(
+                                        gui_UIVal_TC.description
+                                                + config.app.getProperty("selenium.webdriver.name"));
+                                test.getReport().layout(
+                                        layoutReport,
+                                        gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
+                                                + config.app.getProperty("selenium.webdriver.name")
+                                );
+                                tests.add(test);
+                                HtmlReportBuilder htmlReportBuilder = new HtmlReportBuilder();
+                                String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
+                                //Create a report
+                                htmlReportBuilder.build(tests, "UIValidation/" + gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
+                                        + config.app.getProperty("selenium.webdriver.name") + "_" + timeStamp);
+                                String folderToZip = "UIValidation/" + gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
+                                        + config.app.getProperty("selenium.webdriver.name") + "_" + timeStamp;
+                                String zipName = "UIValidation/" + gui_UIVal_TC.description.substring(0, 20).replace(" ", "_")
+                                        + config.app.getProperty("selenium.webdriver.name") + "_" + timeStamp + ".zip";
+                                Path sourceFolderPath = Paths.get(folderToZip);
+                                Path zipPath = Paths.get(zipName);
+                                ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipPath.toFile()));
+                                Files.walkFileTree(sourceFolderPath, new SimpleFileVisitor<Path>() {
+                                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                                        zos.putNextEntry(new ZipEntry(sourceFolderPath.relativize(file).toString()));
+                                        Files.copy(file, zos);
+                                        zos.closeEntry();
+                                        return FileVisitResult.CONTINUE;
                                     }
-                                    sActualValue = sActualValue.replaceAll("[\\t\\n\\r]+", " ")
-                                            .replaceAll("[^\\x00-\\x7F]", " ").trim();
-                                    if (!(sActualValue.equals(
-                                            testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim()))) {
-                                        stepResult.status = "Fail";
-                                        stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
-                                                "does not match the value given (" + testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim() +
-                                                ") , Got [" + sActualValue + "]";
-                                        logger.error(stepResult.actualResult);
+                                });
+                                zos.close();
+                                File zipFile = new File(zipName);
+                                UIValidationZipPath = qifClient.uploadScreenShot(
+                                        config.qif.getProperty("qif.azure.connection"),
+                                        config.qif.getProperty("qif.azure.container"),
+                                        zipFile
+                                );
 
+                                List<ValidationResult> validationErrorResults = layoutReport.getValidationErrorResults();
+                                String UIErrors = "";
+                                for (ValidationResult validationError : validationErrorResults) {
+                                    if (!validationError.getError().isOnlyWarn()) {
+                                        List<String> listofMsgs = validationError.getError().getMessages();
+                                        for (String eachError : listofMsgs)
+                                            UIErrors = UIErrors + eachError + "\n";
                                     }
-                                    break;
-                                case "matchexcelcellformat":
-                                    int iRowNo = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName) - 1;
+                                }
+
+                                if (layoutReport.errors() > 0) {
+                                    logger.info("Error Count:" + layoutReport.errors());
+                                    //Assertions.SoftassertEquals(softAssertion, layoutReport.errors(),0,"UI Validation For:" + sTestName + "  - " +  layoutReport.getScreenshot() + "\nError Messages:" + UIErrors);
+                                    sUIActualResult = "Failed with few mismatches On Browser: " + config.app.getProperty("selenium.webdriver.name") + ". Heatmap Attached: " + UIValidationZipPath + "" +
+                                            "                 Error Messages:" + UIErrors;
+                                } else {
+                                    sUIActualResult = "All elements displayed as expected On Browser: " + config.app.getProperty("selenium.webdriver.name") + ". Heatmap attached: " + UIValidationZipPath;
+                                    UIValidationTest_pass = true;
+                                }
+                                break;
+                            case "setcurrentexcel":
+                                currentExcelWorkbook = new XSSFWorkbook(new FileInputStream(
+                                        System.getProperty("user.home")
+                                                + "\\Downloads\\" + testAction.action.fieldValue));
+                                break;
+                            case "setcurrentexcelsheet":
+                                sCurrentExcelSheetName = testAction.action.fieldValue;
+                                break;
+                            case "matchexcelcellvalue":
+                                int iRow = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName) - 1;
+                                //Integer.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
+                                int iColumn = com.PandC.lib.excelOperation.convertName2ColumnIndex(
+                                        com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
+                                        //testAction.action.fieldName.split(",")[1].trim()
+                                );
+                                String sActualValue = "";
+                                try {
+                                    switch (currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+                                            .getRow(iRow).getCell(iColumn).getCellType()) {
+                                        case XSSFCell.CELL_TYPE_NUMERIC:
+
+                                            sActualValue = String.valueOf(currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+                                                    .getRow(iRow).getCell(iColumn).getNumericCellValue());
+                                            break;
+                                        case XSSFCell.CELL_TYPE_STRING:
+
+                                            sActualValue = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+                                                    .getRow(iRow).getCell(iColumn).getStringCellValue();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                } catch (NullPointerException ex) {
+                                }
+                                sActualValue = sActualValue.replaceAll("[\\t\\n\\r]+", " ")
+                                        .replaceAll("[^\\x00-\\x7F]", " ").trim();
+                                if (!(sActualValue.equals(
+                                        testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim()))) {
+                                    stepResult.status = "Fail";
+                                    stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
+                                            "does not match the value given (" + testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim() +
+                                            ") , Got [" + sActualValue + "]";
+                                    logger.error(stepResult.actualResult);
+
+                                }
+                                break;
+                            case "matchexcelcellformat":
+                                int iRowNo = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName) - 1;
 											/*Integer
 											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1*/
-                                    ;
-                                    int iColumnNo = com.PandC.lib.excelOperation.convertName2ColumnIndex(
-                                            com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
-                                            //testAction.action.fieldName.split(",")[1].trim()
-                                    );
-                                    String sActualFormat = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
-                                            .getRow(iRowNo).getCell(iColumnNo).getCellStyle().getDataFormatString();
+                                ;
+                                int iColumnNo = com.PandC.lib.excelOperation.convertName2ColumnIndex(
+                                        com.PandC.lib.excelOperation.getColumn(testAction.action.fieldName)
+                                        //testAction.action.fieldName.split(",")[1].trim()
+                                );
+                                String sActualFormat = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+                                        .getRow(iRowNo).getCell(iColumnNo).getCellStyle().getDataFormatString();
 
-                                    if (!(sActualFormat.equals(testAction.action.fieldValue.trim()))) {
-                                        stepResult.status = "Fail";
-                                        stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
-                                                "does not match the value given (" + testAction.action.fieldValue +
-                                                ") , Got [" + sActualFormat + "]";
-                                        logger.error(stepResult.actualResult);
-                                    }
-                                    break;
+                                if (!(sActualFormat.equals(testAction.action.fieldValue.trim()))) {
+                                    stepResult.status = "Fail";
+                                    stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
+                                            "does not match the value given (" + testAction.action.fieldValue +
+                                            ") , Got [" + sActualFormat + "]";
+                                    logger.error(stepResult.actualResult);
+                                }
+                                break;
 
-                                case "clonerfr":
-                                    WebActions ac=new WebActions();
-                                    ac.waitForElementClickable(Browser.webDriver,3000,".aRFRClone");
-                                    ac.clickAction(Browser.webDriver,".aRFRClone");
-                                    ac.waitForElement(Browser.webDriver,3000,"#buttonOkClone");
-                                    ac.clickAction(Browser.webDriver,"#buttonOkClone");
-                                    ac.replaceText(Browser.webDriver,"#InsuranceDateFrom","03/13/2018");
-                                    ac.clickAction(Browser.webDriver,"#btnContinue");
-                                    ac.waitForElement(Browser.webDriver,3000,"#UmbrellaEx");
-                                    ac.clickAction(Browser.webDriver,"#UmbrellaEx");
-                                    ac.waitForElementClickable(Browser.webDriver,3000,"button#btnUmbrellaSave");
-                                    ac.clickAction(Browser.webDriver,"button#btnUmbrellaSave");
-                                    ac.waitForElement(Browser.webDriver,3000,"#PopUpOKUmbrella");
-                                    ac.clickAction(Browser.webDriver,"#PopUpOKUmbrella");
-                                    ac.waitForElement(Browser.webDriver,3000,".aRFRClone");
+                            case "clonerfr":
+                                WebActions ac = new WebActions();
+                                ac.waitForElementClickable(Browser.webDriver, 3000, ".aRFRClone");
+                                ac.clickAction(Browser.webDriver, ".aRFRClone");
+                                ac.waitForElement(Browser.webDriver, 3000, "#buttonOkClone");
+                                ac.clickAction(Browser.webDriver, "#buttonOkClone");
+                                ac.replaceText(Browser.webDriver, "#InsuranceDateFrom", "03/13/2018");
+                                ac.clickAction(Browser.webDriver, "#btnContinue");
+                                ac.waitForElement(Browser.webDriver, 3000, "#UmbrellaEx");
+                                ac.clickAction(Browser.webDriver, "#UmbrellaEx");
+                                ac.waitForElementClickable(Browser.webDriver, 3000, "button#btnUmbrellaSave");
+                                ac.clickAction(Browser.webDriver, "button#btnUmbrellaSave");
+                                ac.waitForElement(Browser.webDriver, 3000, "#PopUpOKUmbrella");
+                                ac.clickAction(Browser.webDriver, "#PopUpOKUmbrella");
+                                ac.waitForElement(Browser.webDriver, 3000, ".aRFRClone");
 
-                                    break;
+                                break;
 
-                                default:
-                                    // Unknown action type
-                                    throw new Exception("Unknown Action Type (" +
-                                            testAction.action.actionType + ") provided.");
-                            }
+                            default:
+                                // Unknown action type
+                                throw new Exception("Unknown Action Type (" +
+                                        testAction.action.actionType + ") provided.");
                         }
-                        // Make the Step Result as Pass only if it was not modified by any executions above
-                        if (stepResult.status.equals("Broken")) {
-                            stepResult.status = "Pass";
-                        }
-                        if (!stepResult.actualResult.equalsIgnoreCase("")) {
-                            allPassed = false;
-                            //stepResult.actualResult = testStep.expectedResult;
+                    }
+                    // Make the Step Result as Pass only if it was not modified by any executions above
+                    if (stepResult.status.equals("Broken")) {
+                        stepResult.status = "Pass";
+                    }
+                    if (!stepResult.actualResult.equalsIgnoreCase("")) {
+                        allPassed = false;
+                        //stepResult.actualResult = testStep.expectedResult;
 
-                            // Take the Screen Shot from the Browser Instance
-                            File screenShot = Browser.takeScreenShot(
-                                    testStep.testCaseStepId + "_" +
-                                            fileFormat.format(stepResult.executionStartTime),
-                                    config.app.getProperty("selenium.webdriver.screenshots")
-                            );
-                            // Upload the Screen Shot to Azure BLOB Storage and set the URL
-                            stepResult.screenshotURL = qifClient.uploadScreenShot(
-                                    config.qif.getProperty("qif.azure.connection"),
-                                    config.qif.getProperty("qif.azure.container"),
-                                    screenShot
-                            );
-                            // Set the Test Step Result Properties
-                            stepResult.status = "Fail";
-                            stepResult.error = stepResult.actualResult;
-                            ;
-                            //stepResult.actualResult = testStep.expectedResult;;
-                            allPassed = false;
-                            lastError = stepResult.error;
-                            lastErrorScreen = stepResult.screenshotURL;
-                        } else {
-                            stepResult.actualResult = testStep.expectedResult;
-                        }
-                    } catch (Exception error) {
-                        logger.error(error);
                         // Take the Screen Shot from the Browser Instance
                         File screenShot = Browser.takeScreenShot(
                                 testStep.testCaseStepId + "_" +
@@ -1085,89 +1065,114 @@ public class WebTest {
                         );
                         // Set the Test Step Result Properties
                         stepResult.status = "Fail";
-                        stepResult.error = error.getMessage();
-                        stepResult.actualResult = error.toString();
+                        stepResult.error = stepResult.actualResult;
+                        ;
+                        //stepResult.actualResult = testStep.expectedResult;;
                         allPassed = false;
                         lastError = stepResult.error;
                         lastErrorScreen = stepResult.screenshotURL;
+                    } else {
+                        stepResult.actualResult = testStep.expectedResult;
                     }
-                    // Add the Test Step Result to Test Steps
-                    stepResult.executionEndTime = new Date();
-                    gui.testResult.testStepResults.add(stepResult);
-                    logger.info("RESULT: " + stepResult.status + " (" + stepResult.actualResult + ")");
+                } catch (Exception error) {
+                    logger.error(error);
+                    // Take the Screen Shot from the Browser Instance
+                    File screenShot = Browser.takeScreenShot(
+                            testStep.testCaseStepId + "_" +
+                                    fileFormat.format(stepResult.executionStartTime),
+                            config.app.getProperty("selenium.webdriver.screenshots")
+                    );
+                    // Upload the Screen Shot to Azure BLOB Storage and set the URL
+                    stepResult.screenshotURL = qifClient.uploadScreenShot(
+                            config.qif.getProperty("qif.azure.connection"),
+                            config.qif.getProperty("qif.azure.container"),
+                            screenShot
+                    );
+                    // Set the Test Step Result Properties
+                    stepResult.status = "Fail";
+                    stepResult.error = error.getMessage();
+                    stepResult.actualResult = error.toString();
+                    allPassed = false;
+                    lastError = stepResult.error;
+                    lastErrorScreen = stepResult.screenshotURL;
                 }
-
-                // Determine the Test Results
-                if (allPassed) {
-                    gui.testResult.status = "Pass";
-                    gui.testResult.actualResult = testCase.expectedResult;
-                } else {
-                    gui.testResult.status = "Fail";
-                    gui.testResult.actualResult = lastError;
-                    gui.testResult.error = lastError;
-                    gui.testResult.errorScreen = lastErrorScreen;
-                }
-                // Send the Test Results to QIF
-                logger.info("Sending the Test Results to QIF...");
-                gui.testResult.executionEndTime = new Date();
-                qifClient.postGUITestResults(gui);
-
-                // Post results for Performance test case
-                if (!gui_Perf_TC.description.isEmpty()) {
-                    TestStepResult prefStepResult = new TestStepResult();
-                    prefStepResult.actualResult = sPerfActualResult.isEmpty() ?
-                            "Test Step Not executed due to issue while executing:" + testCase.description : sPerfActualResult;
-                    gui_Perf_Result.testResult.actualResult = prefStepResult.actualResult;
-                    prefStepResult.error = PerfromanceTest_pass ? "" : gui_Perf_Result.testResult.actualResult;
-                    prefStepResult.executionStartTime = gui.testResult.executionStartTime;
-                    gui_Perf_Result.testResult.executionStartTime = prefStepResult.executionStartTime;
-                    prefStepResult.executionEndTime = gui.testResult.executionEndTime;
-                    gui_Perf_Result.testResult.executionEndTime = prefStepResult.executionEndTime;
-                    prefStepResult.status = PerfromanceTest_pass ? "Pass" : "Fail";
-                    gui_Perf_Result.testResult.status = prefStepResult.status;
-                    prefStepResult.testCaseStepId = gui_Perf_TC.testCaseSteps.get(0).testCaseStepId;
-                    gui_Perf_Result.testResult.testStepResults.add(prefStepResult);
-                    logger_performance.info("Step: " + gui_Perf_TC.testCaseSteps.get(0).stepDescription + "\n\t\t\t\t\t\t  "
-                            + "Result: " + gui_Perf_Result.testResult.actualResult);
-                    qifClient.postGUITestResults(gui_Perf_Result);
-                }
-                // Post results for UI Validation test case
-                if (!gui_UIVal_TC.description.isEmpty()) {
-                    TestStepResult UIValStepResult = new TestStepResult();
-                    UIValStepResult.actualResult = sUIActualResult.isEmpty() ?
-                            "Test Step Not executed due to issue while executing:" + testCase.description : sUIActualResult;
-                    gui_UIVal_Result.testResult.actualResult = UIValStepResult.actualResult;
-                    UIValStepResult.error = UIValidationTest_pass ? "" : gui_UIVal_Result.testResult.actualResult;
-                    UIValStepResult.executionStartTime = gui.testResult.executionStartTime;
-                    gui_UIVal_Result.testResult.executionStartTime = UIValStepResult.executionStartTime;
-                    UIValStepResult.executionEndTime = gui.testResult.executionEndTime;
-                    gui_UIVal_Result.testResult.executionEndTime = UIValStepResult.executionEndTime;
-                    UIValStepResult.status = UIValidationTest_pass ? "Pass" : "Fail";
-                    gui_UIVal_Result.testResult.status = UIValStepResult.status;
-                    UIValStepResult.testCaseStepId = gui_UIVal_TC.testCaseSteps.get(0).testCaseStepId;
-                    UIValStepResult.screenshotURL = UIValidationZipPath;
-                    gui_UIVal_Result.testResult.testStepResults.add(UIValStepResult);
-                    gui_UIVal_Result.testResult.errorScreen = UIValStepResult.screenshotURL;
-                    qifClient.postGUITestResults(gui_UIVal_Result);
-                }
-                // Assert the Test Status
-                Assert.assertEquals(gui.testResult.status, "Pass", "Got Error: " + gui.testResult.error);
-
-            } catch (Exception error) {
-                logger.error(error);
-                Assert.assertEquals(error.getMessage().length(), 0);
+                // Add the Test Step Result to Test Steps
+                stepResult.executionEndTime = new Date();
+                gui.testResult.testStepResults.add(stepResult);
+                logger.info("RESULT: " + stepResult.status + " (" + stepResult.actualResult + ")");
             }
+
+            // Determine the Test Results
+            if (allPassed) {
+                gui.testResult.status = "Pass";
+                gui.testResult.actualResult = testCase.expectedResult;
+            } else {
+                gui.testResult.status = "Fail";
+                gui.testResult.actualResult = lastError;
+                gui.testResult.error = lastError;
+                gui.testResult.errorScreen = lastErrorScreen;
+            }
+            // Send the Test Results to QIF
+            logger.info("Sending the Test Results to QIF...");
+            gui.testResult.executionEndTime = new Date();
+            qifClient.postGUITestResults(gui);
+
+            // Post results for Performance test case
+            if (!gui_Perf_TC.description.isEmpty()) {
+                TestStepResult prefStepResult = new TestStepResult();
+                prefStepResult.actualResult = sPerfActualResult.isEmpty() ?
+                        "Test Step Not executed due to issue while executing:" + testCase.description : sPerfActualResult;
+                gui_Perf_Result.testResult.actualResult = prefStepResult.actualResult;
+                prefStepResult.error = PerfromanceTest_pass ? "" : gui_Perf_Result.testResult.actualResult;
+                prefStepResult.executionStartTime = gui.testResult.executionStartTime;
+                gui_Perf_Result.testResult.executionStartTime = prefStepResult.executionStartTime;
+                prefStepResult.executionEndTime = gui.testResult.executionEndTime;
+                gui_Perf_Result.testResult.executionEndTime = prefStepResult.executionEndTime;
+                prefStepResult.status = PerfromanceTest_pass ? "Pass" : "Fail";
+                gui_Perf_Result.testResult.status = prefStepResult.status;
+                prefStepResult.testCaseStepId = gui_Perf_TC.testCaseSteps.get(0).testCaseStepId;
+                gui_Perf_Result.testResult.testStepResults.add(prefStepResult);
+                logger_performance.info("Step: " + gui_Perf_TC.testCaseSteps.get(0).stepDescription + "\n\t\t\t\t\t\t  "
+                        + "Result: " + gui_Perf_Result.testResult.actualResult);
+                qifClient.postGUITestResults(gui_Perf_Result);
+            }
+            // Post results for UI Validation test case
+            if (!gui_UIVal_TC.description.isEmpty()) {
+                TestStepResult UIValStepResult = new TestStepResult();
+                UIValStepResult.actualResult = sUIActualResult.isEmpty() ?
+                        "Test Step Not executed due to issue while executing:" + testCase.description : sUIActualResult;
+                gui_UIVal_Result.testResult.actualResult = UIValStepResult.actualResult;
+                UIValStepResult.error = UIValidationTest_pass ? "" : gui_UIVal_Result.testResult.actualResult;
+                UIValStepResult.executionStartTime = gui.testResult.executionStartTime;
+                gui_UIVal_Result.testResult.executionStartTime = UIValStepResult.executionStartTime;
+                UIValStepResult.executionEndTime = gui.testResult.executionEndTime;
+                gui_UIVal_Result.testResult.executionEndTime = UIValStepResult.executionEndTime;
+                UIValStepResult.status = UIValidationTest_pass ? "Pass" : "Fail";
+                gui_UIVal_Result.testResult.status = UIValStepResult.status;
+                UIValStepResult.testCaseStepId = gui_UIVal_TC.testCaseSteps.get(0).testCaseStepId;
+                UIValStepResult.screenshotURL = UIValidationZipPath;
+                gui_UIVal_Result.testResult.testStepResults.add(UIValStepResult);
+                gui_UIVal_Result.testResult.errorScreen = UIValStepResult.screenshotURL;
+                qifClient.postGUITestResults(gui_UIVal_Result);
+            }
+            // Assert the Test Status
+            Assert.assertEquals(gui.testResult.status, "Pass", "Got Error: " + gui.testResult.error);
+
+        } catch (Exception error) {
+            logger.error(error);
+            Assert.assertEquals(error.getMessage().length(), 0);
         }
-			//}));
-		//}
-		//return guiTests;
+    }
+    //}));
+    //}
+    //return guiTests;
 
 
-	@AfterSuite
-	static void tearDown() {
-		logger.info("Finishing all the Tests...");
-		logger.info(new String(new char[80]).replace("\0", "="));
-		//Browser.shutDown();
-	}
+    @AfterSuite
+    static void tearDown() {
+        logger.info("Finishing all the Tests...");
+        logger.info(new String(new char[80]).replace("\0", "="));
+        //Browser.shutDown();
+    }
 
 }
