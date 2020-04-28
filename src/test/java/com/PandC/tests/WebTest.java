@@ -132,9 +132,14 @@ public class WebTest {
 //				"29.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
 //				"30.1. Verify validation error messages on the Name Insured Tab",
 //                "30.2. Verify new application changes on the Name Insured Tab"
-                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-				"31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
-				"31.2. Verify new application changes on the Property(Statement of Values) Tab"
+//                "30.1. Verify validation error messages on the Name Insured Tab",
+//				"30.2. Verify new application changes on the Name Insured Tab"
+//                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+"34.6. Verify new application changes on the BI Worksheet Tab",
+"34.7. Verify validation error messages on the BI Worksheet Tab"
+//                "38.1. Verify new application changes on BI Dependent tab"
+//				"31.2. Verify new application changes on the Property(Statement of Values) Tab"
 //				"31.3. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
 //				"31.4. PS044 - To verify user is able to Delete a row from the Program Structure Property (Statement of Values) tab",
 //				"32.1. PS039 - To verify the error message Please upload file in .xls or .xlsx format only on uploading a file with incorrect format in Property (Statement of Values) tab",
@@ -889,6 +894,8 @@ public class WebTest {
 									robot.keyRelease(KeyEvent.VK_ENTER);
 									robot.delay(2000);
 									break;
+                                case "ignore":
+                                    break;
 								case "uivalidation":
 									LayoutReport layoutReport = Galen.checkLayout(Browser.webDriver, "./src/test/java/com/PandC/uispec/"+testAction.action.fieldValue,
 											new SectionFilter(Arrays.asList("desktop"),null),new Properties(), new HashMap<String, Object>());
