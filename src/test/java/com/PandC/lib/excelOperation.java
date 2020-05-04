@@ -59,38 +59,35 @@ public class excelOperation {
 
     public static String readDataFromExcel(String fieldValue) throws IOException {
 
-        XSSFWorkbook testDataExcelWorkbook = new XSSFWorkbook();
         config = new Configuration();
-        String excelFileName= config.app.getProperty("TestDataFile");
+        String excelFileName= config.app.getProperty("testDataFile");
 
-        testDataExcelWorkbook = new XSSFWorkbook(new FileInputStream(Paths.get(System.getProperty("user.dir"), "testdata/ExcelTestData/",excelFileName ).toString()));
-        String tabname=StringUtils.substringBetween(fieldValue, "(", ",");
-        String cell=StringUtils.substringBetween(fieldValue, ",", ")");
+        XSSFWorkbook testDataExcelWorkbook = new XSSFWorkbook(new FileInputStream(Paths.get(System.getProperty("user.dir"), "testdata/ExcelTestData/",excelFileName ).toString()));
+        String tabName=StringUtils.substringBetween(fieldValue, "(", ",").trim();
+        String cell=StringUtils.substringBetween(fieldValue, ",", ")").trim();
 
         int iRow = getRow(cell) - 1;
         int iColumn = convertName2ColumnIndex(getColumn(cell));
         String sActualValue = "";
         try {
-            switch (testDataExcelWorkbook.getSheet(tabname)
+            switch (testDataExcelWorkbook.getSheet(tabName)
                     .getRow(iRow).getCell(iColumn).getCellType()) {
                 case XSSFCell.CELL_TYPE_NUMERIC:
 
-                    sActualValue = String.valueOf(testDataExcelWorkbook.getSheet(tabname)
+                    sActualValue = String.valueOf(testDataExcelWorkbook.getSheet(tabName)
                             .getRow(iRow).getCell(iColumn).getNumericCellValue());
                     break;
                 case XSSFCell.CELL_TYPE_STRING:
 
-                    sActualValue = testDataExcelWorkbook.getSheet(tabname)
+                    sActualValue = testDataExcelWorkbook.getSheet(tabName)
                             .getRow(iRow).getCell(iColumn).getStringCellValue();
                     break;
                 default:
                     break;
             }
         } catch (NullPointerException ex) {
+            throw  ex;
         }
-        String valueToType = sActualValue.replaceAll("[\\t\\n\\r]+", " ")
-                .replaceAll("[^\\x00-\\x7F]", " ").trim();
-
-        return  valueToType;
+        return  sActualValue;
     }
 }

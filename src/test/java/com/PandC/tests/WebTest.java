@@ -590,14 +590,15 @@ public class WebTest {
                                     break;
                                 case "type":
 //                                    excelOperation exc=new excelOperation();
-                                    if(testAction.action.fieldValue.contains("readFileData"))
+                                    String typeData=testAction.action.fieldValue;
+                                    if(testAction.action.fieldValue.contains("readDataFile"))
                                     {
-                                        excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                        typeData=excelOperation.readDataFromExcel(testAction.action.fieldValue);
                                     }
                                     // Field typing action
                                     Browser.webDriver.findElement(
                                             By.cssSelector(testAction.action.fieldName)
-                                    ).sendKeys(testAction.action.fieldValue);
+                                    ).sendKeys(typeData);
                                     Thread.sleep(500);
                                     break;
                                 case "match-text":
@@ -1165,7 +1166,7 @@ public class WebTest {
                     qifClient.postGUITestResults(gui_UIVal_Result);
                 }
                 // Assert the Test Status
-                Assert.assertEquals(gui.testResult.status, "Pass", "Got Error: " + gui.testResult.error);
+                    Assert.assertEquals(gui.testResult.status, "Pass", "Got Error: " + gui.testResult.error);
 
             } catch (Exception error) {
                 logger.error(error);
