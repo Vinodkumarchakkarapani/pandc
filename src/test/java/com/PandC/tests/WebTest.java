@@ -1,6 +1,7 @@
 package com.PandC.tests;
 
 import com.PandC.lib.WebActions;
+import com.PandC.lib.excelOperation;
 import com.galenframework.api.Galen;
 import com.galenframework.reports.GalenTestInfo;
 import com.galenframework.reports.HtmlReportBuilder;
@@ -89,8 +90,8 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
+//		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //				"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -136,8 +137,8 @@ public class WebTest {
 //				"30.2. Verify new application changes on the Name Insured Tab"
 //                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
-"34.6. Verify new application changes on the BI Worksheet Tab",
-"34.7. Verify validation error messages on the BI Worksheet Tab"
+//"34.6. Verify new application changes on the BI Worksheet Tab",
+//"34.7. Verify validation error messages on the BI Worksheet Tab"
 //                "38.1. Verify new application changes on BI Dependent tab"
 //				"31.2. Verify new application changes on the Property(Statement of Values) Tab"
 //				"31.3. PS045 - To verify user is able to add rows under Program Structure in Property (Statement of Values) tab",
@@ -588,6 +589,11 @@ public class WebTest {
                                     );
                                     break;
                                 case "type":
+//                                    excelOperation exc=new excelOperation();
+                                    if(testAction.action.fieldValue.contains("readFileData"))
+                                    {
+                                        excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                    }
                                     // Field typing action
                                     Browser.webDriver.findElement(
                                             By.cssSelector(testAction.action.fieldName)
@@ -636,6 +642,7 @@ public class WebTest {
                                     ).getText();
                                     try {
                                         Assert.assertTrue(
+
                                                 sTextValue.contains(testAction.action.fieldValue),
                                                 "Text in Field (" + testAction.action.fieldName + ") should contain [" +
                                                         testAction.action.fieldValue + "] and Got [" + sTextValue + "]"
