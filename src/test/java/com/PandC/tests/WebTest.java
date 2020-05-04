@@ -527,6 +527,7 @@ public class WebTest {
 
                 XSSFWorkbook currentExcelWorkbook = new XSSFWorkbook();
                 String sCurrentExcelSheetName = "";
+                String typeData="";
                 for (TestCaseStep testStep : testCase.testCaseSteps) {
                     Thread.sleep(2000);
 
@@ -580,17 +581,22 @@ public class WebTest {
                                     ).clear();
                                     break;
                                 case "replace":
+                                    typeData=testAction.action.fieldValue;
+                                    if(testAction.action.fieldValue.contains("readDataFile"))
+                                    {
+                                        typeData=excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                    }
                                     // Field value replacing action
                                     Browser.webDriver.findElement(
                                             By.cssSelector(testAction.action.fieldName)
                                     ).sendKeys(
                                             Keys.chord(Keys.CONTROL, "a"),
-                                            testAction.action.fieldValue
+                                            typeData
                                     );
                                     break;
                                 case "type":
 //                                    excelOperation exc=new excelOperation();
-                                    String typeData=testAction.action.fieldValue;
+                                    typeData=testAction.action.fieldValue;
                                     if(testAction.action.fieldValue.contains("readDataFile"))
                                     {
                                         typeData=excelOperation.readDataFromExcel(testAction.action.fieldValue);
@@ -663,12 +669,17 @@ public class WebTest {
                                     dropDown.selectByIndex(integerValue);
                                     break;
                                 case "select-visibletext":
+                                    typeData=testAction.action.fieldValue;
+                                    if(testAction.action.fieldValue.contains("readDataFile"))
+                                    {
+                                        typeData=excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                    }
                                     // Field selecting by index action
-                                    String visibleText = testAction.action.fieldValue;
+//                                    String visibleText = testAction.action.fieldValue;
                                     Select dropDownText = new Select(Browser.webDriver.findElement(
                                             By.cssSelector(testAction.action.fieldName)
                                     ));
-                                    dropDownText.selectByVisibleText(visibleText);
+                                    dropDownText.selectByVisibleText(typeData);
                                     break;
                                 case "wait-display":
                                     // Waiting for Field to be visible action
