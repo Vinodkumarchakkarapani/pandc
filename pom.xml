@@ -20,12 +20,13 @@
     <repositories>
         <repository>
             <id>periscope-tech</id>
-            <url>https://pkgs.dev.azure.com/periscope-tech/_packaging/periscope-tech@Local/maven/v1</url>
+            <name>QViz SDK Maven Packages</name>
+            <url>https://maven.pkg.github.com/periscope-tech/QViz.SDK</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
@@ -71,9 +72,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>com.periscope</groupId>
-            <artifactId>QIF</artifactId>
-            <version>1.0.6</version>
+                <groupId>com.periscope</groupId>
+                <artifactId>QViz</artifactId>
+                <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

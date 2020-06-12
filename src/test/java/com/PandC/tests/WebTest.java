@@ -8,8 +8,8 @@ import com.galenframework.reports.HtmlReportBuilder;
 import com.galenframework.reports.model.LayoutReport;
 import com.galenframework.speclang2.pagespec.SectionFilter;
 import com.galenframework.validation.ValidationResult;
-import com.periscope.qif.client.QIFClient;
-import com.periscope.qif.json.*;
+import com.periscope.qviz.client.QVizClient;
+import com.periscope.qviz.json.*;
 import com.PandC.lib.Browser;
 import com.PandC.lib.Configuration;
 import org.apache.logging.log4j.LogManager;
@@ -78,7 +78,7 @@ public class WebTest {
 	private static SimpleDateFormat fileFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
 	private static Configuration config;
 	private static boolean isSetUp = true;
-	private static QIFClient qifClient;
+	private static QVizClient qifClient;
 	private static Project project;
 	private static List<TestCaseGUI> guiTestCases = new ArrayList<>();
 	private static List<TestCaseGUI> guiTestCases_performance_Tests = new ArrayList<>();
@@ -90,7 +90,7 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-				                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
+                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
 //		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
@@ -277,7 +277,7 @@ public class WebTest {
 		// Try to do the QIF activities and Browser initialization
 		try {
 			logger.info("Initializing the QIF Client...");
-			qifClient = new QIFClient(config.qif.getProperty("qif.url.api"));
+			qifClient = new QVizClient(config.qif.getProperty("qif.url.api"));
 
 			logger.info("Authenticating with QIF...");
 			qifClient.authenticate(

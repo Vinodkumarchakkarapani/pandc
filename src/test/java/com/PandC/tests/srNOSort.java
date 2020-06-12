@@ -1,6 +1,6 @@
 package com.PandC.tests;
 
-import com.periscope.qif.json.TestCaseStep;
+import com.periscope.qviz.json.TestCaseStep;
 
 import java.util.Comparator;
 
