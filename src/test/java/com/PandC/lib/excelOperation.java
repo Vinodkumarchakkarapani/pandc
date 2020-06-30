@@ -1,16 +1,20 @@
 package com.PandC.lib;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataValidationConstraint;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.*;
 import org.apache.commons.lang3.StringUtils;
 
 
 import java.awt.datatransfer.StringSelection;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Properties;
 
 public class excelOperation {
@@ -76,6 +80,8 @@ public class excelOperation {
 
                     sActualValue = String.valueOf(testDataExcelWorkbook.getSheet(tabName)
                             .getRow(iRow).getCell(iColumn).getNumericCellValue());
+
+                    sActualValue=Integer.toString((int)Double.parseDouble(sActualValue));
                     break;
                 case XSSFCell.CELL_TYPE_STRING:
 
@@ -89,5 +95,126 @@ public class excelOperation {
             throw  ex;
         }
         return  sActualValue;
+    }
+
+    public static String getErrorMessage(String fieldName) throws IOException {
+
+        String excelName;
+        String sheetName;
+        String cell;
+
+        String newField=StringUtils.substringBetween(fieldName,"(",")");
+
+        if(newField.contains("(")){
+            excelName=StringUtils.substringBetween(fieldName,"(",",");
+            sheetName=StringUtils.substringBetween(fieldName,",",",");
+            cell=StringUtils.substringBetween(fieldName,")",")").replace(",","");
+        }else{
+            String str[] = newField.split(",");
+            excelName=str[0];
+            sheetName= str[1];
+            cell=str[2];
+        }
+
+        String fileName=System.getProperty("user.home")
+                + "\\Downloads\\" + excelName;
+
+        int iRow = getRow(cell) - 1;
+        int iColumn = convertName2ColumnIndex(getColumn(cell));
+
+        String errorMessage = null;
+
+        try {
+            FileInputStream fsIP = new FileInputStream(new File(fileName));
+            XSSFWorkbook wb = new XSSFWorkbook(fsIP);
+            XSSFSheet worksheet = wb.getSheet(sheetName);
+
+            List<XSSFDataValidation> lstValidation = worksheet.getDataValidations();
+
+            boolean isfound=false;
+            for (XSSFDataValidation validation : lstValidation) {
+                if(isfound)
+                    break;
+                for (CellRangeAddress rangeAddress : validation.getRegions().getCellRangeAddresses()) {
+                    if(isfound)
+                        break;
+                    for (int r = 0; r < worksheet.getLastRowNum() && !isfound; r++)
+                        for (int k = 0; k < worksheet.getRow(r).getLastCellNum() && !isfound; k++) {
+                            if (rangeAddress.isInRange(r, k) && k==iColumn && r==iRow) {
+                                DataValidationConstraint constraint = validation.getValidationConstraint();
+                                System.out.println("Row: " + r + "::Col: " + k);
+                                System.out.println("Error:::" + validation.getErrorBoxText());
+                                System.out.println("Error Title:::" + validation.getErrorBoxTitle());
+                                System.out.println("pretty Print:" + ((XSSFDataValidationConstraint) constraint).prettyPrint());
+                                errorMessage=validation.getErrorBoxText().replace("\n"," ").trim();
+                                isfound=true;
+                            }
+                        }
+                }
+            }
+        }catch (Exception e){
+            throw  e;
+        }
+        return errorMessage;
+    }
+
+    public static String getFormula(String fieldName) throws IOException {
+        String excelName;
+        String sheetName;
+        String cell;
+
+        String newField=StringUtils.substringBetween(fieldName,"(",")");
+
+        if(newField.contains("(")){
+            excelName=StringUtils.substringBetween(fieldName,"(",",");
+            sheetName=StringUtils.substringBetween(fieldName,",",",");
+            cell=StringUtils.substringBetween(fieldName,")",")").replace(",","");
+        }else{
+            String str[] = newField.split(",");
+            excelName=str[0];
+            sheetName= str[1];
+            cell=str[2];
+        }
+
+        String fileName=System.getProperty("user.home")
+                + "\\Downloads\\" + excelName;
+
+        int iRow = getRow(cell) - 1;
+        int iColumn = convertName2ColumnIndex(getColumn(cell));
+
+        String formula = null;
+
+        try {
+            FileInputStream fsIP = new FileInputStream(new File(fileName));
+            XSSFWorkbook wb = new XSSFWorkbook(fsIP);
+            XSSFSheet worksheet = wb.getSheet(sheetName);
+
+            List<XSSFDataValidation> lstValidation = worksheet.getDataValidations();
+
+            boolean isfound=false;
+            for (XSSFDataValidation validation : lstValidation) {
+                if(isfound)
+                    break;
+                for (CellRangeAddress rangeAddress : validation.getRegions().getCellRangeAddresses()) {
+                    if(isfound)
+                        break;
+                    for (int r = 0; r < worksheet.getLastRowNum()  && !isfound; r++)
+                        for (int k = 0; k < worksheet.getRow(r).getLastCellNum() && !isfound; k++) {
+                            if (rangeAddress.isInRange(r, k) && k==iColumn && r==iRow ) {
+                                DataValidationConstraint constraint = validation.getValidationConstraint();
+                                System.out.println("Row: " + r + "::Col: " + k);
+                                System.out.println("Error:::" + validation.getErrorBoxText());
+                                System.out.println("Error Title:::" + validation.getErrorBoxTitle());
+                                System.out.println("pretty Print:" + ((XSSFDataValidationConstraint) constraint).prettyPrint());
+                                formula=((XSSFDataValidationConstraint) constraint).prettyPrint().trim();
+                                isfound=true;
+                            }
+                        }
+                }
+            }
+        }catch (Exception e){
+            throw  e;
+        }
+        return formula;
     }
 }

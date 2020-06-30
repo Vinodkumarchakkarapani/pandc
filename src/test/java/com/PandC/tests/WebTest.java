@@ -12,14 +12,17 @@ import com.periscope.qviz.client.QVizClient;
 import com.periscope.qviz.json.*;
 import com.PandC.lib.Browser;
 import com.PandC.lib.Configuration;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //import org.junit.jupiter.api.AfterAll;
 //import org.junit.jupiter.api.BeforeAll;
 //import org.junit.jupiter.api.DynamicTest;
 //import org.junit.jupiter.api.TestFactory;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataValidationConstraint;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.interactions.Actions;
@@ -90,7 +93,47 @@ public class WebTest {
 	static void setUp() {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
-                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
+                //"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+                //"256. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet"
+                //"257. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet"
+                //"258. PS258 - Validate data in Named Insured sheet of Exported excel sheet"
+                //"259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet"
+                //"260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet"
+                //"261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
+                //"264. PS264 - Validate data in Property (SOV) sheet of Exported excel sheet",
+                //"267. PS267 - Validate data in B.I. Worksheet sheet of Exported excel sheet",
+                //"268. PS268 - Validate Error Message in Dependent BI Tab of Exported excel sheet",
+                //"269. PS269 - Validate Formula in Dependent BI Tab of Exported excel sheet",
+                //"270. PS270 - Validate data in Dependent BI sheet of Exported excel sheet",
+                //"271. PS271 - Validate Error Message in Transit Tab of Exported excel sheet",
+                //"272. PS272 - Validate Formula in Transit Tab of Exported excel sheet",
+                //"273. PS273 - Validate data in Dependent BI sheet of Exported excel sheet",
+                //"274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+                //"275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+                //"276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
+                //"277. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
+                //"278. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
+                //"279. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
+                //"282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet"
+                //"283. PS283 - Validate Error Message in International Liab Locations Tab of Exported excel sheet",
+                //"284. PS284 - Validate Formula in International Liab Locations Tab of Exported excel sheet"
+                //"285. PS285 - Validate data in International Liab Locations sheet of Exported excel sheet"
+                //"286. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
+                //"287. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
+                //"288. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
+                //"291. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet"
+
+
+                //"262. PS262 - Validate Error Message in Property (SOV) Tab of Exported excel sheet"
+                //"263. PS263 - Validate Formula in Property (SOV) Tab of Exported excel sheet"
+                //"265. PS265 - Validate Error Message in B.I. Worksheet Tab of Exported excel sheet"
+                //"266. PS266 - Validate Formula in B.I. Worksheet Tab of Exported excel sheet"
+                //"280. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
+                //"281. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet"
+                //"289. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet"
+                //"290. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet"
+
+
 //		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
@@ -981,7 +1024,13 @@ public class WebTest {
                                 case "setcurrentexcelsheet":
                                     sCurrentExcelSheetName = testAction.action.fieldValue;
                                     break;
+
                                 case "matchexcelcellvalue":
+                                    String expectedData=testAction.action.fieldValue;
+                                    if(testAction.action.fieldValue.contains("readDataFile")) {
+                                        expectedData=excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                    }
+
                                     int iRow = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName) - 1;
                                     //Integer.parseInt(testAction.action.fieldName.split(",")[0].trim())-1;
                                     int iColumn = com.PandC.lib.excelOperation.convertName2ColumnIndex(
@@ -996,6 +1045,8 @@ public class WebTest {
 
                                                 sActualValue = String.valueOf(currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
                                                         .getRow(iRow).getCell(iColumn).getNumericCellValue());
+                                                sActualValue=Integer.toString((int)Double.parseDouble(sActualValue));
+
                                                 break;
                                             case XSSFCell.CELL_TYPE_STRING:
 
@@ -1010,16 +1061,17 @@ public class WebTest {
                                     sActualValue = sActualValue.replaceAll("[\\t\\n\\r]+", " ")
                                             .replaceAll("[^\\x00-\\x7F]", " ").trim();
                                     if (!(sActualValue.equals(
-                                            testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim()))) {
+                                            expectedData.replaceAll("[^\\x00-\\x7F]", " ").trim()))) {
                                         stepResult.status = "Fail";
                                         stepResult.actualResult = "Value in Excel Cell (" + testAction.action.fieldName + ")" +
-                                                "does not match the value given (" + testAction.action.fieldValue.replaceAll("[^\\x00-\\x7F]", " ").trim() +
+                                                "does not match the value given (" + expectedData.replaceAll("[^\\x00-\\x7F]", " ").trim() +
                                                 ") , Got [" + sActualValue + "]";
                                         logger.error(stepResult.actualResult);
 
                                     }
                                     break;
                                 case "matchexcelcellformat":
+
                                     int iRowNo = com.PandC.lib.excelOperation.getRow(testAction.action.fieldName) - 1;
 											/*Integer
 											.parseInt(testAction.action.fieldName.split(",")[0].trim())-1*/
@@ -1055,6 +1107,40 @@ public class WebTest {
                                     ac.waitForElement(Browser.webDriver,3000,"#PopUpOKUmbrella");
                                     ac.clickAction(Browser.webDriver,"#PopUpOKUmbrella");
                                     ac.waitForElement(Browser.webDriver,3000,".aRFRClone");
+
+                                    break;
+
+                                case "validateerrormessage":
+                                    String errorValue=com.PandC.lib.excelOperation.getErrorMessage(testAction.action.fieldName);
+
+                                    try {
+                                        Assert.assertTrue(
+                                                errorValue.equals(testAction.action.fieldValue),
+                                                "Validation in Field (" + testAction.action.fieldName + ") should contain [" +
+                                                        testAction.action.fieldValue + "] and Got [" + errorValue + "]"
+
+                                        );
+                                    } catch (AssertionError e) {
+                                        throw new Exception("Validation in Field (" + testAction.action.fieldValue + ") should contain [" +
+                                                testAction.action.fieldValue + "] but Got [" + errorValue + "]");
+                                    }
+
+                                    break;
+
+                                case "validateformula":
+                                    String formulaValue=com.PandC.lib.excelOperation.getFormula(testAction.action.fieldName);
+
+                                    try {
+                                        Assert.assertTrue(
+                                                formulaValue.equals(testAction.action.fieldValue),
+                                                "Validation in Field (" + testAction.action.fieldName + ") should contain [" +
+                                                        testAction.action.fieldValue + "] and Got [" + formulaValue + "]"
+
+                                        );
+                                    } catch (AssertionError e) {
+                                        throw new Exception("Validation in Field (" + testAction.action.fieldName + ") should contain [" +
+                                                testAction.action.fieldValue + "] but Got [" + formulaValue + "]");
+                                    }
 
                                     break;
 
@@ -1193,7 +1279,7 @@ public class WebTest {
 	static void tearDown() {
 		logger.info("Finishing all the Tests...");
 		logger.info(new String(new char[80]).replace("\0", "="));
-		//Browser.shutDown();
+		Browser.shutDown();
 	}
 
 }
