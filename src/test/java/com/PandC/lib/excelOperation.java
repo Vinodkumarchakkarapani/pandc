@@ -1,7 +1,9 @@
 package com.PandC.lib;
 
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataValidationConstraint;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.commons.lang3.StringUtils;
@@ -14,7 +16,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 public class excelOperation {
@@ -61,7 +67,7 @@ public class excelOperation {
         return Integer.parseInt(num.toString());
     }
 
-    public static String readDataFromExcel(String fieldValue) throws IOException {
+    public static String readDataFromExcel(String fieldValue) throws IOException{
 
         config = new Configuration();
         String excelFileName= config.app.getProperty("testDataFile");
@@ -78,11 +84,30 @@ public class excelOperation {
                     .getRow(iRow).getCell(iColumn).getCellType()) {
                 case XSSFCell.CELL_TYPE_NUMERIC:
 
-                    sActualValue = String.valueOf(testDataExcelWorkbook.getSheet(tabName)
-                            .getRow(iRow).getCell(iColumn).getNumericCellValue());
+                        if (DateUtil.isCellDateFormatted(testDataExcelWorkbook.getSheet(tabName)
+                                .getRow(iRow).getCell(iColumn))) {
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                            sActualValue= dateFormat.format(testDataExcelWorkbook.getSheet(tabName)
+                                    .getRow(iRow).getCell(iColumn).getDateCellValue());
+                        }
+                        else if (testDataExcelWorkbook.getSheet(tabName)
+                                .getRow(iRow).getCell(iColumn).getCellStyle().getDataFormatString().contains("%")) {
+                            sActualValue = String.valueOf(testDataExcelWorkbook.getSheet(tabName)
+                                    .getRow(iRow).getCell(iColumn).getNumericCellValue() * 100);
+                        } else {
+                            double d=testDataExcelWorkbook.getSheet(tabName)
+                                    .getRow(iRow).getCell(iColumn).getNumericCellValue();
 
-                    sActualValue=Integer.toString((int)Double.parseDouble(sActualValue));
+                            if(String.valueOf(d).contains("E")){
+                                sActualValue=String.format("%.0f",d);
+                            }
+                            else {
+                                sActualValue=String.valueOf(d).replace(".0", "");
+                            }
+                        }
+
                     break;
+
                 case XSSFCell.CELL_TYPE_STRING:
 
                     sActualValue = testDataExcelWorkbook.getSheet(tabName)
@@ -142,10 +167,6 @@ public class excelOperation {
                         for (int k = 0; k < worksheet.getRow(r).getLastCellNum() && !isfound; k++) {
                             if (rangeAddress.isInRange(r, k) && k==iColumn && r==iRow) {
                                 DataValidationConstraint constraint = validation.getValidationConstraint();
-                                System.out.println("Row: " + r + "::Col: " + k);
-                                System.out.println("Error:::" + validation.getErrorBoxText());
-                                System.out.println("Error Title:::" + validation.getErrorBoxTitle());
-                                System.out.println("pretty Print:" + ((XSSFDataValidationConstraint) constraint).prettyPrint());
                                 errorMessage=validation.getErrorBoxText().replace("\n"," ").trim();
                                 isfound=true;
                             }
@@ -202,10 +223,6 @@ public class excelOperation {
                         for (int k = 0; k < worksheet.getRow(r).getLastCellNum() && !isfound; k++) {
                             if (rangeAddress.isInRange(r, k) && k==iColumn && r==iRow ) {
                                 DataValidationConstraint constraint = validation.getValidationConstraint();
-                                System.out.println("Row: " + r + "::Col: " + k);
-                                System.out.println("Error:::" + validation.getErrorBoxText());
-                                System.out.println("Error Title:::" + validation.getErrorBoxTitle());
-                                System.out.println("pretty Print:" + ((XSSFDataValidationConstraint) constraint).prettyPrint());
                                 formula=((XSSFDataValidationConstraint) constraint).prettyPrint().trim();
                                 isfound=true;
                             }
