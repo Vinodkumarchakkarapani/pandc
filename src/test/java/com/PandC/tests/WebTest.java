@@ -96,70 +96,78 @@ public class WebTest {
 		List<String> listOfTCstoExecute = Arrays.asList(
 
 		        "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
-                /*"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-                "34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
-                "35. PS049 - To verify user is able to enter the details in BI Worksheet page",
-                "36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
-                "38.2. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
-                "42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
-                "43.3 PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
-                "44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
-                "45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
-                "47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Casualty Exposure"
-                "50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab"
-                "54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab"
-                "56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab"
-                "58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab"
-                "60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule"
-                "61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab"
-                "63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab"
-                "64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab"
-                "65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab"
-                "67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
-                "70.4. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab"
-                "71.2. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab"
-                "72.4. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
-                "74.3. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab"
-                "84. PS124 - Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab"*/
+                //"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+                //"34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+                //"35. PS049 - To verify user is able to enter the details in BI Worksheet page",
+                //"36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+                //"38.2. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
+                //"42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
+                //"43.3 PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
+                //"44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
+                //"45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
+                //"47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Casualty Exposure"
+                //"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+                //"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+                //"56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
+                //"57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+                //"58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+                //"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+                //"61. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto tab",
+                //"63. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+                //"64. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Life Science tab",
+                //"65. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+                //"67. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
+                //"68.4. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
+                //"69. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures",
+                //"70.4. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
+                //"71.2. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
+                //"72.4. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab",
+                //"74.3. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
+                //"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
+                //"77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
+                //"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab",
 
-                //"256. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet"
-                //"257. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet"
-                //"258. PS258 - Validate data in Named Insured sheet of Exported excel sheet"
-                //"259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet"
-                //"260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet"
-                //"261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet"
-                //"264. PS264 - Validate data in Property (SOV) sheet of Exported excel sheet"
-                //"265. PS265 - Validate Error Message in B.I. Worksheet Tab of Exported excel sheet"
-                //"266. PS266 - Validate Formula in B.I. Worksheet Tab of Exported excel sheet"
-                //267. PS267 - Validate data in B.I. Worksheet sheet of Exported excel sheet"
+                //"255. PS255 - Verify user is able to export all RFR details on Clicking export button"
+
+
+
+                //"256. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
+                //"257. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
+                //"258. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
+                //"259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
+                //"260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
+                //"261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
+                //"262. PS262 - Validate Error Message in Property (SOV) Tab of Exported excel sheet"
+                //"263. PS263 - Validate Formula in Property (SOV) Tab of Exported excel sheet"
+                //"264. PS264 - Validate data in Property (SOV) sheet of Exported excel sheet",
+                //"265. PS265 - Validate Error Message in B.I. Worksheet Tab of Exported excel sheet",
+                //"266. PS266 - Validate Formula in B.I. Worksheet Tab of Exported excel sheet",
+                //"267. PS267 - Validate data in B.I. Worksheet sheet of Exported excel sheet",
                 //"268. PS268 - Validate Error Message in Dependent BI Tab of Exported excel sheet",
                 //"269. PS269 - Validate Formula in Dependent BI Tab of Exported excel sheet",
                 //"270. PS270 - Validate data in Dependent BI sheet of Exported excel sheet",
-                //"271. PS271 - Validate Error Message in Transit Tab of Exported excel sheet"
+                //"271. PS271 - Validate Error Message in Transit Tab of Exported excel sheet",
                 //"272. PS272 - Validate Formula in Transit Tab of Exported excel sheet",
-                //"273. PS273 - Validate data in Transit sheet of Exported excel sheet"
+                //"273. PS273 - Validate data in Transit sheet of Exported excel sheet",
                 //"274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
                 //"275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
                 //"276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
                 //"277. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
                 //"278. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
-                //"279. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet"
-                //"282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet"
+                //"279. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
+                //"280. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
+                //"281. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
+                //"282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
                 //"283. PS283 - Validate Error Message in International Liab Locations Tab of Exported excel sheet",
-                //"284. PS284 - Validate Formula in International Liab Locations Tab of Exported excel sheet"
-                //"285. PS285 - Validate data in International Liab Locations sheet of Exported excel sheet"
+                //"284. PS284 - Validate Formula in International Liab Locations Tab of Exported excel sheet",
+                //"285. PS285 - Validate data in International Liab Locations sheet of Exported excel sheet",
                 //"286. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
                 //"287. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
-                //"288. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
-                //"289. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet"
-                //"290. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet"
+                //"288. PS288 - Validate data in Workers Comp sheet of Exported excel sheet"
+                //"289. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
+                //"290. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
                 //"291. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet"
 
-
-                //"262. PS262 - Validate Error Message in Property (SOV) Tab of Exported excel sheet"
-                //"263. PS263 - Validate Formula in Property (SOV) Tab of Exported excel sheet"
-                //"280. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
-                //"281. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet"
 
 
 
@@ -303,7 +311,7 @@ public class WebTest {
 //				"75. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
 //				"76. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
 //				"77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
-//				"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Submit to Carrier tab",
+//				"78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab",
 //				"79. PS119 - Verify user is able to Preview the details entered by user for General Information by clicking on General Information in Preview tab",
 //				"79.1. Review Tab - Verify the contents of the Named Insured Tab in the Exported Excel by clicking on Export button",
 //				"80. PS120 - Verify user is able to Preview the details entered by user for Property Exposures by clicking on Property Exposures in Preview tab",
