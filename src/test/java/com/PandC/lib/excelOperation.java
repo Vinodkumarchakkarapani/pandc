@@ -10,18 +10,12 @@ import org.apache.commons.lang3.StringUtils;
 
 
 import java.awt.datatransfer.StringSelection;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 
 public class excelOperation {
 
@@ -233,5 +227,26 @@ public class excelOperation {
             throw  e;
         }
         return formula;
+    }
+
+    public static void createAutoItScript(String sheetName,Map<String,String> data,String excelfile) throws FileNotFoundException, UnsupportedEncodingException {
+        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+        String excelFile=System.getProperty("user.home")
+                + "\\Downloads\\" + excelfile;
+
+        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+        writer.println("#include <Excel.au3>");
+        writer.println("Local $oExcel_1=_Excel_Open()");
+        writer.println("Local $sWorkbook=\""+excelFile+"\"");
+        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+        writer.println("Local $sheetName=\""+sheetName+"\"");
+        writer.println("WinActivate($oWorkbook)");
+        for(Map.Entry m:data.entrySet()) {
+            writer.println("_Excel_RangeWrite($oWorkbook,$sheetName,\""+m.getValue()+"\",\""+m.getKey()+"\")");
+        }
+        writer.println("_Excel_BookSave($oWorkbook)");
+        writer.println("_Excel_Close($oExcel_1,True,True)");
+
+        writer.close();
     }
 }
