@@ -229,10 +229,10 @@ public class excelOperation {
         return formula;
     }
 
-    public static void createAutoItScript(String sheetName,Map<String,String> data,String excelfile) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void createAutoItScript(String sheetName,Map<String,String> data,String excelFileName) throws FileNotFoundException, UnsupportedEncodingException {
         String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
         String excelFile=System.getProperty("user.home")
-                + "\\Downloads\\" + excelfile;
+                + "\\Downloads\\" + excelFileName;
 
         PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
         writer.println("#include <Excel.au3>");

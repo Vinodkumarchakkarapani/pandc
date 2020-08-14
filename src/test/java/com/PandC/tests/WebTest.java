@@ -137,6 +137,7 @@ public class WebTest {
 //                "75. In Property (SOV) Verify user is displayed list of crolumns required under “Building Value”, the following columns are a. Murals b. Sheds c. Fencing Gates d. Building Replacement Value e. Tenant Improvements Replacement Values f. Other Building Value",
 //                "76. In Property (SOV) for Building Value, Verify user is able to enable or disable the columns by clicking on the checkbox,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "77. In Property sov for “Building Value, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button for the following columns a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
+//                "78. In Property sov for Building Value,Verify validation error messages for the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value"
 //                "79. In Property sov for “Building Value, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "87. In Property (SOV) for \"Business Income\", Verify the user selecting the \"Detailed BI\" option box is enable below columns for user selections: a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
 //                "88. In Property (SOV) for \"Business Income\", Verify user is able to enable or disable the columns under \"Detailed BI\" by clicking on the checkbox, the following columns are a. R&DBI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
@@ -160,7 +161,7 @@ public class WebTest {
 //                "134. In Property (SOV), Verify user is able to reset the column selection to default by clicking on \"Revert\" button",
 //                "135. In Property (SOV), Verify user is able to enable selected columns in the Property(SOV) table by clicking on \"apply\" button",
 //                "136. Verify add a new tab called Property (SOV) – 3rd Party next to Property (SOV) tab."
-                //"137. In Property (SOV) – 3rd Party, Verify user is display a grid with the following standard fields (columns). 1.Premises Number 2.Building Number 3.Location Name 4.Street Address 5.City 6.State or Province 7.Country 8.ZIP / Postal Code 9.Machinery/Equipment/Molds (Replacement Cost) 10.Raw materials & WIP (Replacement Cost) 11.R&D Inventory (Replacement Cost)"
+//                "137. In Property (SOV) – 3rd Party, Verify user is display a grid with the following standard fields (columns). 1.Premises Number 2.Building Number 3.Location Name 4.Street Address 5.City 6.State or Province 7.Country 8.ZIP / Postal Code 9.Machinery/Equipment/Molds (Replacement Cost) 10.Raw materials & WIP (Replacement Cost) 11.R&D Inventory (Replacement Cost)"
 
                 // BI-Worksheet
                 //"500. In BI Worksheet tab - Verify 2 Check boxes are displayed below the Not Applicable checkbox : a. Standard BI Worksheet b. Continuing Expenses only Worksheet",
@@ -168,9 +169,9 @@ public class WebTest {
                 //"502. In BI Worksheet - Verify user is displayed Continuing Expenses only worksheet as pre-selected value if P&C Practice is selected as Life Science in the drop down in the Cover page"
                 //"503. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Technology in the drop down in the Cover page"
                 //"505. Verify user is displayed the field with Label - \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" under Continuing Expenses only Worksheet",
-                //"506. Verify user is displayed error validation message on entering invalid value for the currency field - \"Annual Net Profit/(Net Loss) Before Tax\" to \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" - Error message 1. Max allowed value $9,999,999,999,999.99 2. Only currency Values allowed (0-9, $, ., ,)"
+                //"506. Verify user is displayed error validation message on entering invalid value for the currency field - \"Annual Net Profit/(Net Loss) Before Tax\" to \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" - Error message 1. Max allowed value $9,999,999,999,999.99 2. Only currency Values allowed (0-9, $, ., ,)",
                 //"507. Verify user is able to enter -ve currency value in case of net loss for field - \"Annual Net Profit/(Net Loss) Before Tax\" to \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" - under Continuing Expenses only Worksheet",
-                //"508. Verify user is displayed a new field - Net Profit from R&D Operations Before Tax If Net Profit, please note total grants, endowments, & other financial contributions that would be eliminated following a covered loss to tangible property here: R&D Income Sources & Expected Amounts If Net Loss, state \"None\" – (Insurer policy form automatically removes Net Loss from calculation for R&D Operations.)",
+                //"508. Verify user is displayed a new field - Net Profit from R&D Operations Before Tax If Net Profit, please note total grants, endowments, & other financial contributions that would be eliminated following a covered loss to tangible property here: R&D Income Sources & Expected Amounts If Net Loss, state \"None\" – (Insurer policy form automatically removes Net Loss from calculation for R&D Operations.)"
                 //"509. Verify user is displayed error validation message on entering invalid value for the currency field - Net Profit from R&D Operations Before Tax Error message 1. Max allowed value $9,999,999,999,999.99 2. Only currency Values allowed (0-9, $, ., ,)",
                 //"510. Verify user is able to enter a currency value with decimal in the field - Net Profit from R&D Operations Before Tax and also validate the value displayed is comma separated, in View mode value is displayed as rounded off value and in edit mode value is displayed with decimal.",
                 //"511. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is lesser than 0, the Annual Business Income Total calculation formula is implemented properly",
@@ -181,11 +182,11 @@ public class WebTest {
 
                 //"516. Verify the address displayed in the Add location(s) from SOV popup are displayed in the following order with comma separation. Location Name, Building Number, Street Address, City, State ZIP / Postal Code, Country",
                 //"517. Verify user is able to Select All or deselect All address location by clicking on the checkbox in the header of the popup"
-                //"519. Verify user is not able to select same location multiple times",
-                //"520. Verify user is able to select more than one location from the popup",
-                //"518. Verify inline error message is displayed, when user clicks on Add Selected button without selecting any location - Select at least one property to add",
-                //"521. Verify for the selected Address, new columns with selected location information displaying below the location header with the option to edit the linked Property (SOV) location",
-                //"522. Verify user is displayed the Add Locations popup by clicking on the edit icon",
+                //"518. Verify inline error message is displayed, when user clicks on Add Selected button without selecting any location - Select at least one property to add"
+                //"519. Verify user is not able to select same location multiple times"
+                //"520. Verify user is able to select more than one location from the popup"
+                //"521. Verify for the selected Address, new columns with selected location information displaying below the location header with the option to edit the linked Property (SOV) location"
+                //"522. Verify user is displayed the Add Locations popup by clicking on the edit icon"
                 //"523. Verify the select all checkbox in the header is not displayed when Edit icon is clicked",
                 //"524. Verify all the other locations in the popup are disabled except for the location for which the edit icon is clicked."
 
@@ -218,14 +219,14 @@ public class WebTest {
                 //"823. Principal Countries Shipped (Indicate % involved) - Verify user is displayed label - What is the level of information required for International Shipments, with the option By Continents, By Countries, Rest of World and also verify Continents option is selected as default.",
                 //"824. Verify user is displayed a new row Foreign below the Domestic U.S. row checking the Rest of World radio option.",
                 //"825. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Foreign - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
-                //"826. Verify on Selecting Continent radio option - 1. Delete Continent from list 2. A new row with a list of continents drop down is displayed 3. User is able to select the Continent from the drop down 4. After selecting the Continent, the drop down shifts to next row. 5. In the next row, In drop down User is not displayed the already selected Continent"
-                //"827. Verify user is able to delete the Continent rows by clicking on the delete icon next to the Continent name",
+                //"826. Verify on Selecting Continent radio option - 1. Delete Continent from list 2. A new row with a list of continents drop down is displayed 3. User is able to select the Continent from the drop down 4. After selecting the Continent, the drop down shifts to next row. 5. In the next row, In drop down User is not displayed the already selected Continent",
+                //"827. Verify user is able to delete the Continent rows by clicking on the delete icon next to the Continent name"
                 //"828. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Continent - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
-                //"829. Verify on Selecting Country radio option - 1. A new row with a list of Countries drop down is displayed 2. User is able to select the Country from the drop down 3. After selecting the Country, the drop down shifts to next row. 4. In the next row, In drop down User is not displayed the already selected Country",
+                //"829. Verify on Selecting Country radio option - 1. A new row with a list of Countries drop down is displayed 2. User is able to select the Country from the drop down 3. After selecting the Country, the drop down shifts to next row. 4. In the next row, In drop down User is not displayed the already selected Country"
 
-                //"830. Verify user is able to delete the Country row by clicking on the delete icon next to the country name",
-                //"831. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Country - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
-                //"832. Rest of World or Continent or Country - Total % - Verify the error message when the total of Incoming column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message - Total Incoming Shipments should not be greater than 100% Error message - Total Incoming Shipments should not be less than 100%",
+               //"830. Verify user is able to delete the Country row by clicking on the delete icon next to the country name",
+               //   "831. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Country - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
+               //"832. Rest of World or Continent or Country - Total % - Verify the error message when the total of Incoming column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message - Total Incoming Shipments should not be greater than 100% Error message - Total Incoming Shipments should not be less than 100%"
                 //"833. Rest of World, Continent, Country - Total % - Verify the error message when the total of Outgoing column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Outgoing Shipments should not be greater than 100% Error message -Total Outgoing Shipments should not be less than 100%",
                 //"834. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%"
 
@@ -1411,8 +1412,6 @@ public class WebTest {
                                 case "autoitfiledata":
                                     if(testAction.action.fieldValue.contains("readDataFile")){
                                         String writeData= excelOperation.readDataFromExcel(testAction.action.fieldValue);
-                                        //String cell=StringUtils.substringBetween(testAction.action.fieldName, "(", ",").trim();
-                                        //String writeData=StringUtils.substringBetween(testAction.action.fieldValue, ",", ")").trim();
                                         autoItData.put(testAction.action.fieldName,writeData);
                                     }
                                     else{
@@ -1434,6 +1433,7 @@ public class WebTest {
                                         String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",testAction.action.fieldValue+".au3").toString();
                                         ProcessBuilder pb= new ProcessBuilder("C:\\Program Files (x86)\\AutoIt3\\AutoIt3.exe",autoItScriptName);
                                         Process p=pb.start();
+                                        //Waiting for the process to complete
                                         while (p.isAlive()){
                                         }
                                         logger.info("Run the "+autoItScriptName+" and Data has been written into the "+testAction.action.fieldValue+ " sheet");
