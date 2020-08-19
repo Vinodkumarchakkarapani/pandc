@@ -1,23 +1,25 @@
 package com.PandC.lib;
 
+import com.google.i18n.phonenumbers.internal.MatcherApi;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.commons.lang3.StringUtils;
 
 
 import java.awt.datatransfer.StringSelection;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Properties;
 
 public class excelOperation {
 
     private static Configuration config;
+
     /**
      * Convert given excel column name to column Index, ex 'A=0', 'AA=26'
+     *
      * @param columnName
      * @return 0 based index of the column
      */
@@ -41,18 +43,18 @@ public class excelOperation {
         return value;
     }
 
-    public static String getColumn(String sLocation){
+    public static String getColumn(String sLocation) {
         StringBuffer alpha = new StringBuffer();
-        for (int i=0; i<sLocation.length(); i++)
-            if(Character.isAlphabetic(sLocation.charAt(i)))
+        for (int i = 0; i < sLocation.length(); i++)
+            if (Character.isAlphabetic(sLocation.charAt(i)))
                 alpha.append(sLocation.charAt(i));
         return alpha.toString();
     }
 
-    public static int getRow(String sLocation){
+    public static int getRow(String sLocation) {
         StringBuffer num = new StringBuffer();
-        for (int i=0; i<sLocation.length(); i++)
-            if(Character.isDigit(sLocation.charAt(i)))
+        for (int i = 0; i < sLocation.length(); i++)
+            if (Character.isDigit(sLocation.charAt(i)))
                 num.append(sLocation.charAt(i));
         return Integer.parseInt(num.toString());
     }
@@ -60,11 +62,11 @@ public class excelOperation {
     public static String readDataFromExcel(String fieldValue) throws IOException {
 
         config = new Configuration();
-        String excelFileName= config.app.getProperty("testDataFile");
+        String excelFileName = config.app.getProperty("testDataFile");
 
-        XSSFWorkbook testDataExcelWorkbook = new XSSFWorkbook(new FileInputStream(Paths.get(System.getProperty("user.dir"), "testdata/ExcelTestData/",excelFileName ).toString()));
-        String tabName=StringUtils.substringBetween(fieldValue, "(", ",").trim();
-        String cell=StringUtils.substringBetween(fieldValue, ",", ")").trim();
+        XSSFWorkbook testDataExcelWorkbook = new XSSFWorkbook(new FileInputStream(Paths.get(System.getProperty("user.dir"), "testdata/ExcelTestData/", excelFileName).toString()));
+        String tabName = StringUtils.substringBetween(fieldValue, "(", ",").trim();
+        String cell = StringUtils.substringBetween(fieldValue, ",", ")").trim();
 
         int iRow = getRow(cell) - 1;
         int iColumn = convertName2ColumnIndex(getColumn(cell));
@@ -86,8 +88,8 @@ public class excelOperation {
                     break;
             }
         } catch (NullPointerException ex) {
-            throw  ex;
+            throw ex;
         }
-        return  sActualValue;
+        return sActualValue;
     }
 }
