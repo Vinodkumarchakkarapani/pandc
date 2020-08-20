@@ -95,7 +95,6 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
 
-
                 "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
 
                 // Auto, Auto rental & Travel Tab
@@ -187,14 +186,14 @@ public class WebTest {
                 //"520. Verify user is able to select more than one location from the popup"
                 //"521. Verify for the selected Address, new columns with selected location information displaying below the location header with the option to edit the linked Property (SOV) location"
                 //"522. Verify user is displayed the Add Locations popup by clicking on the edit icon"
-                //"523. Verify the select all checkbox in the header is not displayed when Edit icon is clicked",
+                //"523. Verify the select all checkbox in the header is not displayed when Edit icon is clicked"
                 //"524. Verify all the other locations in the popup are disabled except for the location for which the edit icon is clicked."
 
                 // Property (SOV) 3rd party
                 //"136. Verify add a new tab called Property (SOV) – 3rd Party next to Property (SOV) tab.",
                 //"137. In Property (SOV) – 3rd Party, Verify user is display a grid with the following standard fields (columns). 1.Premises Number 2.Building Number 3.Location Name 4.Street Address 5.City 6.State or Province 7.Country 8.ZIP / Postal Code 9.Machinery/Equipment/Molds (Replacement Cost) 10.Raw materials & WIP (Replacement Cost) 11.R&D Inventory (Replacement Cost)",
                 //"138. In Property (SOV) – 3rd Party, Verify user is able to see \"Show/Hide Columns(s)\" button at the top of the table in Property (SOV) – 3rd Party",
-                //"139. Property SOV - 3rd Party, Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with  list of possible columns under the group names are. Building Details, Building Contents, Additional Details(Other Occupants or Tenants, Additional Information), Fire Protection, Security"
+                //"139. Property SOV - 3rd Party, Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with list of possible columns under the group names are. Building Details, Building Contents, Additional Details(Other Occupants or Tenants, Additional Information), Fire Protection, Security",
                 //"140. Property SOV - 3rd Party, Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
                 //"141. Property SOV - 3rd Party for \"Building Details\", Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
                 //"142. Property SOV - 3rd Party for \"Building Details\", Verify by default columns is pre-selected and disabled so that the column automatically appears on the table, the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. % Occupied d. Owned/Leased e. Construction Type f. Year Built g. # of Stories",
@@ -206,11 +205,11 @@ public class WebTest {
                 //"148. Property SOV - 3rd Party for \"Building Contents\", Verify user able to see the columns are grouped further as \"Contents Replacement Cost\" & \"Selling Price\" under Detailed Building Contents",
                 //"149. Property SOV - 3rd Party for \"Building Contents\",Verify User is displayed list of columns required under \"Replacement Cost\", columns are Cased Goods, Computer Hardware, Servers, Finished Stock Ready for Sale, Furniture & Fixtures, Irreplaceable Bulk Beverage, Irrigation Pipeline, Machinery/ Equipment /Molds,Mfg. or Lab Equipment, Perishable Property,Raw Materials & WIP (Not Spoilage/Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk Beverage,R&D Inventory,Spoilage",
                 //"150. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Replacement Cost\" by clicking on the checkbox,the following columns are (Cased Goods Values,Computer Hardware, Servers,Finished Stock Ready for Sale,Furniture & Fixtures,Irreplaceable Bulk Beverage,Irrigation Pipeline,Machinery/Equipment /Molds,Mfg. or Lab Equipment,Perishable Property,Raw Materials & WIP (Not Spoilage/ Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk",
-                //"151. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Building Contents\" and clicking \"apply\" button"
+                //"151. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Building Contents\" and clicking \"apply\" button",
                 //"152. In Property SOV - 3rd Party for \"Building Contents\", Verify validation error messages for the columns under \"Replacement Cost\"",
                 //"153. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under \"Replacement Cost\"",
                 //"154. In Property SOV - 3rd Party for \"Building Contents\", Verify user is displayed list of columns required under \"Selling Price\",the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other"
-                //"155. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Selling Price\" by clicking on the checkbox,the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+                //"155. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Selling Price\" by clicking on the checkbox,the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other"
                 //"136.1. In Property (SOV) – 3rd Party, To verify user is able to mark tab as Not Applicable",
                 //"136.2. In Property SOV - 3rd Party, Verify user is able to add row in Property SOV - 3rd Party by clicking on add Row",
                 //"136.3. In Property SOV - 3rd Party, Verify user is able to Delete the added row in Property SOV - 3rd Party Tab by clicking Delete button"
@@ -223,29 +222,85 @@ public class WebTest {
                 //"827. Verify user is able to delete the Continent rows by clicking on the delete icon next to the Continent name"
                 //"828. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Continent - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
                 //"829. Verify on Selecting Country radio option - 1. A new row with a list of Countries drop down is displayed 2. User is able to select the Country from the drop down 3. After selecting the Country, the drop down shifts to next row. 4. In the next row, In drop down User is not displayed the already selected Country"
-
                //"830. Verify user is able to delete the Country row by clicking on the delete icon next to the country name",
-               //   "831. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Country - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
+               //"831. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Country - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
                //"832. Rest of World or Continent or Country - Total % - Verify the error message when the total of Incoming column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message - Total Incoming Shipments should not be greater than 100% Error message - Total Incoming Shipments should not be less than 100%"
                 //"833. Rest of World, Continent, Country - Total % - Verify the error message when the total of Outgoing column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Outgoing Shipments should not be greater than 100% Error message -Total Outgoing Shipments should not be less than 100%",
-                //"834. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%"
+                //"834. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%",
+                //"835. Verify user is displayed error message on entering invalid values for percentage field for each field under Conveyance Used (% used of total annual value shipped) header rows and under Incoming, Outgoing and Inter company Columns. Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 10",
+                //"836. Verify the message displayed below the table with the title - RULES FOR ANY MODE OR MODES OF TRANSPORT and also below the title RULES FOR SEA AND INLAND WATERWAY TRANSPORT'",
+                //"837. Verify user is able to enter the details in transit tab - Shipments sub tab"
 
 
+                // Transit - Product Flow
+                //"859. Verify user is displayed the title Product Flow Below the Not applicable Check box.",
+                //"860. Verify user is displayed the error message for fields Product Name and Sub-Components(Parts or Processes) when these fields are left empty and a value is entered in some other field. Error message : For Product Name : Product Name is Required For Sub-Components(Parts or Processes) : Sub-Components (Parts or Processes) is Required",
+                //"861. Verify the error message for invalid value for Country field under Shipment From and Shipment To Columns. Error message : Please select a valid country name",
+                //"862. Verify the error message for invalid value for State or Province field when Country is United States under Shipment From and Shipment To Columns. Error message : Please select valid State Name/Code",
+                //"863. Verify the error message when invalid value for currency Field Average Value Shipped per Shipment is entered. Error message: 1. Max allowed value $9,999,999,999,999.99 2. Only currency values allowed(0-9, $, ., ,)",
+                //"864. Verify the error message when invalid value for Field Frequency of Average Shipment Per Year is entered. Error message: a. Enter only whole number",
+                //"865. Verify the error message when invalid value for currency Field Maximum Value Shipped per shipment is entered. Error message: 1. Max allowed value $9,999,999,999,999.99 2. Only currency values allowed(0-9, $, ., ,)",
+                //"866. Verify the error message when invalid value for Field Frequency of Max Shipment Per Year is entered. Error message:a. Enter only whole number",
+                //"867. Verify the value displayed for field Annual value Shipped is calculated as per the formula : (Average Value Shipped per Shipment x Frequency of Average Shipment Per Year) + ( Maximum Value Shipped per shipment x Frequency of Max Shipment Per Year)",
+                //"868. Verify user is displayed the Total at the end of column Annual value Shipped. The value should be Sum of Annual value shipped ( all rows)",
+                //"869. Select Option Yes from the drop down for Product Temperature Sensitivity and verify user is displayed the error message for the field Storage Temperature Range till the temperature range is entered."
+                //"870. Verify The error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number"
+                //"871. Verify user is able to enter the details in Product Flow tab",
+                //"872. Verify the error message when user clicks on Add Selected button without selecting any Product in Add Products popup. Error message : Select at least one product to add",
+                //"873.1. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
+                //"873. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
+                //"874. Verify user is able to add the rows for the products from Add Products popup",
+                //"875. Verify user is able to enter the details in the newly added rows",
+                //"876. Verify user is able to add a row buy clicking on Add row button",
+                //"877. Verify user is able to delete the newly added row",
+                //"878. Verify user is able to enter the details in Coverage Notes"
+                //"879. Verify User is directed back to Renewal List page on clicking save and close button",
+                //"880. Verify user is navigated to Transit Loc. Inv tab by clicking on Continue button"
 
-//                  "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-//                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+                // Contingent BI / Dependent
+               //"700. BI Dependent - Verify user is able to enter alphanumeric values with special characters in the fields with format as Text",
+               //"701. Verify United States is displayed as default country in the Country field",
+               //"702. Verify the error message displayed when user tries to enter a new country in the Country field - Please select a valid country name",
+               //"703. When country is United States - Verify user is displayed the error message if user enters invalid state - Please select valid State Name / Code"
+               //"704. When country is United States - Verify user is able to add the states from the type ahead drop down values",
+               //"705. When country is NON US - Verify user is able to enter alphanumeric with special characters for State field",
+               //"706. Verify ZIP / Postal Code field can accept only 10 characters",
+                //"707. When Country is United States - Verify user is displayed error message when ZIP / Postal code is entered more than 5 and less than 9 digits - Enter a valid ZIP / Postal Code",
+               //"708. When Country is United States Verify user is able to enter ZIP of 5 digits only",
+               //"709. When Country is United States Verify user is able to enter ZIP / Postal Code of Zip + 4 code with a dash(“-”) in between.of 5 digits only",
+               //"710. When Country is United States Verify the ZIP / Postal Code gets formatted automatically if user enters ZIP and Postal code together",
+               //"711. When country is non US - Verify user is able to enter ZIP / Postal Code with alphabets, numbers, and special characters of length 10 characters"
+                //"712. Annual Revenue Exposure field - Verify user is displayed error validation message on entering invalid value for the currency field - Enter only currency value (0-9, $, ., ,)",
+                //"713. Verify user is able to enter a currency value with decimal in the field - Annual Revenue Exposure field and also validate the value displayed is comma separated, in View mode value is displayed as rounded off value and in edit mode value is displayed with decimal."
+                //"714. % of Product Revenue - Verify the error message displayed when user enters invalid value for % of Product Revenue field",
+                //"715. % of Product Revenue - enter a numeric value with decimal and also validate the value displayed in View mode value is displayed as rounded off value and in edit mode value is displayed with decimal.",
+                //"716. Verify the error message is displayed when user enters invalid values for Estimated time until listed Process or Supplier is fully restored (months) - Enter only whole number"
+                //"717. Annual Revenue Loss - Annual Revenue Loss - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula : (Annual Gross Profit Exposure *(times) “Estimated time until listed Process or Supplier is fully restored (months)” /(divided by) 12)",
+                //"718. CBI Exposure without inventory consideration - Verify user is displayed error validation message on entering invalid value for the currency field - Enter only currency value (0-9, $, ., ,)",
+                //"719. # of Months of Available Inventory - Verify the error message is displayed when user enters invalid - Enter only whole number",
+                //"720. CBI exposure with available inventory - Verify IF “Estimated time until listed Process or Supplier is fully restored (months)” is Less than “No of months of Available Inventory” then the value is 0",
+                //"721. CBI exposure with available inventory - Verify IF “Estimated time until listed Process or Supplier is fully restored (months)” is greater than “No of months of Available Inventory” then the value is calculated as per the formula: CBI Exposure without inventory consideration *(times) (1 – (less) (“No. of months available inventory“ /(divided by)) /(divided by) “Estimated time until listed Process or Supplier is fully restored (months)”)"
+                //"722. Verify user is displayed the Options to select the value from drop down for Construction Type in alphabetical order"
+                //"723. Validate the error message displayed for invalid values entered in Year field - Please enter a valid year",
+                //"724. Verify the Column options displayed under Fire Protection: Smoke Detectors, Fire Extinguishers, Fire Alarm, Sprinkler System, Thermal Barriers, Hydrant, Fire Department",
+                //"725. Verify the Column options displayed under Security Information: Alarm, CC TV, Gated Campus, Guards, Key Card Access",
+                //"726. Enter valid details in BI Dependent tab"
+
+
+                //"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+                //"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //                "58.1 PS134 - To verify user is able to mark Casualty Exposure - Auto Tab as Not Applicable",
 //                "58.2. Verify new application changes on the Auto tab",
 //                "58.3. Verify validation error messages on the Auto Tab",
-//                "60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
-//                "61. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
-//                "62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
-//                "63. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Auto Rental & Travel tab"
+                //"60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+                //"61. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+                //"62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+               // "63. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Auto Rental & Travel tab",
 //                "64. PS064 - Verify new application changes on the Auto Rental tab & Travel Tab",
 //                "65. PS065- Verify validation error messages on the Auto Rental & Travel Tab",
 //                "66. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Auto Rental & Travel Tab",
 //                "67. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto Rental & Travel tab",
-//                "68. PS068 - To verify user is able to enter the details For Coverage notes in Auto Rental & Travel tab and navigate to Life Science"
+//                "68. PS068 - To verify user is able to enter the details For Coverage notes in Auto Rental & Travel tab and navigate to Life Science",
 //                "69. PS135 - To verify user is able to mark Casualty Exposure - Life Science Tab as Not Applicable",
 //                "70. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
 //                "71. PS136 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability tab as Not Applicable",
@@ -255,9 +310,10 @@ public class WebTest {
 //                "72. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
 //                "73. PS139 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability - Excess tab as Not Applicable",
 //                "73.1. PS140 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on add Row under Program Structure",
-//                "73.2. PS141 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on Delete under Program Structure"
+//                "73.2. PS141 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on Delete under Program Structure",
 //                "73.3. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
 //                "73.4. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures"
+                  //"255. PS255 - Verify user is able to export all RFR details on Clicking export button",
 
 
 
@@ -275,48 +331,47 @@ public class WebTest {
 
 
                 // Export excel sheet
-               /* "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-                "34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
-                "35. PS049 - To verify user is able to enter the details in BI Worksheet page",
-                "36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
-                "38.2. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
-                "42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
-                "43.3 PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
-                "44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
-                "45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
-                "47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Casualty Exposure",
-                "50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
-                "54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
-                "56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
-                "57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
-                "58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
-                "60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
-                "61. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
-                "62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
-                "63. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Auto Rental & Travel tab",
-                "66. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Auto Rental & Travel Tab",
-                "67. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto Rental & Travel tab",
-                "68. PS068 - To verify user is able to enter the details For Coverage notes in Auto Rental & Travel tab and navigate to Life Science",
-                "70. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
-                "72. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
-                "73.3. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
-                "73.4. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures",
-                "74.3. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
-                "75.1. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
-                "72.4. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab", // move to Auto rental & Travels
-                "75.8. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
-                "76.6. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
-                "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
-                "78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab"*/
+//                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+//                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//                "34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
+//                "35. PS049 - To verify user is able to enter the details in BI Worksheet page",
+//                "36.1. PS050 - To verify user is able to add another Location by clicking on Add Location Button in BI Worksheet Tab and navigate to Contingent BI/ Dependent tab",
+//                "38.2. PS058 - To verify user is able to enter the details in Contingent BI/ Dependent tab and Navigate to Crime Tab",
+//                "42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
+//                "43.3 PS068 - To verify user is able to enter the details For Description of Products, Sales, Description of how Products are Packaged, Annual Values Shipped in Transit/Cargo/Stock Throughput tab",
+//                "44. PS069 - To verify user is able to enter the details For Incoming shipment in Transit/Cargo/Stock Throughput tab",
+//                "45. PS070 - To verify user is able to enter the details For Outgoing shipment in Transit/Cargo/Stock Throughput tab",
+//                "47. PS072 - To verify user is able to enter the details For Coverage notes in Transit/Cargo/Stock Throughput tab and navigate to Casualty Exposure",
+//                "50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+//                "54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+//                "56. PS085 - To verify user is able to enter the details For Coverage Notes in Product Liability tab and navigate to Product Liability - Excess tab",
+//                "57. PS086 - To verify user is able to enter the details For Program Structure in Product Liability - Excess tab",
+//                "58. PS087 - To verify user is able to enter the details For Coverage Notes in Product Liability - Excess tab and navigate to Auto Tab",
+//                "60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
+//                "61. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
+//                "62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
+//                "63. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Auto Rental & Travel tab",
+//                "66. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Auto Rental & Travel Tab",
+//                "67. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto Rental & Travel tab",
+//                "68. PS068 - To verify user is able to enter the details For Coverage notes in Auto Rental & Travel tab and navigate to Life Science",
+//                "70. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+//                "72. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
+//                "73.3. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
+//                "73.4. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures",
+                //"74.3. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
+                //"75.1. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
+//                "72.4. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Foreign Tab", // move to Auto rental & Travels
+//                "75.8. PS111 - To verify user is able to enter the details in Program Structure in Foreign Tab and navigate to UMB/Excess Tab",
+//                "76.6. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
+//                "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
+//                "78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab"
 
                 //"255. PS255 - Verify user is able to export all RFR details on Clicking export button"
 
 
-
                 //"256. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
                 //"257. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
-                //"258. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
+                //"258. PS258 - Validate data in Named Insured sheet of Exported excel sheet"
                 //"259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
                 //"260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
                 //"261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
@@ -335,21 +390,21 @@ public class WebTest {
                 //"274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
                 //"275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
                 //"276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
-                //"277. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
-                //"278. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
+                //"277. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet"
+                //"278. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet"
                 //"279. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
                 //"280. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
                 //"281. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
-                //"282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
+                //"282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet"
                 //"283. PS283 - Validate Error Message in International Liab Locations Tab of Exported excel sheet",
                 //"284. PS284 - Validate Formula in International Liab Locations Tab of Exported excel sheet",
                 //"285. PS285 - Validate data in International Liab Locations sheet of Exported excel sheet",
                 //"286. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
-                //"287. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
+                //"287. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet"
                 //"288. PS288 - Validate data in Workers Comp sheet of Exported excel sheet"
                 //"289. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
                 //"290. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
-                //"291. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet"*/
+                //"291. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet"
 
 
 //		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
