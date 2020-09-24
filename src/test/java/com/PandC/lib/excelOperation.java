@@ -127,7 +127,8 @@ public class excelOperation {
         if(newField.contains("(")){
             excelName=StringUtils.substringBetween(fieldName,"(",",");
             sheetName=StringUtils.substringBetween(fieldName,",",",");
-            cell=StringUtils.substringBetween(fieldName,")",")").replace(",","");
+            String[] values=StringUtils.substringBetween(fieldName,")",")").split(",");
+            cell=values[1];
         }else{
             String str[] = newField.split(",");
             excelName=str[0];
@@ -183,7 +184,8 @@ public class excelOperation {
         if(newField.contains("(")){
             excelName=StringUtils.substringBetween(fieldName,"(",",");
             sheetName=StringUtils.substringBetween(fieldName,",",",");
-            cell=StringUtils.substringBetween(fieldName,")",")").replace(",","");
+            String[] values=StringUtils.substringBetween(fieldName,")",")").split(",");
+            cell=values[1];
         }else{
             String str[] = newField.split(",");
             excelName=str[0];
