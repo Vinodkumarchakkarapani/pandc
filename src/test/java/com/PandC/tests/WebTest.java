@@ -95,21 +95,66 @@ public class WebTest {
 		List<String> listOfTCstoExecute = Arrays.asList(
 
                 "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
-		        //Phase-1
-                //"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-                //"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
-                //"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
-                //"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
-                //"5. PS007 - Verify user is able to search a record by Name Insured",
-                //"6. PS008 - Verify user is able to search a record by \"Policy From\"",
-                //"7. PS009 - Verify user is able to search a record by \"Policy To\"",
-                //"8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid"
-                //"9. PS013 - Verify user is able to search a record by Status",
-                //"10. PS006 - Verify user is displayed No records Found when no records are present for the searched criteria",
-                //"11. PS010 - Verify user is able to search a record by Primary Contact"
-                //"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
-                //"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page"
 
+                //General Information Page
+//                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+//                "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
+//                "3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
+//                "4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
+//                "5. PS007  - Verify user is able to search a record by Name Insured",
+//                "6. PS008 - Verify user is able to search a record by \"Policy From\"",
+//                "7. PS009 - Verify user is able to search a record by \"Policy To\"",
+//                "8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
+//                "9. PS013 - Verify user is able to search a record by Status",
+//                "10. PS006 - Verify user is displayed No records Found when no records are present for the searched criteria",
+//                "11. PS010 - Verify user is able to search a record by Primary Contact",
+//                "12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+//                "13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
+//                "14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page",
+//                "14.1. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
+//                "14.2. In Cover Page, for Renewal Type - Verify Life Science checkbox is not displayed",
+//                "15.1. PS189 - Validate error message is displayed for From Date on Cover Page",
+//                "15.3. PS191 - Validate the Alert Pop Up is displayed properly for Blank Date in Cover Page",
+//                "15.4. PS193 - RFR-> Cover page In case of Renewal Type not selected, user is not able to navigate to Named Insureds",
+//                "15.6. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
+//                "15.7. PS188 - Validate error message should display for invalid Date on Cover page",
+//                "17. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
+//                "18.1. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab",
+//                "19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
+//                "20. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
+//                "29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
+//                "30.1. Verify validation error messages on the Name Insured Tab",
+//                "30.2. Verify new application changes on the Name Insured Tab",
+//                "30.3. In General Information tab - Verify Premium & Loss History tab is marked as Not Applicable by default",
+//                "30.4. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//                "31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
+
+                //Revenue & Liability Limits
+//                "49.1. PS125 - To verify user is able to mark Casualty Exposure - Revenue & Liability Limits tab as Not Applicable",
+//                "49.2. PS126 - Verify user is able to add another row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on add Row under Program Structure",
+//                "49.3. PS127 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on Delete under Program Structure",
+//                "50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+//                "50.1. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+//                "50.2. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+//                "50.3. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+//                "50.4. Verify validation error messages on the Revenue & Liability Limits Tab",
+//                "50.5. Verify new application changes on Revenue & Liability Limits Tab",
+//                "51. Verify user is displayed Show/Hide Column overlay and validate the fields",
+//                "52. Revenue & Liability Limits - Verify the country column is pre-selected and disabled in the Show/hide column overlay",
+//                "53. Verify when P&C Practice is commercial - in the show/hide overlay, only Products and Sales/service options should be displayed as pre-selected",
+//                "54. Revenue & Liability Limits Verify when P&C Practice is Life Science - in the show/hide overlay, only Lab Payroll and Square Footage options should be displayed as pre-selected",
+//                "55. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab"
+
+
+                //"56.1. PS131 - To verify user is able to mark Casualty Exposure - Product Liability Excess Tab as Not Applicable",
+                //"56.2. PS132 - Verify user is able to add another row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on add Row under Program Structure",
+                //"56.3. PS133 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on Delete under Program Structure"
+//                "69. PS135 - To verify user is able to mark Casualty Exposure - Life Science Tab as Not Applicable",
+//                "70. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
+//                "71.1. PS137 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on add Row under Program Structure",
+//                "71.2. PS138 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on Delete under Program Structure",
+//                "71.3. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
+//                "72. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
 //                "75. PS159 - To verify user is able to mark WC Exposure - Supplementary Application tab as Not Applicable",
 //                "75.1. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab"
 //                "76. PS165 - To verify user is able to mark UMB/Excess tab - Umbrella Liability tab as Not Applicable",
@@ -125,36 +170,9 @@ public class WebTest {
 //                "39. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //                "40. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
 //                "42. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab"
-                //"12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
-                //"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
-                //"14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page",
-//                "14.1. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
-//                "15.1. PS189 - Validate error message is displayed for From Date on Cover Page",
-//                "15.3. PS191 - Validate the Alert Pop Up is displayed properly for Blank Date in Cover Page",
-//                "15.4. PS193 - RFR-> Cover page In case of Renewal Type not selected, user is not able to navigate to Named Insureds",
-//                "15.6. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab"
-                //"15.7. PS188 - Validate error message should display for invalid Date on Cover page",
-                //"17. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
-               // "19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
-                //"20. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab"
-                //"29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
-                //"30.1. Verify validation error messages on the Name Insured Tab",
-                //"30.2. Verify new application changes on the Name Insured Tab",
-                //"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
-                //"56.1. PS131 - To verify user is able to mark Casualty Exposure - Product Liability Excess Tab as Not Applicable",
-                //"56.2. PS132 - Verify user is able to add another row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on add Row under Program Structure",
-                //"56.3. PS133 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on Delete under Program Structure"
-//                "69. PS135 - To verify user is able to mark Casualty Exposure - Life Science Tab as Not Applicable",
-//                "70. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
-//                "71.1. PS137 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on add Row under Program Structure",
-//                "71.2. PS138 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on Delete under Program Structure",
-//                "71.3. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
-//                "72. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab"
-
-
 
                 //"1000. Verify user is able to enter the details in all the tabs and export the RFR",
-                //"1044. - Write valid data in all sheets of Exported excel file using Auto It",
+                //"1044. - Write valid data in all sheets of Exported excel file using Auto It"
                 //"1047. Validate imported valid data in each type"
 
 
@@ -180,13 +198,13 @@ public class WebTest {
                 //"1016. Validate Error Message in Transit Shipment sheet of Exported excel sheet",
                 //"1017. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
                 //"1018. Validate data in Export/ transit Shipments sheet of Exported excel sheet"
-                //"1019. Validate Error Message in Product Transit sheet of Exported excel sheet",
+                //"1019. Validate Error Message in Product Transit sheet of Exported excel sheet"
                 //"1020. Validate Formula in Product Transit sheet of Exported excel sheet",
                 //"1021. Validate data in Product Transit sheet of Exported excel sheet",
                 //"1022. Validate Error Message in Product Flow sheet of Exported excel sheet"
                 //"1023. Validate Formula in Product Flow sheet of Exported excel sheet",
                 //"1024. Validate data in Product Flow sheet of Exported excel sheet",
-                //"1025. Validate Error Message in Transit Loc. Inv. sheet of Exported excel sheet",
+                //"1025. Validate Error Message in Transit Loc. Inv. sheet of Exported excel sheet"
                 //"1026. Validate Formula in Transit Loc. Inv. sheet of Exported excel sheet"
                 //"1027. Validate data in Transit Loc. Inv. sheet of Exported excel sheet"
                 //"1028. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet"
@@ -203,14 +221,16 @@ public class WebTest {
                 //"2000. Verify user is able to Preview the details entered by user for General Information tab by clicking on General Information in Preview tab",
                 //"2001. Verify user is able to Preview the details entered by user for Property(SOV) by clicking on Property in Preview tab",
                 //"2002. Verify user is able to Preview the details entered by user for Property 3rd party by clicking on Property in Preview tab",
-                //"2003. Verify user is able to Preview the details entered by user for BI Dependent by clicking on Property in Preview tab",
+                //"2003. Verify user is able to Preview the details entered by user for BI Dependent by clicking on Property in Preview tab"
                 //"2004. Verify user is able to Preview the details entered by user for Transit Shipment by clicking on Property in Preview tab"
                 //"2005. Verify user is able to Preview the details entered by user for Product Transit by clicking on Property in Preview tab",
                 //"2006. Verify user is able to Preview the details entered by user for Product Flow by clicking on Property in Preview tab"
                 //"2007. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab",
                 //"2008. Verify user is able to Preview the details entered by user for Revenue & Liability Limits by clicking on Casualty in Preview tab"
                 //"2009. Verify user is able to Preview the details entered by user for Product Liability by clicking on Casualty in Preview tab"
-                //"2010. Verify user is able to Preview the details entered by user for Auto by clicking on Casualty in Preview tab"
+                //"2010. Verify user is able to Preview the details entered by user for Auto by clicking on Casualty in Preview tab",
+                //"2011. Verify user is able to Preview the details entered by user for Auto Rental & Travel by clicking on Casualty in Preview tab",
+                //"2013. Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab"
 
 
                 // Auto, Auto rental & Travel Tab
@@ -280,7 +300,7 @@ public class WebTest {
 
                 // BI-Worksheet
                 //"500. In BI Worksheet tab - Verify 2 Check boxes are displayed below the Not Applicable checkbox : a. Standard BI Worksheet b. Continuing Expenses only Worksheet",
-                //"501. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Commercial in the drop down in the Cover page",
+                //"501. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Commercial in the drop down in the Cover page"
                 //"502. In BI Worksheet - Verify user is displayed Continuing Expenses only worksheet as pre-selected value if P&C Practice is selected as Life Science in the drop down in the Cover page",
                 //"503. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Technology in the drop down in the Cover page",
                 //"505. Verify user is displayed the field with Label - \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" under Continuing Expenses only Worksheet",
@@ -333,19 +353,18 @@ public class WebTest {
                 //"823. Principal Countries Shipped (Indicate % involved) - Verify user is displayed label - What is the level of information required for International Shipments, with the option By Continents, By Countries, Rest of World and also verify Continents option is selected as default.",
                 //"824. Verify user is displayed a new row Foreign below the Domestic U.S. row checking the Rest of World radio option.",
                 //"825. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Foreign - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
-                //"826. Verify on Selecting Continent radio option - 1. Delete Continent from list 2. A new row with a list of continents drop down is displayed 3. User is able to select the Continent from the drop down 4. After selecting the Continent, the drop down shifts to next row. 5. In the next row, In drop down User is not displayed the already selected Continent",
+                //"826. Verify on Selecting Continent radio option - 1. Delete Continent from list 2. A new row with a list of continents drop down is displayed 3. User is able to select the Continent from the drop down 4. After selecting the Continent, the drop down shifts to next row. 5. In the next row, In drop down User is not displayed the already selected Continent"
                 //"827. Verify user is able to delete the Continent rows by clicking on the delete icon next to the Continent name",
                 //"828. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Continent - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
                 //"829. Verify on Selecting Country radio option - 1. A new row with a list of Countries drop down is displayed 2. User is able to select the Country from the drop down 3. After selecting the Country, the drop down shifts to next row. 4. In the next row, In drop down User is not displayed the already selected Country",
                 //"830. Verify user is able to delete the Country row by clicking on the delete icon next to the country name"
                 //"831. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Country - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
                 //"832. Rest of World or Continent or Country - Total % - Verify the error message when the total of Incoming column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message - Total Incoming Shipments should not be greater than 100% Error message - Total Incoming Shipments should not be less than 100%",
-                //"833. Rest of World, Continent, Country - Total % - Verify the error message when the total of Outgoing column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Outgoing Shipments should not be greater than 100% Error message -Total Outgoing Shipments should not be less than 100%",
-                //"834. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%",
-                //"835. Verify user is displayed error message on entering invalid values for percentage field for each field under Conveyance Used (% used of total annual value shipped) header rows and under Incoming, Outgoing and Inter company Columns. Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 10",
-                //"836. Verify the message displayed below the table with the title - RULES FOR ANY MODE OR MODES OF TRANSPORT and also below the title RULES FOR SEA AND INLAND WATERWAY TRANSPORT'",
+                //"833. Rest of World, Continent, Country - Total % - Verify the error message when the total of Outgoing column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Outgoing Shipments should not be greater than 100% Error message -Total Outgoing Shipments should not be less than 100%"
+                //"834. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%"
+                //"835. Verify user is displayed error message on entering invalid values for percentage field for each field under Conveyance Used (% used of total annual value shipped) header rows and under Incoming, Outgoing and Inter company Columns. Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 10"
+                //"836. Verify the message displayed below the table with the title - RULES FOR ANY MODE OR MODES OF TRANSPORT and also below the title RULES FOR SEA AND INLAND WATERWAY TRANSPORT'"
                 //"837. Verify user is able to enter the details in transit tab - Shipments sub tab"
-
 
                 // Transit - Product Flow
                 //"859. Verify user is displayed the title Product Flow Below the Not applicable Check box.",
@@ -359,7 +378,7 @@ public class WebTest {
                 //"867. Verify the value displayed for field Annual value Shipped is calculated as per the formula : (Average Value Shipped per Shipment x Frequency of Average Shipment Per Year) + ( Maximum Value Shipped per shipment x Frequency of Max Shipment Per Year)",
                 //"868. Verify user is displayed the Total at the end of column Annual value Shipped. The value should be Sum of Annual value shipped ( all rows)",
                 //"869. Select Option Yes from the drop down for Product Temperature Sensitivity and verify user is displayed the error message for the field Storage Temperature Range till the temperature range is entered.",
-                //"870. Verify The error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number",
+                //"870. Verify The error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number"
                 //"871. Verify user is able to enter the details in Product Flow tab",
                 //"872. Verify the error message when user clicks on Add Selected button without selecting any Product in Add Products popup. Error message : Select at least one product to add",
                 //"873.1. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
@@ -371,6 +390,43 @@ public class WebTest {
                 //"878. Verify user is able to enter the details in Coverage Notes",
                 //"879. Verify User is directed back to Renewal List page on clicking save and close button",
                 //"880. Verify user is navigated to Transit Loc. Inv tab by clicking on Continue button"
+
+                // Transit- Location Inventory
+//                "882. Verify user is displayed the title Transit Location Inventory Below the Not applicable Check box.",
+//                "883. Verify user is displayed the mentioned columns as default which will not be configurable from Customize columns",
+//                "884. Verify User is displayed Show/Hide Column(s) label, Clicking on which should display an overlay screen with the list of possible column names",
+//                "885. In Show / Hide Columns - Building Details - Verify following Columns are Checked as default and user is not able to uncheck them.",
+//                "886. In Show / Hide Columns - Building Details - Verify user is able to check and uncheck the column name Occupied Floor area Sq.Ft.",
+//                "887. In Show / Hide Columns overlay - Verify under Building Contents - 3 sub sections are displayed: 1. REPLACEMENT COST 2. SELLING PRICE 3. Aggregate Building Contents",
+//                "888. In Show / Hide Columns overlay - Building Contents - Verify the Columns labels under Replacement Sub section",
+//                "889. In Show / Hide Columns overlay - Building Contents - Verify the Columns labels under Selling Price Sub section",
+//                "890. In Show / Hide Columns overlay - Building Contents -Verify the Columns labels under Aggregate Building Contents Sub section",
+//                "891. Verify user is able to check / uncheck the following columns under Additional Details:1. Other Occupants or Tenants 2. Additional Information",
+//                "892. In Show / Hide Columns overlay - Verify the Labels under Fire Protection",
+//                "893. In Show / Hide Columns overlay - Fire Protection - Verify the following columns are preselected and cannot be unchecked : 1. Sprinkler System 2. Smoke Detectors 3. Fire Alarm",
+//                "894. In Show / Hide Columns overlay - Fire Protection - Verify user is able to check and uncheck the following columns: 1. Fire Extinguishers 2. Thermal Barriers 3. Hydrant 4. Fire Department",
+//                "895. In Show / Hide Columns overlay -Security - Verify the following columns are pre selected and cannot be unchecked : 1. Alarm 2. Guards",
+//                "896. In Show / Hide Columns overlay - Security - Verify user is able to check and uncheck the following columns: 1. Gated Campus 2. CC TV 3. Key Card Access",
+//                "897. In Show / Hide Columns overlay - Very user is displayed 3 buttons : 1. Cancel 2. Revert 3. Apply",
+//                "898. In Show / Hide Columns overlay - Verify user is able to cancel the selections and exit the show / hide overlay by clicking on the Cancel button",
+//                "899. In Show / Hide Columns overlay - Verify user is able to revert back to default selections in the overlay on clicking the revert button",
+//                "900. In Show / Hide Columns overlay - Verify user is able to add the columns from the overlay in the table by checking the check boxes for the columns and clicking on Apply button",
+//                "901. Verify the columns under the Replacement heading in the Show / Hide overlay are displayed with column name with Replacement Cost heading in parenthesis in the table",
+//                "902. Verify the columns under the Selling Price heading in the Show / Hide overlay are displayed with column name with Selling Price heading in parenthesis in the table",
+//                "903. Verify user is able to select the state / Province value from the drop down by typing first 2 letters of state from the drop down if the country is US.",
+//                "904. When country is United States - Verify user is displayed the error message if user enters invalid state - Please select valid State Name / Code",
+//                "905. Verify the error message displayed when user tries to enter a new country in the Country field - Please select a valid country name"
+//                "906. Verify ZIP / Postal Code field can accept maximum of 10 character",
+//                "907. Verify the error message displayed when incorrect value is entered for Currency fields- a. Enter only currency value (0-9, $, ., ,)",
+//                "908. Verify the error message on entering invalid value for field Total Area Sq. Ft. : 1. Max 25 characters 2. Only numeric and decimal values are allowed",
+//                "909. Verify the error message on entering invalid value for field Occupied Floor area Sq.Ft. : a. Enter only whole number",
+//                "910. \"Verify the error message on entering invalid value for field % Occupied : a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
+//                "911. Verify the error message displayed for Year Built field on entering alphabets : Enter only number",
+//                "912. Verify the error message for Year field on entering a year value of less than 4 digits: a. Please enter a valid year",
+//                "913. Verify the error message for # of Stories field on entering invalid value other than numeric value : 1. Max 4 characters 2. Only numeric values allowed (0-9999)",
+//                "914. Verify user is able to add a new row by clicking on add button.",
+//                "915. Verify user is able to delete a row.",
+//                "916. Verify user is able to enter the details in Transit Loc Inv and navigate to Casualty tab"
 
                 // Contingent BI / Dependent
                 //"700. BI Dependent - Verify user is able to enter alphanumeric values with special characters in the fields with format as Text",
@@ -399,7 +455,7 @@ public class WebTest {
                 //"723. Validate the error message displayed for invalid values entered in Year field - Please enter a valid year",
                 //"724. Verify the Column options displayed under Fire Protection: Smoke Detectors, Fire Extinguishers, Fire Alarm, Sprinkler System, Thermal Barriers, Hydrant, Fire Department",
                 //"725. Verify the Column options displayed under Security Information: Alarm, CC TV, Gated Campus, Guards, Key Card Access"
-//                "726. Enter valid details in BI Dependent tab"
+               //"726. Enter valid details in BI Dependent tab"
 
 
                 //"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
@@ -1166,7 +1222,7 @@ public class WebTest {
 
                                 case "wait-display":
                                     // Waiting for Field to be visible action
-                                    integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
                                     (new WebDriverWait(Browser.webDriver, integerValue))
                                             .until(ExpectedConditions.visibilityOfElementLocated(
                                                     By.cssSelector(testAction.action.fieldName)
