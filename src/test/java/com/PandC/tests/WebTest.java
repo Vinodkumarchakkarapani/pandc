@@ -113,25 +113,27 @@ public class WebTest {
 //                "12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
 //                "13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
 //                "14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page",
-//                "14.1. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
-//                "14.2. In Cover Page, for Renewal Type - Verify Life Science checkbox is not displayed",
-//                "15.1. PS189 - Validate error message is displayed for From Date on Cover Page",
-//                "15.3. PS191 - Validate the Alert Pop Up is displayed properly for Blank Date in Cover Page",
-//                "15.4. PS193 - RFR-> Cover page In case of Renewal Type not selected, user is not able to navigate to Named Insureds",
-//                "15.6. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
-//                "15.7. PS188 - Validate error message should display for invalid Date on Cover page",
-//                "17. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
-//                "18.1. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab",
-//                "19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
-//                "20. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
-//                "29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
-//                "30.1. Verify validation error messages on the Name Insured Tab",
-//                "30.2. Verify new application changes on the Name Insured Tab",
-//                "30.3. In General Information tab - Verify Premium & Loss History tab is marked as Not Applicable by default",
-//                "30.4. PS036 - Verify User is able to enter details in Premium & Loss History Tab"
-//                "31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
+//                "15. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
+//                "16. In Cover Page, for Renewal Type - Verify Life Science checkbox is not displayed",
+//                "17. PS189 - Validate error message is displayed for From Date on Cover Page",
+//                "18. PS191 - Validate the Alert Pop Up is displayed properly for Blank Date in Cover Page",
+//                "19. PS193 - RFR-> Cover page In case of Renewal Type not selected, user is not able to navigate to Named Insureds",
+//                "20. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
+//                "21. PS188 - Validate error message should display for invalid Date on Cover page",
+//                "22. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
+//                "23. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab",
+//                "24. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
+//                "25. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
+//                "26. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
+//                "26.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
+//                "27. Verify validation error messages on the Name Insured Tab",
+//                "28. Verify new application changes on the Name Insured Tab",
+//                "29. In General Information tab - Verify Premium & Loss History tab is marked as Not Applicable by default",
+//                "30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//                "31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
 
-                // Property (SOV) Tab
+
+        // Property (SOV) Tab
 //                "32. In Property (SOV), Verify \"Add Column\" button is removed from the Property Sov tab",
 //                "33. In Property Sov, Verify user is able to see “Show/Hide Columns(s)” button at the top of the table in Property Sov tab",
 //                "34. In Property (Sov) Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with the list of possible column are broadly grouped into 7 different groups based on business logic. The group names are a. Building Value b. Business Income c. Building Details d. Building Contents e. Additional Details f. Fire Protection g. Security",
@@ -303,7 +305,7 @@ public class WebTest {
 //                "193. BI Dependent - Verify user is able to enter alphanumeric values with special characters in the fields with format as Text",
 //                "194. Verify United States is displayed as default country in the Country field",
 //                "195. Verify the error message displayed when user tries to enter a new country in the Country field - Please select a valid country name",
-//                "196. When country is United States - Verify user is displayed the error message if user enters invalid state - Please select valid State Name / Code"
+//                "196. When country is United States - Verify user is displayed the error message if user enters invalid state - Please select valid State Name / Code",
 //                "197. When country is United States - Verify user is able to add the states from the type ahead drop down values",
 //                "198. When country is NON US - Verify user is able to enter alphanumeric with special characters for State field",
 //                "199. Verify ZIP / Postal Code field can accept only 10 characters",
@@ -329,7 +331,7 @@ public class WebTest {
 //                "219. Enter valid details in BI Dependent tab and on clicking Continue it should navigate to Crime tab",
 
                 //Crime
-//                "220. PS062 - To verify user is able to mark Crime Page as as Not Applicable"
+//                "220. PS062 - To verify user is able to mark Crime Page as as Not Applicable",
 //                "221. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //                "222. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
 //                "223. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
@@ -345,21 +347,21 @@ public class WebTest {
 //				"231. Verify the drop down options for the question - How is Product Packaged? And also verify user is displayed a text area when Other option is selected form the drop down and the default value for the drop down is displayed as N/A",
 //				"232. Verify user is displayed N/A as default value for question - FDA Approved? And also verify the options for the drop down - Yes | N/A",
 //				"233. Verify user is dispalyed the following: 1. No as default value for question - Is your Product temperature sensitive? 2. Options for the drop down - Yes|No are displayed on clicking the drop down 3. If Yes is selected then Provide Storage Temperature Range (If Product Temperature Sensitivity is 'Yes', provide storage temperature range) text area is enable",
-//				"234. Verify user is displayed a table Shipment / Transit Exposures with following 5 columns: 1. Shipment Exposures 2. Incoming 3. Outgoing 4. Intercompany 5. Total"
+//				"234. Verify user is displayed a table Shipment / Transit Exposures with following 5 columns: 1. Shipment Exposures 2. Incoming 3. Outgoing 4. Intercompany 5. Total",
 //				"235. Verify the table rows should be grouped as: 1. Shipment Exposures 2. Shipment Insurance Responsibility 3. Principal Countries Shipped(Indicate % involved) 4. Conveyance Used (% used of total annual value shipped)",
 //				"236. Verify user is displayed - replacement cost as default for incoming and intra-company column and Selling Price as default for Outgoing column for row heading basic valuation and also validate the drop down option for each other 3 column drop down for the same row.",
 //				"237. Verify the following for Shipment terms row:1. Row Shipment terms is displayed only for Incoming and Outgoing columns 2. validate the option of the drop down for both the columns 3. N/A is displayed as default value 4. Total field should be disabled",
-//				"238. Total Annual Value Shipped - Verify the total column is the sum of the currency fields entered for Incoming, Outgoing and Intercompany"
+//				"238. Total Annual Value Shipped - Verify the total column is the sum of the currency fields entered for Incoming, Outgoing and Intercompany",
 //				"239. Verify user is able to enter currency values for the rows: Average Value per Conveyance Maximum Value per Conveyance under columns Incoming, Outgoing and Inter-company and also verify the total field under total column is disabled for these 2 rows.",
 //				"240. Shipment Insurance Responsibility - Verify user is able to enter Percentage values for the rows At Insured Risk, At Vendor/Customer Risk, At Other's risk for the columns Incoming, Outgoing and Intercompany",
-//				"241. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Incoming Shipments should not be greater than 100%"
+//				"241. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Incoming Shipments should not be greater than 100%",
 //				"242. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % Total Incoming Shipments should not be greater than 100%",
 //				"243. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Outgoing column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Outgoing Shipments should not be greater than 100%",
 //				"244. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Outgoing column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % Total Outgoing Shipments should not be less than 100%",
 //				"245. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Intercompany column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % - Total Intercompany Shipments should not be less than 100%",
 //				"246. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Intercompany column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % - Total Intercompany Shipments should not be less than 100%",
 //				"247. Principal Countries Shipped (Indicate % involved) - Verify user is displayed label - What is the level of information required for International Shipments, with the option By Continents, By Countries, Rest of World and also verify Continents option is selected as default.",
-//				"248. Verify user is displayed a new row Foreign below the Domestic U.S. row checking the Rest of World radio option."
+//				"248. Verify user is displayed a new row Foreign below the Domestic U.S. row checking the Rest of World radio option.",
 //				"249. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Foreign - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
 //				"250. Verify on Selecting Continent radio option - 1. Delete Continent from list 2. A new row with a list of continents drop down is displayed 3. User is able to select the Continent from the drop down 4. After selecting the Continent, the drop down shifts to next row. 5. In the next row, In drop down User is not displayed the already selected Continent",
 //				"251. Verify user is able to delete the Continent rows by clicking on the delete icon next to the Continent name",
@@ -372,7 +374,7 @@ public class WebTest {
 //				"258. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%",
 //				"259. Verify user is displayed error message on entering invalid values for percentage field for each field under Conveyance Used (% used of total annual value shipped) header rows and under Incoming, Outgoing and Inter company Columns. Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 10",
 //				"260. Verify the message displayed below the table with the title - RULES FOR ANY MODE OR MODES OF TRANSPORT and also below the title RULES FOR SEA AND INLAND WATERWAY TRANSPORT'",
-//				"261. Verify user is able to enter the details in transit tab - Shipments sub tab and on clicking continue it should  redirected to Product Transit tab ",
+//				"261. Verify user is able to enter the details in transit tab - Shipments sub tab and on clicking continue it should  redirected to Product Transit tab "
 
 				// Transit- Product
 //				"262. Verify user is displayed the title Product Transit Below the Not applicable Check box.",
@@ -385,7 +387,7 @@ public class WebTest {
 //				"[Obsolete] 269. Select Option Yes from the drop down for Product Temperature Sensitivity and verify user is displayed the error message for the field Storage Temperature Range till the temperature range is entered.",
 //				"270. Verify the error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number",
 //				"271. Verify the Drop down values for the following fields: 1. FDA Approved for Sale? 2. Product Temperature Sensitivity 3. Product Packaged 4. Conveyance",
-//				"272. Verify user is able to add a new row by clicking on add button."
+//				"272. Verify user is able to add a new row by clicking on add button.",
 //				"273. Verify user is able to delete one of the added row",
 //				"274. Verify If “Life Science” is selected for “P&C Practice” from Cover Page then “Life Science - Default” should be pre-selected in the “Valuation Information” drop down",
 //				"275. Verify user is able to enter details for all the fields in Product Transit tab.",
@@ -581,8 +583,8 @@ public class WebTest {
 //				"439. Verify user is able to delete the row from International Revenue & Payroll grid",
 //				"440. On Preview tab - Verify the foreign tab is updated with the new table and details.",
 //				"441. Verify the order of the columns in foreign tab for International Revenue & Payroll sub tab and on continue it should be navigated to UMB excess",
-
-                //Umbrella Liability
+//
+//                //Umbrella Liability
 //				"442. PS165 - To verify user is able to mark UMB/Excess tab - Umbrella Liability tab as Not Applicable",
 //				"443. PS166 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Program Structure",
 //				"444. PS167 - Verify user is able to Delete the added row of details in UMB/Excess Tab -Umbrella Liability tab by clicking on Delete under Program Structure",
@@ -590,12 +592,12 @@ public class WebTest {
 //				"446. PS169 - Verify user is able to Delete the added row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on Delete under Schedule of Underlying",
 //				"447. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
 //				"448. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
-
-                //Excess Liability
+//
+//                //Excess Liability
 //				"449. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
 //				"450. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab",
-
-				// Review Tab
+//
+//				// Review Tab
 //				"451. Verify user is able to Preview the details entered by user for General Information tab by clicking on General Information in Preview tab",
 //				"452. Verify user is able to Preview the details entered by user for Property(SOV) by clicking on Property in Preview tab",
 //				"453. Verify user is able to Preview the details entered by user for Property 3rd party by clicking on Property in Preview tab",
@@ -609,10 +611,10 @@ public class WebTest {
 //				"461. Verify user is able to Preview the details entered by user for Transit Shipment by clicking on Property in Preview tab",
 //				"462. Verify user is able to Preview the details entered by user for Product Transit by clicking on Property in Preview tab",
 //				"463. Verify user is able to Preview the details entered by user for Product Flow by clicking on Property in Preview tab",
-//				"464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab"
-
-
-				//Export
+//				"464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab",
+//
+//
+//				//Export
 //				"465. Verify user is able to enter the details in all the tabs and export the RFR",
 //				"466. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
 //				"467. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
@@ -673,8 +675,8 @@ public class WebTest {
 //				"522. Validate Error Message in BI (Multi-Location) sheet of Exported excel sheet",
 //				"523. Validate Formula in BI (Multi-Location) sheet of Exported excel sheet",
 //				"524. Validate data in BI (Multi-Location) sheet of Exported excel sheet",
-
-                // Import
+//
+//                // Import
 //				"525. - Write valid data in all sheets of Exported excel file using Auto It",
 //				"526. Validate imported file valid data in each tabs",
 //				"527. Write invalid data in all sheets of Exported excel file using Auto It",
@@ -682,7 +684,9 @@ public class WebTest {
 //				"529. Verify the RFR to be uploaded is validated by the system for the Client Name and and error message \"The client name in the uploaded document does not match with RFR client name\" is displayed",
 //				"530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
 //				"531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
-//				"532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it"
+//				"532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
+//                "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
+//                "534. Verify on importing the file, workbook  label and status is not displayed when the tab is marked as not applicable"
 
  );
 		// Get the Logger and Configuration details
