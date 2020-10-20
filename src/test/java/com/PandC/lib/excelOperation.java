@@ -134,14 +134,14 @@ public class excelOperation {
         if(newField.contains("(")){
             excelName=StringUtils.substringBetween(fieldName,"(",",");
             sheetName=StringUtils.substringBetween(fieldName,",",",");
-            cell=StringUtils.substringBetween(fieldName,")",")").replace(",","");
+            String[] values=StringUtils.substringBetween(fieldName,")",")").split(",");
+            cell=values[1];
         }else{
             String str[] = newField.split(",");
             excelName=str[0];
             sheetName= str[1];
             cell=str[2];
         }
-
         String fileName=System.getProperty("user.home")
                 + "\\Downloads\\" + excelName;
 
@@ -187,17 +187,18 @@ public class excelOperation {
 
         String newField=StringUtils.substringBetween(fieldName,"(",")");
 
+
         if(newField.contains("(")){
             excelName=StringUtils.substringBetween(fieldName,"(",",");
             sheetName=StringUtils.substringBetween(fieldName,",",",");
-            cell=StringUtils.substringBetween(fieldName,")",")").replace(",","");
+            String[] values=StringUtils.substringBetween(fieldName,")",")").split(",");
+            cell=values[1];
         }else{
             String str[] = newField.split(",");
             excelName=str[0];
             sheetName= str[1];
             cell=str[2];
         }
-
         String fileName=System.getProperty("user.home")
                 + "\\Downloads\\" + excelName;
 
@@ -256,4 +257,22 @@ public class excelOperation {
 
         writer.close();
     }
+
+    public static void removeFromAutoItScript(String sheetName,String excelFileName) throws FileNotFoundException, UnsupportedEncodingException {
+        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+        String excelFile=System.getProperty("user.home")
+                + "\\Downloads\\" + excelFileName;
+
+        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+        writer.println("#include <Excel.au3>");
+        writer.println("Local $oExcel_1=_Excel_Open()");
+        writer.println("Local $sWorkbook=\""+excelFile+"\"");
+        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+        writer.println("Local $sheetName=\""+sheetName+"\"");
+        writer.println("_Excel_SheetDelete($oWorkbook,$sheetName)");
+        writer.println("_Excel_BookSave($oWorkbook)");
+        writer.println("_Excel_Close($oExcel_1,True,True)");
+        writer.close();
+    }
+
 }

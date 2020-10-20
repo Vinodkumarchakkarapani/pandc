@@ -13,7 +13,6 @@ import com.periscope.qviz.json.*;
 import com.PandC.lib.Browser;
 import com.PandC.lib.Configuration;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //import org.junit.jupiter.api.AfterAll;
@@ -48,7 +47,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
@@ -64,11 +63,6 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//import static org.junit.jupiter.api.Assertions.assertFalse;
-//import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 /**
  * Testing Class for GUI Tests (Front-end Testing)
@@ -91,24 +85,39 @@ public class WebTest {
 		// Specify the list of selected tests to execute and this is applicable only if app.gui.executeselectedTCs is set to true
 		List<String> listOfTCstoExecute = Arrays.asList(
 
-
-                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
-
-                // Auto, Auto rental & Travel Tab
-                // "1. Verify Total # of Employees grid from the Auto tab is removed from the Auto tab",
-                // "2. Verify Total # of Employees grid is added to the new tab Auto Rental / Travel",
-                // "3. Verify Auto Rental grid from the Auto tab is removed from the Auto tab",
-                // "4. Verify Auto Rental grid is added to the new tab Auto Rental / Travel",
-                // "5. Verify International Travel grid is not displayed in Foreign Tab - International Revenue & Payroll Tab",
-                // "6. Verify International Travel grid is added to the new tab Auto Rental / Travel",
-                // "7. Verify user is displayed a new tab Auto Rental / Travel next to Auto tab under Casualty Exposure",
-                // "8. Verify user is able to mark the Auto Rental / Travel Tab as Not Applicable.",
-                // "9. Verify User is displayed the Following Grids in Auto Rental/Travel Tab: International Travel,Total # of Employees,Auto Rentals",
-                // "10. Verify User is able to add row under International Travel grid by clicking on Add Row Button",
-                // "11. Verify user is able to cancel the deletion of the row by clicking on the Cancel button in the delete popup",
-                // "12. Verify user is able to delete the row"
-
-
+//General Information Page
+//                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+//                "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
+//                "3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
+//                "4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
+                "5. PS007 - Verify user is able to search a record by Name Insured",
+//                "6. PS008 - Verify user is able to search a record by \"Policy From\"",
+//                "7. PS009 - Verify user is able to search a record by \"Policy To\"",
+//                "8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
+//                "9. PS013 - Verify user is able to search a record by Status",
+//                "10. PS006 - Verify user is displayed No records Found when no records are present for the searched criteria",
+//                "11. PS010 - Verify user is able to search a record by Primary Contact",
+//                "12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+//                "13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
+//                "14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page",
+                "15. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
+//                "16. In Cover Page, for Renewal Type - Verify Life Science checkbox is not displayed",
+//                "17. PS189 - Validate error message is displayed for From Date on Cover Page",
+//                "18. PS191 - Validate the Alert Pop Up is displayed properly for Blank Date in Cover Page",
+//                "19. PS193 - RFR-> Cover page In case of Renewal Type not selected, user is not able to navigate to Named Insureds",
+//                "20. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
+//                "21. PS188 - Validate error message should display for invalid Date on Cover page",
+//                "22. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
+//                "23. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab",
+                "24. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
+                "25. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab"
+//                "26. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
+//                "26.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
+//                "27. Verify validation error messages on the Name Insured Tab",
+//                "28. Verify new application changes on the Name Insured Tab",
+//                "29. In General Information tab - Verify Premium & Loss History tab is marked as Not Applicable by default",
+//                "30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//                "31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
                 // Foreign Tab
                 /*"27. Verify user is able to enter currency value for the field Estimated Annual Gross Revenue (USD) – Currency and also validate the (,) formatting of the entered value",
                 "28. Verify user is able to enter a currency value with comma in Estimated Annual Gross Revenue (USD) field"
@@ -127,138 +136,285 @@ public class WebTest {
 
 
                 // Property (SOV) Tab
-//                "72. In Property (SOV), Verify \"Add Column\" button is removed from the Property Sov tab",
-//                "73. In Property Sov, Verify user is able to see “Show/Hide Columns(s)” button at the top of the table in Property Sov tab",
-//                "74. In Property (Sov) Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with the list of possible column are broadly grouped into 7 different groups based on business logic. The group names are a. Building Value b. Business Income c. Building Details d. Building Contents e. Additional Details f. Fire Protection g. Security",
-//                "75. In Property (SOV) Verify user is displayed list of crolumns required under “Building Value”, the following columns are a. Murals b. Sheds c. Fencing Gates d. Building Replacement Value e. Tenant Improvements Replacement Values f. Other Building Value",
-//                "76. In Property (SOV) for Building Value, Verify user is able to enable or disable the columns by clicking on the checkbox,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
-//                "77. In Property sov for “Building Value, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button for the following columns a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
-//                "78. In Property sov for Building Value,Verify validation error messages for the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value"
-//                "79. In Property sov for “Building Value, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
-//                "87. In Property (SOV) for \"Business Income\", Verify the user selecting the \"Detailed BI\" option box is enable below columns for user selections: a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
-//                "88. In Property (SOV) for \"Business Income\", Verify user is able to enable or disable the columns under \"Detailed BI\" by clicking on the checkbox, the following columns are a. R&DBI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
-//                "89. In Property (SOV) for \"Business Income\", Verify user is able to insert column in respective position on selecting the column name under \"Detailed BI\" section and clicking \"apply\" button, the following columns are a. R&DBI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
-//                "90. In Property sov for \"Business Income\", Verify validation error messages for column inserted on table, the following columns are a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
-//                "91. In Property (SOV) for \"Business Income\",Verify user is able to enter correct given value (Numbers (0-9), $, Comma(,), Decimal(.)) in inserted currency formatted Columns. the following columns are a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
-//                "92. In Property (SOV) for \"Business Income\", Verify user display an inline message \"Select at least one Business Income under Detailed BI\" on the top of the overlay on clicking the \"apply\" button without selecting any of the column under \"Detailed BI\" option",
-//                "93. In Property (SOV) for \"Business Income\", Verify automatically add \"Total BI Value\" column along with selected column names on enabling at least one column from \"Detailed BI\"",
-//                "94. In Property (SOV) for \"Business Income\", Verify added \"Total BI Value\" column is non-editable, auto computed, currency formatted, two decimal place round off",
-//                "95. In Property sov for \"Business Income\", Verify Formula \"Total BI Value\" is Sum of all selected \"Detailed BI\" columns",
-//                "96. In Property (SOV), Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
-//                "97. In Property (SOV) for \"Building Details\", Verify by default columns is pre-selected and disabled so that the column automatically appears on the table, the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. % Occupied d. Owned/Leased e. Construction Type f. Year Built g. # of Stories",
-//                "98. In Property (SOV) for \"Building Details\", Verify user is able to enable or disable the \"Occupied Floor area Sq.Ft.\" column by clicking on the checkbox",
-//                "99. In Property (SOV) for \"Building Details\", Verify user is able to insert \"Occupied Floor area Sq.Ft\" column in respective position on selecting the column name and clicking \"apply\" button",
-//                "100. In Property (SOV) for \"Building Details\", Verify validation error messages of \"Occupied Floor area Sq.Ft.\" column"
-//                "129. In Property (SOV), Verify user is displayed list of columns required under \"Security\", the following columns are a.Alarm b.Guards c.Gated Campus d.CC TV e.Key Card Access",
-//                "130. In Property (SOV) for \"Security\", Verify by default, the user is not allowed to deselect the checkbox of \"Alarm\" & \"Guards\"",
-//                "131. In Property (SOV) for \"Security\", Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Gated Campus b.CC TV c.Key Card Access",
-//                "132. In Property (SOV) for \"Security\", If P&C Practice is \"Life Science\" - Verify existing default fields is marked selected and disabled, the following fields are \"Gated Campus\", \"CC TV\", \"Key Card Access\"",
-//                "133. In property (SOV), Verify user is able to close the customize column overlay without saving any changes by clicking on \"cancel\" button",
-//                "134. In Property (SOV), Verify user is able to reset the column selection to default by clicking on \"Revert\" button",
-//                "135. In Property (SOV), Verify user is able to enable selected columns in the Property(SOV) table by clicking on \"apply\" button",
-//                "136. Verify add a new tab called Property (SOV) – 3rd Party next to Property (SOV) tab."
-//                "137. In Property (SOV) – 3rd Party, Verify user is display a grid with the following standard fields (columns). 1.Premises Number 2.Building Number 3.Location Name 4.Street Address 5.City 6.State or Province 7.Country 8.ZIP / Postal Code 9.Machinery/Equipment/Molds (Replacement Cost) 10.Raw materials & WIP (Replacement Cost) 11.R&D Inventory (Replacement Cost)"
+//                "32. In Property (SOV), Verify \"Add Column\" button is removed from the Property Sov tab",
+//                "33. In Property Sov, Verify user is able to see “Show/Hide Columns(s)” button at the top of the table in Property Sov tab",
+//                "34. In Property (Sov) Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with the list of possible column are broadly grouped into 7 different groups based on business logic. The group names are a. Building Value b. Business Income c. Building Details d. Building Contents e. Additional Details f. Fire Protection g. Security",
+//                "35. In Property (SOV) Verify user is displayed list of columns required under “Building Value”, the following columns are a. Murals b. Sheds c. Fencing Gates d. Building Replacement Value e. Tenant Improvements Replacement Values f. Other Building Value",
+//                "36. In Property (SOV) for Building Value, Verify user is able to enable or disable the columns by clicking on the checkbox,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
+//                "37. In Property sov for “Building Value, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button for the following columns a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
+//                "38. In Property sov for Building Value,Verify validation error messages for the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
+//                "39. In Property sov for “Building Value, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns/,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
+//                "40. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table.",
+//                "41. In Property Sov, Verify user is displayed list of columns required under \"Business Income\",the following columns are 1. Aggregate BI 2. Detailed BI a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
+//                "42. In Property sov for Business Income, Verify by default, the “Aggregate BI” option box is selected and user is able to change it.",
+//                "43. In Property sov for Business Income, Verify on Selecting the “Aggregate BI” option box is automatically select the only column name “Total BI Values” under this section and the user is not be allowed to deselect the checkbox.",
+//                "44. In Property sov for Business Income, Verify user is able to insert column “Total BI Value” in respective position on selecting the “Aggregate BI” and clicking “apply” button",
+//                "45. In Property sov for “Business Income”, Verify validation error messages for \"Total BI Value” column inserted on table",
+//                "46. In Property sov for “Business Income, Verify user is able to enter correct given value (Numbers (0-9), $, Comma(,), Decimal(.)) in inserted currency formatted \"Total BI Value” column on table",
+//                "47. In Property (SOV) for \"Business Income\", Verify the user selecting the \"Detailed BI\" option box is enable below columns for user selections: a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
+//                "48. In Property (SOV) for \"Business Income\", Verify user is able to enable or disable the columns under \"Detailed BI\" by clicking on the checkbox, the following columns are a. R&DBI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
+//                "49. In Property (SOV) for \"Business Income\", Verify user is able to insert column in respective position on selecting the column name under \"Detailed BI\" section and clicking \"apply\" button, the following columns are a. R&DBI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
+//                "50. In Property sov for \"Business Income\", Verify validation error messages for column inserted on table, the following columns are a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
+//                "51. In Property (SOV) for \"Business Income\",Verify user is able to enter correct given value (Numbers (0-9), $, Comma(,), Decimal(.)) in inserted currency formatted Columns. the following columns are a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
+//                "52. In Property (SOV) for \"Business Income\", Verify user display an inline message \"Select at least one Business Income under Detailed BI\" on the top of the overlay on clicking the \"apply\" button without selecting any of the column under \"Detailed BI\" option",
+//                "53. In Property (SOV) for \"Business Income\", Verify automatically add \"Total BI Value\" column along with selected column names on enabling at least one column from \"Detailed BI\"",
+//                "54. In Property (SOV) for \"Business Income\", Verify added \"Total BI Value\" column is non-editable, auto computed, currency formatted, two decimal place round off",
+//                "55. In Property sov for \"Business Income\", Verify Formula \"Total BI Value\" is Sum of all selected \"Detailed BI\" columns",
+//                "56. In Property (SOV), Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
+//                "57. In Property (SOV) for \"Building Details\", Verify by default columns is pre-selected and disabled so that the column automatically appears on the table, the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. % Occupied d. Owned/Leased e. Construction Type f. Year Built g. # of Stories",
+//                "57.1. Property SOV - For the Drop down Building Use, Verify the following new values are displayed in the drop down list.: 1. Clean Rooms 2. Laboratories 3. Supply Chain / Contract Manufacturer 4. Vivarium",
+//                "57.2. In Property (SOV) tab- verify user is able to view the newly added Columns in the Show / hide Overlay. 1. Building Use Detail - next to Building Use column",
+//                "58. In Property (SOV) for \"Building Details\", Verify user is able to enable or disable the \"Occupied Floor area Sq.Ft.\" column by clicking on the checkbox",
+//                "59. In Property (SOV) for \"Building Details\", Verify user is able to insert \"Occupied Floor area Sq.Ft\" column in respective position on selecting the column name and clicking \"apply\" button",
+//                "60. In Property (SOV) for \"Building Details\", Verify validation error messages of \"Occupied Floor area Sq.Ft.\" column",
+//                "61. In Property sov for “Building Details”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted \"Occupied Floor area Sq.Ft \" column",
+//                "62. In Property sov , Verify user is able to see under “Building Contents”, the columns are further sub-categorized as Detailed Building Contents & Aggregate Building Contents",
+//                "63. In Property sov for “Building Contents”, Verify user able to see the columns are grouped further as \"Contents Replacement Cost'' & ''Selling Price '' under Detailed Building Contents",
+//                "64. In Property sov for “Building Contents”, Verify User is displayed list of columns required under “Replacement Cost”, columns are Cased Goods,Computer Hardware, Servers, Finished Stock Ready for Sale,Furniture & Fixtures,Irreplaceable Bulk Beverage, Irrigation Pipeline,Machinery/ Equipment /Molds,Mfg. or Lab Equipment,Perishable Property,Raw Materials & WIP (Not Spoilage/ Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk Beverage,R&D Inventory,Spoilage",
+//                "65. In Property sov for “Building Contents”, Verify user is able to enable or disable the columns under “Replacement Cost” by clicking on the checkbox,the following columns are (Cased Goods,Computer Hardware, Servers, Finished Stock Ready for Sale,Furniture & Fixtures,Irreplaceable Bulk Beverage, Irrigation Pipeline,Machinery/ Equipment /Molds,Mfg. or Lab Equipment,Perishable Property,Raw Materials & WIP (Not Spoilage/ Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk Beverage,)",
+//                "66. In Property sov for “Building Contents”, Verify user is able to insert column in respective position on selecting the column name under “Building Contents” and clicking “apply” button",
+//                "67. In Property sov for “Building Contents”, Verify validation error messages for the columns under “Replacement Cost”",
+//                "68. In Property sov for “Building Contents”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under “Replacement Cost”",
+//                "69. In Property sov for \"Building Contents\", Verify user is displayed list of columns required under \"Selling Price\",the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                "70. In Property sov for “Building Contents”, Verify user is able to enable or disable the columns under “Selling Price” by clicking on the checkbox,the following columns are-1.Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                "71. In Property sov for “Building Contents”, Verify user is able to insert column in respective position on selecting the column name under “Selling Price” and clicking apply” button, the following columns are-1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                "72. In Property sov for \"Building Contents\", Verify validation error messages for the columns under \"Selling Price\", the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6.Temperature Sensitive Property 7. Other",
+//                "73. In Property sov for \"Building Contents\", Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under \"Selling Price\",the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                "74. In Property sov for \"Building Contents\", Verify user is displayed list of columns required under \"Aggregate Building Contents\",the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                "75. In Property sov for \"Building Contents\", Verify user is able to enable or disable the columns under \"Aggregate Building Contents\" by clicking on the checkbox,the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                "76. In Property sov for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Aggregate Building Contents\" and clicking \"apply\" button, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                "77. In Property sov for \"Building Contents\", Verify validation error messages for the columns under \"Aggregate Building Contents\", the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                "78. In Property sov for \"Building Contents\", Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under \"Aggregate Building Contents\",the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                "79. In Property sov , Verify user is displayed list of columns required under \"Additional Details\",the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
+//                "80. In Property sov for “Additional Details, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
+//                "81. In Property sov for “Additional Details”, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Faculty Members g.Other Occupants or Tenants h.Additional Information",
+//                "82. In Property sov for “Additional Details”, Verify validation error messages for the columns, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
+//                "83. In Property sov for “Additional Details”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
+//                "84. In Property sov, Verify user is displayed list of columns required under “Fire Protection”, the following columns are a.Sprinkler System b.Smoke Detectors c.Fire Alarm d.Fire Extinguishers e.Thermal Barriers f.Hydrant g.Fire Department",
+//                "85. In Property sov for “Fire Protection”, Verify by default, the user is not allowed to deselect the checkbox for Sprinkler System, Smoke Detectors & Fire Alarm.",
+//                "86. In Property sov for “Fire Protection”, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are 1. Fire Extinguishers 2. Thermal Barriers 3. Hydrant 4. Fire Department",
+//                "87. In Property (SOV), Verify user is displayed list of columns required under \"Security\", the following columns are a.Alarm b.Guards c.Gated Campus d.CC TV e.Key Card Access",
+//                "88. In Property (SOV) for \"Security\", Verify by default, the user is not allowed to deselect the checkbox of \"Alarm\" & \"Guards\"",
+//                "89. In Property (SOV) for \"Security\", Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Gated Campus b.CC TV c.Key Card Access",
+//                "90. In property (SOV), Verify user is able to close the customize column overlay without saving any changes by clicking on \"cancel\" button",
+//                "91. In Property (SOV), Verify user is able to reset the column selection to default by clicking on \"Revert\" button",
+//                "92. In Property sov for “Building Contents”, Verify “Perishable Property”, “Raw Materials & WIP (Not Spoilage/ Temperature Sensitive)”, “Finished Stock Ready for Sale” columns should be selected by default ,if If P&C Practice is “Life Science”",
+//                "93. In Property sov for Fire Protection, If P&C Practice is Life Science - Verify existing default fields is marked selected and disabled, the following fields are-Fire Extinguishers, Thermal Barriers, Hydrant, Fire Department",
+//                "94. In Property (SOV) for \"Security\", If P&C Practice is \"Life Science\" - Verify existing default fields is marked selected and disabled, the following fields are \"Gated Campus\", \"CC TV\", \"Key Card Access\"",
+//                "95. In Property (SOV), Verify user is able to enable selected columns in the Property(SOV) table by clicking on \"apply\" button and on clicking continue button it should navigate to Property SOV 3rd Party"
 
                 // BI-Worksheet
-                //"500. In BI Worksheet tab - Verify 2 Check boxes are displayed below the Not Applicable checkbox : a. Standard BI Worksheet b. Continuing Expenses only Worksheet",
-                //"501. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Commercial in the drop down in the Cover page"
-                //"502. In BI Worksheet - Verify user is displayed Continuing Expenses only worksheet as pre-selected value if P&C Practice is selected as Life Science in the drop down in the Cover page"
-                //"503. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Technology in the drop down in the Cover page"
-                //"505. Verify user is displayed the field with Label - \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" under Continuing Expenses only Worksheet",
-                //"506. Verify user is displayed error validation message on entering invalid value for the currency field - \"Annual Net Profit/(Net Loss) Before Tax\" to \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" - Error message 1. Max allowed value $9,999,999,999,999.99 2. Only currency Values allowed (0-9, $, ., ,)",
-                //"507. Verify user is able to enter -ve currency value in case of net loss for field - \"Annual Net Profit/(Net Loss) Before Tax\" to \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" - under Continuing Expenses only Worksheet",
-                //"508. Verify user is displayed a new field - Net Profit from R&D Operations Before Tax If Net Profit, please note total grants, endowments, & other financial contributions that would be eliminated following a covered loss to tangible property here: R&D Income Sources & Expected Amounts If Net Loss, state \"None\" – (Insurer policy form automatically removes Net Loss from calculation for R&D Operations.)"
-                //"509. Verify user is displayed error validation message on entering invalid value for the currency field - Net Profit from R&D Operations Before Tax Error message 1. Max allowed value $9,999,999,999,999.99 2. Only currency Values allowed (0-9, $, ., ,)",
-                //"510. Verify user is able to enter a currency value with decimal in the field - Net Profit from R&D Operations Before Tax and also validate the value displayed is comma separated, in View mode value is displayed as rounded off value and in edit mode value is displayed with decimal.",
-                //"511. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is lesser than 0, the Annual Business Income Total calculation formula is implemented properly",
-                //"512. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is greater than 0, the Annual Business Income Total calculation formula is implemented properly",
-                //"513. Verify user is displayed Add Location(s) from SOV button",
-                //"514. Verify user is displayed a popup on clicking Add Location(s) from SOV button"
-                //"515. Verify user can close the popup by clicking on close(x) icon or on Cancel button"
-
-                //"516. Verify the address displayed in the Add location(s) from SOV popup are displayed in the following order with comma separation. Location Name, Building Number, Street Address, City, State ZIP / Postal Code, Country",
-                //"517. Verify user is able to Select All or deselect All address location by clicking on the checkbox in the header of the popup"
-                //"518. Verify inline error message is displayed, when user clicks on Add Selected button without selecting any location - Select at least one property to add"
-                //"519. Verify user is not able to select same location multiple times"
-                //"520. Verify user is able to select more than one location from the popup"
-                //"521. Verify for the selected Address, new columns with selected location information displaying below the location header with the option to edit the linked Property (SOV) location"
-                //"522. Verify user is displayed the Add Locations popup by clicking on the edit icon"
-                //"523. Verify the select all checkbox in the header is not displayed when Edit icon is clicked",
-                //"524. Verify all the other locations in the popup are disabled except for the location for which the edit icon is clicked."
+// BI-Worksheet
+//                "143. In BI Worksheet tab - Verify 2 Check boxes are displayed below the Not Applicable checkbox : a. Standard BI Worksheet b. Continuing Expenses only Worksheet",
+//                "144. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Commercial in the drop down in the Cover page",
+//                "145. In BI Worksheet - Verify user is displayed Continuing Expenses only worksheet as pre-selected value if P&C Practice is selected as Life Science in the drop down in the Cover page",
+//                "146. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Technology in the drop down in the Cover page",
+//                "148. Verify user is displayed the field with Label - \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" under Continuing Expenses only Worksheet",
+//                "149. Verify user is displayed error validation message on entering invalid value for the currency field - \"Annual Net Profit/(Net Loss) Before Tax\" to \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" - Error message 1. Max allowed value $9,999,999,999,999.99 2. Only currency Values allowed (0-9, $, ., ,)",
+//                "150. Verify user is able to enter -ve currency value in case of net loss for field - \"Annual Net Profit/(Net Loss) Before Tax\" to \"Annual Net Profit/(Net Loss) Before Tax (from operations other than R&D operations) Enter -ve value in case of net loss\" - under Continuing Expenses only Worksheet",
+//                "151. Verify user is displayed a new field - Net Profit from R&D Operations Before Tax If Net Profit, please note total grants, endowments, & other financial contributions that would be eliminated following a covered loss to tangible property here: R&D Income Sources & Expected Amounts If Net Loss, state \"None\" – (Insurer policy form automatically removes Net Loss from calculation for R&D Operations.)",
+//                "152. Verify user is displayed error validation message on entering invalid value for the currency field - Net Profit from R&D Operations Before Tax Error message 1. Max allowed value $9,999,999,999,999.99 2. Only currency Values allowed (0-9, $, ., ,)",
+//                "153. Verify user is able to enter a currency value with decimal in the field - Net Profit from R&D Operations Before Tax and also validate the value displayed is comma separated, in View mode value is displayed as rounded off value and in edit mode value is displayed with decimal.",
+//                "154. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is lesser than 0, the Annual Business Income Total calculation formula is implemented properly",
+//                "155. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is greater than 0, the Annual Business Income Total calculation formula is implemented properly",
+//                "156. Verify user is displayed Add Location(s) from SOV button",
+//                "157. Verify user is displayed a popup on clicking Add Location(s) from SOV button",
+//                "158. Verify user can close the popup by clicking on close(x) icon or on Cancel button",
+//                "159. Verify the address displayed in the Add location(s) from SOV popup are displayed in the following order with comma separation. Location Name, Building Number, Street Address, City, State ZIP / Postal Code, Country",
+//                "160. Verify user is able to Select All or deselect All address location by clicking on the checkbox in the header of the popup",
+//                "161. Verify inline error message is displayed, when user clicks on Add Selected button without selecting any location - Select at least one property to add",
+//                "162. Verify user is not able to select same location multiple times",
+//                "163. Verify user is able to select more than one location from the popup",
+//                "164. Verify for the selected Address, new columns with selected location information displaying below the location header with the option to edit the linked Property (SOV) location",
+//                "165. Verify user is displayed the Add Locations popup by clicking on the edit icon",
+//                "166. Verify the select all checkbox in the header is not displayed when Edit icon is clicked",
+//                "167. Verify all the other locations in the popup are disabled except for the location for which the edit icon is clicked.",
+//                "168. Enter the details for all the field for Continuing Expenses only Worksheet",
+//                "169. Verify user us displayed two option on clicking on Standard BI Worksheet option: 1. Single BI Worksheet (Default Selected) 2. Multi-Location BI worksheet",
+//                "170. Verify user is displayed two option for Single BI Worksheet:1. Actual (Default Selected) 2. Projected",
+//                "171. Actual Radio option - Verify the field validations and error messages for the following fields of Annual Net Sales:Add the same validations for Cost of Sales / Cost of Revenues / COGS and Operating Expenses fields",
+//                "172. Validate the formula for calculating the Business Interruption BI Values, Formula = Annual Net Sales of Business Interruption BI Values = Annual Net Sales of Information from Income Statement * (% Variable/Non-Continuing of Information from Income Statement)/100",
+//                "173. For Cost of Sales - Validate the formula for calculating the Business Interruption BI Values,Formula = Business Interruption BI Values of Cost of Revenues = Annual Net Sales of Cost of Revenues * (% Variable/Non-Continuing of Cost of Revenues)/100",
+//                "174. Gross Profit / Gross Earnings (Information from Income Statement)- Validate the value is calculated as per the formula: Gross Profit / Gross Earnings of Information from Income Statement = Annual Net Sales of Information from Income Statement - Cost of Sales of Information from Income Statement",
+//                "175. Gross Profit / Gross Earnings (Business Interruption BI Values)- Validate the value is calculated as per the formula: Gross Profit / Gross Earnings = Annual Net Sales of Business Interruption BI Values - Cost of Sales of Business Interruption BI Values",
+//                "176. For Operating Expenses - Validate the formula for calculating the Business Interruption BI Values,Formula = Business Interruption BI Values = Annual Net Sales of Operating Expenses * (% Variable/Non-Continuing of Operating Expenses)/100",
+//                "177. For Operating Income - Validate the formula for calculating the Business Interruption BI Values,Formula = Operating Income of Information from Income Statement = Gross Profit / Gross Earnings of Information from Income Statement - Operating Expense of Information from Income Statement",
+//                "178. Annual BI Value w/o Ordinary Payroll - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula : Business Interruption BI Values = Gross Profit / Gross Earnings of Business Interruption BI Values + Operating Expense of Business Interruption BI Values",
+//                "179. Ordinary Payroll (annual payroll and benefits for non-exempt workers) - Enter invalid value for currency field and validate the error message - Enter only currency value (0-9, $, ., ,)",
+//                "180. # of Days Coverage of Ordinary Payroll Desired (0-365 days) - Verify the error message on entering invalid value",
+//                "181. Total Ordinary Payroll (OP) - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula : Total Ordinary Payroll (OP) of Business Interruption BI Values = Ordinary Payroll of Business Interruption BI Values * # of Days Coverage of Ordinary Payroll Desired of Business Interruption BI Values / 365",
+//                "182. Annual BI Value including Ordinary Payroll - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula Annual BI Value including Ordinary Payroll of Business Interruption BI Values = Annual BI Value w/o Ordinary Payroll of Business Interruption BI Values + Total Ordinary Payroll (OP) of Business Interruption BI Values",
+//                "183. Number of Months to Move to another Location and Resume Operation - Verify the whole number",
+//                "184. Exposed BI w/o OP of Business Interruption BI Values - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula: Exposed BI w/o OP of Business Interruption BI Values = Annual BI Value w/o Ordinary Payroll of Business Interruption BI Values *Number of Months to Move to another Location and Resume Operation of Business Interruption BI Values / 12",
+//                "185. Exposed BI Including OP of Business Interruption BI Values - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula : Exposed BI Including OP of Business Interruption BI Values = Exposed BI w/o OP of Business Interruption BI Values + Total Ordinary Payroll (OP)",
+//                "186. Enter valid values for all the fields for Actual option",
+//                "187. Check the checkbox for Projected and enter valid values for all fields for projected form.",
+//                "188. Check the radio option for Multi Location BI Worksheet and verify user is displayed Multi Location BI Worksheet",
+//                "189. Exposed BI without Ordinary Payroll - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places and percentage format Formula : Exposed BI without Ordinary Payroll = ((Annual Net Sales TIMES(*) % Variable of Annual Net Sales) LESS(–) ((Cost of Sales TIMES(*) % variable of Cost of Sales) TIMES(*) (# of Months DIVIDED(/) 12))",
+//          "190. (Multi Location BI) Exposed BI Incl. OP - Verify the value calculated is as per the Formula and the value is currnecy formatted and rounded off to 2 decimal places Formula : Exposed BI Incl. OP = ((Exposed BI w/o OP sum(+) [(Ordinary Payroll - annual payroll and benefits for non-exempt workers ) TIMES(*) (Number of Days Coverage of Ordinary Payroll Desired (0-365 days) DIVIDED(/) 365))]",
+//          "191. Verify the field validation for all the fields in the Multi Location BI Worksheet",
+//          "192. Verify user is able to enter the details in the Multi Location BI Worksheet and on clicking Continue it should navigate to BI Dependent"
 
                 // Property (SOV) 3rd party
-                //"136. Verify add a new tab called Property (SOV) – 3rd Party next to Property (SOV) tab.",
-                //"137. In Property (SOV) – 3rd Party, Verify user is display a grid with the following standard fields (columns). 1.Premises Number 2.Building Number 3.Location Name 4.Street Address 5.City 6.State or Province 7.Country 8.ZIP / Postal Code 9.Machinery/Equipment/Molds (Replacement Cost) 10.Raw materials & WIP (Replacement Cost) 11.R&D Inventory (Replacement Cost)",
-                //"138. In Property (SOV) – 3rd Party, Verify user is able to see \"Show/Hide Columns(s)\" button at the top of the table in Property (SOV) – 3rd Party",
-                //"139. Property SOV - 3rd Party, Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with  list of possible columns under the group names are. Building Details, Building Contents, Additional Details(Other Occupants or Tenants, Additional Information), Fire Protection, Security"
-                //"140. Property SOV - 3rd Party, Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
-                //"141. Property SOV - 3rd Party for \"Building Details\", Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
-                //"142. Property SOV - 3rd Party for \"Building Details\", Verify by default columns is pre-selected and disabled so that the column automatically appears on the table, the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. % Occupied d. Owned/Leased e. Construction Type f. Year Built g. # of Stories",
-                //"143. Property SOV - 3rd Party for \"Building Details\",Verify user is able to enable or disable the \"Occupied Floor area Sq.Ft.\" column by clicking on the checkbox",
-                //"144. Property SOV - 3rd Party for \"Building Details\",Verify user is able to insert \"Occupied Floor area Sq.Ft\" column in respective position on selecting the column name and clicking \"apply\" button",
-                //"145. Property SOV - 3rd Party for \"Building Details\", Verify validation error messages of \"Occupied Floor area Sq.Ft.\" column",
-                //"146. Property SOV - 3rd Party for \"Building Details\", Verify user is able to enter correct value in \"Occupied Floor area Sq.Ft\" column",
-                //"147. Property SOV - 3rd Party, Verify user is able to see under \"Building Contents\", the columns are further sub-categorized as Detailed Building Contents & Aggregate Building Contents",
-                //"148. Property SOV - 3rd Party for \"Building Contents\", Verify user able to see the columns are grouped further as \"Contents Replacement Cost\" & \"Selling Price\" under Detailed Building Contents",
-                //"149. Property SOV - 3rd Party for \"Building Contents\",Verify User is displayed list of columns required under \"Replacement Cost\", columns are Cased Goods, Computer Hardware, Servers, Finished Stock Ready for Sale, Furniture & Fixtures, Irreplaceable Bulk Beverage, Irrigation Pipeline, Machinery/ Equipment /Molds,Mfg. or Lab Equipment, Perishable Property,Raw Materials & WIP (Not Spoilage/Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk Beverage,R&D Inventory,Spoilage",
-                //"150. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Replacement Cost\" by clicking on the checkbox,the following columns are (Cased Goods Values,Computer Hardware, Servers,Finished Stock Ready for Sale,Furniture & Fixtures,Irreplaceable Bulk Beverage,Irrigation Pipeline,Machinery/Equipment /Molds,Mfg. or Lab Equipment,Perishable Property,Raw Materials & WIP (Not Spoilage/ Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk",
-                //"151. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Building Contents\" and clicking \"apply\" button"
-                //"152. In Property SOV - 3rd Party for \"Building Contents\", Verify validation error messages for the columns under \"Replacement Cost\"",
-                //"153. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under \"Replacement Cost\"",
-                //"154. In Property SOV - 3rd Party for \"Building Contents\", Verify user is displayed list of columns required under \"Selling Price\",the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other"
-                //"155. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Selling Price\" by clicking on the checkbox,the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-                //"136.1. In Property (SOV) – 3rd Party, To verify user is able to mark tab as Not Applicable",
-                //"136.2. In Property SOV - 3rd Party, Verify user is able to add row in Property SOV - 3rd Party by clicking on add Row",
-                //"136.3. In Property SOV - 3rd Party, Verify user is able to Delete the added row in Property SOV - 3rd Party Tab by clicking Delete button"
+//                "96. Verify add a new tab called Property (SOV) – 3rd Party next to Property (SOV) tab.",
+//                        "97. In Property (SOV) – 3rd Party, To verify user is able to mark tab as Not Applicable",
+//                        "98. In Property SOV - 3rd Party, Verify user is able to add row in Property SOV - 3rd Party by clicking on add Row",
+//                        "99. In Property SOV - 3rd Party, Verify user is able to Delete the added row in Property SOV - 3rd Party Tab by clicking Delete button",
+//                        "100. In Property (SOV) – 3rd Party, Verify user is display a grid with the following standard fields (columns). 1.Premises Number 2.Building Number 3.Location Name 4.Street Address 5.City 6.State or A23Province 7.Country 8.ZIP / Postal Code 9.Machinery/Equipment/Molds (Replacement Cost) 10.Raw materials & WIP (Replacement Cost) 11.R&D Inventory (Replacement Cost)",
+//                        "101. In Property (SOV) – 3rd Party, Verify user is able to see \"Show/Hide Columns(s)\" button at the top of the table in Property (SOV) – 3rd Party",
+//                        "102. Property SOV - 3rd Party, Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with list of possible columns under the group names are. Building Details, Building Contents, Additional Details(Other Occupants or Tenants, Additional Information), Fire Protection, Security",
+//                        "103. Property SOV - 3rd Party, Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
+//                        "104. Property SOV - 3rd Party for \"Building Details\", Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
+//                        "105. Property SOV - 3rd Party for \"Building Details\", Verify by default columns is pre-selected and disabled so that the column automatically appears on the table, the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. % Occupied d. Owned/Leased e. Construction Type f. Year Built g. # of Stories",
+//                        "106. Property SOV - 3rd Party for \"Building Details\",Verify user is able to enable or disable the \"Occupied Floor area Sq.Ft.\" column by clicking on the checkbox",
+//                        "107. Property SOV - 3rd Party for \"Building Details\",Verify user is able to insert \"Occupied Floor area Sq.Ft\" column in respective position on selecting the column name and clicking \"apply\" button",
+//                        "108. Property SOV - 3rd Party for \"Building Details\", Verify validation error messages of \"Occupied Floor area Sq.Ft.\" column",
+//                        "109. Property SOV - 3rd Party for \"Building Details\", Verify user is able to enter correct value in \"Occupied Floor area Sq.Ft\" column",
+//                        "110. Property SOV - 3rd Party, Verify user is able to see under \"Building Contents\", the columns are further sub-categorized as Detailed Building Contents & Aggregate Building Contents",
+//                        "111. Property SOV - 3rd Party for \"Building Contents\", Verify user able to see the columns are grouped further as \"Contents Replacement Cost\" & \"Selling Price\" under Detailed Building Contents",
+//                        "112. Property SOV - 3rd Party for \"Building Contents\",Verify User is displayed list of columns required under \"Replacement Cost\", columns are Cased Goods, Computer Hardware, Servers, Finished Stock Ready for Sale, Furniture & Fixtures, Irreplaceable Bulk Beverage, Irrigation Pipeline, Machinery/ Equipment /Molds,Mfg. or Lab Equipment, Perishable Property,Raw Materials & WIP (Not Spoilage/Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk Beverage,R&D Inventory,Spoilage",
+//                        "113. In Property SOV 3rd Party tab- verify user is able to view the newly added Columns in the Show / hide Overlay. 1. Samples/Demos/Free Units under Building Contents 2. Building Use Detail - next to Building Use column",
+//                        "114. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Replacement Cost\" by clicking on the checkbox,the following columns are (Cased Goods Values,Computer Hardware, Servers,Finished Stock Ready for Sale,Furniture & Fixtures,Irreplaceable Bulk Beverage,Irrigation Pipeline,Machinery/Equipment /Molds,Mfg. or Lab Equipment,Perishable Property,Raw Materials & WIP (Not Spoilage/ Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk",
+//                        "115. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Building Contents\" and clicking \"apply\" button",
+//                        "116. In Property SOV - 3rd Party for \"Building Contents\", Verify validation error messages for the columns under \"Replacement Cost\"",
+//                        "117. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under \"Replacement Cost\"",
+//                        "118. In Property SOV - 3rd Party for \"Building Contents\", Verify user is displayed list of columns required under \"Selling Price\",the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                        "119. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Selling Price\" by clicking on the checkbox,the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                        "120. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Selling Price\" and clicking \"apply\" button, the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                        "121. In Property SOV - 3rd Party for “Building Contents”, Verify validation error messages for the columns under “Selling Price”, the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                        "122. In Property SOV - 3rd Party for “Building Contents”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under “Selling Price”,the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
+//                        "123. In Property SOV - 3rd Party for \"Building Contents\", Verify user is displayed list of columns required under \"Aggregate Building Contents\",the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                        "124. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Aggregate Building Contents\" by clicking on the checkbox,the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                        "125. In Property SOV - 3rd Party for \"Building Contents\",Verify user is able to insert column in respective position on selecting the column name under \"Aggregate Building Contents\" and clicking \"apply\" button, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                        "126. In Property SOV - 3rd Party for “Building Contents”,Verify validation error messages for the columns under “Aggregate Building Contents”, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                        "127. In Property SOV - 3rd Party for “Building Contents”,Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under “Aggregate Building Contents”,the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
+//                        "128. In Property SOV - 3rd Party, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Other Occupants or Tenants b.Additional Information",
+//                        "129. In Property SOV - 3rd Party, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Other Occupants or Tenants b.Additional Information",
+//                        "130. In Property SOV - 3rd Party,Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button, the following columns Other Occupants or Tenants & Additional Information",
+//                        "131. In Property SOV - 3rd Party,Verify user is able to enter correct value in Inserted test format columns, the following columns are Other Occupants or Tenants & Additional Information",
+//                        "132. In Property SOV - 3rd Party,Verify user is displayed list of columns required under “Fire Protection”, the following columns are a.Sprinkler System b.Smoke Detectors c.Fire Alarm d.Fire Extinguishers e.Thermal Barriers f.Hydrant g.Fire Department",
+//                        "133. In Property SOV - 3rd Party for “Fire Protection”, Verify by default, the user is not allowed to deselect the checkbox for Sprinkler System, Smoke Detectors & Fire Alarm.",
+//                        "134. In Property SOV - 3rd Party for “Fire Protection”, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are 1. Fire Extinguishers 2. Thermal Barriers 3. Hydrant 4. Fire Department",
+//                        "135. In Property SOV - 3rd Party, Verify user is displayed list of columns required under \"Security\", the following columns are a.Alarm b.Guards c.Gated Campus d.CC TV e.Key Card Access",
+//                        "136. In Property SOV - 3rd Party for \"Security\", Verify by default, the user is not allowed to deselect the checkbox of \"Alarm\" & \"Guards\"",
+//                        "137. In Property SOV - 3rd Party for \"Security\",Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Gated Campus b.CC TV c.Key Card Access",
+//                        "138. In Property SOV - 3rd Party, Verify user is able to close the customize column overlay without saving any changes by clicking on \"cancel\" button",
+//                        "139. In Property SOV - 3rd Party, Verify user is able to reset the column selection to default by clicking on \"Revert\" button",
+//                        "140. In Property SOV - 3rd Party,Verify user is able to enable selected columns in the Property(SOV) table by clicking on “apply” button",
+//                        "141. In Property SOV 3rd Party - For the Dropdown Building Use, Verify the following new values are displayed in the drop down list:1. Clean Rooms 2. Laboratories 3. Supply Chain / Contract Manufacturer 4. Vivarium",
+//                        "142. In Property SOV - 3rd Party,To verify user is able to enter the details For Coverage Notes and navigate to BI worksheet tab"
 
                 // 	Transit - Shipment Exposure
-                //"823. Principal Countries Shipped (Indicate % involved) - Verify user is displayed label - What is the level of information required for International Shipments, with the option By Continents, By Countries, Rest of World and also verify Continents option is selected as default.",
-                //"824. Verify user is displayed a new row Foreign below the Domestic U.S. row checking the Rest of World radio option.",
-                //"825. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Foreign - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
-                //"826. Verify on Selecting Continent radio option - 1. Delete Continent from list 2. A new row with a list of continents drop down is displayed 3. User is able to select the Continent from the drop down 4. After selecting the Continent, the drop down shifts to next row. 5. In the next row, In drop down User is not displayed the already selected Continent",
-                //"827. Verify user is able to delete the Continent rows by clicking on the delete icon next to the Continent name"
-                //"828. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Continent - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
-                //"829. Verify on Selecting Country radio option - 1. A new row with a list of Countries drop down is displayed 2. User is able to select the Country from the drop down 3. After selecting the Country, the drop down shifts to next row. 4. In the next row, In drop down User is not displayed the already selected Country"
+//                "800, Shipment Exposure - Verify user is displayed Shipment Exposure Title below Not Applicable checkbox",
+//                        "801. Verify user is displayed a drop down - Valuation Information with the following options: Standard All Replacement Cost Other With Standard as default value",
+//                        "802. When Valuation Information option is standard, Verify user is displayed the message next to the drop down",
+//                        "803. Verify user is able to select option Other for Valuation Information and a Text area field is displayed next to the Drop down",
+//                        "804. Verify user is displayed a table -Annual Sales Turnover. Also validate: (A) Column headers: 1. 12 Months Sales Turnover Details by Policy Period 2. Annual Sales Turnover (B)Labels in 12 Months Sales column: 1. Current Ending Policy Period (MM/DD/YYYY - MM/DD/YYYY) 2. Next Policy Period (MM/DD/YYYY - MM/DD/YYYY) (c)Current Ending Policy Period (MM/DD/YYYY - MM/DD/YYYY) displays RFR Current Term (D) Next Policy Period (MM/DD/YYYY - MM/DD/YYYY) displays RFR Proposed Term",
+//                        "805. Verify the error message is displayed when invalid value is entered for currency field column Annual Sales Turnover",
+//                        "806. Verify user is displayed the table Basic Transit Questionnaire (Applies to All Industries Except Life Sciences) with two columns: 1)Questions 2)Response",
+//                        "807. Verify the drop down options for the question - How is Product Packaged? And also verify user is displayed a text area when Other option is selected form the drop down and the default value for the drop down is displayed as N/A",
+//                        "808. Verify user is displayed N/A as default value for question - FDA Approved? And also verify the options for the drop down - Yes | N/A",
+//                        "809. Verify user is dispalyed the following 1. No as default value for question - Is your Product temperature sensitive? 2. Options for the drop down - Yes | No are displayed on clicking the drop down 3. If Yes is selected then Provide Storage Temperature Range (If Product Temperature Sensitivity is 'Yes', provide storage temperature range.) text area is displayed",
+//                        "810. Verify user is displayed a table Shipment / Transit Exposures with following 5 columns: 1. Shipment Exposures 2. Incoming 3. Outgoing 4. Intercompany 5. Total",
+//                        "811. Verify the table rows should be grouped as: 1. Shipment Exposures 2. Shipment Insurance Responsibility 3. Principal Countries Shipped(Indicate % involved) 4. Conveyance Used (% used of total annual value shipped)",
+//                        "812. Verify user is displayed - replacement cost as default for incoming and intra-company column and Selling Price as default for Outgoing column for row heading basic valuation and also validate the drop down option for each other 3 column drop down for the same row.",
+//                        "813. Verify the following for Shipment terms row: 1. Row Shipment terms is displayed only for Incoming and Outgoing columns 2. validate the option of the drop down for both the columns 3. N/A is displayed as default value 4. Total field should be disabled",
+//                        "814. Total Annual Value Shipped - Verify the total column is the sum of the currency fields entered for Incoming, Outgoing and Intercompany",
+//                        "815. Verify user is able to enter currency values for the rows: Average Value per Conveyance Maximum Value per Conveyance under columns Incoming, Outgoing and Inter-company and also verify the total field under total column is disabled for these 2 rows.",
+//                        "816. Shipment Insurance Responsibility - Verify user is able to enter Percentage values for the rows At Insured Risk, At Vendor/Customer Risk, At Other's risk for the columns Incoming, Outgoing and Intercompany",
+//                        "817. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Incoming Shipments should not be greater than 100%",
+//                        "818. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % Total Incoming Shipments should not be greater than 100%",
+//                        "819. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Outgoing column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Outgoing Shipments should not be greater than 100%",
+//                        "820. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Outgoing column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % Total Outgoing Shipments should not be greater than 100%",
+//                        "821. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Intercompany column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % - Total Intercompany Shipments should not be less than 100%",
+//                        "822. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Intercompany column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % - Total Intercompany Shipments should not be less than 100%"
+//                "823. Principal Countries Shipped (Indicate % involved) - Verify user is displayed label - What is the level of information required for International Shipments, with the option By Continents, By Countries, Rest of World and also verify Continents option is selected as default.",
+//                "824. Verify user is displayed a new row Foreign below the Domestic U.S. row checking the Rest of World radio option.",
+//                "825. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Foreign - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
+//                "826. Verify on Selecting Continent radio option - 1. Delete Continent from list 2. A new row with a list of continents drop down is displayed 3. User is able to select the Continent from the drop down 4. After selecting the Continent, the drop down shifts to next row. 5. In the next row, In drop down User is not displayed the already selected Continent",
+//                "827. Verify user is able to delete the Continent rows by clicking on the delete icon next to the Continent name",
+//                "828. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Continent - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
+//                "829. Verify on Selecting Country radio option - 1. A new row with a list of Countries drop down is displayed 2. User is able to select the Country from the drop down 3. After selecting the Country, the drop down shifts to next row. 4. In the next row, In drop down User is not displayed the already selected Country",
+//               "830. Verify user is able to delete the Country row by clicking on the delete icon next to the country name",
+//               "831. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Country - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
+//               "832. Rest of World or Continent or Country - Total % - Verify the error message when the total of Incoming column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message - Total Incoming Shipments should not be greater than 100% Error message - Total Incoming Shipments should not be less than 100%",
+//                "833. Rest of World, Continent, Country - Total % - Verify the error message when the total of Outgoing column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Outgoing Shipments should not be greater than 100% Error message -Total Outgoing Shipments should not be less than 100%",
+//                "834. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%",
+//                "835. Verify user is displayted error message on entering invalid vlaues for percentage field for each field under Conveyance Used (% used of total annual value shipped) header rows and under Incoming, Outgoing and Inter company Columns. Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 10",
+//                        "836. Verify the message displayed below the table with the title - RULES FOR ANY MODE OR MODES OF TRANSPORT and also below the title RULES FOR SEA AND INLAND WATERWAY TRANSPORT'",
+//                        "837. Verify user is able to enter the details in transit tab - Shipments sub tab"
 
-               //"830. Verify user is able to delete the Country row by clicking on the delete icon next to the country name",
-               //   "831. Verify user is displayed the error message when invalid values are entered in Column (Incoming, Outgoing and Intercompany) for row Country - Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
-               //"832. Rest of World or Continent or Country - Total % - Verify the error message when the total of Incoming column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message - Total Incoming Shipments should not be greater than 100% Error message - Total Incoming Shipments should not be less than 100%"
-                //"833. Rest of World, Continent, Country - Total % - Verify the error message when the total of Outgoing column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Outgoing Shipments should not be greater than 100% Error message -Total Outgoing Shipments should not be less than 100%",
-                //"834. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%"
 
 
+//Revenue & Liability Limits
+//                "338. PS125 - To verify user is able to mark Casualty Exposure - Revenue & Liability Limits tab as Not Applicable",
+//                "339. PS126 - Verify user is able to add another row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on add Row under Program Structure",
+//                "340. PS127 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, Revenue & Liability Limits grid by clicking on Delete under Program Structure",
+//                "341. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+//                "342. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
+//                "343. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
+//                "344. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+//                "345. Verify validation error messages on the Revenue & Liability Limits Tab",
+//                "346. Verify new application changes on Revenue & Liability Limits Tab",
+//                "347. Verify user is displayed Show/Hide Column overlay and validate the fields",
+//                "348. Revenue & Liability Limits - Verify the country column is pre-selected and disabled in the Show/hide column overlay",
+//                "349. Verify when P&C Practice is commercial - in the show/hide overlay, only Products and Sales/service options should be displayed as pre-selected",
+//                "350. Revenue & Liability Limits Verify when P&C Practice is Life Science - in the show/hide overlay, only Lab Payroll and Square Footage options should be displayed as pre-selected",
+                //"351. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab"
+//Product Liability
+//                "352. Verify the error message displayed for invalid values for currency field Revenue.Error Message : Enter only currency value (0-9, $, ., ,)",
+//                "353. Verify user is able to add a new row by clicking on Add row button",
+//                "354. Verify user is able to delete a row",
+//                "356. Verify user is bale to enter valid details in Product Liability - Product Revenue table and navigate to Product Liability Excess tab",
+//                "355. When P&C Practice is Life Science - Verify the changes for Product Liability tab under Casualty Exposure",
+//Casuality Exposure-Product liability Excess
+//                "357. PS131 - To verify user is able to mark Casualty Exposure - Product Liability Excess Tab as Not Applicable",
+//                "358. PS132 - Verify user is able to add another row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on add Row under Program Structure",
+//                "359- Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on Delete under Program Structure and click on continue button to navigate on Auto tab",
+// Auto
+//                "360. Verify the field zip code is updated to new label - ZIP / Postal Code",
+//                "361. Verify ZIP / Postal Code field can accept maximum of 10 character",
+//                "362. Verify the error message is displayed when invalid values for ZIP /Postal Code is entered when country is United states - Enter a valid ZIP / Postal Code",
+//                "363. When Country is United States Verify user is able to enter ZIP of 5 digits only",
+//                "364. When Country is United States Verify user is able to enter ZIP / Postal Code of Zip + 4 code with a dash(“-”) in between.of 5 digits only",
+//                "365. When Country is United States Verify the ZIP / Postal Code gets formatted automatically if user enters ZIP and Postal code together",
+//                "366. When country is non US - Verify user is able to enter ZIP / Postal Code with alphabets, numbers, and special characters of length 10 characters",
+//                "367. Verify the Name of the State column is renamed to State or Province and navigate to Auto Rental & Travel tab",
+//// Auto, Auto rental & Travel Tab
+//                "368. Verify Total # of Employees grid from the Auto tab is removed from the Auto tab",
+//                "369. Verify Total # of Employees grid is added to the new tab Auto Rental / Travel",
+//                "370. Verify Auto Rental grid from the Auto tab is removed from the Auto tab",
+//                "371. Verify Auto Rental grid is added to the new tab Auto Rental / Travel",
+//                "372. Verify International Travel grid is not displayed in Foreign Tab - International Revenue & Payroll Tab",
+//                "373. Verify International Travel grid is added to the new tab Auto Rental / Travel",
+//                "374. Verify user is displayed a new tab Auto Rental / Travel next to Auto tab under Casualty Exposure",
+//                "375. Verify user is able to mark the Auto Rental / Travel Tab as Not Applicable.",
+//                "376. Verify User is displayed the Following Grids in Auto Rental/Travel Tab: International Travel,Total # of Employees,Auto Rentals",
+//                "377. Verify User is able to add row under International Travel grid by clicking on Add Row Button",
+//                "378. Verify user is able to cancel the deletion of the row by clicking on the Cancel button in the delete popup",
+//                "379. Verify user is able to delete the row",
+//                "380. Validate the Field validation for the all the fields under the 3 grids",
+//                "381. Enter the details in the grids for Auto Rental/ Travel tab",
+//                "382. Verify user is navigated to RFR list page on clicking save and Close button in Auto Rental / travel tab",
+//                "383. Verify user is navigated to the E&O/Cyber Liability tab on clicking Continue button on Auto Rental/ Travel Tab",
+//E&O Cyber Liability
+//                "384. PS137 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on add Row under Program Structure",
+//                "385. PS138 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on Delete under Program Structure",
+//                "386. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
+//                "387. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
+//Cyber Liability Excess
+//                "388. PS139 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability - Excess tab as Not Applicable",
+//                "389. PS140 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on add Row under Program Structure",
+//                "389.1. PS141 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on Delete under Program Structure",
+//                "389.2. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
+//                "389.3. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures"
 
-//                  "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-//                "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
-//                "58.1 PS134 - To verify user is able to mark Casualty Exposure - Auto Tab as Not Applicable",
-//                "58.2. Verify new application changes on the Auto tab",
-//                "58.3. Verify validation error messages on the Auto Tab",
-//                "60. PS090 - To verify user is able to enter the details in Vehicle & Driver Schedule",
-//                "61. PS093 - To verify user is able to enter the details for Auto Non-Owned / Hired Questionnaire in Auto tab",
-//                "62. PS092 - To verify user is able to enter the details for Program Structure in Auto tab",
-//                "63. PS094 - To verify user is able to enter the details for Coverage Requirements in Auto tab and navigate to Auto Rental & Travel tab"
-//                "64. PS064 - Verify new application changes on the Auto Rental tab & Travel Tab",
-//                "65. PS065- Verify validation error messages on the Auto Rental & Travel Tab",
-//                "66. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Auto Rental & Travel Tab",
-//                "67. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto Rental & Travel tab",
-//                "68. PS068 - To verify user is able to enter the details For Coverage notes in Auto Rental & Travel tab and navigate to Life Science"
-//                "69. PS135 - To verify user is able to mark Casualty Exposure - Life Science Tab as Not Applicable",
-//                "70. PS096 - Verify user is able to upload the file with details in Life Science Tab and navigate to E&O/Cyber Liability tab",
-//                "71. PS136 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability tab as Not Applicable",
-//                "71.1. PS137 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on add Row under Program Structure",
-//                "71.2. PS138 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on Delete under Program Structure",
-//                "71.3. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
-//                "72. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
-//                "73. PS139 - To verify user is able to mark Casualty Exposure - E&O/Cyber Liability - Excess tab as Not Applicable",
-//                "73.1. PS140 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on add Row under Program Structure",
-//                "73.2. PS141 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability - Excess tab by clicking on Delete under Program Structure"
-//                "73.3. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
-//                "73.4. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures"
 
 
 
 
 		        /*// Import excel sheet flow (of Named insured)
+
 		        "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
                 "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
                 "255. PS255 - Verify user is able to export all RFR details on Clicking export button",
@@ -306,49 +462,31 @@ public class WebTest {
                 "77. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
                 "78. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab"*/
 
-                //"255. PS255 - Verify user is able to export all RFR details on Clicking export button"
+ //               "255. PS255 - Verify user is able to export all RFR details on Clicking export button",
+//                "256. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
+//                "257. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
+//                "258. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
+//                "259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
+//                "274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
+//                "277. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
+//                "278. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
+//                "279. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
+//                "280. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
+//                "281. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
+//                "282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
+//                "286. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
+//                "287. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
+//                "288. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
+//                "289. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
+//                "290. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
+//                "291. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet"
+//
 
-
-
-                //"256. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
-                //"257. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
-                //"258. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
-                //"259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
-                //"260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
-                //"261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
-                //"262. PS262 - Validate Error Message in Property (SOV) Tab of Exported excel sheet"
-                //"263. PS263 - Validate Formula in Property (SOV) Tab of Exported excel sheet"
-                //"264. PS264 - Validate data in Property (SOV) sheet of Exported excel sheet",
-                //"265. PS265 - Validate Error Message in B.I. Worksheet Tab of Exported excel sheet",
-                //"266. PS266 - Validate Formula in B.I. Worksheet Tab of Exported excel sheet",
-                //"267. PS267 - Validate data in B.I. Worksheet sheet of Exported excel sheet",
-                //"268. PS268 - Validate Error Message in Dependent BI Tab of Exported excel sheet",
-                //"269. PS269 - Validate Formula in Dependent BI Tab of Exported excel sheet",
-                //"270. PS270 - Validate data in Dependent BI sheet of Exported excel sheet",
-                //"271. PS271 - Validate Error Message in Transit Tab of Exported excel sheet",
-                //"272. PS272 - Validate Formula in Transit Tab of Exported excel sheet",
-                //"273. PS273 - Validate data in Transit sheet of Exported excel sheet",
-                //"274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-                //"275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-                //"276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
-                //"277. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
-                //"278. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
-                //"279. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
-                //"280. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
-                //"281. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
-                //"282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
-                //"283. PS283 - Validate Error Message in International Liab Locations Tab of Exported excel sheet",
-                //"284. PS284 - Validate Formula in International Liab Locations Tab of Exported excel sheet",
-                //"285. PS285 - Validate data in International Liab Locations sheet of Exported excel sheet",
-                //"286. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
-                //"287. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
-                //"288. PS288 - Validate data in Workers Comp sheet of Exported excel sheet"
-                //"289. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
-                //"290. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
-                //"291. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet"*/
-
-
-//		"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//		        "30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search.",
 //				"4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
@@ -359,7 +497,7 @@ public class WebTest {
 //				"9. PS013 - Verify user is able to search a record by Status",
 //				"10. PS006 - Verify user is displayed No records Found when no records are present for the searched criteria",
 //				"11. PS010 - Verify	user is able to search a record by Primary Contact",
-//              "12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
+//                "12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
 //				"13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
 //				"14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page",
 //				"14.1. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
@@ -369,15 +507,15 @@ public class WebTest {
 //				"15.4. PS193 - RFR-> Cover page In case of Renewal Type not selected, user is not able to navigate to Named Insureds",
 //				"15.5. PS194 - RFR-> Request for Quotation Message field displays an error in case of left blank",
 //				"15.6. PS015 - Verify user is able enter details in Cover Page and navigate to Insured Names tab",
-//				"15.7. PS188 - Validate error message should display for invalid Date on Cover page"*/
+//				"15.7. PS188 - Validate error message should display for invalid Date on Cover page",
 //	    		"16. PS016 - Verify the user is not able to attach multiple files same time in Cover Page",
-//		    	"17. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
+//              "17. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
 //	    	    "18.1. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab"
 //				"18.2. PS029 - Verify user is displayed error message- Please make sure that imported file is as per the standard template. upload files which is not as per the template in Named Insured page in General Information Tab",
 //				"18.3. PS033 - Verify user is displayed error message -Click on Browse to upload file with.xls / .xlsx extension, when user clicks on Import button without browsing the files to upload on Named Insured Page",
 //				"18.4. PS027 - Verify user is able to Import a file in \".xls or .xlsx format\" by clicking browse button and then clicking on import button in the downloaded Template format",
-//				"19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row"
-//				"20. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
+//				"19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
+//              "20. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
 //				"21. PS026 - Verify user is able to download the template, by clicking on Template button",
 //				"22. PS028 - Verify user is displayed error message Please upload file in .xls or .xlsx format only when user tries to upload file of other extension",
 //				"23. PS018 -  Verify user is not able to upload more than 10 files and displayed the message - Maximum 10 files can be uploaded",
@@ -393,6 +531,7 @@ public class WebTest {
 //              "30.1. Verify validation error messages on the Name Insured Tab",
 //    			"30.2. Verify new application changes on the Name Insured Tab",
 //    			"30.3. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
+//                "31.1. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default"
 //              "34.1. PS042 - To verify user is able to enter the details in Property (Statement of Values) tab and navigate to BI Worksheet tab",
 //              "34.6. Verify new application changes on the BI Worksheet Tab",
 //              "34.7. Verify validation error messages on the BI Worksheet Tab"
@@ -435,8 +574,10 @@ public class WebTest {
 //				"50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
 //				"50.1. PS079 - To verify user is able to enter the details For Program Structure in Revenue & Liability Limits tab",
 //				"50.2. PS080 - To verify user is able to enter the details For Coverage Notes in Revenue & Liability Limits tab",
-//				"50.3. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
-//				"54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab",
+//     			"50.3. PS081 - To verify user is able to enter the details For General Information in Revenue & Liability Limits tab",
+//	    		"50.4. Verify validation error messages on the Revenue & Liability Limits Tab",
+//                "50.5. Verify new application changes on Revenue & Liability Limits Tab",
+//                "54. PS082 - To verify user is able to enter the details For Coverage Requirements in Revenue & Liability Limits tab and navigate to Product Liability Tab"
 //				"54.1. PS128 - To verify user is able to mark Casualty Exposure - Product Liability Tab as Not Applicable",
 //				"54.2. PS129 - Verify user is able to add another row of details in Casualty Exposure Tab, Product Liability Tab by clicking on add Row under Program Structure",
 //				"54.3. PS130- Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Tab by clicking on Delete under Program Structure",
@@ -545,7 +686,7 @@ public class WebTest {
 
 //                "17. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
 //                "19. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
-//                "20. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
+//                "20. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab"
 //                "29. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab"
 //                "30.1. Verify validation error messages on the Name Insured Tab",
 //                "30.2. Verify new application changes on the Name Insured Tab"
@@ -579,88 +720,72 @@ public class WebTest {
 //                "73.3. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
 //                "73.4. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures"
 
- /*             "202. Verify the error message is displayed when invalid values for ZIP /Postal Code is entered when country is United states - Enter a valid ZIP / Postal Code",
-                "203. When Country is United States Verify user is able to enter ZIP of 5 digits only",
-                "205. When Country is United States Verify the ZIP / Postal Code gets formatted automatically if user enters ZIP and Postal code together",
-                "206. When country is non US - Verify user is able to enter ZIP / Postal Code with alphabets, numbers, and special characters of length 10 characters",
-                "207. Verify the Name of the State column is renamed to State or Province"
-*/
+
+//       "1. Verify Total # of Employees grid from the Auto tab is removed from the Auto tab",
+//       "2. Verify Total # of Employees grid is added to the new tab Auto Rental / Travel",
+//       "3. Verify Auto Rental grid from the Auto tab is removed from the Auto tab",
+//       "4. Verify Auto Rental grid is added to the new tab Auto Rental / Travel",
+//       "5. Verify International Travel grid is not displayed in Foreign Tab - International Revenue & Payroll Tab",
+//       "6. Verify International Travel grid is added to the new tab Auto Rental / Travel",
+//       "7. Verify user is displayed a new tab Auto Rental / Travel next to Auto tab under Casualty Exposure",
+//       "8. Verify user is able to mark the Auto Rental / Travel Tab as Not Applicable.",
+//       "9. Verify User is displayed the Following Grids in Auto Rental/Travel Tab: International Travel,Total # of Employees,Auto Rentals",
+//       "10. Verify User is able to add row under International Travel grid by clicking on Add Row Button",
 //       "11. Verify user is able to cancel the deletion of the row by clicking on the Cancel button in the delete popup",
 //       "12. Verify user is able to delete the row",
 //       "13. Validate the Field validation for the all the fields under the 3 grids",
 //       "14. Enter the details in the grids for Auto Rental/ Travel tab",
 //       "15. Verify user is navigated to RFR list page on clicking save and Close button in Auto Rental / travel tab",
-//       "16. Verify user is navigated to the Life Science tab on clicking Continue button on Auto Rental/ Travel Tab"
+//       "16. Verify user is navigated to the E&O/Cyber Liability tab on clicking Continue button on Auto Rental/ Travel Tab",
+//       "200. Verify the field zip code is updated to new label - ZIP / Postal Code",
+//       "201. Verify ZIP / Postal Code field can accept maximum of 10 character",
+//       "203. When Country is United States Verify user is able to enter ZIP of 5 digits only",
+//       "202. Verify the error message is displayed when invalid values for ZIP /Postal Code is entered when country is United states - Enter a valid ZIP / Postal Code",
+//       "204. When Country is United States Verify user is able to enter ZIP / Postal Code of Zip + 4 code with a dash(“-”) in between.of 5 digits only",
+//       "205. When Country is United States Verify the ZIP / Postal Code gets formatted automatically if user enters ZIP and Postal code together",
+//       "206. When country is non US - Verify user is able to enter ZIP / Postal Code with alphabets, numbers, and special characters of length 10 characters",
+//       "207. Verify the Name of the State column is renamed to State or Province"
 
           //--------------International Revenue----------------------------
+//          "18. Verify user is not displayed the old grid in foreign tab for International Revenue & Payroll tab grid",
+//          "19. Verify the new table and headers are displayed under International Revenue & Payroll tab grid" ,
+//          "20. Verify User is able to enter Text value for Local Legal Entity Name",
+//          "21. Verify user is able to enter Alphanumeric values for Street Address",
+//          "22. Verify user is able to enter only Alphabet values with special characters (. , ;) for city field",
+//          "23. Verify user is able to select the state / Province value from the dropdown by typing first 2 letters of state from the dropdown if the country is US.",
+//          "24. Verify user is able to enter the State or Province value as a text if the country is not US.",
+//          "25. Verify user is able select the country from the list of countries displayed when user types in type a head field."
+//          "26. Verify user is able to enter Text values without special character in Comments (Please Enter the Currency Code if Currency is not USD) field"
+//          "41. Verify user is displayed error message on entering value other than numeric / numeric with decimal for # of Employees Field under Local National header - Only numeric values allowed (0-9, ., ,)",
+//          "42. Verify user is able to enter numeric / numeric with decimal value in # of Employees Field under Local National header. Also validate the format is comma separated",
+//          "43. Verify the decimal value is displayed as it is in both edit and view mode for # of Employees Field under Local National header",
+//          "44. Verify user is displayed error message on entering values other than currency for Payroll (USD) under Local National header- Only currency values allowed (0-9, $, ., ,)",
+//          "45. Verify the currency values entered in Payroll (USD) field under Local National header are displayed with comma formatting."
+//          "46. Verify user is able to enter currency value with decimals in Payroll (USD) field",
+//          "47. Verify in edit mode the decimal values are displayed for Payroll (USD) under Local National header",
+//          "48. Verify in view mode the currency value entered in Payroll (USD) under Local National header is displayed rounded off format",
+//          "49. Verify user is displayed error message on entering value other than numeric / numeric with decimal for # of Employees Field under 3rd Country National header - Only numeric values allowed (0-9, ., ,)",
+//          "50. Verify user is able to enter numeric / numeric with decimal value in # of Employees Field under 3rd Country National header. Also validate the format is comma separated",
+//          "51. Verify the decimal value is displayed as it is in both edit and view mode for # of Employees Field under 3rd Country National header",
+//          "52. Verify user is displayed error message on entering values other than currency for Payroll (USD) under 3rd Country National header- Only currency values allowed (0-9, $, ., ,)",
+//          "53. Verify the currency values entered in Payroll (USD) field under 3rd Country National header are displayed with comma formatting."
+//          "54. Verify user is able to enter currency value with decimals in Payroll (USD) field under 3rd Country National",
+//          "55. Verify in edit mode the decimal values are displayed for Payroll (USD) under 3rd Country National header",
+//          "56. Verify in view mode the currency value entered in Payroll (USD) under 3rd Country National header is displed rounded off format",
+//          "57. Verify User is able to add row in International Revenue & Payroll grid by clicking on Add Row Button",
+//          "58. Verify user is able to cancel the deletion of the row by clicking on the Cancel button in the delete popup in International Revenue & Payroll grid",
+//          "59. Verify user is able to delete the row from International Revenue & Payroll grid",
+//          "60. Verify the order of the columns in foreign tab for International Revenue & Payroll sub tab",
+//          "61. On Preview tab - Verify the foreign tab is updated with the new table and details."
 
-  /*      "19. Verify the new table and headers are displayed under International Revenue & Payroll tab grid" ,
-          "18. Verify user is not displayed the old grid in foreign tab for International Revenue & Payroll tab grid",
-          "20. Verify User is able to enter Text value for Local Legal Entity Name",
-          "21. Verify user is able to enter Alphanumeric values for Street Address",
-          "22. Verify user is able to enter only Alphabet values with special characters (. , ;) for city field",
-          "23. Verify user is able to select the state / Province value from the dropdown by typing first 2 letters of state from the dropdown if the country is US.",
-          "24. Verify user is able to enter the State or Province value as a text if the country is not US.",
-          "25. Verify user is able select the country from the list of countries displayed when user types in type a head field.",
-          "26. Verify user is able to enter Text values without special character in Comments (Please Enter the Currency Code if Currency is not USD) field"
-          "41. Verify user is displayed error message on entering value other than numeric / numeric with decimal for # of Employees Field under Local National header - Only numeric values allowed (0-9, ., ,)",
-          "42. Verify user is able to enter numeric / numeric with decimal value in # of Employees Field under Local National header. Also validate the format is comma separated",
-          "43. Verify the decimal value is displayed as it is in both edit and view mode for # of Employees Field under Local National header",
-          "44. Verify user is displayed error message on entering values other than currency for Payroll (USD) under Local National header Only currency values allowed (0-9, $, ., ,)",
-          "45. Verify the currency values entered in Payroll (USD) field under Local National header are displayed with comma formatting.",
-          "46. Verify user is able to enter currency value with decimals in Payroll (USD) field",
-          "47. Verify in edit mode the decimal values are displayed for Payroll (USD) under Local National header",
-          "48. Verify in view mode the currency value entered in Payroll (USD) under Local National header is displayed rounded off format",
-          "49. Verify user is displayed error message on entering value other than numeric / numeric with decimal for # of Employees Field under 3rd Country National header - Only numeric values allowed (0-9, ., ,)",
-          "50. Verify user is able to enter numeric / numeric with decimal value in # of Employees Field under 3rd Country National header. Also validate the format is comma separated",
-          "51. Verify the decimal value is displayed as it is in both edit and view mode for # of Employees Field under 3rd Country National header",
-          "52. Verify user is displayed error message on entering values other than currency for Payroll (USD) under 3rd Country National header- Only currency values allowed (0-9, $, ., ,)",
-          "53. Verify the currency values entered in Payroll (USD) field under 3rd Country National header are displayed with comma formatting.",
-          "54. Verify user is able to enter currency value with decimals in Payroll (USD) field under 3rd Country National",
-          "55. Verify in edit mode the decimal values are displayed for Payroll (USD) under 3rd Country National header",
-          "56. Verify in view mode the currency value entered in Payroll (USD) under 3rd Country National header is displed rounded off format",
-          "57. Verify User is able to add row in International Revenue & Payroll grid by clicking on Add Row Button",
-          "58. Verify user is able to cancel the deletion of the row by clicking on the Cancel button in the delete popup in International Revenue & Payroll grid",
-          "59. Verify user is able to delete the row from International Revenue & Payroll grid",
-          "60. Verify the order of the columns in foreign tab for International Revenue & Payroll sub tab",
-          "61. On Preview tab - Verify the foreign tab is updated with the new table and details."
-*/
         //--------------Property SOV----------------------------
 //        "80. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table.",
 //        "81. In Property Sov, Verify user is displayed list of columns required under \"Business Income\",the following columns are 1. Aggregate BI 2. Detailed BI a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
 //        "82. In Property sov for Business Income, Verify by default, the “Aggregate BI” option box is selected and user is able to change it.",
 //        "83. In Property sov for Business Income, Verify on Selecting the “Aggregate BI” option box is automatically select the only column name “Total BI Values” under this section and the user is not be allowed to deselect the checkbox.",
 //        "84. In Property sov for Business Income, Verify user is able to insert column “Total BI Value” in respective position on selecting the “Aggregate BI” and clicking “apply” button",
-//        "85. In Property sov for “Business Income”, Verify validation error messages for \"Total BI Value” column inserted on table",
+//        "85. In Property sov for “Business Income”, Verify validation error messages for \"Total BI Value” column inserted on table"
 //        "86. In Property sov for “Business Income, Verify user is able to enter correct given value (Numbers (0-9), $, Comma(,), Decimal(.)) in inserted currency formatted \"Total BI Value” column on table",
-//        "101. In Property sov for “Building Details”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted \"Occupied Floor area Sq.Ft \" column",
-//        "102. In Property sov , Verify user is able to see under “Building Contents”, the columns are further sub-categorized as Detailed Building Contents & Aggregate Building Contents",
-//        "103. In Property sov for “Building Contents”, Verify user able to see the columns are grouped further as \"Contents Replacement Cost'' & ''Selling Price '' under Detailed Building Contents",
-//        "104. In Property sov for “Building Contents”, Verify User is displayed list of columns required under “Replacement Cost”, columns are Cased Goods,Computer Hardware, Servers, Finished Stock Ready for Sale,Furniture & Fixtures,Irreplaceable Bulk Beverage, Irrigation Pipeline,Machinery/ Equipment /Molds,Mfg. or Lab Equipment,Perishable Property,Raw Materials & WIP (Not Spoilage/ Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk Beverage,R&D Inventory,Spoilage",
-//        "105. In Property sov for “Building Contents”, Verify user is able to enable or disable the columns under “Replacement Cost” by clicking on the checkbox,the following columns are (Cased Goods,Computer Hardware, Servers, Finished Stock Ready for Sale,Furniture & Fixtures,Irreplaceable Bulk Beverage, Irrigation Pipeline,Machinery/ Equipment /Molds,Mfg. or Lab Equipment,Perishable Property,Raw Materials & WIP (Not Spoilage/ Temperature Sensitive), Raw Materials & WIP,Replaceable Bulk Beverage,)",
-//        "106. In Property sov for “Building Contents”, Verify “Perishable Property”, “Raw Materials & WIP (Not Spoilage/ Temperature Sensitive)”, “Finished Stock Ready for Sale” columns should be selected and disabled by default ,if If P&C Practice is “Life Science”",
-//        "107. In Property sov for “Building Contents”, Verify user is able to insert column in respective position on selecting the column name under “Building Contents” and clicking “apply” button" ,
-//        "108. In Property sov for “Building Contents”, Verify validation error messages for the columns under “Replacement Cost”",
-//        "109. In Property sov for “Building Contents”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under “Replacement Cost”",
-//        "110. In Property sov for \"Building Contents\", Verify user is displayed list of columns required under \"Selling Price\",the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-//        "111. In Property sov for “Building Contents”, Verify user is able to enable or disable the columns under “Selling Price” by clicking on the checkbox,the following columns are-1.Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-//        "112. In Property sov for “Building Contents”, Verify user is able to insert column in respective position on selecting the column name under “Selling Price” and clicking apply” button, the following columns are-1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-//        "113. In Property sov for \"Building Contents\", Verify validation error messages for the columns under \"Selling Price\", the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6.Temperature Sensitive Property 7. Other",
-//        "114. In Property sov for \"Building Contents\", Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under \"Selling Price\",the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-//        "115. In Property sov for \"Building Contents\", Verify user is displayed list of columns required under \"Aggregate Building Contents\",the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "116. 116. In Property sov for \"Building Contents\", Verify user is able to enable or disable the columns under \"Aggregate Building Contents\" by clicking on the checkbox,the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "117. In Property sov for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Aggregate Building Contents\" and clicking \"apply\" button, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "118. In Property sov for \"Building Contents\", Verify validation error messages for the columns under \"Aggregate Building Contents\", the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "119. In Property sov for \"Building Contents\", Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under \"Aggregate Building Contents\",the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price"
-//        "120. In Property sov , Verify user is displayed list of columns required under \"Additional Details\",the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
-//        "121. In Property sov for “Additional Details, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
-//        "122. In Property sov for “Additional Details”, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Faculty Members g.Other Occupants or Tenants h.Additional Information",
-//        "123. In Property sov for “Additional Details”, Verify validation error messages for the columns, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
-//        "124. In Property sov for “Additional Details”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns, the following columns are a.Clean Room (Class Code) b.Clean Room (Sq. Ft.) c.Payroll d.# of Students e.# of Employees f.# of Facult Members g.Other Occupants or Tenants h.Additional Information",
-//        "125. In Property sov, Verify user is displayed list of columns required under “Fire Protection”, the following columns are a.Sprinkler System b.Smoke Detectors c.Fire Alarm d.Fire Extinguishers e.Thermal Barriers f.Hydrant g.Fire Department",
-//        "126. In Property sov for “Fire Protection”, Verify by default, the user is not allowed to deselect the checkbox for Sprinkler System, Smoke Detectors & Fire Alarm.",
-//        "127. In Property sov for “Fire Protection”, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are 1. Fire Extinguishers 2. Thermal Barriers 3. Hydrant 4. Fire Department",
-//        "128. In Property sov for Fire Protection, If P&C Practice is Life Science - Verify existing default fields is marked selected and disabled, the following fields are-Fire Extinguishers, Thermal Barriers, Hydrant, Fire Department"
 
       //--------------BI_Worksheet----------------------------
 //      "526. Enter the details for all the field for Continuing Expenses only Worksheet",
@@ -682,7 +807,7 @@ public class WebTest {
 //       "542. Exposed BI w/o OP of Business Interruption BI Values - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula: Exposed BI w/o OP of Business Interruption BI Values = Annual BI Value w/o Ordinary Payroll of Business Interruption BI Values *Number of Months to Move to another Location and Resume Operation of Business Interruption BI Values / 12",
 //       "543. Exposed BI Including OP of Business Interruption BI Values - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula : Exposed BI Including OP of Business Interruption BI Values = Exposed BI w/o OP of Business Interruption BI Values + Total Ordinary Payroll (OP)",
 //       "545. Enter valid values for all the fields for Actual option",
-//       "546. Check the checkbox for Projected and enter valid values for all fields for projected form.",
+//       "546. Check the checkbox for Projected and enter valid values for all fields for projected form."
 //       "547. Check the radio option for Multi Location BI Worksheet and verify user is displayed Multi Location BI Worksheet",
 //       "548. Exposed BI without Ordinary Payroll - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places and percentage format Formula : Exposed BI without Ordinary Payroll = ((Annual Net Sales TIMES(*) % Variable of Annual Net Sales) LESS(–) ((Cost of Sales TIMES(*) % variable of Cost of Sales) TIMES(*) (# of Months DIVIDED(/) 12))",
 //       "549. (Multi Location BI) Exposed BI Incl. OP - Verify the value calculated is as per the Formula and the value is currnecy formatted and rounded off to 2 decimal places Formula : Exposed BI Incl. OP = ((Exposed BI w/o OP sum(+) [(Ordinary Payroll - annual payroll and benefits for non-exempt workers ) TIMES(*) (Number of Days Coverage of Ordinary Payroll Desired (0-365 days) DIVIDED(/) 365))]",
@@ -690,27 +815,6 @@ public class WebTest {
 //       "551. Verify user is able to enter the details in the Multi Location BI Worksheet"
 
         //--------------Property SOV 3rd Party
-//        "156. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to insert column in respective position on selecting the column name under \"Selling Price\" and clicking \"apply\" button, the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-//        "157. In Property SOV - 3rd Party for “Building Contents”, Verify validation error messages for the columns under “Selling Price”, the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-//        "158. In Property SOV - 3rd Party for “Building Contents”, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under “Selling Price”,the following columns are 1. Cased Goods 2. Finished Stock Ready for Sale 3. Perishable Property 4. Replaceable Bulk Beverage 5. Spoilage 6. Temperature Sensitive Property 7. Other",
-//        "159. In Property SOV - 3rd Party for \"Building Contents\", Verify user is displayed list of columns required under \"Aggregate Building Contents\",the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "160. In Property SOV - 3rd Party for \"Building Contents\", Verify user is able to enable or disable the columns under \"Aggregate Building Contents\" by clicking on the checkbox,the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price"
-//        "161. In Property SOV - 3rd Party for \"Building Contents\",Verify user is able to insert column in respective position on selecting the column name under \"Aggregate Building Contents\" and clicking \"apply\" button, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "162. In Property SOV - 3rd Party for “Building Contents”,Verify validation error messages for the columns under “Aggregate Building Contents”, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "163. In Property SOV - 3rd Party for “Building Contents”,Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under “Aggregate Building Contents”,the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//        "164. In Property SOV - 3rd Party,Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are Other Occupants or Tenants & Additional Information",
-//        "165. In Property SOV - 3rd Party, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Other Occupants or Tenants b.Additional Information",
-//        "166. In Property SOV - 3rd Party,Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button, the following columns Other Occupants or Tenants & Additional Information"
-//        "167. In Property SOV - 3rd Party,Verify user is able to enter correct value in Inserted test format columns, the following columns are Other Occupants or Tenants & Additional Information",
-//        "168. In Property SOV - 3rd Party,Verify user is displayed list of columns required under “Fire Protection”, the following columns are a.Sprinkler System b.Smoke Detectors c.Fire Alarm d.Fire Extinguishers e.Thermal Barriers f.Hydrant g.Fire Department",
-//        "169. In Property SOV - 3rd Party for “Fire Protection”, Verify by default, the user is not allowed to deselect the checkbox for Sprinkler System, Smoke Detectors & Fire Alarm.",
-//        "170. In Property SOV - 3rd Party for “Fire Protection”, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are 1. Fire Extinguishers 2. Thermal Barriers 3. Hydrant 4. Fire Department",
-//        "171. In Property SOV - 3rd Party, Verify user is displayed list of columns required under \"Security\", the following columns are a.Alarm b.Guards c.Gated Campus d.CC TV e.Key Card Access",
-//        "172. In Property SOV - 3rd Party for \"Security\", Verify by default, the user is not allowed to deselect the checkbox of \"Alarm\" & \"Guards\"",
-//        "173. In Property SOV - 3rd Party for \"Security\",Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Gated Campus b.CC TV c.Key Card Access",
-//        "174. In Property SOV - 3rd Party, Verify user is able to close the customize column overlay without saving any changes by clicking on \"cancel\" button",
-//        "175. In Property SOV - 3rd Party, Verify user is able to reset the column selection to default by clicking on \"Revert\" button",
-//        "176. In Property SOV - 3rd Party,Verify user is able to enable selected columns in the Property(SOV) table by clicking on “apply” button"
 
      //-----------Transit- Shipment Exposure------------------------
 //        "800, Shipment Exposure - Verify user is displayed Shipment Exposure Title below Not Applicable checkbox",
@@ -719,18 +823,18 @@ public class WebTest {
 //        "803. Verify user is able to select option Other for Valuation Information and a Text area field is displayed next to the Drop down",
 //        "804. Verify user is displayed a table -Annual Sales Turnover. Also validate: (A) Column headers: 1. 12 Months Sales Turnover Details by Policy Period 2. Annual Sales Turnover (B)Labels in 12 Months Sales column: 1. Current Ending Policy Period (MM/DD/YYYY - MM/DD/YYYY) 2. Next Policy Period (MM/DD/YYYY - MM/DD/YYYY) (c)Current Ending Policy Period (MM/DD/YYYY - MM/DD/YYYY) displays RFR Current Term (D) Next Policy Period (MM/DD/YYYY - MM/DD/YYYY) displays RFR Proposed Term",
 //        "805. Verify the error message is displayed when invalid value is entered for currency field column Annual Sales Turnover",
-//        "806. Verify user is displayed the table Basic Transit Questionnaire (Applies to All Industries Except Life Sciences) with two columns: 1)Questions 2)Response",
+//        "806. Verify user is displayed the table Basic Transit Questionnaire (Applies to All Industries Except Life Sciences) with two columns: 1)Questions 2)Response"
 //        "807. Verify the drop down options for the question - How is Product Packaged? And also verify user is displayed a text area when Other option is selected form the drop down and the default value for the drop down is displayed as N/A",
 //        "808. Verify user is displayed N/A as default value for question - FDA Approved? And also verify the options for the drop down - Yes | N/A",
 //        "809. Verify user is dispalyed the following: 1. No as default value for question - Is your Product temperature sensitive? 2. Options for the drop down - Yes|No are displayed on clicking the drop down 3. If Yes is selected then Provide Storage Temperature Range (If Product Temperature Sensitivity is 'Yes', provide storage temperature range) text area is displayed",
 //        "810. Verify user is displayed a table Shipment / Transit Exposures with following 5 columns: 1. Shipment Exposures 2. Incoming 3. Outgoing 4. Intercompany 5. Total",
 //        "811. Verify the table rows should be grouped as: 1. Shipment Exposures 2. Shipment Insurance Responsibility 3. Principal Countries Shipped(Indicate % involved) 4. Conveyance Used (% used of total annual value shipped)",
 //        "812. Verify user is displayed - replacement cost as default for incoming and intra-company column and Selling Price as default for Outgoing column for row heading basic valuation and also validate the drop down option for each other 3 column drop down for the same row.",
-//        "813. Verify the following for Shipment terms row:1. Row Shipment terms is displayed only for Incoming and Outgoing columns 2. validate the option of the drop down for both the columns 3. N/A is displayed as default value 4. Total field should be disabled",
+//        "813. Verify the following for Shipment terms row:1. Row Shipment terms is displayed only for Incoming and Outgoing columns 2. validate the option of the drop down for both the columns 3. N/A is displayed as default value 4. Total field should be disabled"
 //        "814. Total Annual Value Shipped - Verify the total column is the sum of the currency fields entered for Incoming, Outgoing and Intercompany",
 //        "815. Verify user is able to enter currency values for the rows: Average Value per Conveyance Maximum Value per Conveyance under columns Incoming, Outgoing and Inter-company and also verify the total field under total column is disabled for these 2 rows.",
 //        "816. Shipment Insurance Responsibility - Verify user is able to enter Percentage values for the rows At Insured Risk, At Vendor/Customer Risk, At Other's risk for the columns Incoming, Outgoing and Intercompany",
-//        "817. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Incoming Shipments should not be greater than 100%",
+//        "817. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Incoming Shipments should not be greater than 100%"
 //        "818. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Incoming column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % Total Incoming Shipments should not be greater than 100%",
 //        "819. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Outgoing column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is more than 100 % Total Outgoing Shipments should not be greater than 100%",
 //        "820. Shipment Insurance Responsibility - Total % - Verify the error message when the total of Outgoing column for the 3 rows - At Insured Risk, At Vendor/Customer Risk, At Other's risk - is less than 100 % Total Outgoing Shipments should not be less than 100%",
@@ -745,9 +849,9 @@ public class WebTest {
 //         "843. Verify User is displayed the messages on the side of the Valuation drop down on selecting Life Science - Commercial option from Valuation drop down",
 //         "844. Verify user is displayed a text area when Other option is selected from the Valuation Information drop d0wn",
 //         "845. Verify user is displayed the error message for fields Product Name and Sub-Components(Parts or Processes) when these fields are left empty and a value is entered in some other field.Error message : For Product Name : Product Name is Required For Sub-Components(Parts or Processes) : Sub-Components (Parts or Processes) is Required",
-//         "846. Select Option Yes from the drop down for Product Temperature Sensitivity and verify user is displayed the error message for the field Storage Temperature Range till the temperature range is entered."
+//         "846. Select Option Yes from the drop down for Product Temperature Sensitivity and verify user is displayed the error message for the field Storage Temperature Range till the temperature range is entered.",
 //         "847. Verify the error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number",
-//         "848. Verify the Drop down values for the following fields: 1. FDA Approved for Sale? 2. Product Temperature Sensitivity 3. Product Packaged 4. Conveyance",
+//         "848. Verify the Drop down values for the following fields: 1. FDA Approved for Sale? 2. Product Temperature Sensitivity 3. Product Packaged 4. Conveyance"
 //         "849. Verify user is able to add a new row by clicking on add button.",
 //         "850. Verify user is able to delete one of the added row",
 //         "851. Verify user is able to enter details for all the fields in Product Transit tab.",
@@ -762,11 +866,11 @@ public class WebTest {
 //                   "885. In Show / Hide Columns - Building Details - Verify following Columns are Checked as default and user is not able to uncheck them.",
 //                   "886. In Show / Hide Columns - Building Details - Verify user is able to check and uncheck the column name Occupied Floor area Sq.Ft.",
 //                   "887. In Show / Hide Columns overlay - Verify under Building Contents - 3 sub sections are displayed: 1. REPLACEMENT COST 2. SELLING PRICE 3. Aggregate Building Contents",
-//                   "888. In Show / Hide Columns overlay - Building Contents - Verify the Columns labels under Replacement Sub section"
+//                   "888. In Show / Hide Columns overlay - Building Contents - Verify the Columns labels under Replacement Sub section",
 //                   "889. In Show / Hide Columns overlay - Building Contents - Verify the Columns labels under Selling Price Sub section",
 //                   "890. In Show / Hide Columns overlay - Building Contents -Verify the Columns labels under Aggregate Building Contents Sub section",
-//                   "891. Verify user is able to check / uncheck the following columns under Additional Details: 1. Other Occupants or Tenants 2. Additional Information",
-//                   "892. In Show / Hide Columns overlay - Verify the Labels under Fire Protection"
+//                   "891. Verify user is able to check / uncheck the following columns under Additional Details:1. Other Occupants or Tenants 2. Additional Information",
+//                   "892. In Show / Hide Columns overlay - Verify the Labels under Fire Protection",
 //                   "893. In Show / Hide Columns overlay - Fire Protection - Verify the following columns are preselected and cannot be unchecked : 1. Sprinkler System 2. Smoke Detectors 3. Fire Alarm",
 //                   "894. In Show / Hide Columns overlay - Fire Protection - Verify user is able to check and uncheck the following columns: 1. Fire Extinguishers 2. Thermal Barriers 3. Hydrant 4. Fire Department",
 //                   "895. In Show / Hide Columns overlay -Security - Verify the following columns are pre selected and cannot be unchecked : 1. Alarm 2. Guards",
@@ -774,22 +878,22 @@ public class WebTest {
 //                   "897. In Show / Hide Columns overlay - Very user is displayed 3 buttons : 1. Cancel 2. Revert 3. Apply",
 //                   "898. In Show / Hide Columns overlay - Verify user is able to cancel the selections and exit the show / hide overlay by clicking on the Cancel button",
 //                   "899. In Show / Hide Columns overlay - Verify user is able to revert back to default selections in the overlay on clicking the revert button",
-//                   "900. In Show / Hide Columns overlay - Verify user is able to add the columns from the overlay in the table by checking the check boxes for the columns and clicking on Apply button\n" +
-//                   "901. Verify the columns under the Replacement heading in the Show / Hide overlay are displayed with column name with Replacement Cost heading in parenthesis in the table\n" +
-//                   "902. Verify the columns under the Selling Price heading in the Show / Hide overlay are displayed with column name with Selling Price heading in parenthesis in the table\n" +
+//                   "900. In Show / Hide Columns overlay - Verify user is able to add the columns from the overlay in the table by checking the check boxes for the columns and clicking on Apply button",
+//                   "901. Verify the columns under the Replacement heading in the Show / Hide overlay are displayed with column name with Replacement Cost heading in parenthesis in the table",
+//                   "902. Verify the columns under the Selling Price heading in the Show / Hide overlay are displayed with column name with Selling Price heading in parenthesis in the table",
 //                   "903. Verify user is able to select the state / Province value from the drop down by typing first 2 letters of state from the drop down if the country is US.",
 //                   "904. When country is United States - Verify user is displayed the error message if user enters invalid state - Please select valid State Name / Code",
 //                   "905. Verify the error message displayed when user tries to enter a new country in the Country field - Please select a valid country name",
 //                   "906. Verify ZIP / Postal Code field can accept maximum of 10 character",
-//                   "907. Verify the error message displayed when incorrect value is entered for Currency fields- a. Enter only currency value (0-9, $, ., ,)"
-//                   "908. Verify the error message on entering invalid value for field Total Area Sq. Ft. : 1. Max 25 characters 2. Only numeric and decimal values are allowed"
+//                   "907. Verify the error message displayed when incorrect value is entered for Currency fields- a. Enter only currency value (0-9, $, ., ,)",
+//                   "908. Verify the error message on entering invalid value for field Total Area Sq. Ft. : 1. Max 25 characters 2. Only numeric and decimal values are allowed",
 //                   "909. Verify the error message on entering invalid value for field Occupied Floor area Sq.Ft. : a. Enter only whole number",
 //                   "910. \"Verify the error message on entering invalid value for field % Occupied : a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 100%",
 //                   "911. Verify the error message displayed for Year Built field on entering alphabets : Enter only number",
 //                   "912. Verify the error message for Year field on entering a year value of less than 4 digits: a. Please enter a valid year",
 //                   "913. Verify the error message for # of Stories field on entering invalid value other than numeric value : 1. Max 4 characters 2. Only numeric values allowed (0-9999)",
 //                   "914. Verify user is able to add a new row by clicking on add button.",
-//                   "915. Verify user is able to delete a row.",
+ //                  "915. Verify user is able to delete a row.",
 //                   "916. Verify user is able to enter the details in Transit Loc Inv and navigate to Casualty tab"
 
                 //----------Casuality Exposure Product Liability-----
@@ -801,14 +905,120 @@ public class WebTest {
 
                 //--------------------------
 
-                "66. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Auto Rental & Travel Tab",
-                "67. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto Rental & Travel tab",
-                "68. PS068 - To verify user is able to enter the details For Coverage notes in Auto Rental & Travel tab and navigate to Life Science",
-                "255. PS255 - Verify user is able to export all RFR details on Clicking export button",
-                "274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-                "275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-                "276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet"
+//                "66. PS109 - To verify user is able to enter the details for US Employees, Rest of the World in Auto Rental & Travel Tab",
+//                "67. PS091 - To verify user is able to enter the details for How Many Total Employees and Auto table in Auto Rental & Travel tab",
+//                "68. PS068 - To verify user is able to enter the details For Coverage notes in Auto Rental & Travel tab and navigate to Life Science",
+//                "255. PS255 - Verify user is able to export all RFR details on Clicking export button",
+//                "274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet"
 
+                //----------Export- Revenue liability
+//                "50. PS078 - To verify user is able to enter the details For Estimated Exposure for General Liability for the Policy Period Noted Below in Revenue & Liability Limits tab",
+//                "255. PS255 - Verify user is able to export all RFR details on Clicking export button",
+//                "259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet"
+
+//                "256. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
+//                "257. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
+//                "258. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
+//                "277. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
+//                "278. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
+//                "279. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
+//                "280. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
+//                "281. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
+//                "282. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
+//                "286. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
+//                "287. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
+//                "288. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
+//                "289. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
+//                "290. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
+//                "291. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet",
+//                "274. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "275. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "276. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
+//                "259. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "260. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "261. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet"
+
+
+ //               "465. Verify user is able to enter the details in all the tabs and export the RFR",
+//                "466. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
+//                        "467. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
+//                        "468. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
+//                        "469. Validate data in Property (SOV) sheet of Exported excel sheet",
+//                        "470. Validate Error Message in Property SOV Tab of Exported excel sheet",
+//                        "471. Validate Formula in Property SOV Tab of Exported excel sheet",
+//                        "472. Validate data in Property (SOV) 3rd Party sheet of Exported excel sheet",
+//                        "473. Validate Error Message in Property SOV 3rd Party Tab of Exported excel sheet",
+//                        "474. Validate Formula in Property SOV 3rd Party Tab of Exported excel sheet",
+//                        "475. Validate Error Message in BI Worksheet (Single) sheet of Exported excel sheet",
+//                        "476. Validate Formula in BI Worksheet sheet of Exported excel sheet",
+//                        "477. Validate data in BI Worksheet sheet of Exported excel sheet",
+//                        "478. Validate Error Message in BI Dependent sheet of Exported excel sheet",
+//                        "479. Validate Formula in BI Dependent sheet of Exported excel sheet",
+//                        "480. Validate data in BI Dependent sheet of Exported excel sheet",
+//                        "481. Validate Error Message in Transit Shipment sheet of Exported excel sheet",
+//                        "482. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
+//                        "483. Validate data in Export/ transit Shipments sheet of Exported excel sheet",
+//                        "484. Validate Error Message in Product Transit sheet of Exported excel sheet",
+//                        "485. Validate Formula in Product Transit sheet of Exported excel sheet",
+//                        "486. Validate data in Product Transit sheet of Exported excel sheet",
+//                        "487. Validate Error Message in Product Flow sheet of Exported excel sheet",
+//                        "488. Validate Formula in Product Flow sheet of Exported excel sheet",
+//                        "489. Validate data in Product Flow sheet of Exported excel sheet",
+//                        "490. Validate Error Message in Transit Loc. Inv. sheet of Exported excel sheet",
+//                        "491. Validate Formula in Transit Loc. Inv. sheet of Exported excel sheet",
+//                        "492. Validate data in Transit Loc. Inv. sheet of Exported excel sheet",
+//                        "493. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
+//                        "494. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
+//                        "495. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
+//                        "496. Validate Formula in Product Liability Tab of Exported excel sheet",
+//                        "497. Validate Error Message in Product Liability Tab of Exported excel sheet",
+//                        "498. Validate data in Product Liability Tab of Exported excel sheet",
+//                        "499. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                        "500. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                        "501. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
+//                        "502. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
+//                        "503. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
+//                        "504. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
+//                        "505. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
+//                        "506. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
+//                        "507. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
+//                        "508. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
+//                        "509. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
+//                        "510. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
+//                        "511. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
+//                        "512. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
+//                        "513. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet",
+//                        "514. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet",
+//                        "515. Validate Formula in International Revenue & Payroll sheet of Exported excel sheet",
+//                        "516. Validate data in International Revenue & Payroll sheet of Exported excel sheet",
+//                        "517. Verify user is able to enter the details in the tabs related to life science P&C Practice and export the RFR",
+//                        "518. Validate Error Message in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                        "519. Validate Formula in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                        "520. Validate data in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                        "521. Verify user is able to enter the details in the BI Worksheet - Standard BI - Multi Location BI Worksheet and export the RFR",
+//                        "522. Validate Error Message in BI (Multi-Location) sheet of Exported excel sheet",
+//                        "523. Validate Formula in BI (Multi-Location) sheet of Exported excel sheet",
+//                        "524. Validate data in BI (Multi-Location) sheet of Exported excel sheet"
+                //--------Import---------
+//
+//                "1045. Write invalid data in all sheets of Exported excel file using Auto It"
+//                "1048. Verify the RFR to be uploaded is validated by the system for the Client Name and and error message \"The client name in the uploaded document does not match with RFR client name\" is displayed",
+//                "1049. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel"
+//                  "1051. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It"
+//                "1052. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it"
+                //"2005. Verify user is able to Preview the details entered by user for Product Transit by clicking on Property in Preview tab"
+                //"2004. Verify user is able to Preview the details entered by user for Transit Shipment by clicking on Property in Preview tab",
+                //"2012. Verify user is able to Preview the details entered by user for International Revenue & Payroll by clicking on Foreign in Preview tab"
+                //"2013. Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab"
+                //"2007. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab"
+        //    "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
+        //    "534. Verify on importing the file, workbook  label and status is not displayed when the tab is marked as \"not applicable\""
+
+ //               "95. In Property (SOV), Verify user is able to enable selected columns in the Property(SOV) table by clicking on \"apply\" button and on clicking continue button it should navigate to Property SOV 3rd Party"
         );
 
 
@@ -900,26 +1110,26 @@ public class WebTest {
 			//Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Browser.webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
-			logger.info("Opening the Application URL in the Browser...");
-			Browser.webDriver.get(config.app.getProperty("app.gui.url"));
-			if(browserName.equalsIgnoreCase("edge")) {
-				WebDriverWait wait = new WebDriverWait(Browser.webDriver, 10);
-				try{
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".renewal-button")));
-					Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-toggle")).click();
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".menu-blk .dropdown-menu .log-blk")));
-					Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-menu .log-blk")).click();
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#cUsername")));
-				} catch (TimeoutException| NoSuchElementException e) {
+            logger.info("Opening the Application URL in the Browser...");
+            Browser.webDriver.get(config.app.getProperty("app.gui.url"));
+            if(browserName.equalsIgnoreCase("edge")) {
+                WebDriverWait wait = new WebDriverWait(Browser.webDriver, 10);
+                try{
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".renewal-button")));
+                    Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-toggle")).click();
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".menu-blk .dropdown-menu .log-blk")));
+                    Browser.webDriver.findElement(By.cssSelector(".menu-blk .dropdown-menu .log-blk")).click();
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#cUsername")));
+                } catch (TimeoutException| NoSuchElementException e) {
 
-				}
-			}
-			isSetUp = true;
-		} catch (Exception error) {
-			logger.error(error);
-			logger.info("Last API Response from QIF:\n" + qifClient.getLastResponse());
-			isSetUp = false;
-		}
+                }
+            }
+            isSetUp = true;
+        } catch (Exception error) {
+            logger.error(error);
+            logger.info("Last API Response from QIF:\n" + qifClient.getLastResponse());
+            isSetUp = false;
+        }
 	}
 
 	@DataProvider(name = "QIFDP")
@@ -1097,7 +1307,7 @@ public class WebTest {
                                     };
                             WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
                             wait.until(pageLoadCondition);
-                            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading'")));
+                            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading")));
                             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
                             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
                             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));
@@ -1106,7 +1316,7 @@ public class WebTest {
                             logger.info("Test Action Name: " + testAction.action.fieldName + " (" + testAction.action.fieldValue + ")." + testAction.action.actionType);
 
                             int integerValue;
-
+                            int waitTime=30;
 
                             Actions actions = new Actions(Browser.webDriver);
 
@@ -1116,21 +1326,29 @@ public class WebTest {
                                     // Browser opening action
                                     Browser.webDriver.get(testAction.action.fieldValue);
                                     break;
-                               case "click":
-                                    // Field clicking action
-                                   if(Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getAttribute("type").equals("checkbox")) {
-                                       if (testAction.action.fieldValue.equals("true") &&
-                                               !Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).isSelected()) {
-                                           Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
-                                       } else if (testAction.action.fieldValue.equals("false") &&
-                                               Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).isSelected()) {
-                                           Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
-                                       }
-                                   }
-                                   else{
-                                       Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
-                                   }
+                                   case "click":
+                                       try {
+                                           new WebDriverWait(Browser.webDriver, waitTime)
+                                                   .until(ExpectedConditions.elementToBeClickable(
+                                                           By.cssSelector(testAction.action.fieldName)
+                                                   ));
 
+                                           // Field clicking action
+                                           if(Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getAttribute("type").equals("checkbox")) {
+                                               if (testAction.action.fieldValue.equals("true") &&
+                                                       !Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).isSelected()) {
+                                                   Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
+                                               } else if (testAction.action.fieldValue.equals("false") &&
+                                                       Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).isSelected()) {
+                                                   Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
+                                               }
+                                           }
+                                           else{
+                                               Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
+                                           }
+                                       }
+                                       catch(Exception ex) {
+                                       }
                                     break;
                                 case "mouse-hover":
                                     // Field Mouse Hover action
@@ -1177,6 +1395,11 @@ public class WebTest {
                                     String sText = "";
                                     String sValue = "";
                                     String sinnerHTML = "";
+
+                                    if(testAction.action.fieldValue.contains("readDataFile")) {
+                                        typeData=excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                    }
+
                                     try {
                                         sText = Browser.webDriver.findElement(
                                                 By.cssSelector(testAction.action.fieldName)
@@ -1197,7 +1420,8 @@ public class WebTest {
                                     }
                                     if (!(sText.equals(testAction.action.fieldValue.trim())
                                             || sValue.equals(testAction.action.fieldValue.trim())
-                                            || sinnerHTML.equals(testAction.action.fieldValue.trim()))){
+                                            || sinnerHTML.equals(testAction.action.fieldValue.trim())
+                                            || sText.equals(typeData))){
                                         stepResult.status = "Fail";
                                         stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
                                                 "does not match the value given (" + testAction.action.fieldValue +
@@ -1263,16 +1487,33 @@ public class WebTest {
                                     ));
                                     dropDownText.selectByVisibleText(typeData);
                                     break;
+
+                                case "select-value-inputdropdown":
+                                    typeData=testAction.action.fieldValue;
+                                    if(testAction.action.fieldValue.contains("readDataFile")) {
+                                        typeData=excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                    }
+                                    Browser.webDriver.findElement(
+                                            By.cssSelector(testAction.action.fieldName)
+                                    ).sendKeys(Keys.chord(Keys.CONTROL, "a"),typeData);
+                                    Thread.sleep(500);
+
+                                    Browser.webDriver.findElement(
+                                            By.cssSelector(testAction.action.fieldName)
+                                    ).sendKeys(Keys.ENTER);
+                                    break;
+
                                 case "wait-display":
                                     // Waiting for Field to be visible action
                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
 
-                                    (new WebDriverWait(Browser.webDriver, integerValue))
+                                      (new WebDriverWait(Browser.webDriver, integerValue))
+
                                             .until(ExpectedConditions.visibilityOfElementLocated(
                                                     By.cssSelector(testAction.action.fieldName)
                                             ));
                                     break;
-                                case "wait-enable":
+                                    case "wait-enable":
                                     // Waiting for Field to be enabled action
                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
                                     (new WebDriverWait(Browser.webDriver, integerValue))
@@ -1390,9 +1631,11 @@ public class WebTest {
                                         System.out.println("in While File Name:" + lastModifiedFile.getName());
                                         if (lastModifiedFile.getName().endsWith("crdownload")) {
                                             Thread.sleep(10000);
-                                        } else
+                                        }
+                                        else
                                             break;
-                                    } while (true);
+                                    }
+                                    while (true);
                                     dir = new File(DownloadDir);
                                     files = dir.listFiles();
 
@@ -1410,13 +1653,25 @@ public class WebTest {
                                     files = dir.listFiles();
 
                                     lastModifiedFile = files[0];
-                                    for (int n = 1; n < files.length; n++) {
+                                     for (int n = 1; n < files.length; n++) {
                                         if (lastModifiedFile.lastModified() < files[n].lastModified()) {
                                             lastModifiedFile = files[n];
                                         }
                                     }
                                     String filename = lastModifiedFile.getName();
-                                    if (!(filename.equalsIgnoreCase(testAction.action.fieldValue))) {
+                                    String filenameDate="";
+
+                                    if(testAction.action.fieldName.equals("Date")){
+                                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
+                                        LocalDateTime now = LocalDateTime.now();
+                                        String currentDate = dtf.format(now);
+                                        String version = StringUtils.substringBetween(filename, "ERRORLOG_VIL.","_").trim();
+                                        filenameDate = testAction.action.fieldValue.concat(version).concat("_").concat(currentDate).concat(".txt");
+                                        testAction.action.fieldValue=filenameDate;
+                                    }
+
+
+                                     if (!(filename.equalsIgnoreCase(testAction.action.fieldValue))) {
                                         stepResult.status = "Fail";
                                         stepResult.actualResult = "File Name" +
                                                 " does not match the value given (" + testAction.action.fieldValue +
@@ -1702,23 +1957,15 @@ public class WebTest {
 
                                     break;
 
-                                case "autoitfiledata":
-                                    if(testAction.action.fieldValue.contains("readDataFile")){
-                                        String writeData= excelOperation.readDataFromExcel(testAction.action.fieldValue);
-                                        autoItData.put(testAction.action.fieldName,writeData);
-                                    }
-                                    else{
-                                        sheetName=testAction.action.fieldValue;
-                                    }
-
-                                    break;
-
-                                case "generateautoitfile":
+                                    case "generateautoitfile":
                                     try{
                                         excelOperation.createAutoItScript(sheetName,autoItData,testAction.action.fieldValue);
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }
+                                    if(!autoItData.isEmpty()){
+                                            autoItData.clear();
+                                        }
                                     break;
 
                                 case "executeautoitscript":
@@ -1736,7 +1983,7 @@ public class WebTest {
                                     }
                                     break;
 
-                                case "uploadexportedfile":
+                                    case "uploadexportedfile":
                                     //   String lstofFil= testAction.action.fieldValue;
                                     String fileName = System.getProperty("user.home") + "\\Downloads\\" + testAction.action.fieldValue;
                                     Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).sendKeys(fileName);
@@ -1760,53 +2007,26 @@ public class WebTest {
                                     }
                                     break;
 
-                                default:
-                                case "writeexcelcellvalue":
-                                    try {
-                                                /*currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
-                                                        .getRow(irow).getCell(icolumn).setCellValue(testAction.action.fieldValue);
-                                                FileOutputStream output_file =new FileOutputStream(new File(System.getProperty("user.home")
-                                                        + "\\Downloads\\" + "RFR - JRSK Inc DBA Away.xlsx"));
-                                                currentExcelWorkbook.write(output_file);
-                                                output_file.close();*/
-                                    //  excelOperation.writeInAutoIt(testAction.action.fieldValue);
-                                      Runtime.getRuntime().exec("C:\\Users\\monica.dayal\\Documents\\test.exe");
-
-                                    } catch (Exception ex) {
-                                    }
-                                    break;
-
-
-                                case "autoitfiledata":
-                                    if(testAction.action.fieldValue.contains("writeData")){
-                                                String cell= StringUtils.substringBetween(testAction.action.fieldValue, "(", ",").trim();
-                                        String writeData=StringUtils.substringBetween(testAction.action.fieldValue,"(", ",").trim();
-                                        autoItData.put(cell, writeData);
+                                    case "autoitfiledata":
+                                    if(testAction.action.fieldValue.contains("readDataFile")){
+                                        String writeData= excelOperation.readDataFromExcel(testAction.action.fieldValue);
+                                        autoItData.put(testAction.action.fieldName,writeData);
                                     }
                                     else{
                                         sheetName=testAction.action.fieldValue;
                                     }
                                     break;
 
-                                    case "uploadexportedfile":
-                                 //   String lstofFil= testAction.action.fieldValue;
-                                    File fileName = new File(System.getProperty("user.home") + "\\Downloads\\" + testAction.action.fieldValue);
-                                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                                    StringSelection stringSelection = new StringSelection(fileName.toString());
-                                    clipboard.setContents(stringSelection, null);
-                                    Robot robot1 = null;
-                                    try {
-                                        robot1 = new Robot();
-                                    } catch (AWTException e) {
+                                case "deletesheetautoitfile":
+                                    try{
+                                        excelOperation.removeFromAutoItScript(sheetName,testAction.action.fieldValue);
+                                    }catch (Exception e){
                                         e.printStackTrace();
                                     }
-                                    robot1.delay(250);
-                                    robot1.keyPress(KeyEvent.VK_CONTROL);
-                                    robot1.keyPress(KeyEvent.VK_V);
-                                    robot1.keyRelease(KeyEvent.VK_V);
-                                    robot1.keyRelease(KeyEvent.VK_CONTROL);
-                                    robot1.delay(1000);
-                                    robot1.keyPress(KeyEvent.VK_ENTER);
+//                                    if(!autoItData.isEmpty()){
+//                                        autoItData.clear();
+//                                    }
+                                    break;
 
                                     default:
                                     // Unknown action type
