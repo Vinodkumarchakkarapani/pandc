@@ -86,11 +86,11 @@ public class WebTest {
 		List<String> listOfTCstoExecute = Arrays.asList(
 
 //General Information Page
-//                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
 //                "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //                "3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
 //                "4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
-                "5. PS007 - Verify user is able to search a record by Name Insured",
+//                "5. PS007 - Verify user is able to search a record by Name Insured",
 //                "6. PS008 - Verify user is able to search a record by \"Policy From\"",
 //                "7. PS009 - Verify user is able to search a record by \"Policy To\"",
 //                "8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
@@ -100,7 +100,7 @@ public class WebTest {
 //                "12. PS014 - Verify user is displayed General Information page along with - \"Cover Page” as default",
 //                "13. PS024 - Verify user is navigated to Insurance Renewal List page on clicking cancel Button on Cover page",
 //                "14. PS023 - Verify user is displayed the message - \"Please enter the fields marked as mandatory to continue further.” When user clicks on Continue button without entering the mandatory fields in Cover Page",
-                "15. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
+//                "15. PS192 - RFR->Cover Page Renewal Type Required field - validate error (Red border -Indicating error no field) is displayed in case of invalid date",
 //                "16. In Cover Page, for Renewal Type - Verify Life Science checkbox is not displayed",
 //                "17. PS189 - Validate error message is displayed for From Date on Cover Page",
 //                "18. PS191 - Validate the Alert Pop Up is displayed properly for Blank Date in Cover Page",
@@ -109,8 +109,8 @@ public class WebTest {
 //                "21. PS188 - Validate error message should display for invalid Date on Cover page",
 //                "22. PS031 - Verify user is able to add details in Named Insured grid by clicking on Add Row",
 //                "23. PS035 - Verify the status of the created record is Draft in Insurance Renewal List page on clicking Save and Close button in Insured Name Tab",
-                "24. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
-                "25. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab"
+//                "24. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
+//                "25. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab"
 //                "26. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
 //                "26.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
 //                "27. Verify validation error messages on the Name Insured Tab",
@@ -1019,6 +1019,16 @@ public class WebTest {
         //    "534. Verify on importing the file, workbook  label and status is not displayed when the tab is marked as \"not applicable\""
 
  //               "95. In Property (SOV), Verify user is able to enable selected columns in the Property(SOV) table by clicking on \"apply\" button and on clicking continue button it should navigate to Property SOV 3rd Party"
+
+//                "390. PS156 - To verify user is able to mark WC Exposure - U.S. Workers' Compensation Remuneration Worksheet tab as Not Applicable",
+//                "391. PS157 - Verify user is able to add another row of details in WC Exposure Tab,U.S. Workers' Compensation Remuneration Worksheet tab by clicking on add Row under Limits",
+//                "392. PS158 - Verify user is able to Delete the added row of details in WC Exposure Tab, U.S. Workers' Compensation Remuneration Worksheet tab by clicking on Delete under Limits",
+//                        "393. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab",
+//                        "394. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab with Positive Test Cases",
+//                        "395. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
+//                        "396. PS159 - To verify user is able to mark WC Exposure - Supplementary Application tab as Not Applicable",
+//                        "397. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab"
+
         );
 
 
