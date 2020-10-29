@@ -103,7 +103,7 @@ public class WebTest {
 //                "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //                "3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
 //                "4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
-//                "5. PS007  - Verify user is able to search a record by Name Insured",
+//                "5. PS007 - Verify user is able to search a record by Name Insured",
 //                "6. PS008 - Verify user is able to search a record by \"Policy From\"",
 //                "7. PS009 - Verify user is able to search a record by \"Policy To\"",
 //                "8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
@@ -125,23 +125,21 @@ public class WebTest {
 //                "24. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
 //                "25. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
 //                "26. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
-//                "26.1. PS043 - To verify user is able to edit the Program Structure in Property (Statement of Values) tab",
-//                "27. Verify validation error messages on the Name Insured Tab",
+//				"27. Verify validation error messages on the Name Insured Tab",
 //                "28. Verify new application changes on the Name Insured Tab",
 //                "29. In General Information tab - Verify Premium & Loss History tab is marked as Not Applicable by default",
 //                "30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //                "31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
 
-
-        // Property (SOV) Tab
-//                "32. In Property (SOV), Verify \"Add Column\" button is removed from the Property Sov tab",
+				// Property (SOV) Tab
+//				"32. In Property (SOV), Verify \"Add Column\" button is removed from the Property Sov tab",
 //                "33. In Property Sov, Verify user is able to see “Show/Hide Columns(s)” button at the top of the table in Property Sov tab",
 //                "34. In Property (Sov) Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with the list of possible column are broadly grouped into 7 different groups based on business logic. The group names are a. Building Value b. Business Income c. Building Details d. Building Contents e. Additional Details f. Fire Protection g. Security",
 //                "35. In Property (SOV) Verify user is displayed list of columns required under “Building Value”, the following columns are a. Murals b. Sheds c. Fencing Gates d. Building Replacement Value e. Tenant Improvements Replacement Values f. Other Building Value",
 //                "36. In Property (SOV) for Building Value, Verify user is able to enable or disable the columns by clicking on the checkbox,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "37. In Property sov for “Building Value, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button for the following columns a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "38. In Property sov for Building Value,Verify validation error messages for the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
-//                "39. In Property sov for “Building Value, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns/,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
+//                "39. In Property sov for “Building Value, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "40. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table.",
 //                "41. In Property Sov, Verify user is displayed list of columns required under \"Business Income\",the following columns are 1. Aggregate BI 2. Detailed BI a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
 //                "42. In Property sov for Business Income, Verify by default, the “Aggregate BI” option box is selected and user is able to change it.",
@@ -234,7 +232,6 @@ public class WebTest {
 //                "125. In Property SOV - 3rd Party for \"Building Contents\",Verify user is able to insert column in respective position on selecting the column name under \"Aggregate Building Contents\" and clicking \"apply\" button, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
 //                "126. In Property SOV - 3rd Party for “Building Contents”,Verify validation error messages for the columns under “Aggregate Building Contents”, the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
 //                "127. In Property SOV - 3rd Party for “Building Contents”,Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns under “Aggregate Building Contents”,the following columns are 1. Average Inventory Replacement Cost Value 2. Average Inventory Selling Price 3. Peak Inventory Replacement Cost Value 4. Peak Inventory Selling Price",
-//                "128. In Property SOV - 3rd Party,Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are Other Occupants or Tenants & Additional Information [Same as 165]",
 //                "129. In Property SOV - 3rd Party, Verify user is able to enable or disable the columns by clicking on the checkbox, the following columns are a.Other Occupants or Tenants b.Additional Information",
 //                "130. In Property SOV - 3rd Party,Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button, the following columns Other Occupants or Tenants & Additional Information",
 //                "131. In Property SOV - 3rd Party,Verify user is able to enter correct value in Inserted test format columns, the following columns are Other Occupants or Tenants & Additional Information",
@@ -250,7 +247,7 @@ public class WebTest {
 //                "141. In Property SOV 3rd Party - For the Dropdown Building Use, Verify the following new values are displayed in the drop down list:1. Clean Rooms 2. Laboratories 3. Supply Chain / Contract Manufacturer 4. Vivarium",
 //                "142. In Property SOV - 3rd Party,To verify user is able to enter the details For Coverage Notes and navigate to BI worksheet tab",
 
-                // BI-Worksheet
+                 //BI-Worksheet
 //                "143. In BI Worksheet tab - Verify 2 Check boxes are displayed below the Not Applicable checkbox : a. Standard BI Worksheet b. Continuing Expenses only Worksheet",
 //                "144. In BI Worksheet - Verify user is displayed Standard BI Worksheet as pre-selected value if P&C Practice is selected as Commercial in the drop down in the Cover page",
 //                "145. In BI Worksheet - Verify user is displayed Continuing Expenses only worksheet as pre-selected value if P&C Practice is selected as Life Science in the drop down in the Cover page",
@@ -296,12 +293,11 @@ public class WebTest {
 //                "186. Enter valid values for all the fields for Actual option",
 //                "187. Check the checkbox for Projected and enter valid values for all fields for projected form.",
 //                "188. Check the radio option for Multi Location BI Worksheet and verify user is displayed Multi Location BI Worksheet",
-//                "189. Exposed BI without Ordinary Payroll - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places and percentage format Formula : Exposed BI without Ordinary Payroll = ((Annual Net Sales TIMES(*) % Variable of Annual Net Sales) LESS(–) ((Cost of Sales TIMES(*) % variable of Cost of Sales) TIMES(*) (# of Months DIVIDED(/) 12))",
 //				"190. (Multi Location BI) Exposed BI Incl. OP - Verify the value calculated is as per the Formula and the value is currnecy formatted and rounded off to 2 decimal places Formula : Exposed BI Incl. OP = ((Exposed BI w/o OP sum(+) [(Ordinary Payroll - annual payroll and benefits for non-exempt workers ) TIMES(*) (Number of Days Coverage of Ordinary Payroll Desired (0-365 days) DIVIDED(/) 365))]",
 //				"191. Verify the field validation for all the fields in the Multi Location BI Worksheet",
 //				"192. Verify user is able to enter the details in the Multi Location BI Worksheet and on clicking Continue it should navigate to BI Dependent",
 
-                // Contingent BI / Dependent
+                //Contingent BI / Dependent
 //                "193. BI Dependent - Verify user is able to enter alphanumeric values with special characters in the fields with format as Text",
 //                "194. Verify United States is displayed as default country in the Country field",
 //                "195. Verify the error message displayed when user tries to enter a new country in the Country field - Please select a valid country name",
@@ -320,7 +316,6 @@ public class WebTest {
 //                "208. % of Product Revenue - verify user is able to enter decimal value",
 //                "209. Verify the error message is displayed when user enters invalid values for Estimated time until listed Process or Supplier is fully restored (months) - Enter only whole number",
 //                "210. Annual Revenue Loss - Annual Revenue Loss - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula : (Annual Revenue Exposure*% of Product Revenue impacted)*(Estimated time until listed Process or Supplier is fully restored (months)/12)",
-//                "[Obsolete] 211. CBI Exposure without inventory consideration - Verify user is displayed error validation message on entering invalid value for the currency field - Enter only currency value (0-9, $, ., ,)",
 //                "212. # of Months of Available Inventory - Verify the error message is displayed when user enters invalid - Enter only whole number",
 //                "213. CBI exposure with available inventory - Verify IF “Estimated time until listed Process or Supplier is fully restored (months)” is Less than “No of months of Available Inventory” then the value is 0",
 //                "214. CBI exposure with available inventory - Verify IF “Estimated time until listed Process or Supplier is fully restored (months)” is less than “No of months of Available Inventory” then the value is calculated as per the formula: (Estimated time until listed Process or Supplier is fully restored (months)<# of Months of Available Inventory,0,(Annual Revenue Loss*(1 - (# of Months of Available Inventory/12)))),0)",
@@ -374,7 +369,7 @@ public class WebTest {
 //				"258. Rest of World, Continent, Country - Total % - Verify the error message when the total of Intercompany column for the Rest of World or Continent or Country - is more than or less than 100 %. Error message -Total Intercompany Shipments should not be greater than 100% Error message -Total Intercompany Shipments should not be less than 100%",
 //				"259. Verify user is displayed error message on entering invalid values for percentage field for each field under Conveyance Used (% used of total annual value shipped) header rows and under Incoming, Outgoing and Inter company Columns. Error message: a. Only percentage value is allowed (0-9, decimal) b. The value should be between 0% to 10",
 //				"260. Verify the message displayed below the table with the title - RULES FOR ANY MODE OR MODES OF TRANSPORT and also below the title RULES FOR SEA AND INLAND WATERWAY TRANSPORT'",
-//				"261. Verify user is able to enter the details in transit tab - Shipments sub tab and on clicking continue it should  redirected to Product Transit tab "
+//				"261. Verify user is able to enter the details in transit tab - Shipments sub tab and on clicking continue it should redirected to Product Transit tab",
 
 				// Transit- Product
 //				"262. Verify user is displayed the title Product Transit Below the Not applicable Check box.",
@@ -384,7 +379,6 @@ public class WebTest {
 //				"266. Verify User is displayed the messages on the side of the Valuation drop down on selecting Life Science - Commercial option from Valuation drop down",
 //				"267. Verify user is displayed a text area when Other option is selected from the Valuation Information drop d0wn",
 //				"268. Verify user is displayed the error message for fields Product Name and Sub-Components(Parts or Processes) when these fields are left empty and a value is entered in some other field.Error message : For Product Name : Product Name is Required For Sub-Components(Parts or Processes) : Sub-Components (Parts or Processes) is Required",
-//				"[Obsolete] 269. Select Option Yes from the drop down for Product Temperature Sensitivity and verify user is displayed the error message for the field Storage Temperature Range till the temperature range is entered.",
 //				"270. Verify the error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number",
 //				"271. Verify the Drop down values for the following fields: 1. FDA Approved for Sale? 2. Product Temperature Sensitivity 3. Product Packaged 4. Conveyance",
 //				"272. Verify user is able to add a new row by clicking on add button.",
@@ -405,13 +399,13 @@ public class WebTest {
 //				"285. Verify the error message when invalid value for Field Frequency of Max Shipment Per Year is entered. Error message:a. Enter only whole number",
 //				"286. Verify the value displayed for field Annual value Shipped is calculated as per the formula : (Average Value Shipped per Shipment x Frequency of Average Shipment Per Year) + ( Maximum Value Shipped per shipment x Frequency of Max Shipment Per Year)",
 //				"287. Verify user is displayed the Total at the end of column Annual value Shipped. The value should be Sum of Annual value shipped ( all rows)",
-//				"[Obsolete] 288. Select Option Yes from the drop down for Product Temperature Sensitivity and verify user is displayed the error message for the field Storage Temperature Range till the temperature range is entered.",
 //				"289. Verify The error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number",
 //				"290. Verify user is able to enter the details in Product Flow tab",
 //				"291. Verify the error message when user clicks on Add Selected button without selecting any Product in Add Products popup. Error message : Select at least one product to add",
 //				"292. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
 //				"293. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
-//				"295. Verify user is able to enter the details in the newly added rows",
+//				"294. Verify user is able to add the rows for the products from Add Products popup",
+//                "295. Verify user is able to enter the details in the newly added rows",
 //				"296. Verify user is able to add a row buy clicking on Add row button",
 //				"297. Verify user is able to delete the newly added row",
 //				"298. Verify user is able to enter the details in Coverage Notes",
@@ -477,13 +471,13 @@ public class WebTest {
 //				"352. Verify the error message displayed for invalid values for currency field Revenue.Error Message : Enter only currency value (0-9, $, ., ,)",
 //				"353. Verify user is able to add a new row by clicking on Add row button",
 //				"354. Verify user is able to delete a row",
-//				"356. Verify user is bale to enter valid details in Product Liability - Product Revenue table and navigate to Product Liability Excess tab",
 //				"355. When P&C Practice is Life Science - Verify the changes for Product Liability tab under Casualty Exposure",
+//				"356. Verify user is bale to enter valid details in Product Liability - Product Revenue table and navigate to Product Liability Excess tab",
 
 				//Casuality Exposure-Product liability Excess
 //				"357. PS131 - To verify user is able to mark Casualty Exposure - Product Liability Excess Tab as Not Applicable",
 //				"358. PS132 - Verify user is able to add another row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on add Row under Program Structure",
-//				"359- Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on Delete under Program Structure and click on continue button to navigate on Auto tab",
+//				"359. Verify user is able to Delete the added row of details in Casualty Exposure Tab, Product Liability Excess Tab by clicking on Delete under Program Structure and click on continue button to navigate on Auto tab",
 
 				// Auto
 //				"360. Verify the field zip code is updated to new label - ZIP / Postal Code",
@@ -526,15 +520,15 @@ public class WebTest {
 //				"389.2. PS102 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability - Excess tab",
 //				"389.3. PS103 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability - Excess tab and navigate to WC-Exposures",
 
-				//U.S. Workers' Compensation Remuneration Worksheet
-//				"390. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
-//				"391. PS156 - To verify user is able to mark WC Exposure - U.S. Workers' Compensation Remuneration Worksheet tab as Not Applicable",
-//				"392. PS157 - Verify user is able to add another row of details in WC Exposure Tab,U.S. Workers' Compensation Remuneration Worksheet tab by clicking on add Row under Limits",
-//				"393. PS158 - Verify user is able to Delete the added row of details in WC Exposure Tab, U.S. Workers' Compensation Remuneration Worksheet tab by clicking on Delete under Limits",
-//				"394. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab",
-//				"395. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab with Positive Test Cases and User should navigate to Supplementary Application on clicking continue",
+                //U.S. Workers' Compensation Remuneration Worksheet
+//                "390. PS156 - To verify user is able to mark WC Exposure - U.S. Workers' Compensation Remuneration Worksheet tab as Not Applicable",
+//                "391. PS157 - Verify user is able to add another row of details in WC Exposure Tab,U.S. Workers' Compensation Remuneration Worksheet tab by clicking on add Row under Limits",
+//                "392. PS158 - Verify user is able to Delete the added row of details in WC Exposure Tab, U.S. Workers' Compensation Remuneration Worksheet tab by clicking on Delete under Limits",
+//                "393. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab",
+//                "394. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab with Positive Test Cases",
+//                "395. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
 
-				//Supplementary Application
+                //Supplementary Application
 //				"396. PS159 - To verify user is able to mark WC Exposure - Supplementary Application tab as Not Applicable",
 //				"397. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
 
@@ -583,8 +577,8 @@ public class WebTest {
 //				"439. Verify user is able to delete the row from International Revenue & Payroll grid",
 //				"440. On Preview tab - Verify the foreign tab is updated with the new table and details.",
 //				"441. Verify the order of the columns in foreign tab for International Revenue & Payroll sub tab and on continue it should be navigated to UMB excess",
-//
-//                //Umbrella Liability
+
+                //Umbrella Liability
 //				"442. PS165 - To verify user is able to mark UMB/Excess tab - Umbrella Liability tab as Not Applicable",
 //				"443. PS166 - Verify user is able to add another row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on add Row under Program Structure",
 //				"444. PS167 - Verify user is able to Delete the added row of details in UMB/Excess Tab -Umbrella Liability tab by clicking on Delete under Program Structure",
@@ -592,12 +586,12 @@ public class WebTest {
 //				"446. PS169 - Verify user is able to Delete the added row of details in UMB/Excess Tab - Umbrella Liability tab by clicking on Delete under Schedule of Underlying",
 //				"447. PS113 - To verify user is able to enter the details for Program Structure in Umbrella Liability Tab",
 //				"448. PS114 - To verify user is able to enter the details for Schedule of Underlying in Umbrella Liability Tab and navigate to Excess Liability tab",
-//
-//                //Excess Liability
+
+                //Excess Liability
 //				"449. PS116 - To verify user is able to enter the details for Program Structure in Excess Liability tab",
 //				"450. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab",
-//
-//				// Review Tab
+
+				// Review Tab
 //				"451. Verify user is able to Preview the details entered by user for General Information tab by clicking on General Information in Preview tab",
 //				"452. Verify user is able to Preview the details entered by user for Property(SOV) by clicking on Property in Preview tab",
 //				"453. Verify user is able to Preview the details entered by user for Property 3rd party by clicking on Property in Preview tab",
@@ -612,9 +606,8 @@ public class WebTest {
 //				"462. Verify user is able to Preview the details entered by user for Product Transit by clicking on Property in Preview tab",
 //				"463. Verify user is able to Preview the details entered by user for Product Flow by clicking on Property in Preview tab",
 //				"464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab",
-//
-//
-//				//Export
+
+				//Export
 //				"465. Verify user is able to enter the details in all the tabs and export the RFR",
 //				"466. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
 //				"467. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
@@ -675,9 +668,9 @@ public class WebTest {
 //				"522. Validate Error Message in BI (Multi-Location) sheet of Exported excel sheet",
 //				"523. Validate Formula in BI (Multi-Location) sheet of Exported excel sheet",
 //				"524. Validate data in BI (Multi-Location) sheet of Exported excel sheet",
-//
-//                // Import
-//				"525. - Write valid data in all sheets of Exported excel file using Auto It",
+
+                // Import
+//				"525. Write valid data in all sheets of Exported excel file using Auto It",
 //				"526. Validate imported file valid data in each tabs",
 //				"527. Write invalid data in all sheets of Exported excel file using Auto It",
 //				"528. Verify error message in import tab",
@@ -685,9 +678,8 @@ public class WebTest {
 //				"530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
 //				"531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
 //				"532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
-//                "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
-//                "534. Verify on importing the file, workbook  label and status is not displayed when the tab is marked as not applicable"
-
+//              	"533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
+//              	"534. Verify on importing the file, workbook  label and status is not displayed when the tab is marked as not applicable"
  );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -783,7 +775,7 @@ public class WebTest {
 			//Browser.webDriver.manage().window().setSize(new Dimension(browserWidth, browserHeight));
 			Browser.webDriver.manage().window().maximize();
 			//Browser.webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Browser.webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			Browser.webDriver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
 
 			logger.info("Opening the Application URL in the Browser...");
 			Browser.webDriver.get(config.app.getProperty("app.gui.url"));
@@ -1178,7 +1170,7 @@ public class WebTest {
                                     break;
 
                                 case "wait-display":
-                                    // Waiting for Field to be visible action
+                                    // Waiting for Field to be   visible action
                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
                                     (new WebDriverWait(Browser.webDriver, integerValue))
                                             .until(ExpectedConditions.visibilityOfElementLocated(
