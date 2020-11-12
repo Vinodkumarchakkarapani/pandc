@@ -1,0 +1,22 @@
+#include <Excel.au3>
+Local $oExcel_1=_Excel_Open()
+Local $sWorkbook="C:\Users\monica.dayal\Downloads\RFR - JRSK Inc DBA Away.xlsx"
+Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)
+Local $sheetName="Auto Rental & Travel Exposure"
+WinActivate($oWorkbook)
+_Excel_RangeWrite($oWorkbook,$sheetName,"abc123","C13")
+_Excel_RangeWrite($oWorkbook,$sheetName,"ABCW@@","C12")
+_Excel_RangeWrite($oWorkbook,$sheetName,"abcd","C17")
+_Excel_RangeWrite($oWorkbook,$sheetName,"From Test Location to Delaware","E17")
+_Excel_RangeWrite($oWorkbook,$sheetName,"12345","C18")
+_Excel_RangeWrite($oWorkbook,$sheetName,"Test Location 1  From Delaware","E18")
+_Excel_RangeWrite($oWorkbook,$sheetName,"ABCW@@","B8")
+_Excel_RangeWrite($oWorkbook,$sheetName,"ABCW@@","B9")
+_Excel_RangeWrite($oWorkbook,$sheetName,"ABCW@@","B12")
+_Excel_RangeWrite($oWorkbook,$sheetName,"abc123","B13")
+_Excel_RangeWrite($oWorkbook,$sheetName,"12345","B17")
+_Excel_RangeWrite($oWorkbook,$sheetName,"abcd","B18")
+_Excel_RangeWrite($oWorkbook,$sheetName,"2 Weeks","D18")
+_Excel_RangeWrite($oWorkbook,$sheetName,"2 Weeks","D17")
+_Excel_BookSave($oWorkbook)
+_Excel_Close($oExcel_1,True,True)
