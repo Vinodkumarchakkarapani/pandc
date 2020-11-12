@@ -108,7 +108,6 @@ public class WebTest {
               "40. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table."
 
 
-
                 // Phase- 1 Start
 
 				//General Information Page
@@ -1828,6 +1827,9 @@ public class WebTest {
                     prefStepResult.status = PerfromanceTest_pass ? "Pass" : "Fail";
                     gui_Perf_Result.testResult.status = prefStepResult.status;
                     prefStepResult.testCaseStepId = gui_Perf_TC.testCaseSteps.get(0).testCaseStepId;
+                    gui_Perf_Result.testResult.projectId=gui_Perf_TC.projectId;
+                    gui_Perf_Result.testResult.moduleId=gui_Perf_TC.moduleId;
+                    gui_Perf_Result.testResult.subModuleId=gui_Perf_TC.subModuleId;
                     gui_Perf_Result.testResult.testStepResults.add(prefStepResult);
                     logger_performance.info("Step: " + gui_Perf_TC.testCaseSteps.get(0).stepDescription + "\n\t\t\t\t\t\t  "
                             + "Result: " + gui_Perf_Result.testResult.actualResult);
@@ -1848,6 +1850,10 @@ public class WebTest {
                     gui_UIVal_Result.testResult.status = UIValStepResult.status;
                     UIValStepResult.testCaseStepId = gui_UIVal_TC.testCaseSteps.get(0).testCaseStepId;
                     UIValStepResult.screenshotURL = UIValidationZipPath;
+                    gui_UIVal_Result.testResult.projectId=gui_UIVal_TC.projectId;
+                    gui_UIVal_Result.testResult.moduleId=gui_UIVal_TC.moduleId;
+                    gui_UIVal_Result.testResult.subModuleId=gui_UIVal_TC.subModuleId;
+
                     gui_UIVal_Result.testResult.testStepResults.add(UIValStepResult);
                     gui_UIVal_Result.testResult.errorScreen = UIValStepResult.screenshotURL;
                     qifClient.postGUITestResults(gui_UIVal_Result);
