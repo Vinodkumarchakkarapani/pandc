@@ -99,11 +99,11 @@ public class WebTest {
 
                 // Phase- 1 Start
                 //General Information Page
-//                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
-//                "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
+//                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
+//                "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb"
 //                "3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
 //                "4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
-//                "5. PS007 - Verify user is able to search a record by Name Insured",
+//                "5. PS007 - Verify user is able to search a record by Name Insured"
 //                "6. PS008 - Verify user is able to search a record by \"Policy From\"",
 //                "7. PS009 - Verify user is able to search a record by \"Policy To\"",
 //                "8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
@@ -125,22 +125,22 @@ public class WebTest {
 //                "24. PS032 - Verify user is able to add another row of details in Name Insured grid by clicking on add Row",
 //                "25. PS034 - Verify user is directed back to Insurance Renewal List page on clicking Save and Close Button on Named Insured Tab",
 //                "26. PS030 - Verify the proposed date displayed in Insured Name tab is same as the proposed date in the Cover page tab",
-//				"27. Verify validation error messages on the Name Insured Tab",
+//                "27. Verify validation error messages on the Name Insured Tab",
 //                "28. Verify new application changes on the Name Insured Tab",
 //                "29. In General Information tab - Verify Premium & Loss History tab is marked as Not Applicable by default",
 //                "30. PS036 - Verify User is able to enter details in Premium & Loss History Tab",
 //                "31. PS037 - To verify user navigates to Property Exposure Tab and Property (Statement of Values) tab is displayed as default",
 
 				// Property (SOV) Tab
-//				"32. In Property (SOV), Verify \"Add Column\" button is removed from the Property Sov tab",
+//				  "32. In Property (SOV), Verify \"Add Column\" button is removed from the Property Sov tab"
 //                "33. In Property Sov, Verify user is able to see “Show/Hide Columns(s)” button at the top of the table in Property Sov tab",
 //                "34. In Property (Sov) Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with the list of possible column are broadly grouped into 7 different groups based on business logic. The group names are a. Building Value b. Business Income c. Building Details d. Building Contents e. Additional Details f. Fire Protection g. Security",
 //                "35. In Property (SOV) Verify user is displayed list of columns required under “Building Value”, the following columns are a. Murals b. Sheds c. Fencing Gates d. Building Replacement Value e. Tenant Improvements Replacement Values f. Other Building Value",
 //                "36. In Property (SOV) for Building Value, Verify user is able to enable or disable the columns by clicking on the checkbox,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
-//                "37. In Property sov for “Building Value, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button for the following columns a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
+//                "37. In Property sov for “Building Value, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button for the following columns a. Murals b. Sheds c. Fencing Gates d. Other Building Value"
 //                "38. In Property sov for Building Value,Verify validation error messages for the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "39. In Property sov for “Building Value, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
-//                "40. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table.",
+//                "40. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table."
 //                "41. In Property Sov, Verify user is displayed list of columns required under \"Business Income\",the following columns are 1. Aggregate BI 2. Detailed BI a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
 //                "42. In Property sov for Business Income, Verify by default, the “Aggregate BI” option box is selected and user is able to change it.",
 //                "43. In Property sov for Business Income, Verify on Selecting the “Aggregate BI” option box is automatically select the only column name “Total BI Values” under this section and the user is not be allowed to deselect the checkbox.",
@@ -317,7 +317,7 @@ public class WebTest {
 //                "209. Verify the error message is displayed when user enters invalid values for Estimated time until listed Process or Supplier is fully restored (months) - Enter only whole number",
 //                "210. Annual Revenue Loss - Annual Revenue Loss - Verify the value calculated is as per the Formula and the value is currency formatted and rounded off to 2 decimal places Formula : (Annual Revenue Exposure*% of Product Revenue impacted)*(Estimated time until listed Process or Supplier is fully restored (months)/12)",
 //                "212. # of Months of Available Inventory - Verify the error message is displayed when user enters invalid - Enter only whole number",
-//                "213. CBI exposure with available inventory - Verify IF “Estimated time until listed Process or Supplier is fully restored (months)” is Less than “No of months of Available Inventory” then the value is 0",
+//                "213. CBI exposure with available inventory - Verify IF “Estimated time until listed Process or Supplier is fully restored (months)” is Less than “No of months of Available Inventory” then the value is 0"
 //                "214. CBI exposure with available inventory - Verify IF “Estimated time until listed Process or Supplier is fully restored (months)” is less than “No of months of Available Inventory” then the value is calculated as per the formula: (Estimated time until listed Process or Supplier is fully restored (months)<# of Months of Available Inventory,0,(Annual Revenue Loss*(1 - (# of Months of Available Inventory/12)))),0)",
 //                "215. Verify user is displayed the Options to select the value from drop down for Construction Type in alphabetical order",
 //                "216. Validate the error message displayed for invalid values entered in Year field - Please enter a valid year",
@@ -371,7 +371,7 @@ public class WebTest {
 //				"260. Verify the message displayed below the table with the title - RULES FOR ANY MODE OR MODES OF TRANSPORT and also below the title RULES FOR SEA AND INLAND WATERWAY TRANSPORT'",
 //				"261. Verify user is able to enter the details in transit tab - Shipments sub tab and on clicking continue it should redirected to Product Transit tab",
 
-				// Transit- Product
+				 //Transit- Product
 //				"262. Verify user is displayed the title Product Transit Below the Not applicable Check box.",
 //				"263. Verify user is displayed the Valuation information field with following options in the drop down label \"Valuation Information\" and also validate Standard is displayed as default value: 1. Standard 2. Life Science - Default 3. Life Science - Commercial 4. Other",
 //				"264. Verify User is displayed the following messages on the side of the Valuation drop down on selecting Standard option from Valuation drop down",
@@ -509,7 +509,7 @@ public class WebTest {
 
 				//E&O Cyber Liability
 //				"384. PS137 - Verify user is able to add another row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on add Row under Program Structure",
-//				"385. PS138 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on Delete under Program Structure",
+//				"385. PS138 - Verify user is able to Delete the added row of details in Casualty Exposure Tab, E&O/Cyber Liability tab by clicking on Delete under Program Structure"
 //				"386. PS098 - To verify user is able to enter the details for Program Structure in E&O/Cyber Liability tab",
 //				"387. PS100 - To verify user is able to enter the details for Schedule of Underlying in E&O/Cyber Liability tab and navigate to E&O/Cyber Liability - Excess tab",
 
@@ -524,7 +524,7 @@ public class WebTest {
 //                "390. PS156 - To verify user is able to mark WC Exposure - U.S. Workers' Compensation Remuneration Worksheet tab as Not Applicable",
 //                "391. PS157 - Verify user is able to add another row of details in WC Exposure Tab,U.S. Workers' Compensation Remuneration Worksheet tab by clicking on add Row under Limits",
 //                "392. PS158 - Verify user is able to Delete the added row of details in WC Exposure Tab, U.S. Workers' Compensation Remuneration Worksheet tab by clicking on Delete under Limits",
-//                "393. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab",
+//                "393. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab"
 //                "394. Verify new application changes on U.S. Workers' Compensation Remuneration Worksheet tab with Positive Test Cases",
 //                "395. PS105 - To verify user is able to enter the details in U.S. Workers' Compensation Remuneration Worksheet tab and navigate to Supplementary Application Tab",
 
@@ -533,7 +533,7 @@ public class WebTest {
 //				"397. PS107 - To verify user is able to enter the details in Supplementary Application Tab and navigate to Foreign Tab",
 
 				// International Revenue & Payroll Tab
-//				"398. Verify user is not displayed the old grid in foreign tab for International Revenue & Payroll tab grid",
+//				"398. Verify /*user is not displayed the old grid in foreign tab for International Revenue & Payroll tab grid",
 //				"399. Verify the new table and headers are displayed under International Revenue & Payroll tab grid",
 //				"400. Verify User is able to enter Text value for Local Legal Entity Name",
 //				"401. Verify user is able to enter Alphanumeric values for Street Address",
@@ -599,8 +599,8 @@ public class WebTest {
 //				"455. Verify user is able to Preview the details entered by user for Revenue & Liability Limits by clicking on Casualty in Preview tab",
 //				"456. Verify user is able to Preview the details entered by user for Product Liability by clicking on Casualty in Preview tab",
 //				"457. Verify user is able to Preview the details entered by user for Auto by clicking on Casualty in Preview tab",
-//				"458. Verify user is able to Preview the details entered by user for Auto Rental & Travel by clicking on Casualty in Preview tab",
-//				"459. Verify user is able to Preview the details entered by user for International Revenue & Payroll by clicking on Foreign in Preview tab",
+//				"458. Verify user is able to Preview the details entered by user for Auto Rental & Travel by clicking on Casualty in Preview tab"
+//				"459. Verify user is able to Preview the details entered by user for International Revenue & Payroll by clicking on Foreign in Preview tab"
 //				"460. Verify user is able to Preview the details entered by user for UMB/Excess by clicking on UMB/Excess in Preview tab",
 //				"461. Verify user is able to Preview the details entered by user for Transit Shipment by clicking on Property in Preview tab",
 //				"462. Verify user is able to Preview the details entered by user for Product Transit by clicking on Property in Preview tab",
@@ -608,66 +608,66 @@ public class WebTest {
 //				"464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab",
 
 				//Export
-//				"465. Verify user is able to enter the details in all the tabs and export the RFR",
-//				"466. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
-//				"467. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
-//				"468. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
-//				"469. Validate data in Property (SOV) sheet of Exported excel sheet",
-//				"470. Validate Error Message in Property SOV Tab of Exported excel sheet",
-//				"471. Validate Formula in Property SOV Tab of Exported excel sheet",
-//				"472. Validate data in Property (SOV) 3rd Party sheet of Exported excel sheet",
-//				"473. Validate Error Message in Property SOV 3rd Party Tab of Exported excel sheet",
-//				"474. Validate Formula in Property SOV 3rd Party Tab of Exported excel sheet",
-//				"475. Validate Error Message in BI Worksheet (Single) sheet of Exported excel sheet",
-//				"476. Validate Formula in BI Worksheet sheet of Exported excel sheet",
-//				"477. Validate data in BI Worksheet sheet of Exported excel sheet",
-//				"478. Validate Error Message in BI Dependent sheet of Exported excel sheet",
-//				"479. Validate Formula in BI Dependent sheet of Exported excel sheet",
-//				"480. Validate data in BI Dependent sheet of Exported excel sheet",
-//				"481. Validate Error Message in Transit Shipment sheet of Exported excel sheet",
-//				"482. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
-//				"483. Validate data in Export/ transit Shipments sheet of Exported excel sheet",
-//				"484. Validate Error Message in Product Transit sheet of Exported excel sheet",
-//				"485. Validate Formula in Product Transit sheet of Exported excel sheet",
-//				"486. Validate data in Product Transit sheet of Exported excel sheet",
-//				"487. Validate Error Message in Product Flow sheet of Exported excel sheet",
-//				"488. Validate Formula in Product Flow sheet of Exported excel sheet",
-//				"489. Validate data in Product Flow sheet of Exported excel sheet",
-//				"490. Validate Error Message in Transit Loc. Inv. sheet of Exported excel sheet",
-//				"491. Validate Formula in Transit Loc. Inv. sheet of Exported excel sheet",
-//				"492. Validate data in Transit Loc. Inv. sheet of Exported excel sheet",
-//				"493. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
-//				"494. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
-//				"495. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
-//				"496. Validate Formula in Product Liability Tab of Exported excel sheet",
-//				"497. Validate Error Message in Product Liability Tab of Exported excel sheet",
-//				"498. Validate data in Product Liability Tab of Exported excel sheet",
-//				"499. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-//				"500. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-//				"501. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
-//				"502. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
-//				"503. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
-//				"504. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
-//				"505. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
-//				"506. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
-//				"507. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
-//				"508. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
-//				"509. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
-//				"510. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
-//				"511. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
-//				"512. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
-//				"513. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet",
-//				"514. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet",
-//				"515. Validate Formula in International Revenue & Payroll sheet of Exported excel sheet",
-//				"516. Validate data in International Revenue & Payroll sheet of Exported excel sheet",
-//				"517. Verify user is able to enter the details in the tabs related to life science P&C Practice and export the RFR",
-//				"518. Validate Error Message in B.I. Worksheet - CE sheet of Exported excel sheet",
-//				"519. Validate Formula in B.I. Worksheet - CE sheet of Exported excel sheet",
-//				"520. Validate data in B.I. Worksheet - CE sheet of Exported excel sheet",
-//				"521. Verify user is able to enter the details in the BI Worksheet - Standard BI - Multi Location BI Worksheet and export the RFR",
-//				"522. Validate Error Message in BI (Multi-Location) sheet of Exported excel sheet",
-//				"523. Validate Formula in BI (Multi-Location) sheet of Exported excel sheet",
-//				"524. Validate data in BI (Multi-Location) sheet of Exported excel sheet",
+//                "465. Verify user is able to enter the details in the tabs related to life science P&C Practice and export the RFR",
+//                "466. Validate Error Message in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                "467. Validate Formula in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                "468. Validate data in B.I. Worksheet - CE sheet of Exported excel sheet"
+//                "469. Verify user is able to enter the details in the BI Worksheet - Standard BI - Multi Location BI Worksheet and export the RFR",
+//                "470. Validate Error Message in BI (Multi-Location) sheet of Exported excel sheet",
+//                "471. Validate Formula in BI (Multi-Location) sheet of Exported excel sheet",
+//                "472. Validate data in BI (Multi-Location) sheet of Exported excel sheet",
+//                "473. Verify user is able to enter the details in all the tabs and export the RFR",
+//                "474. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
+//                "475. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
+//                "476. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
+//                "477. Validate data in Property (SOV) sheet of Exported excel sheet",
+//                "478. Validate Error Message in Property SOV Tab of Exported excel sheet",
+//                "479. Validate Formula in Property SOV Tab of Exported excel sheet",
+//                "480. Validate data in Property (SOV) 3rd Party sheet of Exported excel sheet",
+//                "481. Validate Error Message in Property SOV 3rd Party Tab of Exported excel sheet",
+//                "482. Validate Formula in Property SOV 3rd Party Tab of Exported excel sheet",
+//                "483. Validate Error Message in BI Worksheet (Single) sheet of Exported excel sheet",
+//                "484. Validate Formula in BI Worksheet sheet of Exported excel sheet",
+//                "485. Validate data in BI Worksheet sheet of Exported excel sheet",
+//                "486. Validate Error Message in BI Dependent sheet of Exported excel sheet",
+//                "487. Validate Formula in BI Dependent sheet of Exported excel sheet",
+//                "488. Validate data in BI Dependent sheet of Exported excel sheet",
+//                "489. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
+//                "490. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
+//                "491. Validate data in Export/ transit Shipments sheet of Exported excel sheet",
+//                "492. Validate Error Message in Product Transit sheet of Exported excel sheet",
+//                "493. Validate Formula in Product Transit sheet of Exported excel sheet",
+//                "494. Validate data in Product Transit sheet of Exported excel sheet",
+//                "495. Validate Formula in Product Flow sheet of Exported excel sheet",
+//                "496. Validate Error Message in Product Flow sheet of Exported excel sheet",
+//                "497. Validate data in Product Flow sheet of Exported excel sheet",
+//                "498. Validate Error Message in Transit Loc. Inv. sheet of Exported excel sheet",
+//                "499. Validate Formula in Transit Loc. Inv. sheet of Exported excel sheet"
+//                "500. Validate data in Transit Loc. Inv. sheet of Exported excel sheet",
+//                "501. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "502. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "503. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
+//                "504. Validate Formula in Product Liability Tab of Exported excel sheet",
+//                "505. Validate Error Message in Product Liability Tab of Exported excel sheet",
+//                "506. Validate data in Product Liability Tab of Exported excel sheet",
+//                "507. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "508. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "509. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
+//                "510. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet"
+//                "511. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
+//                "512. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
+//                "513. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
+//                "514. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
+//                "515. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
+//                "516. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
+//                "517. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
+//                "518. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
+//                "519. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
+//                "520. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
+//                "521. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet"
+//                "522. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet",
+//                "523. Validate Formula in International Revenue & Payroll sheet of Exported excel sheet",
+//                "524. Validate data in International Revenue & Payroll sheet of Exported excel sheet",
 
                 // Import
 //				"525. Write valid data in all sheets of Exported excel file using Auto It",
@@ -678,8 +678,8 @@ public class WebTest {
 //				"530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
 //				"531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
 //				"532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
-//              	"533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
-//              	"534. Verify on importing the file, workbook  label and status is not displayed when the tab is marked as not applicable"
+//                "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
+//                "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable"
  );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -972,7 +972,7 @@ public class WebTest {
                                             return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
                                         }
                                     };
-                            WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
+                            WebDriverWait wait = new WebDriverWait(Browser.webDriver, 60);
                             wait.until(pageLoadCondition);
                             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading")));
                             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
@@ -997,7 +997,6 @@ public class WebTest {
                                                .until(ExpectedConditions.elementToBeClickable(
                                                        By.cssSelector(testAction.action.fieldName)
                                                ));
-
                                         // Field clicking action
                                        if(Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getAttribute("type").equals("checkbox")) {
                                            if (testAction.action.fieldValue.equals("true") &&
@@ -1177,6 +1176,7 @@ public class WebTest {
                                                     By.cssSelector(testAction.action.fieldName)
                                             ));
                                     break;
+
                                 case "wait-enable":
                                     // Waiting for Field to be enabled action
                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
