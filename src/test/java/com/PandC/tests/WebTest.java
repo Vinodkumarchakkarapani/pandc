@@ -89,14 +89,11 @@ public class WebTest {
 
 		List<String> listOfTCstoExecute = Arrays.asList(
 
-
-//
               "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
 
                 // Phase- 1 Start
 
 				//General Information Page
-
 //				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //				"3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
@@ -138,7 +135,7 @@ public class WebTest {
 //                "37. In Property sov for “Building Value, Verify user is able to insert column in respective position on selecting the column name and clicking “apply” button for the following columns a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "38. In Property sov for Building Value,Verify validation error messages for the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
 //                "39. In Property sov for “Building Value, Verify user is able to enter correct value (Numbers (0-9), $, Comma(,), Decimal(.)) in Inserted currency formatted columns,the following columns are a. Murals b. Sheds c. Fencing Gates d. Other Building Value",
-//                "40. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table."
+//                "40. In Property sov for “Building Value, Verify \"Building Replacement Value\" & Tenant \"Improvements Replacement Values\" column is pre-selected and disabled so that the column automatically appears on the table.",
 //                "41. In Property Sov, Verify user is displayed list of columns required under \"Business Income\",the following columns are 1. Aggregate BI 2. Detailed BI a. R&D BI b. G&A BI c. Sales BI d. Other BI e. Manufacturing BI",
 //                "42. In Property sov for Business Income, Verify by default, the “Aggregate BI” option box is selected and user is able to change it.",
 //                "43. In Property sov for Business Income, Verify on Selecting the “Aggregate BI” option box is automatically select the only column name “Total BI Values” under this section and the user is not be allowed to deselect the checkbox.",
@@ -156,7 +153,7 @@ public class WebTest {
 //                "55. In Property sov for \"Business Income\", Verify Formula \"Total BI Value\" is Sum of all selected \"Detailed BI\" columns",
 //                "56. In Property (SOV), Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
 //                "57. In Property (SOV) for \"Building Details\", Verify by default columns is pre-selected and disabled so that the column automatically appears on the table, the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. % Occupied d. Owned/Leased e. Construction Type f. Year Built g. # of Stories",
-//                "57.1. Property SOV - For the Drop down Building Use, Verify the following new values are displayed in the drop down list.: 1. Clean Rooms 2. Laboratories 3. Supply Chain / Contract Manufacturer 4. Vivarium"
+//                "57.1. Property SOV - For the Drop down Building Use, Verify the following new values are displayed in the drop down list.: 1. Clean Rooms 2. Laboratories 3. Supply Chain / Contract Manufacturer 4. Vivarium",
 //                "57.2. In Property (SOV) tab- verify user is able to view the newly added Columns in the Show / hide Overlay. 1. Building Use Detail - next to Building Use column",
 //                "58. In Property (SOV) for \"Building Details\", Verify user is able to enable or disable the \"Occupied Floor area Sq.Ft.\" column by clicking on the checkbox",
 //                "59. In Property (SOV) for \"Building Details\", Verify user is able to insert \"Occupied Floor area Sq.Ft\" column in respective position on selecting the column name and clicking \"apply\" button",
@@ -206,7 +203,6 @@ public class WebTest {
 //                "101. In Property (SOV) – 3rd Party, Verify user is able to see \"Show/Hide Columns(s)\" button at the top of the table in Property (SOV) – 3rd Party",
 //                "102. Property SOV - 3rd Party, Verify user clicks on the Show/Hide Column(s) button, the system displays an overlay screen with list of possible columns under the group names are. Building Details, Building Contents, Additional Details(Other Occupants or Tenants, Additional Information), Fire Protection, Security",
 //                "103. Property SOV - 3rd Party, Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
-//                "104. Property SOV - 3rd Party for \"Building Details\",Verify user is displayed list of columns required under \"Building Details\", the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. Occupied Floor area Sq.Ft. d. % Occupied e. Owned/Leased f. Construction Type g. Year Built h. # of Stories",
 //                "105. Property SOV - 3rd Party for \"Building Details\", Verify by default columns is pre-selected and disabled so that the column automatically appears on the table, the following columns are a. Building Use (i.e. office, warehouse, etc.) b. Total Area Sq. Ft c. % Occupied d. Owned/Leased e. Construction Type f. Year Built g. # of Stories",
 //                "106. Property SOV - 3rd Party for \"Building Details\",Verify user is able to enable or disable the \"Occupied Floor area Sq.Ft.\" column by clicking on the checkbox",
 //                "107. Property SOV - 3rd Party for \"Building Details\",Verify user is able to insert \"Occupied Floor area Sq.Ft\" column in respective position on selecting the column name and clicking \"apply\" button",
@@ -269,11 +265,11 @@ public class WebTest {
 //                "164. Verify for the selected Address, new columns with selected location information displaying below the location header with the option to edit the linked Property (SOV) location",
 //                "165. Verify user is displayed the Add Locations popup by clicking on the edit icon",
 //                "166. Verify the select all checkbox in the header is not displayed when Edit icon is clicked",
-//                "167. Verify all the other locations in the popup are disabled except for the location for which the edit icon is clicked."
+//                "167. Verify all the other locations in the popup are disabled except for the location for which the edit icon is clicked.",
 //                "168. Enter the details for all the field for Continuing Expenses only Worksheet",
 //                "169. Verify user us displayed two option on clicking on Standard BI Worksheet option: 1. Single BI Worksheet (Default Selected) 2. Multi-Location BI worksheet",
 //                "170. Verify user is displayed two option for Single BI Worksheet:1. Actual (Default Selected) 2. Projected",
-//                "171. Actual Radio option - Verify the field validations and error messages for the following fields of Annual Net Sales:Add the same validations for Cost of Sales / Cost of Revenues / COGS and Operating Expenses fields"
+//                "171. Actual Radio option - Verify the field validations and error messages for the following fields of Annual Net Sales:Add the same validations for Cost of Sales / Cost of Revenues / COGS and Operating Expenses fields",
 //                "172. Validate the formula for calculating the Business Interruption BI Values, Formula = Annual Net Sales of Business Interruption BI Values = Annual Net Sales of Information from Income Statement * (% Variable/Non-Continuing of Information from Income Statement)/100",
 //                "173. For Cost of Sales - Validate the formula for calculating the Business Interruption BI Values,Formula = Business Interruption BI Values of Cost of Revenues = Annual Net Sales of Cost of Revenues * (% Variable/Non-Continuing of Cost of Revenues)/100",
 //                "174. Gross Profit / Gross Earnings (Information from Income Statement)- Validate the value is calculated as per the formula: Gross Profit / Gross Earnings of Information from Income Statement = Annual Net Sales of Information from Income Statement - Cost of Sales of Information from Income Statement",
@@ -371,7 +367,7 @@ public class WebTest {
 //
 //                // Transit- Product
 //                "262. Verify user is displayed the title Product Transit Below the Not applicable Check box.",
-//                "263. Verify user is displayed the Valuation information field with following options in the drop down label \"Valuation Information\" and also validate Standard is displayed as default value: 1. Standard 2. Life Science - Default 3. Life Science - Commercial 4. Other"
+//                "263. Verify user is displayed the Valuation information field with following options in the drop down label \"Valuation Information\" and also validate Standard is displayed as default value: 1. Standard 2. Life Science - Default 3. Life Science - Commercial 4. Other",
 //                "264. Verify User is displayed the following messages on the side of the Valuation drop down on selecting Standard option from Valuation drop down",
 //                "265. Verify User is displayed the messages on the side of the Valuation drop down on selecting Life Science - Default option from Valuation drop down",
 //                "266. Verify User is displayed the messages on the side of the Valuation drop down on selecting Life Science - Commercial option from Valuation drop down",
@@ -402,7 +398,7 @@ public class WebTest {
 //                "291. Verify the error message when user clicks on Add Selected button without selecting any Product in Add Products popup. Error message : Select at least one product to add",
 //                "292. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
 //                "293. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
-//                "294. Verify user is able to add the rows for the products from Add Products popup"
+//                "294. Verify user is able to add the rows for the products from Add Products popup",
 //                "295. Verify user is able to enter the details in the newly added rows",
 //                "296. Verify user is able to add a row buy clicking on Add row button",
 //                "297. Verify user is able to delete the newly added row",
@@ -590,7 +586,7 @@ public class WebTest {
 //                "450. PS117 - To verify user is able to enter the details for Schedule of Underlying in Excess Liability tab and navigate to Review and Generate Workbook tab",
 //
 //                // Review Tab
-//                  "451. Verify user is able to Preview the details entered by user for General Information tab by clicking on General Information in Preview tab",
+//                "451. Verify user is able to Preview the details entered by user for General Information tab by clicking on General Information in Preview tab",
 //                "452. Verify user is able to Preview the details entered by user for Property(SOV) by clicking on Property in Preview tab",
 //                "453. Verify user is able to Preview the details entered by user for Property 3rd party by clicking on Property in Preview tab",
 //                "454. Verify user is able to Preview the details entered by user for BI Dependent by clicking on Property in Preview tab",
@@ -620,7 +616,7 @@ public class WebTest {
 //            "475. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
 //            "476. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
 //            "477. Validate data in Property (SOV) sheet of Exported excel sheet",
-//            "478. Validate Error Message in Property SOV Tab of Exported excel sheet","
+//            "478. Validate Error Message in Property SOV Tab of Exported excel sheet",
 //            "479. Validate Formula in Property SOV Tab of Exported excel sheet",
 //            "480. Validate data in Property (SOV) 3rd Party sheet of Exported excel sheet",
 //            "481. Validate Error Message in Property SOV 3rd Party Tab of Exported excel sheet",
@@ -632,7 +628,7 @@ public class WebTest {
 //            "487. Validate Formula in BI Dependent sheet of Exported excel sheet",
 //            "488. Validate data in BI Dependent sheet of Exported excel sheet",
 //            "489. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
-//            "490. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
+//            "490. Validate Error Message in Export/ transit Shipments Tab of Exported excel sheet",
 //            "491. Validate data in Export/ transit Shipments sheet of Exported excel sheet",
 //            "492. Validate Error Message in Product Transit sheet of Exported excel sheet",
 //            "493. Validate Formula in Product Transit sheet of Exported excel sheet",
@@ -652,7 +648,7 @@ public class WebTest {
 //            "507. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
 //            "508. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
 //            "509. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
-//            "510. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet//510. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
+//            "510. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
 //            "511. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
 //            "512. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
 //            "513. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
@@ -666,19 +662,19 @@ public class WebTest {
 //            "521. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet",
 //            "522. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet",
 //            "523. Validate Formula in International Revenue & Payroll sheet of Exported excel sheet",
-//            "524. Validate data in International Revenue & Payroll sheet of Exported excel sheet"
+//            "524. Validate data in International Revenue & Payroll sheet of Exported excel sheet",
 //
-//                // Import
-//               "525. Write valid data in all sheets of Exported excel file using Auto It",
-//                "526. Validate imported file valid data in each tabs"
-//                "527. Write invalid data in all sheets of Exported excel file using Auto It",
-//                "528. Verify error message in import tab",
-//                "529. Verify the RFR to be uploaded is validated by the system for the Client Name and and error message \"The client name in the uploaded document does not match with RFR client name\" is displayed",
-//                "530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
-//                "531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
-//                "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it"
-//                "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
-//                "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable"
+//            // Import
+//            "525. Write valid data in all sheets of Exported excel file using Auto It",
+//            "526. Validate imported file valid data in each tabs",
+//            "527. Write invalid data in all sheets of Exported excel file using Auto It"
+//            "528. Verify error message in import tab",
+//            "529. Verify the RFR to be uploaded is validated by the system for the Client Name and and error message \"The client name in the uploaded document does not match with RFR client name\" is displayed",
+//            "530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
+//            "531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
+//            "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it"
+//            "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
+//            "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable"
  );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -998,7 +994,6 @@ public class WebTest {
                                case "click":
                                    try {
                                        new WebDriverWait(Browser.webDriver, waitTime)
-
                                                .until(ExpectedConditions.elementToBeClickable(
                                                        By.cssSelector(testAction.action.fieldName)
                                                ));
@@ -1221,14 +1216,9 @@ public class WebTest {
                                     ).sendKeys(Keys.ENTER);
                                     break;
 
-                                case "wait-display":
-                                    // Waiting for Field to be   visible action
+                                case "wait-display":                                    // Waiting for Field to be   visible action
                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
-
-
-
                                      (new WebDriverWait(Browser.webDriver, integerValue))
-
                                             .until(ExpectedConditions.visibilityOfElementLocated(
                                                     By.cssSelector(testAction.action.fieldName)
                                             ));
@@ -1241,6 +1231,7 @@ public class WebTest {
                                             .until(ExpectedConditions.elementToBeClickable(
                                                     By.cssSelector(testAction.action.fieldName)
                                             ));
+
                                     break;
                                 case "javascriptclick":
                                     // Waiting for Field to be enabled action
@@ -1761,6 +1752,42 @@ public class WebTest {
 //                                    if(!autoItData.isEmpty()){
 //                                        autoItData.clear();
 //                                    }
+                                    break;
+
+                                case "addsheetautoitfile":
+                                    try{
+                                        excelOperation.addSheetFromAutoItScript(sheetName,testAction.action.fieldValue);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                                case "addrowinsheetautoit":
+                                    try{
+                                        String excelSheetName = null;
+                                        int rowNumberOfSheet = 0;
+                                        if(testAction.action.fieldValue.contains("readvalues")) {
+                                           excelSheetName = StringUtils.substringBetween(testAction.action.fieldValue, "(", ",").trim();
+                                           rowNumberOfSheet = Integer.parseInt(StringUtils.substringBetween(testAction.action.fieldValue, ",", ")").trim());
+                                        }
+                                        excelOperation.addRowInSheetFromAutoItScript(sheetName,excelSheetName,rowNumberOfSheet);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                                case "removerowinsheetautoit":
+                                    try{
+                                        String excelSheetName = null;
+                                        int rowNumberOfSheet = 0;
+                                        if(testAction.action.fieldValue.contains("readvalues")) {
+                                            excelSheetName = StringUtils.substringBetween(testAction.action.fieldValue, "(", ",").trim();
+                                            rowNumberOfSheet = Integer.parseInt(StringUtils.substringBetween(testAction.action.fieldValue, ",", ")").trim());
+                                        }
+                                        excelOperation.removeRowInSheetFromAutoItScript(sheetName,excelSheetName,rowNumberOfSheet);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
                                     break;
 
                                     default:

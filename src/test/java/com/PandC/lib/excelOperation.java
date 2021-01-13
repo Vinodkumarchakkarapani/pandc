@@ -275,4 +275,58 @@ public class excelOperation {
         writer.close();
     }
 
+    public static void addSheetFromAutoItScript(String sheetName,String excelFileName) throws FileNotFoundException, UnsupportedEncodingException {
+        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+        String excelFile=System.getProperty("user.home")
+                + "\\Downloads\\" + excelFileName;
+
+        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+        writer.println("#include <Excel.au3>");
+        writer.println("Local $oExcel_1=_Excel_Open()");
+        writer.println("Local $sWorkbook=\""+excelFile+"\"");
+        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+        writer.println("Local $sheetName=\""+sheetName+"\"");
+        writer.println("_Excel_SheetAdd($oWorkbook,-1, False, 1, $sheetName)");
+        writer.println("_Excel_BookSave($oWorkbook)");
+        writer.println("_Excel_Close($oExcel_1,True,True)");
+        writer.close();
+    }
+
+    public static void addRowInSheetFromAutoItScript(String sheetName,String excelFileName, int rownumber) throws FileNotFoundException, UnsupportedEncodingException {
+        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+        String excelFile=System.getProperty("user.home")
+                + "\\Downloads\\" + excelFileName;
+
+        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+        writer.println("#include <Excel.au3>");
+        writer.println("Local $oExcel_1=_Excel_Open()");
+        writer.println("Local $sWorkbook=\""+excelFile+"\"");
+        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+        writer.println("Local $sheetName=\""+sheetName+"\"");
+        writer.println("$oWorkbook.Sheets($sheetName).Activate");
+        writer.println("_Excel_RangeInsert($oWorkbook.Activesheet,\""+rownumber+":"+rownumber+"\")");
+        writer.println("_Excel_BookSave($oWorkbook)");
+        writer.println("_Excel_Close($oExcel_1,True,True)");
+        writer.close();
+    }
+
+
+    public static void removeRowInSheetFromAutoItScript(String sheetName,String excelFileName, int rownumber) throws FileNotFoundException, UnsupportedEncodingException {
+        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+        String excelFile=System.getProperty("user.home")
+                + "\\Downloads\\" + excelFileName;
+
+        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+        writer.println("#include <Excel.au3>");
+        writer.println("Local $oExcel_1=_Excel_Open()");
+        writer.println("Local $sWorkbook=\""+excelFile+"\"");
+        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+        writer.println("Local $sheetName=\""+sheetName+"\"");
+        writer.println("$oWorkbook.Sheets($sheetName).Activate");
+        writer.println("_Excel_RangeDelete($oWorkbook.Activesheet,\""+rownumber+":"+rownumber+"\")");
+        writer.println("_Excel_BookSave($oWorkbook)");
+        writer.println("_Excel_Close($oExcel_1,True,True)");
+        writer.close();
+    }
+
 }
