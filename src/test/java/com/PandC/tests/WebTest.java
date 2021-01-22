@@ -602,7 +602,6 @@ public class WebTest {
 //                "464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab",
 //
 ////                Export
-//
 //            "465. Verify user is able to enter the details in the tabs related to life science P&C Practice and export the RFR",
 //            "466. Validate Error Message in B.I. Worksheet - CE sheet of Exported excel sheet",
 //            "467. Validate Formula in B.I. Worksheet - CE sheet of Exported excel sheet",
@@ -667,14 +666,15 @@ public class WebTest {
 //            // Import
 //            "525. Write valid data in all sheets of Exported excel file using Auto It",
 //            "526. Validate imported file valid data in each tabs",
-//            "527. Write invalid data in all sheets of Exported excel file using Auto It"
+//            "527. Write invalid data in all sheets of Exported excel file using Auto It",
 //            "528. Verify error message in import tab",
 //            "529. Verify the RFR to be uploaded is validated by the system for the Client Name and and error message \"The client name in the uploaded document does not match with RFR client name\" is displayed",
 //            "530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
 //            "531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
-//            "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it"
+//            "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
 //            "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
 //            "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable"
+
  );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -1216,7 +1216,8 @@ public class WebTest {
                                     ).sendKeys(Keys.ENTER);
                                     break;
 
-                                case "wait-display":                                    // Waiting for Field to be   visible action
+                                case "wait-display":
+                                    // Waiting for Field to be   visible action
                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
                                      (new WebDriverWait(Browser.webDriver, integerValue))
                                             .until(ExpectedConditions.visibilityOfElementLocated(
@@ -1224,14 +1225,13 @@ public class WebTest {
                                             ));
                                     break;
 
-                                    case "wait-enable":
+                                     case "wait-enable":
                                     // Waiting for Field to be enabled action
                                     integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
                                     (new WebDriverWait(Browser.webDriver, integerValue))
                                             .until(ExpectedConditions.elementToBeClickable(
                                                     By.cssSelector(testAction.action.fieldName)
                                             ));
-
                                     break;
                                 case "javascriptclick":
                                     // Waiting for Field to be enabled action
@@ -1711,6 +1711,14 @@ public class WebTest {
                                     case "uploadexportedfile":
                                     //   String lstofFil= testAction.action.fieldValue;
                                     String fileName = System.getProperty("user.home") + "\\Downloads\\" + testAction.action.fieldValue;
+                                    File uplodafile= new File(fileName);
+                                    if(uplodafile.exists()) {
+                                        System.out.println("File not exist in "+fileName+" directory");
+                                    }
+                                    else{
+                                        fileName=Paths.get(System.getProperty("user.dir"), "testdata/ExcelTestData/",sheetName).toString();
+                                        System.out.println("File exist in "+fileName+" directory");
+                                    }
                                     Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).sendKeys(fileName);
 
                                     break;
@@ -1789,6 +1797,26 @@ public class WebTest {
                                         e.printStackTrace();
                                     }
                                     break;
+
+								case "current-date-Time":
+									try {
+										DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+										LocalDateTime now = LocalDateTime.now();
+										String currectDateTime = dtf.format(now);
+										System.out.println(dtf.format(now));
+
+										sText=Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getText().trim();
+										if(!currectDateTime.equals(testAction.action.fieldValue)) {
+											stepResult.status = "Fail";
+											stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+													"does not match the value given (" + testAction.action.fieldValue +
+													") , Got [" + sText + "]";
+											logger.error(stepResult.actualResult);
+										}
+									}catch (Exception e){
+										e.printStackTrace();
+									}
+									break;
 
                                     default:
                                     // Unknown action type

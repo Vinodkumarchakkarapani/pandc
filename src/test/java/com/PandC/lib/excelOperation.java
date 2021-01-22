@@ -242,6 +242,15 @@ public class excelOperation {
         String excelFile=System.getProperty("user.home")
                 + "\\Downloads\\" + excelFileName;
 
+        File file= new File(excelFile);
+        if(file.exists()) {
+            System.out.println("File not exist in "+excelFile+" directory");
+        }
+        else{
+            excelFile=Paths.get(System.getProperty("user.dir"), "testdata/ExcelTestData/",sheetName).toString();
+            System.out.println("File exist in "+excelFile+" directory");
+        }
+
         PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
         writer.println("#include <Excel.au3>");
         writer.println("Local $oExcel_1=_Excel_Open()");
@@ -329,4 +338,31 @@ public class excelOperation {
         writer.close();
     }
 
+    public static void findSheetNameFromAutoItScript(String sheetName,String excelFileName) throws FileNotFoundException, UnsupportedEncodingException {
+        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+        String excelFile=System.getProperty("user.home")
+                + "\\Downloads\\" + excelFileName;
+        boolean value;
+
+        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+        writer.println("#include <Excel.au3>");
+        writer.println("Local $oExcel_1=_Excel_Open()");
+        writer.println("Local $sWorkbook=\""+excelFile+"\"");
+        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+        writer.println("Local $sheetName=\""+sheetName+"\"");
+        writer.println("Local $aWorkSheets = _Excel_SheetList($oWorkbook)");
+        writer.println("Local $sSearch = $sheetName");
+        writer.println("Local $sColumn = 0");
+        writer.println("$sColumn = Int($sColumn)");
+        writer.println("Local $iIndex = _ArraySearch($aWorkSheets, $sSearch, 0, 0, 0, 1, 1, $sColumn)");
+        writer.println("If @error Then");
+        writer.println("MsgBox($MB_SYSTEMMODAL, \"Not Found\", '\"' & $sSearch & '\" was not found on column ' & $sColumn & '.'),2");
+        writer.println("Return True");
+        writer.println("Else");
+        writer.println("MsgBox($MB_SYSTEMMODAL, \"Found\", '\"' & $sSearch & '\" was found in the array at position ' & $iIndex & ' on column ' & $sColumn & '.'),2");
+        writer.println("Return False");
+        writer.println("EndIf");
+        writer.println("_Excel_Close($oExcel_1,True,True)");
+        writer.close();
+    }
 }
