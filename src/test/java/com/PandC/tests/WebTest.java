@@ -45,9 +45,11 @@ import java.awt.event.KeyEvent;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
@@ -92,7 +94,6 @@ public class WebTest {
               "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
 
                 // Phase- 1 Start
-
 				//General Information Page
 //				"1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 //				"2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
@@ -292,7 +293,8 @@ public class WebTest {
 //                "192. Verify user is able to enter the details in the Multi Location BI Worksheet and on clicking Continue it should navigate to BI Dependent",
 //
 //                //Contingent BI / Dependent
-//                "193. BI Dependent - Verify user is able to enter alphanumeric values with special characters in the fields with format as Text",
+//                "193. BI Dependent: Verify \"Exposed CBI Value” column name if \"Estimated time until listed Process or Supplier is fully restored (months)\" filed value is less than and grater then 12",
+//                "193.1 BI Dependent - Verify user is able to enter alphanumeric values with special characters in the fields with format as Text",
 //                "194. Verify United States is displayed as default country in the Country field",
 //                "195. Verify the error message displayed when user tries to enter a new country in the Country field - Please select a valid country name",
 //                "196. When country is United States - Verify user is displayed the error message if user enters invalid state - Please select valid State Name / Code",
@@ -322,10 +324,19 @@ public class WebTest {
 //                //Crime
 //                "220. PS062 - To verify user is able to mark Crime Page as as Not Applicable",
 //                "221. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
-//                "222. PS064 - To verify user is able to enter the details in General Questions in Crime Tab",
-//                "223. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to Transit/Cargo/Stock throughput tab",
+//                "222. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to ERISA / 401(K) Plan tab",
 //
-//                // 	Transit - Shipment Exposure
+//                // ERISA / 401(K) Plan
+//                "223. Verify user is displayed a new Tab ERISA / 401(k) plan",
+//                "223.1 Verify user is able to mark the ERISA / 401(k) plan tab as not applicable",
+//                "223.2. Verify the error messages for the invalid values",
+//                "223.3. Verify user is able to enter the data in ERISA tab",
+//                "223.4. Verify user is able to export the RFR and validate data for ERISA / 401(k) Plan Sheet",
+//                "223.5. Validate the error message for invalid values in the exported RFR for ERISA / 401(k) plan sheet",
+//                "223.6. Verify the error message on the import page for ERISA tab",
+//                "223.7. Verify the data after importing in ERISA / 401(k) plan tab and navigate to Transit / Cargo / Stock Throughput tab",
+//
+//                // Transit - Shipment Exposure
 //                "224. Shipment Exposure - Verify user is displayed Shipment Exposure Title below Not Applicable checkbox",
 //                "225. Verify user is displayed a drop down - Valuation Information with the following options: 1. Standard 2. All Replacement Cost 3. Other With Standard as default value",
 //                "226. When Valuation Information option is standard, Verify user is displayed the message next to the drop down",
@@ -382,7 +393,7 @@ public class WebTest {
 //                "276. Verify user is directed to List page on clicking save and close and directed back to Product Transit tab on clicking the RFR in the List page",
 //                "277. Verify user is directed to Product Flow tab on clicking Continue button",
 //
-//                // Transit - Product Flow
+////                 Transit - Product Flow
 //                "278. Verify user is displayed the title Product Flow Below the Not applicable Check box.",
 //                "279. Verify user is displayed the error message for fields Product Name and Sub-Components(Parts or Processes) when these fields are left empty and a value is entered in some other field. Error message : For Product Name : Product Name is Required For Sub-Components(Parts or Processes) : Sub-Components (Parts or Processes) is Required",
 //                "280. Verify the error message for invalid value for Country field under Shipment From and Shipment To Columns. Error message : Please select a valid country name",
@@ -443,7 +454,16 @@ public class WebTest {
 //                "334. Verify user is able to delete a row.",
 //                "335. Transit Location Inventory - For the Drop down Building Use, Verify the following new values are displayed in the drop down list.: 1. Clean Rooms 2. Laboratories 3. Supply Chain / Contract Manufacturer 4. Vivarium",
 //                "336. In Transit Location inventory tab- verify user is able to view the newly added Columns in the Show / hide Overlay. 1. Samples/Demos/Free Units under Building Contents 2. Building Use Detail - next to Building Use column",
-//                "337. Verify user is able to enter the details in Transit Loc Inv and navigate to Casualty tab",
+//                "336.1. Verify user is able to enter the details in Transit Loc Inv and navigate to Casualty tab",
+//
+//                //Equipment
+//                "337. Verify user is able to see new Exposure - under Property Tab - Equipment Exposure",
+//                "337.1. Verify user is able to mark Equipment tab as not applicable.",
+//                "337.2. Verify the Name of the Grid in Equipment Exposure is displayed as Mobile Equipment Exposure",
+//                "337.3. Verify user is able to add a new row by clicking on Add Row and able to enter data in that row",
+//                "337.4. Export the RFR and validate the data in the Exported RFR for Equipment Exposure sheet",
+//                "337.5. Enter Valid Data in Exported RFR for Equipment Exposure sheet",
+//                "337.6. Validate imported file valid data in Equipment Exposure tab in application and navigate to Causality Exposure tab",
 //
 //                //Revenue & Liability Limits
 //                "338. PS125 - To verify user is able to mark Casualty Exposure - Revenue & Liability Limits tab as Not Applicable",
@@ -465,7 +485,18 @@ public class WebTest {
 //                "352. Verify the error message displayed for invalid values for currency field Revenue.Error Message : Enter only currency value (0-9, $, ., ,)",
 //                "353. Verify user is able to add a new row by clicking on Add row button",
 //                "354. Verify user is able to delete a row",
-//                "355. When P&C Practice is Life Science - Verify the changes for Product Liability tab under Casualty Exposure",
+//                "354.1. Verify the column Product is renamed to Product Name and Revenue is renamed to Total Annual Revenue",
+//                "354.2. Verify user is displayed the Show/Hide Columns button",
+//                "354.3. Verify the Options present in the Show/Hide Table and select all the options",
+//                "354.4. Verify the Error messages on entering invalid values in the fields",
+//                "354.5. Enter the details in Product Liability tab",
+//                "354.6. Export the RFR and validate data is exported properly",
+//                "354.7. Verify the error messages for incorrect values in the exported RFR",
+//                "354.8. Enter Valid Data in Exported RFR for Revenue by Products sheet",
+//                "354.9. Validate imported file valid data in Product Liability tab in application",
+//                "355. Write invalid data in revenue by product of Exported excel file using Auto It",
+//                "355.1. Verify error message in import tab for Revenue by products sheet",
+//                "355.2. When P&C Practice is Life Science - Verify the changes for Product Liability tab under Casualty Exposure",
 //                "356. Verify user is bale to enter valid details in Product Liability - Product Revenue table and navigate to Product Liability Excess tab",
 //
 //                //Casuality Exposure-Product liability Excess
@@ -544,15 +575,13 @@ public class WebTest {
 //                "412. Verify user is able to select the values from the Job Function drop down",
 //                "413. Verify user is displayed error message on entering value other than numeric / numeric with decimal for # of Employees Field - Only numeric values allowed (0-9, ., ,)",
 //                "414. Verify user is able to enter numeric / numeric with decimal value in # of Employees Field. Also validate the format is comma separated",
-//                "415. Verify the decimal value is displayed as it is in both edit and view mode for # of Employees Field",
 //                "416. Verify user is displayed error message on entering values other than currency for Payroll (USD) - Only currency values allowed (0-9, $, ., ,)",
 //                "417. Verify the currency values entered in Payroll (USD) field are displayed with comma formatting",
 //                "418. Verify user is able to enter currency value with decimals in Payroll (USD) field",
 //                "419. Verify in edit mode the decimal values are displayed for Payroll (USD)",
 //                "420. Verify in view mode the currency value entered in Payroll (USD) is displayed in rounded off format",
 //                "421. Verify user is displayed error message on entering value other than numeric / numeric with decimal for # of Employees Field under Local National header - Only numeric values allowed (0-9, ., ,)",
-//                "422. Verify user is able to enter numeric / numeric with decimal value in # of Employees Field under Local National header. Also validate the format is comma separated",
-//                "423. Verify the decimal value is displayed as it is in both edit and view mode for # of Employees Field under Local National header",
+//                "422. Verify user is able to enter numeric value in # of Employees Field under Local National header. Also validate the format is comma separated",
 //                "424. Verify user is displayed error message on entering values other than currency for Payroll (USD) under Local National header- Only currency values allowed (0-9, $, ., ,)",
 //                "425. Verify the currency values entered in Payroll (USD) field under Local National header are displayed with comma formatting.",
 //                "426. Verify user is able to enter currency value with decimals in Payroll (USD) field",
@@ -560,7 +589,6 @@ public class WebTest {
 //                "428. Verify in view mode the currency value entered in Payroll (USD) under Local National header is displayed rounded off format",
 //                "429. Verify user is displayed error message on entering value other than numeric / numeric with decimal for # of Employees Field under 3rd Country National header - Only numeric values allowed (0-9, ., ,)",
 //                "430. Verify user is able to enter numeric / numeric with decimal value in # of Employees Field under 3rd Country National header. Also validate the format is comma separated",
-//                "431. Verify the decimal value is displayed as it is in both edit and view mode for # of Employees Field under 3rd Country National header",
 //                "432. Verify user is displayed error message on entering values other than currency for Payroll (USD) under 3rd Country National header- Only currency values allowed (0-9, $, ., ,)",
 //                "433. Verify the currency values entered in Payroll (USD) field under 3rd Country National header are displayed with comma formatting.",
 //                "434. Verify user is able to enter currency value with decimals in Payroll (USD) field under 3rd Country National",
@@ -601,80 +629,80 @@ public class WebTest {
 //                "463. Verify user is able to Preview the details entered by user for Product Flow by clicking on Property in Preview tab",
 //                "464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab",
 //
-////                Export
-//            "465. Verify user is able to enter the details in the tabs related to life science P&C Practice and export the RFR",
-//            "466. Validate Error Message in B.I. Worksheet - CE sheet of Exported excel sheet",
-//            "467. Validate Formula in B.I. Worksheet - CE sheet of Exported excel sheet",
-//            "468. Validate data in B.I. Worksheet - CE sheet of Exported excel sheet",
-//            "469. Verify user is able to enter the details in the BI Worksheet - Standard BI - Multi Location BI Worksheet and export the RFR",
-//            "470. Validate Error Message in BI (Multi-Location) sheet of Exported excel sheet",
-//            "471. Validate Formula in BI (Multi-Location) sheet of Exported excel sheet",
-//            "472. Validate data in BI (Multi-Location) sheet of Exported excel sheet",
-//            "473. Verify user is able to enter the details in all the tabs and export the RFR",
-//            "474. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
-//            "475. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
-//            "476. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
-//            "477. Validate data in Property (SOV) sheet of Exported excel sheet",
-//            "478. Validate Error Message in Property SOV Tab of Exported excel sheet",
-//            "479. Validate Formula in Property SOV Tab of Exported excel sheet",
-//            "480. Validate data in Property (SOV) 3rd Party sheet of Exported excel sheet",
-//            "481. Validate Error Message in Property SOV 3rd Party Tab of Exported excel sheet",
-//            "482. Validate Formula in Property SOV 3rd Party Tab of Exported excel sheet",
-//            "483. Validate Error Message in BI Worksheet (Single) sheet of Exported excel sheet",
-//            "484. Validate Formula in BI Worksheet sheet of Exported excel sheet",
-//            "485. Validate data in BI Worksheet sheet of Exported excel sheet",
-//            "486. Validate Error Message in BI Dependent sheet of Exported excel sheet",
-//            "487. Validate Formula in BI Dependent sheet of Exported excel sheet",
-//            "488. Validate data in BI Dependent sheet of Exported excel sheet",
-//            "489. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
-//            "490. Validate Error Message in Export/ transit Shipments Tab of Exported excel sheet",
-//            "491. Validate data in Export/ transit Shipments sheet of Exported excel sheet",
-//            "492. Validate Error Message in Product Transit sheet of Exported excel sheet",
-//            "493. Validate Formula in Product Transit sheet of Exported excel sheet",
-//            "494. Validate data in Product Transit sheet of Exported excel sheet",
-//            "495. Validate Formula in Product Flow sheet of Exported excel sheet",
-//            "496. Validate Error Message in Product Flow sheet of Exported excel sheet",
-//            "497. Validate data in Product Flow sheet of Exported excel sheet",
-//            "498. Validate Error Message in Transit Loc. Inv. sheet of Exported excel sheet",
-//            "499. Validate Formula in Transit Loc. Inv. sheet of Exported excel sheet",
-//            "500. Validate data in Transit Loc. Inv. sheet of Exported excel sheet",
-//            "501. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
-//            "502. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
-//            "503. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
-//            "504. Validate Formula in Product Liability Tab of Exported excel sheet",
-//            "505. Validate Error Message in Product Liability Tab of Exported excel sheet",
-//            "506. Validate data in Product Liability Tab of Exported excel sheet",
-//            "507. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-//            "508. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
-//            "509. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
-//            "510. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
-//            "511. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
-//            "512. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
-//            "513. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
-//            "514. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
-//            "515. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
-//            "516. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
-//            "517. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
-//            "518. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
-//            "519. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
-//            "520. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
-//            "521. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet",
-//            "522. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet",
-//            "523. Validate Formula in International Revenue & Payroll sheet of Exported excel sheet",
-//            "524. Validate data in International Revenue & Payroll sheet of Exported excel sheet",
+//                // Export
+//                "465. Verify user is able to enter the details in the tabs related to life science P&C Practice and export the RFR",
+//                "466. Validate Error Message in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                "467. Validate Formula in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                "468. Validate data in B.I. Worksheet - CE sheet of Exported excel sheet",
+//                "469. Verify user is able to enter the details in the BI Worksheet - Standard BI - Multi Location BI Worksheet and export the RFR",
+//                "470. Validate Error Message in BI (Multi-Location) sheet of Exported excel sheet",
+//                "471. Validate Formula in BI (Multi-Location) sheet of Exported excel sheet",
+//                "472. Validate data in BI (Multi-Location) sheet of Exported excel sheet",
+//                "473. Verify user is able to enter the details in all the tabs and export the RFR",
+//                "474. PS256 - Validate Error Message in Named Insured Tab of Exported excel sheet",
+//                "475. PS257 - Validate Formula in Named Insured Tab of Exported excel sheet",
+//                "476. PS258 - Validate data in Named Insured sheet of Exported excel sheet",
+//                "477. Validate data in Property (SOV) sheet of Exported excel sheet",
+//                "478. Validate Error Message in Property SOV Tab of Exported excel sheet",
+//                "479. Validate Formula in Property SOV Tab of Exported excel sheet",
+//                "480. Validate data in Property (SOV) 3rd Party sheet of Exported excel sheet",
+//                "481. Validate Error Message in Property SOV 3rd Party Tab of Exported excel sheet",
+//                "482. Validate Formula in Property SOV 3rd Party Tab of Exported excel sheet",
+//                "483. Validate Error Message in BI Worksheet (Single) sheet of Exported excel sheet",
+//                "484. Validate Formula in BI Worksheet sheet of Exported excel sheet",
+//                "485. Validate data in BI Worksheet sheet of Exported excel sheet",
+//                "486. Validate Error Message in BI Dependent sheet of Exported excel sheet",
+//                "487. Validate Formula in BI Dependent sheet of Exported excel sheet",
+//                "488. Validate data in BI Dependent sheet of Exported excel sheet",
+//                "489. Validate Formula in Export/ transit Shipments Tab of Exported excel sheet",
+//                "490. Validate Error Message in Export/ transit Shipments Tab of Exported excel sheet",
+//                "491. Validate data in Export/ transit Shipments sheet of Exported excel sheet",
+//                "492. Validate Error Message in Product Transit sheet of Exported excel sheet",
+//                "493. Validate Formula in Product Transit sheet of Exported excel sheet",
+//                "494. Validate data in Product Transit sheet of Exported excel sheet",
+//                "495. Validate Formula in Product Flow sheet of Exported excel sheet",
+//                "496. Validate Error Message in Product Flow sheet of Exported excel sheet",
+//                "497. Validate data in Product Flow sheet of Exported excel sheet",
+//                "498. Validate Error Message in Transit Loc. Inv. sheet of Exported excel sheet",
+//                "499. Validate Formula in Transit Loc. Inv. sheet of Exported excel sheet",
+//                "500. Validate data in Transit Loc. Inv. sheet of Exported excel sheet",
+//                "501. PS259 - Validate Error Message in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "502. PS260 - Validate Formula in Revenue & Liability Limits Tab of Exported excel sheet",
+//                "503. PS261 - Validate data in Revenue & Liability Limits sheet of Exported excel sheet",
+//                "504. Validate Formula in Product Liability Tab of Exported excel sheet",
+//                "505. Validate Error Message in Product Liability Tab of Exported excel sheet",
+//                "506. Validate data in Product Liability Tab of Exported excel sheet",
+//                "507. PS274 - Validate Error Message in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "508. PS275 - Validate Formula in Auto Rental & Travel Exposure Tab of Exported excel sheet",
+//                "509. PS276 - Validate data in Auto Rental & Travel Exposure sheet of Exported excel sheet",
+//                "510. PS277 - Validate Error Message in Driver & Auto List Tab of Exported excel sheet",
+//                "511. PS278 - Validate Formula in Driver & Auto List Tab of Exported excel sheet",
+//                "512. PS279 - Validate data in Driver & Auto List sheet of Exported excel sheet",
+//                "513. PS280 - Validate Error Message in Non-Owned Quest. Tab of Exported excel sheet",
+//                "514. PS281 - Validate Formula in Non-Owned Quest. Tab of Exported excel sheet",
+//                "515. PS282 - Validate data in Non-Owned Quest. sheet of Exported excel sheet",
+//                "516. PS286 - Validate Error Message in Workers Comp Tab of Exported excel sheet",
+//                "517. PS287 - Validate Formula in Workers Comp Tab of Exported excel sheet",
+//                "518. PS288 - Validate data in Workers Comp sheet of Exported excel sheet",
+//                "519. PS289 - Validate Error Message in WC Supplemental Tab of Exported excel sheet",
+//                "520. PS290 - Validate Formula in WC Supplemental Tab of Exported excel sheet",
+//                "521. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet",
+//                "522. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet",
+//                "523. Validate Formula in International Revenue & Payroll sheet of Exported excel sheet",
+//                "524. Validate data in International Revenue & Payroll sheet of Exported excel sheet",
 //
-//            // Import
-//            "525. Write valid data in all sheets of Exported excel file using Auto It",
-//            "526. Validate imported file valid data in each tabs",
-//            "527. Write invalid data in all sheets of Exported excel file using Auto It",
-//            "528. Verify error message in import tab",
-//            "529. Verify the RFR to be uploaded is validated by the system for the Client Name and and error message \"The client name in the uploaded document does not match with RFR client name\" is displayed",
-//            "530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
-//            "531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
-//            "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
-//            "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
-//            "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable"
-
+//                // Import
+//                "525. Write valid data in all sheets of Exported excel file using Auto It",
+//                "526. Validate imported file valid data in each tabs",
+//                "527. Write invalid data in all sheets of Exported excel file using Auto It",
+//                "528. Verify error message in import tab",
+//                "529. Verify the RFR to be uploaded is validated by the system for the Client Name and and error message \"The client name in the uploaded document does not match with RFR client name\" is displayed",
+//                "530. Verify the RFR to be uploaded is validated by the system for the Policy Period and and error message is displayed when incorrect Policy Period is mentioned in the RFR excel",
+//                "531. Write valid data when P&C is Life Science in all sheets of Exported excel file using Auto It",
+//                "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
+//                "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
+//                "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable",
+//                "535. On Imported workbook then the status is \"Workbook Imported\" and display the imported workbook date in “Status Updated on” column"
  );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -1233,6 +1261,7 @@ public class WebTest {
                                                     By.cssSelector(testAction.action.fieldName)
                                             ));
                                     break;
+
                                 case "javascriptclick":
                                     // Waiting for Field to be enabled action
                                     JavascriptExecutor js = (JavascriptExecutor) Browser.webDriver;
@@ -1591,6 +1620,16 @@ public class WebTest {
                                                 sActualValue = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
                                                         .getRow(iRow).getCell(iColumn).getStringCellValue();
                                                 break;
+
+                                            case XSSFCell.CELL_TYPE_FORMULA:
+                                                double formaulavalue = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
+                                                        .getRow(iRow).getCell(iColumn).getNumericCellValue();
+                                                if (String.valueOf(formaulavalue).contains("E")) {
+                                                    sActualValue = String.format("%.0f", formaulavalue);
+                                                } else {
+                                                    sActualValue = String.valueOf(formaulavalue).replace(".0", "");
+                                                }
+                                                break;
                                             default:
                                                 break;
                                         }
@@ -1798,18 +1837,20 @@ public class WebTest {
                                     }
                                     break;
 
-								case "current-date-Time":
+								case "currentdatetime":
 									try {
-										DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
-										LocalDateTime now = LocalDateTime.now();
-										String currectDateTime = dtf.format(now);
-										System.out.println(dtf.format(now));
+                                        Date date = new Date();
+                                        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                                        // Use Madrid's time zone to format the date in
+                                        df.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+                                        String currectDateTime =df.format(date);
+                                        System.out.println("Date and time in Madrid: " + df.format(date));
 
 										sText=Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getText().trim();
-										if(!currectDateTime.equals(testAction.action.fieldValue)) {
+										if(!sText.contains(currectDateTime)) {
 											stepResult.status = "Fail";
 											stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
-													"does not match the value given (" + testAction.action.fieldValue +
+													"does not match the value given (" + currectDateTime +
 													") , Got [" + sText + "]";
 											logger.error(stepResult.actualResult);
 										}
@@ -1817,6 +1858,38 @@ public class WebTest {
 										e.printStackTrace();
 									}
 									break;
+
+                                case "findsheetnameinexcel":
+                                    try{
+                                        excelOperation.findSheetNameUsingAutoItScript(testAction.action.fieldValue,sCurrentExcelSheetName);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                                case "readexcelcellcomment":
+                                    try{
+                                        excelOperation.readCommentsExcel(testAction.action.fieldValue,sCurrentExcelSheetName,testAction.action.fieldName);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                                case "readdatafromtextfile":
+                                    try {
+                                        String generatedFilePath = Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/" + testAction.action.fieldName).toString();
+                                        sText=new String(Files.readAllBytes(Paths.get(generatedFilePath)));
+                                        if (!sText.equals(testAction.action.fieldValue)) {
+                                            stepResult.status = "Fail";
+                                            stepResult.actualResult = "Data (" + sText + ")" +
+                                                    "does not match the value given (" + testAction.action.fieldValue +
+                                                    ") , Got [" + sText + "]";
+                                            logger.error(stepResult.actualResult);
+                                        }
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                    break;
 
                                     default:
                                     // Unknown action type

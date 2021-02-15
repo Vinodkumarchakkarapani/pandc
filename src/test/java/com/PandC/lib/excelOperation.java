@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.awt.datatransfer.StringSelection;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -319,7 +320,6 @@ public class excelOperation {
         writer.close();
     }
 
-
     public static void removeRowInSheetFromAutoItScript(String sheetName,String excelFileName, int rownumber) throws FileNotFoundException, UnsupportedEncodingException {
         String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
         String excelFile=System.getProperty("user.home")
@@ -338,11 +338,12 @@ public class excelOperation {
         writer.close();
     }
 
-    public static void findSheetNameFromAutoItScript(String sheetName,String excelFileName) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void findSheetNameUsingAutoItScript(String excelFileName,String sheetName) throws FileNotFoundException, UnsupportedEncodingException {
         String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
         String excelFile=System.getProperty("user.home")
                 + "\\Downloads\\" + excelFileName;
-        boolean value;
+
+        String generatedFilePath=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/AutoItGeneratedFile.txt").toString();
 
         PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
         writer.println("#include <Excel.au3>");
@@ -351,17 +352,38 @@ public class excelOperation {
         writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
         writer.println("Local $sheetName=\""+sheetName+"\"");
         writer.println("Local $aWorkSheets = _Excel_SheetList($oWorkbook)");
+        writer.println("FileDelete(\""+generatedFilePath+"\")");
         writer.println("Local $sSearch = $sheetName");
         writer.println("Local $sColumn = 0");
         writer.println("$sColumn = Int($sColumn)");
         writer.println("Local $iIndex = _ArraySearch($aWorkSheets, $sSearch, 0, 0, 0, 1, 1, $sColumn)");
         writer.println("If @error Then");
-        writer.println("MsgBox($MB_SYSTEMMODAL, \"Not Found\", '\"' & $sSearch & '\" was not found on column ' & $sColumn & '.'),2");
-        writer.println("Return True");
+        writer.println("FileWrite(\""+generatedFilePath+"\",'\"' & $sSearch & '\" was not found')");
         writer.println("Else");
-        writer.println("MsgBox($MB_SYSTEMMODAL, \"Found\", '\"' & $sSearch & '\" was found in the array at position ' & $iIndex & ' on column ' & $sColumn & '.'),2");
-        writer.println("Return False");
+        writer.println("FileWrite(\""+generatedFilePath+"\",'\"' & $sSearch & '\" was not found')");
         writer.println("EndIf");
+        writer.println("_Excel_Close($oExcel_1,True,True)");
+        writer.close();
+    }
+
+    public static  void readCommentsExcel(String excelFileName,String sheetName,String cell) throws IOException {
+        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+        String excelFile=System.getProperty("user.home")
+                + "\\Downloads\\" + excelFileName;
+
+        String generatedFilePath=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/AutoItGeneratedFile.txt").toString();
+
+        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+        writer.println("#include <Excel.au3>");
+        writer.println("Local $oExcel_1=_Excel_Open()");
+        writer.println("Local $sWorkbook=\""+excelFile+"\"");
+        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+        writer.println("Local $sheetName=\""+sheetName+"\"");
+        writer.println("$oWorkbook.Sheets(\""+sheetName+"\").Activate");
+        writer.println("$cmt = $oWorkbook.ActiveSheet.Range(\""+cell+":"+cell+"\").Comment.text");
+        writer.println("ConsoleWrite(@crlf&\"This is a comment: \" &$cmt&@crlf)");
+        writer.println("FileDelete(\""+generatedFilePath+"\")");
+        writer.println("FileWrite(\""+generatedFilePath+"\",$cmt)");
         writer.println("_Excel_Close($oExcel_1,True,True)");
         writer.close();
     }
