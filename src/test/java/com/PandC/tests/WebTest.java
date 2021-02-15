@@ -998,7 +998,7 @@ public class WebTest {
                                             return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
                                         }
                                     };
-                            WebDriverWait wait = new WebDriverWait(Browser.webDriver, 30);
+                            WebDriverWait wait = new WebDriverWait(Browser.webDriver, 60);
                             wait.until(pageLoadCondition);
                             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading")));
                             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
