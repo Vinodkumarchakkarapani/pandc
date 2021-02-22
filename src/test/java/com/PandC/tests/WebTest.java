@@ -702,7 +702,7 @@ public class WebTest {
 //            "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
 //            "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable",
 //            "535. On Imported workbook then the status is \"Workbook Imported\" and display the imported workbook date in “Status Updated on” column"
- );
+        );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
 		logger_performance = LogManager.getLogger("com.PandC._perftests");
@@ -1614,7 +1614,7 @@ public class WebTest {
                                             case XSSFCell.CELL_TYPE_STRING:
 
                                                 sActualValue = currentExcelWorkbook.getSheet(sCurrentExcelSheetName)
-                                                        .getRow(iRow).getCell(iColumn).getStringCellValue();
+                                                        .getRow(iRow).getCell(iColumn).getStringCellValue().trim();
                                                 break;
 
                                             case XSSFCell.CELL_TYPE_FORMULA:
@@ -1685,19 +1685,15 @@ public class WebTest {
 
                                 case "validateerrormessage":
                                     String errorValue=com.PandC.lib.excelOperation.getErrorMessage(testAction.action.fieldName);
-
                                     try {
                                         Assert.assertTrue(
                                                 errorValue.equals(testAction.action.fieldValue),
                                                 "Validation in Field (" + testAction.action.fieldName + ") should contain [" +
-                                                        testAction.action.fieldValue + "] and Got [" + errorValue + "]"
-
-                                        );
+                                                        testAction.action.fieldValue + "] and Got [" + errorValue + "]");
                                     } catch (AssertionError e) {
                                         throw new Exception("Validation in Field (" + testAction.action.fieldValue + ") should contain [" +
                                                 testAction.action.fieldValue + "] but Got [" + errorValue + "]");
                                     }
-
                                     break;
 
                                 case "validateformula":
