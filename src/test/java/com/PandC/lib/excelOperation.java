@@ -70,6 +70,7 @@ public class excelOperation {
     }
 
     /**
+     * Read data from excel file
      *
      * @param fieldValue
      * @return cell value of excel sheet
@@ -131,6 +132,7 @@ public class excelOperation {
     }
 
     /**
+     * Read error message from excel file
      *
      * @param fieldName
      * @return
@@ -194,6 +196,7 @@ public class excelOperation {
     }
 
     /**
+     * Read formula from excel sheet
      *
      * @param fieldName
      * @return cell formula from excel tab
@@ -257,12 +260,13 @@ public class excelOperation {
     }
 
     /**
+     * Generate AutoIt script for write data in excel sheet
      *
      * @param sheetName
      * @param data
      * @param excelFileName
      */
-    public static void createAutoItScript(String sheetName,Map<String,String> data,String excelFileName) {
+    public static void writeDataUsingAutoItScript(String sheetName,Map<String,String> data,String excelFileName) {
         try {
             String autoItScriptName = Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/", sheetName + ".au3").toString();
             String excelFile = System.getProperty("user.home")
@@ -295,11 +299,12 @@ public class excelOperation {
     }
 
     /**
+     * Generate AutoIt script for remove sheet(tab) from excel file
      *
      * @param sheetName
      * @param excelFileName
      */
-    public static void removeFromAutoItScript(String sheetName,String excelFileName){
+    public static void removeExcelSheetUsingAutoItScript(String sheetName,String excelFileName){
         try {
             String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
             String excelFile=System.getProperty("user.home")
@@ -321,11 +326,12 @@ public class excelOperation {
     }
 
     /**
+     * Generate AutoIt script for add sheet(tab) in excel file
      *
      * @param sheetName
      * @param excelFileName
      */
-    public static void addSheetFromAutoItScript(String sheetName,String excelFileName){
+    public static void addExcelSheetUsingAutoItScript(String sheetName,String excelFileName){
         try {
             String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
             String excelFile=System.getProperty("user.home")
@@ -347,12 +353,13 @@ public class excelOperation {
     }
 
     /**
+     * Generate AutoIt script for add row in sheet(tab) into excel file
      *
      * @param sheetName
      * @param excelFileName
      * @param rownumber
      */
-    public static void addRowInSheetFromAutoItScript(String sheetName,String excelFileName, int rownumber) {
+    public static void addRowInSheetUsingAutoItScript(String sheetName,String excelFileName, int rownumber) {
         try {
             String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
             String excelFile=System.getProperty("user.home")
@@ -375,6 +382,7 @@ public class excelOperation {
     }
 
     /**
+     *  Generate AutoIt script for remove row from sheet(tab) into excel file
      *
      * @param sheetName
      * @param excelFileName
@@ -403,6 +411,7 @@ public class excelOperation {
     }
 
     /**
+     *  Generate AutoIt script for find sheetname from excel file
      *
      * @param excelFileName
      * @param sheetName
@@ -440,6 +449,7 @@ public class excelOperation {
     }
 
     /**
+     * Read cell comments from excel file
      *
      * @param excelFileName
      * @param sheetName

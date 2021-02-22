@@ -701,7 +701,117 @@ public class WebTest {
 //            "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
 //            "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
 //            "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable",
-//            "535. On Imported workbook then the status is \"Workbook Imported\" and display the imported workbook date in “Status Updated on” column"
+//            "535. On Imported workbook then the status is \"Workbook Imported\" and display the imported workbook date in “Status Updated on” column",
+//
+//                //Phase-1 [Defects]
+//                "536. AP-690 WC Exposures Tab-Corporate Officers Listing -Classification Code field-Error tooltip appears on mouse hover even on changing incorrect value to correct one",
+//                "537. AP-688 WC Exposures Tab-Corporate Officers Listing - Annual Remuneration field is not accepting special characters",
+//                "538. AP-1311 State dropdown- On Typing correct value in State dropdown ,Validation error is displayed on field",
+//                "539. AP-1309 State drop down -On removing the \"US\" country and changing to other country, State drop down presents with respect country",
+//                "540. AP-1178 RFR Listing Grid- Export and Import icon tool tip message is not matching with user story",
+//                "541. AP-1319 RFR - User is not able to search & select United Kingdom by \"GB\", \"Great Britain\", & \"United Kingdom\"",
+//                "542. AP-1164 On entering invalid data in any validation field across the app, it is allowing to continue to next page",
+//                "543. AP-1137 Foreign tab - International travel column displaying red border for alphanumeric value when coming back to the page from other tabs",
+//                "544. AP-1381 UAT Feedback || Auto - VIN Number - Duplication is allowed in the application. Suppose the user enters with caps. Eg: Row1: ac001 & Row2:AC001",
+//                "545. AP-1380 UAT Feedback || In Auto Coverage - Driver Grid -Enter the name as \"D'ore\" and click save , while editing the values after the special character is getting truncated and showing only \"D\"",
+//                "546. AP-661 Casualty Exposure - Auto - In Year field, User should enter only 4 digit numeric value",
+//                "547. AP-659 Casualty Exposure - Auto - No validation for future DOB, when user manually enter future date in correct format",
+//                "548. AP-658 Casualty Exposures Tab-Auto - User is able to enter \"_\" in City, State, Country, Make, Name field.",
+//                "549. AP-667 Foreign Tab-International Revenue & Payroll- # of People and # of Trips & Frequency field should not accept decimal values for US Employees, Rest of the World Rows",
+//                "550. AP-1081 Property exposures tab - BI worksheet - \"What is (in number of months) the amount of time needed to operate at 100% in the event of a total loss? \" field should not accept decimal values",
+//                "551. AP-1080 Property Exposures tab - BI worksheet -\"Extra Expense'' field -Error tool tip appears on mouse hover even on changing incorrect value to correct one",
+//                "552. AP-1562 Transit-Incoming Shipment - Not accepting 13 whole numbers & 2 decimal places",
+//                "553. AP-885 Property(Sov) Tab -Header name of building number field in which number \"N\" should be capital in both application and exported RFR file",
+//                "554. AP-1724 In Exported Excel - For Total Area Sq. Ft. - getting error message on entering decimal value",
+//                "555. AP-982 Export RFR- Property (SOV) sheet- Fields are getting hidden by \"#\" on entering values more than 11 characters",
+//                "556. AP-973 Export - Workers Comp - The values are not totaling up for Current and Projected columns",
+//                "557. AP-1725 Different spelling causing validation message to be displayed for WC-Exposure - Supplementary sheet - for field - Frequency of Safety Inspections for - value Quarterly during import",
+//                "558. AP-1608 Import RFR - Workbook - Issue in Editing space in column name",
+//                "559. AP-1093 Import - Not Displaying Validation for New Added Sheet",
+//                "560. AP-656 Property exposures tab- Transit/Cargo/Stock Throughput-In every percentage field, the field is accepting more than 2 decimal value till the maximum length of the field",
+//                "561. AP-1574 Workbook - Contingent BI - Empty Rows are getting inserted into the portal from Workbook",
+//                "562. AP-1573 Property(SOV) - If a space is entered before the start of the value in State field, the US states are not recognized.",
+//                "563. AP-1550 No Validation message and values getting truncated - Numeric values only - values getting truncated on adding special characters / alphabets between numeric values",
+//                "564. AP-1687 RFR - Property(SOV) - The space which is entered in the user added columns name are not getting trimmed while processing the imported RFR",
+//                "565. AP-1397 The users expecting the application to auto-select the country \"United States\" on entering \"USA\" into the field. (same input received in previous UAT session as well)",
+//                "566. AP-1083 Not able to delete a row from the downloaded excel RFR",
+//                "567. AP-1262 Export RFR - Workers Comp- After inserting new row on entering value in Estimated Annual Remuneration Projection/Restricted Stock Units (RSUs) sum of values is not appearing under Total Payroll (including RSUs) column",
+//                "568. AP-1107 Export RFR- Total column values are appearing in location 2 column when location 2 column is left",
+//                "569. AP-1099 Export RFR- Validations are not present for draft status downloaded RFR",
+//                "570. AP-1321 Export RFR- Wokers Comp- \"Total Payroll (Including RSUs)for Current Policy Year\" and \"Total Payroll (Including RSUs) Projected for Policy Year\" is editable fields in excel workbook",
+//                "571. AP-1334 Clone Feature- Incorrect alert message is displaying for expired policy"
+//
+//                //Phase-2 [Defects]
+//                "572. AP-3013 RFR- Single BI Worksheet- User is not able to Navigate to other tab from Single BI worksheet",
+//                "573. AP-2603 Transit Loc - The Values for total field in the exported RFR for Selling price is not same as the value in the application",
+//                "574. AP-2303 RFR - Property SOV-3rd party- Values of all inserted columns on table is disappeared, after clicking on continue button",
+//                "575. AP-2302 RFR - Property SOV- Values of all inserted columns on table is disappeared, after clicking on continue button",
+//                "576. AP-3062 RFR-Workers Comp- In Corporate Officers Listing table -  Annual Remuneration column is not accepting alphabets and special characters",
+//                "577. AP-3059 RFR-Multi BI worksheet- The field \"Exposed BI w/o OP and with Continuing Value\" is displaying value zero on editing any values after navigated back to tab",
+//                "578. AP-3027 Revenue & Liability Limits - Square Footage should be Decimal Number formatted field as per the user the story",
+//                "579. AP-3007 RFR-BI Continuing Expenses only worksheet- Expiring limit is mandatory field but no mandatory alert is displayed",
+//                "580. AP-2936 Import - Transit Location inv - After Importing the Total Values(Selling Price) is not displaying the correct value",
+//                "581. AP-2811 Export - B.I.(Multi-location) - STD - on entering data in 3 rows, only for first row the value for \"Exposed BI w/o OP and with Continuing\" getting calculated and displayed. For the other rows the value is not calculated and displayed",
+//                "582. AP-2810 Dependent BI- \"% of Product Revenue impacted\"- on entering value for first time the value \"Annual Revenue Loss field\" is calculating properly, but on changing the \"% of Product Revenue impacted\" value the calculated field is not getting updated",
+//                "583. AP-2800 Property(SOV) 3rd Party -\"Not Applicable\\\" checkbox is not preselected When \"Practice Type\" as \"Life Science\" is selected from Cover Page",
+//                "584. AP-2775 Application - User is able to add duplicate values for continents / countries after deleting and adding again the same continent / country",
+//                "585. AP-2753 Export- International Liab Locations-Total field values are not populated for Empty excel file is exported",
+//                "586. AP-2742 Import - Shipment - User is able to import duplicate Continent and Country values and no validation is displayed on importing",
+//                "587. AP-2738 Export -Property (SOV) - 3rd Party- Total value is not displayed for selling price in excel sheet",
+//                "588. AP-2737 RFR- Shipment Exposures- Total value is missing in review tab under Shipment / Transit Exposures section",
+//                "589. AP-2724 RFR- Property (SOV)/Property (SOV) - 3rd Party table is editable on review page",
+//                "590. AP-2708 Export - Transit Location Inventory - The values are not calculating correctly in Excel for Total Values (Selling Price), But on import displaying correct total in application",
+//                "591. AP-2707 Transit - Product Flow - The Rows Position are getting changed, on clicking add row and then navigating to other tab and back to product flow",
+//                "592. AP-2683 Import - BI Worksheet - Single BI sheet - Actual - When Actual option is selected and exported and then same RFR is imported, Projected form is getting displayed along with Actual Form",
+//                "593. AP-2680 Additional total rows are getting added for Property(SOV) and property 3rd Party after import",
+//                "594. AP-2676 Import - Unwanted validation message displayed during Import",
+//                "595. AP-2673 Dependent BI - Zip / Postal Code for the Last row is not retaining after entering value and clicking on continue and revisiting the page / Exporting it",
+//                "596. AP-2653 Import-B.I. Worksheet - CE- No validation displayed during import when header name order is incorrect and header name is removed from the sheet",
+//                "597. AP-2557 Import -Driver & Auto List - No validations are displayed during import for duplicate values in VIN Number /Driver's License # field",
+//                "598. AP-2458 RFR-BI Worksheet-P&C practice is changed to \"Commercial / technology\" from \"Life Science\" then \"Standard BI Worksheet\" option box is not getting preselected, it remains on \"Continuing Expenses only Worksheet\"",
+//                "599. AP-2457 Transit tab - Not applicable selection is not retained when travesing back to transit tab (Shipment tab and Transit Loc tab)from Casualty tab",
+//                "600. AP-2453 RFR- BI Worksheet- Continuing Expenses only worksheet-Select All checkbox is not getting removed, Clicking on \"Edit\" icon from Property(SOV) location",
+//                "601. AP-2446 RFR-BI Worksheet-Standard BI Worksheet-Multi Location BI Worksheet-\"Exposed BI w/o OP\" field calculated value is displayed incorrect",
+//                "602. AP-2438 RFR-BI Worksheet-Standard BI Worksheet-Single BI Worksheet- \"Business Interruption BI Values\" column Value should be rounded off to 2 decimal places",
+//                "603. AP-2437 RFR-BI Worksheet-Standard BI Worksheet-Single BI Worksheet- \"% Variable/ Non-Continuing\" column is not displayed Correct validation error message",
+//                "604. AP-2421 RFR-BI Worksheet-Continuing Expenses only Worksheet- Currency value is not added auto $ symbol in \"Extra Expense (i.e. extraordinary expenses, rent and utilities at temporary locations, moving, installation of equipment)\"field",
+//                "605. AP-2418 Export - Product Flow - Annual Value Shipped  is not auto calculating and is not displaying the total for the row",
+//                "606. AP-2412 RFR-BI Worksheet- \"Continuing Expenses only Worksheet\"-Duplicate Location column getting added after clicking on continue button",
+//                "607. AP-2368 Export-Shipment Exposure- Unable to export Country Dropdown, when in application Country option is selected but no country is selected from the dropdown",
+//                "608. AP-2357 RFR-BI Worksheet-\"Continuing Expenses only Worksheet\"- The Currency value is not added auto $ symbol in \"Annual Continuing Expenses(i.e. payroll, non-abated rent, utilities, maintenance, etc.)\" field",
+//                "609. AP-2222 RFR- Property Sov- \"Total Insured Value\" column should be non editable",
+//                "610. AP-2221 RFR- Property Sov- \"Total Values (SOV)\" is editable and values is not appearing in column as per the formula mentioned in user story",
+//                "611. AP-1856 Auto Rental/ Travel Tab - International Travel Grid - Number of Foreign hires working or training in U.S. for more than a brief visit (Reverse Trip Travel) field - Not allowing alphabets , and not displaying validation message",
+//                "612. AP-1855 Across all Application - State Field - For Non US country, getting error message on entering alphanumeric value for state field.",
+//                "613. AP-1854 Foreign - International Liab Locations- City Field displaying error validations in application but in exported excel accepting Alphabets, Numbers and special characters",
+//                "614. AP-3078 Import-Property/3rdParty/BI Dependent/Transit-when \"ISO 4 –Masonry Non Combustible Masonry/concrete walls with steel roof –Tilt-up with metal roof – IBC Type IIA\" Value is selected in Construction Type dropdown column, user get validation on importing page.",
+//                "615. AP-2921 Export-Revenue & Liability- Total value is not getting displayed for newly added country row",
+//                "616. AP-3049 RFR- BI Dependent- In view mode Construction Type value get changed and not displayed as other tab",
+//                "617. AP-2920 Revenue & Liability- When user enter values greater than mentioned length then no validation is displayed for Square Footage field",
+//                "618. AP-2802 B.I. Worksheet - CE- Location details getting displayed in BI worksheet CE sheet when there is no location data in property sov",
+//                "619. AP-2788 RFR-WC Exposures- The value entered in Total Payroll (Including RSUs) for Current Policy Year/Total Payroll (Including RSUs) Projected for Policy Year field is missing in review tab",
+//                "620. AP-2739 Inconsistent - Shipment and Product Transit tab - On exporting the Valuation Information field is not retaining the value.",
+//                "621. AP-3180 Causality Exposure: In Revenue & Liability Limits tab, Selected Rest of World from Country dropdown but still displayed the Validation message",
+//                "622. AP-2743 Import - Product Transit sheet - Getting validation message for field Product Packaged when value BreakBulk/bulk is selected",
+//                "623. AP-2706 Transit Flow - Add Products - The red border for No of Segments field does not disappear on entering the value after the inline message to add the No of segments is displayed",
+//                "624. AP-2682 Application - Incorrect validation for year field in Property and 3rd party",
+//                "625. AP-2416 Export - Product Flow - State Header should be State or Province",
+//                "626. AP-2370 Transit-Shipment-Shipment Terms- Information icon for Shipment Terms row is missing",
+//                "627. AP-2367 Export - Shipment Exposure - Total % - No validations are displayed when Total % is more than or less than 100 %",
+//                "628. AP-2549 Import - Revenue & Liability Limits - Incorrect Column order displayed in the validation message during import",
+//                "629. AP-2455 Export - Transit Loc - Numbers are displayed along with Header names",
+//                "630. AP-2443 Export - BI Dependent - Zip Code / Postal Code should be ZIP / Postal Code",
+//                "631. AP-2440 Export - BI Dependent - $ symbol not diplsyaed for currency fields Annual Revenue Loss and CBI exposure with available inventory",
+//                "632. AP-2435 BI Depedent - United States is not displayed as defualt country",
+//                "633. AP-3050 Import- Multi Location BI Worksheet- Formula Values are not getting imported in application",
+//                "634. AP-2663 Export - Shipment Exposure - Continents list is not exporting when empty shipment Exposure tab is exported",
+//                "635. AP-2541 Transit - Product Flow - On Adding Product by clicking on Add product(s) button, For these rows the Annual  Value Shipped field for each individual row is not getting updated.",
+//                "636. AP-2365 Export-Transit-Shipment tab - Questionaire - Question 1 -Response - Other - the Text displayed for other option is not displayed properly",
+//                "637. AP-3054 RFR- Property/Property 3rd party/Transit loc -Clone record RFR data is not getting displayed for some columns",
+//                "638. AP-2935 Import Version 1 - Revenue & Liability Limits - data not importing, getting Import DataValidation Failed message on import",
+//                "639. AP-2693 Version 1 - Import - Non-Owned Quest. - The data of Version 1 for Non-Owned Quest. sheet is not importing",
+//                "640. AP-2691 Version 1 - Import -Few values in Property(SOV) are not importing and the total value is not matching the total in the excel for property(SOV).",
+//                "641. AP-2542 Export- On exported file BI worksheet sheets displayed even property is not selected in Renewal type field on general information page in application"
         );
 		// Get the Logger and Configuration details
 		logger = LogManager.getLogger("WebTest");
@@ -1715,7 +1825,7 @@ public class WebTest {
 
                                     case "generateautoitfile":
                                     try{
-                                        excelOperation.createAutoItScript(sheetName,autoItData,testAction.action.fieldValue);
+                                        excelOperation.writeDataUsingAutoItScript(sheetName,autoItData,testAction.action.fieldValue);
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }
@@ -1784,7 +1894,7 @@ public class WebTest {
 
                                 case "deletesheetautoitfile":
                                     try{
-                                        excelOperation.removeFromAutoItScript(sheetName,testAction.action.fieldValue);
+                                        excelOperation.removeExcelSheetUsingAutoItScript(sheetName,testAction.action.fieldValue);
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }
@@ -1795,7 +1905,7 @@ public class WebTest {
 
                                 case "addsheetautoitfile":
                                     try{
-                                        excelOperation.addSheetFromAutoItScript(sheetName,testAction.action.fieldValue);
+                                        excelOperation.addExcelSheetUsingAutoItScript(sheetName,testAction.action.fieldValue);
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }
@@ -1809,7 +1919,7 @@ public class WebTest {
                                            excelSheetName = StringUtils.substringBetween(testAction.action.fieldValue, "(", ",").trim();
                                            rowNumberOfSheet = Integer.parseInt(StringUtils.substringBetween(testAction.action.fieldValue, ",", ")").trim());
                                         }
-                                        excelOperation.addRowInSheetFromAutoItScript(sheetName,excelSheetName,rowNumberOfSheet);
+                                        excelOperation.addRowInSheetUsingAutoItScript(sheetName,excelSheetName,rowNumberOfSheet);
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }
