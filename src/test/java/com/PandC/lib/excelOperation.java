@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.awt.datatransfer.StringSelection;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -68,6 +69,13 @@ public class excelOperation {
         return Integer.parseInt(num.toString());
     }
 
+    /**
+     * Read data from excel file
+     *
+     * @param fieldValue
+     * @return cell value of excel sheet
+     * @throws IOException
+     */
     public static String readDataFromExcel(String fieldValue) throws IOException{
 
         config = new Configuration();
@@ -123,6 +131,13 @@ public class excelOperation {
         return sActualValue;
     }
 
+    /**
+     * Read error message from excel file
+     *
+     * @param fieldName
+     * @return
+     * @throws IOException
+     */
     public static String getErrorMessage(String fieldName) throws IOException {
 
         String excelName;
@@ -180,6 +195,13 @@ public class excelOperation {
         return errorMessage;
     }
 
+    /**
+     * Read formula from excel sheet
+     *
+     * @param fieldName
+     * @return cell formula from excel tab
+     * @throws IOException
+     */
     public static String getFormula(String fieldName) throws IOException {
         String excelName;
         String sheetName;
@@ -237,42 +259,225 @@ public class excelOperation {
         return formula;
     }
 
-    public static void createAutoItScript(String sheetName,Map<String,String> data,String excelFileName) throws FileNotFoundException, UnsupportedEncodingException {
-        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
-        String excelFile=System.getProperty("user.home")
-                + "\\Downloads\\" + excelFileName;
+    /**
+     * Generate AutoIt script for write data in excel sheet
+     *
+     * @param sheetName
+     * @param data
+     * @param excelFileName
+     */
+    public static void writeDataUsingAutoItScript(String sheetName,Map<String,String> data,String excelFileName) {
+        try {
+            String autoItScriptName = Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/", sheetName + ".au3").toString();
+            String excelFile = System.getProperty("user.home")
+                    + "\\Downloads\\" + excelFileName;
 
-        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
-        writer.println("#include <Excel.au3>");
-        writer.println("Local $oExcel_1=_Excel_Open()");
-        writer.println("Local $sWorkbook=\""+excelFile+"\"");
-        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
-        writer.println("Local $sheetName=\""+sheetName+"\"");
-        writer.println("WinActivate($oWorkbook)");
-        for(Map.Entry m:data.entrySet()) {
-            writer.println("_Excel_RangeWrite($oWorkbook,$sheetName,\""+m.getValue()+"\",\""+m.getKey()+"\")");
+            File file = new File(excelFile);
+            if (file.exists()) {
+                System.out.println("File not exist in " + excelFile + " directory");
+            } else {
+                excelFile = Paths.get(System.getProperty("user.dir"), "testdata/ExcelTestData/", sheetName).toString();
+                System.out.println("File exist in " + excelFile + " directory");
+            }
+
+            PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+            writer.println("#include <Excel.au3>");
+            writer.println("Local $oExcel_1=_Excel_Open()");
+            writer.println("Local $sWorkbook=\"" + excelFile + "\"");
+            writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+            writer.println("Local $sheetName=\"" + sheetName + "\"");
+            writer.println("WinActivate($oWorkbook)");
+            for (Map.Entry m : data.entrySet()) {
+                writer.println("_Excel_RangeWrite($oWorkbook,$sheetName,\"" + m.getValue() + "\",\"" + m.getKey() + "\")");
+            }
+            writer.println("_Excel_BookSave($oWorkbook)");
+            writer.println("_Excel_Close($oExcel_1,True,True)");
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        writer.println("_Excel_BookSave($oWorkbook)");
-        writer.println("_Excel_Close($oExcel_1,True,True)");
-
-        writer.close();
     }
 
-    public static void removeFromAutoItScript(String sheetName,String excelFileName) throws FileNotFoundException, UnsupportedEncodingException {
-        String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
-        String excelFile=System.getProperty("user.home")
-                + "\\Downloads\\" + excelFileName;
+    /**
+     * Generate AutoIt script for remove sheet(tab) from excel file
+     *
+     * @param sheetName
+     * @param excelFileName
+     */
+    public static void removeExcelSheetUsingAutoItScript(String sheetName,String excelFileName){
+        try {
+            String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+            String excelFile=System.getProperty("user.home")
+                    + "\\Downloads\\" + excelFileName;
 
-        PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
-        writer.println("#include <Excel.au3>");
-        writer.println("Local $oExcel_1=_Excel_Open()");
-        writer.println("Local $sWorkbook=\""+excelFile+"\"");
-        writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
-        writer.println("Local $sheetName=\""+sheetName+"\"");
-        writer.println("_Excel_SheetDelete($oWorkbook,$sheetName)");
-        writer.println("_Excel_BookSave($oWorkbook)");
-        writer.println("_Excel_Close($oExcel_1,True,True)");
-        writer.close();
+            PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+            writer.println("#include <Excel.au3>");
+            writer.println("Local $oExcel_1=_Excel_Open()");
+            writer.println("Local $sWorkbook=\""+excelFile+"\"");
+            writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+            writer.println("Local $sheetName=\""+sheetName+"\"");
+            writer.println("_Excel_SheetDelete($oWorkbook,$sheetName)");
+            writer.println("_Excel_BookSave($oWorkbook)");
+            writer.println("_Excel_Close($oExcel_1,True,True)");
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Generate AutoIt script for add sheet(tab) in excel file
+     *
+     * @param sheetName
+     * @param excelFileName
+     */
+    public static void addExcelSheetUsingAutoItScript(String sheetName,String excelFileName){
+        try {
+            String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+            String excelFile=System.getProperty("user.home")
+                    + "\\Downloads\\" + excelFileName;
+
+            PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+            writer.println("#include <Excel.au3>");
+            writer.println("Local $oExcel_1=_Excel_Open()");
+            writer.println("Local $sWorkbook=\""+excelFile+"\"");
+            writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+            writer.println("Local $sheetName=\""+sheetName+"\"");
+            writer.println("_Excel_SheetAdd($oWorkbook,-1, False, 1, $sheetName)");
+            writer.println("_Excel_BookSave($oWorkbook)");
+            writer.println("_Excel_Close($oExcel_1,True,True)");
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Generate AutoIt script for add row in sheet(tab) into excel file
+     *
+     * @param sheetName
+     * @param excelFileName
+     * @param rownumber
+     */
+    public static void addRowInSheetUsingAutoItScript(String sheetName,String excelFileName, int rownumber) {
+        try {
+            String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+            String excelFile=System.getProperty("user.home")
+                    + "\\Downloads\\" + excelFileName;
+
+            PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+            writer.println("#include <Excel.au3>");
+            writer.println("Local $oExcel_1=_Excel_Open()");
+            writer.println("Local $sWorkbook=\""+excelFile+"\"");
+            writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+            writer.println("Local $sheetName=\""+sheetName+"\"");
+            writer.println("$oWorkbook.Sheets($sheetName).Activate");
+            writer.println("_Excel_RangeInsert($oWorkbook.Activesheet,\""+rownumber+":"+rownumber+"\")");
+            writer.println("_Excel_BookSave($oWorkbook)");
+            writer.println("_Excel_Close($oExcel_1,True,True)");
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *  Generate AutoIt script for remove row from sheet(tab) into excel file
+     *
+     * @param sheetName
+     * @param excelFileName
+     * @param rownumber
+     */
+    public static void removeRowInSheetFromAutoItScript(String sheetName,String excelFileName, int rownumber) {
+        try {
+            String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+            String excelFile=System.getProperty("user.home")
+                    + "\\Downloads\\" + excelFileName;
+
+            PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+            writer.println("#include <Excel.au3>");
+            writer.println("Local $oExcel_1=_Excel_Open()");
+            writer.println("Local $sWorkbook=\""+excelFile+"\"");
+            writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+            writer.println("Local $sheetName=\""+sheetName+"\"");
+            writer.println("$oWorkbook.Sheets($sheetName).Activate");
+            writer.println("_Excel_RangeDelete($oWorkbook.Activesheet,\""+rownumber+":"+rownumber+"\")");
+            writer.println("_Excel_BookSave($oWorkbook)");
+            writer.println("_Excel_Close($oExcel_1,True,True)");
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *  Generate AutoIt script for find sheetname from excel file
+     *
+     * @param excelFileName
+     * @param sheetName
+     */
+    public static void findSheetNameUsingAutoItScript(String excelFileName,String sheetName) {
+        try {
+            String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+            String excelFile=System.getProperty("user.home")
+                    + "\\Downloads\\" + excelFileName;
+
+            String generatedFilePath=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/AutoItGeneratedFile.txt").toString();
+
+            PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+            writer.println("#include <Excel.au3>");
+            writer.println("Local $oExcel_1=_Excel_Open()");
+            writer.println("Local $sWorkbook=\""+excelFile+"\"");
+            writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+            writer.println("Local $sheetName=\""+sheetName+"\"");
+            writer.println("Local $aWorkSheets = _Excel_SheetList($oWorkbook)");
+            writer.println("FileDelete(\""+generatedFilePath+"\")");
+            writer.println("Local $sSearch = $sheetName");
+            writer.println("Local $sColumn = 0");
+            writer.println("$sColumn = Int($sColumn)");
+            writer.println("Local $iIndex = _ArraySearch($aWorkSheets, $sSearch, 0, 0, 0, 1, 1, $sColumn)");
+            writer.println("If @error Then");
+            writer.println("FileWrite(\""+generatedFilePath+"\",'\"' & $sSearch & '\" was not found')");
+            writer.println("Else");
+            writer.println("FileWrite(\""+generatedFilePath+"\",'\"' & $sSearch & '\" was not found')");
+            writer.println("EndIf");
+            writer.println("_Excel_Close($oExcel_1,True,True)");
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Read cell comments from excel file
+     *
+     * @param excelFileName
+     * @param sheetName
+     * @param cell
+     */
+    public static  void readCommentsExcel(String excelFileName,String sheetName,String cell){
+        try {
+            String autoItScriptName=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/",sheetName+".au3").toString();
+            String excelFile=System.getProperty("user.home")
+                    + "\\Downloads\\" + excelFileName;
+
+            String generatedFilePath=Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/AutoItGeneratedFile.txt").toString();
+
+            PrintWriter writer = new PrintWriter(autoItScriptName, "UTF-8");
+            writer.println("#include <Excel.au3>");
+            writer.println("Local $oExcel_1=_Excel_Open()");
+            writer.println("Local $sWorkbook=\""+excelFile+"\"");
+            writer.println("Local $oWorkbook=_Excel_BookOpen($oExcel_1,$sWorkbook)");
+            writer.println("Local $sheetName=\""+sheetName+"\"");
+            writer.println("$oWorkbook.Sheets(\""+sheetName+"\").Activate");
+            writer.println("$cmt = $oWorkbook.ActiveSheet.Range(\""+cell+":"+cell+"\").Comment.text");
+            writer.println("ConsoleWrite(@crlf&\"This is a comment: \" &$cmt&@crlf)");
+            writer.println("FileDelete(\""+generatedFilePath+"\")");
+            writer.println("FileWrite(\""+generatedFilePath+"\",$cmt)");
+            writer.println("_Excel_Close($oExcel_1,True,True)");
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
