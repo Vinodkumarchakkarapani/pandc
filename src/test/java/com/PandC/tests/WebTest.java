@@ -91,7 +91,7 @@ public class WebTest {
 
         List<String> listOfTCstoExecute = Arrays.asList(
 
-                "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
+            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
 
                 //General Information Page
 //            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
@@ -255,6 +255,7 @@ public class WebTest {
 //            "154. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is lesser than 0, the Annual Business Income Total calculation formula is implemented properly",
 //            "155. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is greater than 0, the Annual Business Income Total calculation formula is implemented properly",
 //            "156. Verify user is displayed Add Location(s) from SOV button",
+//            "156.1 . BI Worksheet - CE - Handle empty records for \"Add Location(s) from SOV \" button",
 //            "157. Verify user is displayed a popup on clicking Add Location(s) from SOV button",
 //            "158. Verify user can close the popup by clicking on close(x) icon or on Cancel button",
 //            "159. Verify the address displayed in the Add location(s) from SOV popup are displayed in the following order with comma separation. Location Name, Building Number, Street Address, City, State ZIP / Postal Code, Country",
@@ -321,7 +322,7 @@ public class WebTest {
 //            "219. Enter valid details in BI Dependent tab and on clicking Continue it should navigate to Crime tab",
 //
 //            //Crime
-//            "220. PS 062- To verify user is able to mark Crime Page as as Not Applicable",
+//            "220. PS062 - To verify user is able to mark Crime Page as as Not Applicable"
 //            "221. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //            "222. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to ERISA / 401(K) Plan tab",
 //
@@ -405,6 +406,7 @@ public class WebTest {
 //            "287. Verify user is displayed the Total at the end of column Annual value Shipped. The value should be Sum of Annual value shipped ( all rows)",
 //            "289. Verify The error message is displayed for field Package Protection Duration(hrs) when invalid value is entered. Error Message - Enter only whole number",
 //            "290. Verify user is able to enter the details in Product Flow tab",
+//            "290.1. Product Flow - Handle empty records for \"Add Products\" button",
 //            "291. Verify the error message when user clicks on Add Selected button without selecting any Product in Add Products popup. Error message : Select at least one product to add",
 //            "292. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
 //            "293. Verify the error message when user selects the product but does not enter value for No of segments in the popup Error message : Enter \"No of Segments\" for selected products",
@@ -738,6 +740,9 @@ public class WebTest {
 //            "569. AP-1099 Export RFR- Validations are not present for draft status downloaded RFR",
 //            "570. AP-1321 Export RFR- Wokers Comp- \"Total Payroll (Including RSUs)for Current Policy Year\" and \"Total Payroll (Including RSUs) Projected for Policy Year\" is editable fields in excel workbook",
 //            "571. AP-1334 Clone Feature- Incorrect alert message is displaying for expired policy",
+//            "571.1. AP-3056 User had not selected Workers Comp as coverage, while importing back system is throwing an error saying WC and Supplemental app is missing.",
+//            "571.2. AP-3063 In Worker comp, for Annual remuneration field formatting properly for currency value while binding first time",
+//            "571.3. AP-2687 P&C || RFR Listing Page : Two records are getting created.",
 //
 //            //Phase-2 [Defects]
 //            "572. AP-3013 RFR- Single BI Worksheet- User is not able to Navigate to other tab from Single BI worksheet",
@@ -803,7 +808,7 @@ public class WebTest {
 //            "632. AP-2435 BI Depedent - United States is not displayed as defualt country",
 //            "633. AP-3050 Import- Multi Location BI Worksheet- Formula Values are not getting imported in application",
 //            "634. AP-2663 Export - Shipment Exposure - Continents list is not exporting when empty shipment Exposure tab is exported",
-//            "635. AP-2541 Transit - Product Flow - On Adding Product by clicking on Add product(s) button, For these rows the Annual  Value Shipped field for each individual row is not getting updated.",
+//            "635. AP-2541 Transit - Product Flow - On Adding Product by clicking on Add product(s) button, For these rows the Annual Value Shipped field for each individual row is not getting updated.",
 //            "636. AP-2365 Export-Transit-Shipment tab - Questionaire - Question 1 -Response - Other - the Text displayed for other option is not displayed properly",
 //            "637. AP-3054 RFR- Property/Property 3rd party/Transit loc -Clone record RFR data is not getting displayed for some columns",
 //            "638. AP-2935 Import Version 1 - Revenue & Liability Limits - data not importing, getting Import DataValidation Failed message on import",
@@ -819,7 +824,31 @@ public class WebTest {
 //            "648. PC-3407: Summary Of Changes - Import - Getting header Validation message for Revenue & Liability Limits and Dependent BI Sheets",
 //            "649. PC-3160: Summary of Exposure Changes: Exposure Topic - In Named Insured Tab Exported excel sheet doesn’t showing updated data",
 //            "650. PC-3718 Clone RFR: Import button is not displayed once select Expired date from Current Term filed",
-//            "651. PC-3719 Revenue & Liability Limits || 0 value replace with N/A for Product Revenue and Sales/Service Revenues fields when navigated back to Revenue & Liability Limits tab from Product Liability tab"
+//            "651. PC-3719 Revenue & Liability Limits || 0 value replace with N/A for Product Revenue and Sales/Service Revenues fields when navigated back to Revenue & Liability Limits tab from Product Liability tab",
+//            "652. AP-2656 Export- Property (SOV)/Property (SOV) - 3rd Party/Shipment Terms/Transit Location Inventory- Note is not displayed on column header of \"Year Built\",\"# of Stories\" and \"Shipment Terms\" in excel file sheet",
+//            "653. AP-1848 Foreign tab - International Revenue & Payroll - Table not displayed in mentioned order",
+//            "654. AP-2363 Transit-Shipment tab - Coverage Notes Accepting more than 1000 characters",
+//            "655. AP-3059 RFR-Multi BI worksheet- The field \"Exposed BI w/o OP and with Continuing Value\" is displaying value zero on editing any values after navigated back to tab",
+//            "656. AP-2609 Export- B.I.(Multi-location) - STD- Exposed BI w/o OP-Header name is incorrect displayed in excel file",
+//            "657. AP-2700 P&C || Export RFR || Shipment : When Val. Information = Other is selected. Please explain text is not populating on the excel. The same issue is occurring on the Product Transit sheet as well.",
+//            "658. AP-3035 RFR-Property 3rd Party SOV was not set to default to Not Applicable when record is cloned and selected Life Science as P&C Practice",
+//            "659. AP-3057 Property was not selected, during the import system is throwing all the sheets pertain to Property tab as missing.",
+//            "700. AP-2729 P&C || RFR :User selected Other in the Valuation Information in Shipment Exposure and enter text for other. And later user changed it to Standard and Exported. In the exported document, the value entered for Other and Standard text both appeared",
+//            "701. AP-2731 P&C || RFR : In the Shipment Exposure, user was entering information for By Continents and click on Continue, the data got saved, but when they came back to the screen and select By Countries and clicked continue, the user got an error message",
+//            "702. AP-3060 Nevro - Property SOV, CBI/Dependent SOV",
+//            "703. AP-2714 Product Liability - The Total label is overriding as a line value",
+//            "704. AP-2713 Transit Location Inventory - Data is overriding â€“ The value total from the excel is getting stored as a value on the line item.",
+//            "705. AP-3066 RFR- Multi BI worksheet - Multi BI worksheet data is not getting displayed on clone RFR",
+//            "706. AP-3067 RFR- Product Flow- On entering correct country in country name column, user getting validation error but after clear and re entering last word validation error is not display",
+//            "707. AP-3068 RFR- Transit/Cargo/Stock Throughput- \"Transit Location Inventory\" header is not displayed properly after updating any fields and navigate back to tab",
+//            "708. AP-2717 Property (sov) the columns which are added on the property sov are mismatched when reviewed from the Review tab.",
+//            "709. AP-2677 P&C || RFR : On the BI worksheet, when user tried to link the location from SOV. Initially, it got mapped. But when user toggled to the other tab and came. The data is missing.",
+//            "710. AP-2679 P&C || RFR || Property Sov : Continue button and Save & close buttons are missing when revisiting the tab after Save & close the tab, But user found the buttons appearing when navigate from different tab to SOV tab.",
+//            "711. AP-2709 Import RFR - Property SOV, system expecting values to be present in the workbook in the Owned/Leased column during import.",
+//            "712. AP-2699 P&C || RFR || Shipment: Total label should be removed from the \"Principal Countries Shipped\" and \"Conveyance Used\" sections",
+//            "713. AP-2721 P&C || Import RFR : System is reading Row 0 and throws validation error for Shipment Exposure sheet â€“ Need to be fixed.",
+//            "714. AP-2711 RFR - BI Worksheet data is not shown for review",
+//            "715. AP-2730 P&C || RFR : Today the user were testing only the Shipment Exposure, when they exported the document and imported back, user got an error for property SOV"
         );
 
         // Get the Logger and Configuration details
@@ -1426,7 +1455,6 @@ public class WebTest {
                                 break;
 
                             case "uploadfile":
-
                                 if (testAction.action.fieldValue.trim().contains(".")) {
                                     String fileName = System.getProperty("user.dir") + "\\testdata\\filesUpload\\" + testAction.action.fieldValue;
                                     Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).sendKeys(fileName);
@@ -1814,7 +1842,7 @@ public class WebTest {
                                 break;
 
                             case "validateerrormessage":
-                                String errorValue = com.PandC.lib.excelOperation.getErrorMessage(testAction.action.fieldName);
+                                String errorValue = excelOperation.getErrorMessage(testAction.action.fieldName);
                                 try {
                                     Assert.assertTrue(
                                             errorValue.equals(testAction.action.fieldValue),
@@ -1827,7 +1855,7 @@ public class WebTest {
                                 break;
 
                             case "validateformula":
-                                String formulaValue = com.PandC.lib.excelOperation.getFormula(testAction.action.fieldName);
+                                String formulaValue = excelOperation.getFormula(testAction.action.fieldName);
 
                                 try {
                                     Assert.assertTrue(
@@ -1901,6 +1929,7 @@ public class WebTest {
                                 if (testAction.action.fieldValue.contains("readDataFile")) {
                                     String writeData = excelOperation.readDataFromExcel(testAction.action.fieldValue);
                                     autoItData.put(testAction.action.fieldName, writeData);
+
                                 } else {
                                     sheetName = testAction.action.fieldValue;
                                 }
@@ -1991,7 +2020,7 @@ public class WebTest {
                             case "readdatafromtextfile":
                                 try {
                                     String generatedFilePath = Paths.get(System.getProperty("user.dir"), "testdata/AutoItFiles/" + testAction.action.fieldName).toString();
-                                    sText = new String(Files.readAllBytes(Paths.get(generatedFilePath)));
+                                    sText = new String(Files.readAllBytes(Paths.get(generatedFilePath))).trim();
                                     if (!sText.equals(testAction.action.fieldValue)) {
                                         stepResult.status = "Fail";
                                         stepResult.actualResult = "Data (" + sText + ")" +
