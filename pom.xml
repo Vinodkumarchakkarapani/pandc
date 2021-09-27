@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd https://mvnrepository.com/artifact/net.lightbody.bmp/browsermob-legacy" >
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd https://mvnrepository.com/artifact/net.lightbody.bmp/browsermob-legacy">
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,9 +24,11 @@
             <url>https://maven.pkg.github.com/periscope-tech/QViz.SDK</url>
             <releases>
                 <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
             </releases>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
@@ -43,7 +45,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-<!--                <version>3.0.0-M3</version>-->
+                <!--                <version>3.0.0-M3</version>-->
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -62,20 +64,31 @@
                         <redirectTestOutputToFile>true</redirectTestOutputToFile>
 
                     </systemPropertyVariables>
-<!--                    <suiteXmlFiles>-->
-<!--                        <suiteXmlFile>src\test\java\woodruff360UI\testsuites/regression.xml</suiteXmlFile>-->
-<!--                    </suiteXmlFiles>-->
+                    <!--                    <suiteXmlFiles>-->
+                    <!--                        <suiteXmlFile>src\test\java\woodruff360UI\testsuites/regression.xml</suiteXmlFile>-->
+                    <!--                    </suiteXmlFiles>-->
 
                 </configuration>
             </plugin>
         </plugins>
     </build>
     <dependencies>
+        <!--        <dependency>-->
+        <!--                <groupId>com.periscope</groupId>-->
+        <!--                <artifactId>qviz</artifactId>-->
+        <!--                <version>1.0.2</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.periscope.QViz</groupId>-->
+        <!--            <artifactId>qviz</artifactId>-->
+        <!--            <version>1.0.2</version>-->
+        <!--        </dependency>-->
         <dependency>
-                <groupId>com.periscope</groupId>
-                <artifactId>QViz</artifactId>
-                <version>1.0.0</version>
+            <groupId>com.periscope.QViz</groupId>
+            <artifactId>qviz</artifactId>
+            <version>1.0.1</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -134,22 +147,22 @@
             <scope>test</scope>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.junit.platform</groupId>-->
-            <!--<artifactId>junit-platform-launcher</artifactId>-->
-            <!--<version>1.5.2</version>-->
-            <!--<scope>test</scope>-->
+        <!--<groupId>org.junit.platform</groupId>-->
+        <!--<artifactId>junit-platform-launcher</artifactId>-->
+        <!--<version>1.5.2</version>-->
+        <!--<scope>test</scope>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.junit.jupiter</groupId>-->
-            <!--<artifactId>junit-jupiter-engine</artifactId>-->
-            <!--<version>${junit.jupiter.version}</version>-->
-            <!--<scope>test</scope>-->
+        <!--<groupId>org.junit.jupiter</groupId>-->
+        <!--<artifactId>junit-jupiter-engine</artifactId>-->
+        <!--<version>${junit.jupiter.version}</version>-->
+        <!--<scope>test</scope>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.junit.jupiter</groupId>-->
-            <!--<artifactId>junit-jupiter-api</artifactId>-->
-            <!--<version>${junit.jupiter.version}</version>-->
-            <!--<scope>test</scope>-->
+        <!--<groupId>org.junit.jupiter</groupId>-->
+        <!--<artifactId>junit-jupiter-api</artifactId>-->
+        <!--<version>${junit.jupiter.version}</version>-->
+        <!--<scope>test</scope>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.testng</groupId>
@@ -207,6 +220,11 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.23</version>
         </dependency>
     </dependencies>
 

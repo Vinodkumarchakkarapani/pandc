@@ -15,6 +15,16 @@ import com.PandC.lib.Configuration;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.openqa.selenium.By;
+
+import java.net.URL;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+import org.openqa.selenium.WebDriver;
 //import org.junit.jupiter.api.AfterAll;
 //import org.junit.jupiter.api.BeforeAll;
 //import org.junit.jupiter.api.DynamicTest;
@@ -31,6 +41,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.context.expression.StandardBeanExpressionResolver;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -79,9 +90,13 @@ public class WebTest {
     private static QVizClient qifClient;
     private static Project project1;
     private static Project project2;
+    private static Project project3;
+    private static Project project4;
     private static List<TestCaseGUI> guiTestCases = new ArrayList<>();
     private static List<TestCaseGUI> guiTestCases_performance_Tests = new ArrayList<>();
     private static List<TestCaseGUI> guiTestCases_UIValidation_Tests = new ArrayList<>();
+    String Exportdatetime= "";
+    String Importdatetime= "";
 
     @BeforeSuite
     static void
@@ -91,9 +106,9 @@ public class WebTest {
 
         List<String> listOfTCstoExecute = Arrays.asList(
 
-            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
+//            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page"
 
-                //General Information Page
+//                //General Information Page - P&C
 //            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
 //            "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
 //            "3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
@@ -193,8 +208,8 @@ public class WebTest {
 //            "93. In Property sov for Fire Protection, If P&C Practice is Life Science - Verify existing default fields is marked selected and disabled, the following fields are-Fire Extinguishers, Thermal Barriers, Hydrant, Fire Department",
 //            "94. In Property (SOV) for \"Security\", If P&C Practice is \"Life Science\" - Verify existing default fields is marked selected and disabled, the following fields are \"Gated Campus\", \"CC TV\", \"Key Card Access\"",
 //            "95. In Property (SOV), Verify user is able to enable selected columns in the Property(SOV) table by clicking on \"apply\" button and on clicking continue button it should navigate to Property SOV 3rd Party",
-//
-//            //Property (SOV) 3rd party
+////
+////            //Property (SOV) 3rd party
 //            "96. Verify add a new tab called Property (SOV) – 3rd Party next to Property (SOV) tab.",
 //            "97. In Property (SOV) – 3rd Party, To verify user is able to mark tab as Not Applicable",
 //            "98. In Property SOV - 3rd Party, Verify user is able to add row in Property SOV - 3rd Party by clicking on add Row",
@@ -255,7 +270,7 @@ public class WebTest {
 //            "154. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is lesser than 0, the Annual Business Income Total calculation formula is implemented properly",
 //            "155. Verify when the value entered in the Annual Net Profit/(Net Loss) Before Tax is greater than 0, the Annual Business Income Total calculation formula is implemented properly",
 //            "156. Verify user is displayed Add Location(s) from SOV button",
-//            "156.1 . BI Worksheet - CE - Handle empty records for \"Add Location(s) from SOV \" button",
+//            "156.1. BI Worksheet - CE - Handle empty records for \"Add Location(s) from SOV \" button",
 //            "157. Verify user is displayed a popup on clicking Add Location(s) from SOV button",
 //            "158. Verify user can close the popup by clicking on close(x) icon or on Cancel button",
 //            "159. Verify the address displayed in the Add location(s) from SOV popup are displayed in the following order with comma separation. Location Name, Building Number, Street Address, City, State ZIP / Postal Code, Country",
@@ -290,7 +305,7 @@ public class WebTest {
 //            "188. Check the radio option for Multi Location BI Worksheet and verify user is displayed Multi Location BI Worksheet",
 //            "190. (Multi Location BI) Exposed BI Incl. OP - Verify the value calculated is as per the Formula and the value is currnecy formatted and rounded off to 2 decimal places Formula : Exposed BI Incl. OP = ((Exposed BI w/o OP sum(+) [(Ordinary Payroll - annual payroll and benefits for non-exempt workers ) TIMES(*) (Number of Days Coverage of Ordinary Payroll Desired (0-365 days) DIVIDED(/) 365))]",
 //            "191. Verify the field validation for all the fields in the Multi Location BI Worksheet",
-//            "192. Verify user is able to enter the details in the Multi Location BI Worksheet and on clicking Continue it should navigate to BI Dependent",
+//            "192. Verify user is able to enter the details in the Multi Location BI Worksheet and on clicking Continue it should navigate to BI Dependent"
 //
 //            //Contingent BI / Dependent
 //            "193. BI Dependent: Verify \"Exposed CBI Value” column name if \"Estimated time until listed Process or Supplier is fully restored (months)\" filed value is less than and grater then 12",
@@ -322,7 +337,7 @@ public class WebTest {
 //            "219. Enter valid details in BI Dependent tab and on clicking Continue it should navigate to Crime tab",
 //
 //            //Crime
-//            "220. PS062 - To verify user is able to mark Crime Page as as Not Applicable"
+//            "220. PS062 - To verify user is able to mark Crime Page as as Not Applicable",
 //            "221. PS063 - To verify user is able to enter the details in Program structure in Crime Tab",
 //            "222. PS066 - To verify user is able to enter the details in Coverage requirements in Crime Tab and Navigate to ERISA / 401(K) Plan tab",
 //
@@ -418,7 +433,7 @@ public class WebTest {
 //            "299. Verify User is directed back to Renewal List page on clicking save and close button",
 //            "300. Verify user is navigated to Transit Loc. Inv tab by clicking on Continue button",
 //
-//            //Transit- Location Inventory
+////          //  Transit- Location Inventory
 //            "301. Verify user is displayed the title Transit Location Inventory Below the Not applicable Check box.",
 //            "302. Verify user is displayed the mentioned columns as default which will not be configurable from Customize columns",
 //            "303. Verify User is displayed Show/Hide Column(s) label, Clicking on which should display an overlay screen with the list of possible column names",
@@ -464,7 +479,7 @@ public class WebTest {
 //            "337.3. Verify user is able to add a new row by clicking on Add Row and able to enter data in that row",
 //            "337.4. Export the RFR and validate the data in the Exported RFR for Equipment Exposure sheet",
 //            "337.5. Enter Valid Data in Exported RFR for Equipment Exposure sheet",
-//            "337.6. Validate imported file valid data in Equipment Exposure tab in application and navigate to Causality Exposure tab",
+//            "337.6. Validate imported file valid data in Equipment Exposure tab in application and navigate to Causality Exposure tab"
 //
 //            //Revenue & Liability Limits
 //            "338. PS125 - To verify user is able to mark Casualty Exposure - Revenue & Liability Limits tab as Not Applicable",
@@ -628,7 +643,7 @@ public class WebTest {
 //            "461. Verify user is able to Preview the details entered by user for Transit Shipment by clicking on Property in Preview tab",
 //            "462. Verify user is able to Preview the details entered by user for Product Transit by clicking on Property in Preview tab",
 //            "463. Verify user is able to Preview the details entered by user for Product Flow by clicking on Property in Preview tab",
-//            "464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab",
+//            "464. Verify user is able to Preview the details entered by user for Transit Location Inventory by clicking on Property in Preview tab"
 //
 //            //Export
 //            "465. Verify user is able to enter the details in the tabs related to life science P&C Practice and export the RFR",
@@ -690,7 +705,7 @@ public class WebTest {
 //            "521. PS291 - Validate data in WC Supplemental sheet of Exported excel sheet",
 //            "522. Validate Error Message in International Revenue & Payroll sheet of Exported excel sheet",
 //            "523. Validate Formula in International Revenue & Payroll sheet of Exported excel sheet",
-//            "524. Validate data in International Revenue & Payroll sheet of Exported excel sheet",
+//            "524. Validate data in International Revenue & Payroll sheet of Exported excel sheet"
 //
 //            //Import
 //            "525. Write valid data in all sheets of Exported excel file using Auto It",
@@ -703,7 +718,7 @@ public class WebTest {
 //            "532. Write invalid data when P&C is Life Science in all sheets of Exported excel file using Auto It and import it",
 //            "533. Verify the system performs the validation for all the active sheets in RFR excel and highlights the missing sheets and display an Alert “<<SHEET NAME>> is missing from the workbook.” should be displayed next to progress bar",
 //            "534. Verify on importing the file, workbook label and status is not displayed when the tab is marked as not applicable",
-//            "535. On Imported workbook then the status is \"Workbook Imported\" and display the imported workbook date in “Status Updated on” column",
+//            "535. On Imported workbook then the status is \"Workbook Imported\" and display the imported workbook date in “Status Updated on” column"
 //
 //            //Phase-1 [Defects]
 //            "536. AP-690 WC Exposures Tab-Corporate Officers Listing -Classification Code field-Error tooltip appears on mouse hover even on changing incorrect value to correct one",
@@ -809,7 +824,9 @@ public class WebTest {
 //            "633. AP-3050 Import- Multi Location BI Worksheet- Formula Values are not getting imported in application",
 //            "634. AP-2663 Export - Shipment Exposure - Continents list is not exporting when empty shipment Exposure tab is exported",
 //            "635. AP-2541 Transit - Product Flow - On Adding Product by clicking on Add product(s) button, For these rows the Annual Value Shipped field for each individual row is not getting updated.",
-//            "636. AP-2365 Export-Transit-Shipment tab - Questionaire - Question 1 -Response - Other - the Text displayed for other option is not displayed properly",
+//            "636. AP-2365 Export-Transit-Shipment tab - Questionaire - Question 1 -Response - Other - the Text displayed for other option is not displayed properly"
+
+////                // To be run
 //            "637. AP-3054 RFR- Property/Property 3rd party/Transit loc -Clone record RFR data is not getting displayed for some columns",
 //            "638. AP-2935 Import Version 1 - Revenue & Liability Limits - data not importing, getting Import DataValidation Failed message on import",
 //            "639. AP-2693 Version 1 - Import - Non-Owned Quest. - The data of Version 1 for Non-Owned Quest. sheet is not importing",
@@ -849,7 +866,569 @@ public class WebTest {
 //            "713. AP-2721 P&C || Import RFR : System is reading Row 0 and throws validation error for Shipment Exposure sheet â€“ Need to be fixed.",
 //            "714. AP-2711 RFR - BI Worksheet data is not shown for review",
 //            "715. AP-2730 P&C || RFR : Today the user were testing only the Shipment Exposure, when they exported the document and imported back, user got an error for property SOV"
+//
+
+//            //Demo
+//            "1. PS001 - To verify user navigates to Insurance Renewal List dashboard on clicking Request For Renewal Tile in home page",
+//            "2. PS002 - To verify user is able to navigate back to Home page while clicking the Forms link in the breadcrumb",
+//            "3. PS003 - Verify user is able to search the Renewal records for a particular Account Handler by selecting name of the handler in search",
+//            "4. PS004 - Verify user is able to navigate to next page in the grid by clicking on page number in pagination",
+//            "5. PS007 - Verify user is able to search a record by Name Insured",
+//            "6. PS008 - Verify user is able to search a record by \"Policy From\"",
+//            "7. PS009 - Verify user is able to search a record by \"Policy To\"",
+//            "8. PS005 - Verify Delete option is displayed only for the records in “Draft” status in the grid",
+//            "9. PS013 - Verify user is able to search a record by Status",
+//            "10. PS006 - Verify user is displayed No records Found when no records are present for the searched criteria"
+
+//                SOC - Test cases
+//                "1. Verify user is able to Login Summary of changes",
+//                "2. Verify user is displayed a new tab Summary of Exposure Changes under Review & Generate Workbook next to Import button",
+//                "3. Verify the Summary of Exposure Changes tab is disabled by default till the RFR is imported",
+//                "4. Verify in Summary of changes the system displays the most recent version of the prior renewal record in the left drop-down and the latest version of the current renewal record in the right drop-down.",
+//                "5. Verify If there is no change occurred while comparing the two versions. The system should still show the exposure topic on the list and a message - No key attribute value changes detected.",
+//                "6. Verify exposure change statistical panel is displayed on the top-left side in Summary of Exposure Changes with the following exposures: Gross Sale/ Revenue Property TIV Employee Count Total Payroll Vehicle count Driver count Annual Value shipped",
+//                "7. Verify in exposure change statistical panel - 3 different information should be displayed: 1. The label of exposure 2. The value difference in the selected versions of the exposure 3. The percentage difference in selected versions of the exposure"
+//                "8. Verify for Gross Sale / Revenue - If “Total Values” from the version selected in the right drop down, is as same as the “Total Values” from the version selected in the left drop down then display “No Change” a dash (-) should be displayed",
+//                "9. Verify for Gross Sale / Revenue - If the percentage difference is 0 then “No Change” should be displayed in grey color",
+//                "10. Verify for Property TIV - If the sum of all “Total Values(SOV)” from the version selected in right dropdown, is as same as the the sum of all “Total Values(SOV)” from the version selected in left dropdown then display “-” hypen alone",
+//                "11. Verify for Property TIV - If the percentage difference is 0 then “No Change” should be displayed in grey color",
+//                "12. Verify for Employee Count - If the “sum of all Total # of Employees (Projected)” from the version selected in right dropdown, is as same as the the “sum of all Total # of Employees (Projected)” from the version selected in left dropdown then display “-” hypen alone",
+//                "13. Verify for Employee Count - If the percentage difference is 0 then “No Change” should be displayed in grey color",
+//                "14. Verify for Total Payroll - If the “sum of all Total Payroll (Projected)” from the version selected in right dropdown, is as same as the “sum of all Total Payroll (Projected)” from the version selected in left dropdown then display “-” hypen alone",
+//                "15. Verify for Total Payroll - If the “sum of all Total Payroll (Projected) - If the percentage difference is 0 then “No Change” should be displayed in grey color",
+//                "16. Verify for Vehicle Count - If the “Total Count of Vehicle” from the version selected in right dropdown, is as same as the the “Total Count of Vehicle” from the version selected in the left dropdown then display “-” hypen alone",
+//                "17. Verify for Vehicle Count - If the percentage difference is 0 then “No Change” should be displayed in grey color",
+//                "18. Verify for Driver Count - If the “Total Count of Driver” from the version selected in right dropdown, is as same as the the “Total Count of Driver” from the version selected in the left dropdown then display “-” hypen alone",
+//                "19. Verify for Driver Count - If the percentage difference is 0 then “0%” should be displayed",
+//                "20. Verify for Annual Value Shipped - If the “Total (Total Annual Value Shipped)” from the version selected in right dropdown, is as same as the “Total (Total Annual Value Shipped)” from the version selected in left dropdown then display “-” hypen alone",
+//                "21. Verify for Annual Value Shipped - If the percentage difference is 0 then “No Change” should be displayed in grey color",
+//                "22. Verify for Gross Sale / Revenue - If “Total Values” from the version selected in right dropdown, is greater than the “Total Values” from the version selected in the left dropdown then display “+” plus symbol and value difference",
+//                "23. Verify for Gross Sale / Revenue - If the percentage difference is positive then “+” plus symbol should be displayed",
+//                "24. Verify for Property TIV - If the sum of all “Total Values(SOV)” from the version selected in right dropdown, is greater than the sum of all “Total Values(SOV)” from the version selected in left dropdown then display “+” plus symbol and value difference",
+//                "25. Verify for Property TIV - If the percentage difference is positive then “+” plus symbol should be displayed",
+//                "26. Verify for Employee Count - If the “sum of all Total # of Employees (Projected)” from the version selected in right dropdown, is greater than the “sum of all Total # of Employees (Projected)” from the version selected in left dropdown then display “+” plus symbol and value difference",
+//                "27. Verify for Employee Count - If the percentage difference is positive then “+” plus symbol should be displayed",
+//                "28. Verify for Total Payroll - If the “sum of all Total Payroll (Projected)” from the version selected in right dropdown, is greater than the “sum of all Total Payroll (Projected)” from the version selected in left dropdown then display “+” plus symbol and value difference",
+//                "29. Verify for Total Payroll - If the “sum of all Total Payroll (Projected)” - If the percentage difference is positive then “+” plus symbol should be displayed",
+//                "30. If the “Total Count of Vehicle” from the version selected in right dropdown, is greater than the “Total Count of Vehicle” from the version selected in the left dropdown then display “+” plus symbol and value difference",
+//                "31. Verify for Vehicle Count - If the percentage difference is positive then “+” plus symbol should be displayed",
+//                "32. Verify for Driver Count - If the “Total Count of Driver” from the version selected in right dropdown, is greater than the “Total Count of Driver” from the version selected in the left dropdown then display “+” plus symbol and value difference",
+//                "33. Verify for Driver Count -If the percentage difference is positive then “+” plus symbol should be displayed",
+//                "34. Verify for Annual Value Shipped - If the “Total (Total Annual Value Shipped)” from the version selected in right dropdown, is greater than the “Total (Total Annual Value Shipped)” from the version selected in left dropdown then display “+” plus symbol and value difference",
+//                "35. Verify for Annual Value Shipped - If the percentage difference is positive then “+” plus symbol should be displayed",
+//                "36. Verify user is displayed 2 drop downs for comparing the previous and the latest versions, with labels as Old and New",
+//                "37. Verify user is displayed the following details below the drop won on selecting any version from drop down version details displayed in the syntax <<VERSION# - MODIFIED BY - MODIFIED DATE - VERSION TYPE>>",
+//                "38. Verify User is not able to select same versions in both the drop downs",
+//                "39. Verify user is able to view the Export icon for PDF and Excel",
+//                "40. Verify user is displayed a popup allowing the users to select the exposure topic as required also verify all the exposures are selected by default",
+//                "41. Verify user is displayed 2 options in popup - Summary Level and Detailed Level",
+//                "42. Verify user is able to select only Summary level and uncheck Detailed Level and export the PDF",
+//                "43. Verify the name of the downloaded PDF is in the format - “<<CLIENT_NAME>> - Summary of Changes - View All Changes - <<DATE OF NEW UPLOADED VERSION OF FORMAT MMDDYYYY>>.pdf”",
+//                "44. When Summary Level option is selected and downloaded - verify in the downloaded PDF - view all changes' details should be consolidated into a single PDF for the user",
+//                "45. Verify user is able to select only Detailed level and uncheck Summary Level and export the PDF",
+//                "46. Verify the name of the downloaded PDF is in the format -“<<CLIENT_NAME>> - Summary of Changes - Detailed Level - <<DATE OF NEW UPLOADED VERSION OF FORMAT MMDDYYYY>>.pdf”",
+//                "47. When Detailed Level option is selected and downloaded - verify in the downloaded PDF - all Details' Content should be consolidated into a single PDF for the user",
+//                "48. When both Summary Level and Detailed Level check boxes are selected - On Clicking Export Button - Zip file should be downloaded in following format - <<CLIENT_NAME>> - Summary of Changes - <<DATE OF NEW UPLOADED VERSION OF FORMAT MMDDYYYY>>",
+//                "49. IN Main Summary Area - Verify user is displayed all the Exposure Topics Headers in order in which they appear in the application",
+//                "50. Verify user is able to expand / Collapse the exposure and verify the following information is displayed in collapsed mode: 1. The exposure name 2. The change counts. 3. hyperlink “View All changes” to view all the exposure changes in the pop up",
+//                "51. IN SOC Page - Expand the Named Insureds and verify the following Key Attributes are displayed: 1. New Named Insured Added 2. Named Insured Removed 3. Named Insured Status Changed to Inactive 4. Named Insured Description Of Operations Changed 5. Missing and Duplication of FEIN, Named Insureds Values",
+//                "52. Verify User is displayed the count of new records added in Front of New Named Insured Added along with View Details Link",
+//                "53. Click on View Details for New Named Insureds Added and verify the data",
+//                "54. Verify User is displayed the count of records removed in Front of Named Insured Removed along with View Details Link",
+//                "55. Click on View Details for Named Insureds Removed and verify the data",
+//                "56. Verify the Details of the Named Insured Description Of Operations Changed by clicking on View Details",
+//                "57. Verify if FEIN or Named Insured value is missing or duplicated",
+//                "58. Verify in collapsed mode following information is displayed for Named Insureds: 1. Label Name: Named Insured 2. Counts: i. Display the count of all newly added named insured records ii. Display the count of all named insured records removed iii. Display the sum of both Status change and Description of Operation changes 3. View All Changes",
+//                "59. Click on View All Changes Link and verify user is displayed all the information mentioned in the Details screen clubbed together in one",
+//                "60. Verify user is able to check Total square footage changed",
+//                "61. Verify user is able to click on hyperlink View Details to check Total square footage changed",
+//                "62. Verify user is able to check Totalling value and Percentage of newly added locations",
+//                "63. Verify user is able to click on hyperlink View Details to check Totalling value and Percentage of newly added locations",
+//                "64. Verify user is able to view Totaling and Percentage of Locations Removed.",
+//                "65. Verify user is able to click View Details and check Totaling and Percentage of Locations Removed.",
+//                "66. Verify user is able to check Total Value changed",
+//                "67. Verify user is able to click on hyperlink View Details to check Total Value changed",
+//                "68. Verify User is able to see Missing or Duplicate Locations",
+//                "69. Verify user if user is able to check View Details for Location missing or duplication",
+//                "70. Verify user is able to check the Overall Value changed",
+//                "71. Verify user is able to click on hyperlink View Details to check Overall Value changed",
+//                "72. Verify user is able to click and check View All Changes",
+//                "73. Verify User is able to check New location added in Revenue and Liability tab",
+//                "74. Verify User is able to click on View Details hyperlink and verify data for newly added location",
+//                "75. Verify User is able to check Location Removed in Revenue and Liability tab",
+//                "76. Verify User is able to click on View Details hyperlink and verify data for Location removed",
+//                "77. Verify User is able to check Product revenue value change and percentage for Revenue and Liability tab",
+//                "78. Verify User is able to click on View Details hyperlink to check Product revenue value changes",
+//                "79. Verify User is able to check Sales/Service revenue value for Revenue and Liability tab",
+//                "80. Verify User is able to click on View Details hyperlink to check Sales/Service revenue value changes",
+//                "81. Verify user is able to check U.S Revenue Value Changed.",
+//                "82. Verify User is able to click on View Details hyperlink to check U.S Revenue Value Changed.",
+//                "83. Verify User is able to check International Revenue Value Changed and Percentage",
+//                "84. Verify User is able to click on View Details hyperlink to check International Revenue Value Changed",
+//                "85. Verify user is able to click View all Changes link and check details"
+//                "86. Verify user is able to check Missing or Duplication location in Revenue",
+//                "87. Verify user is able to view Total Annual Value Shipped changed",
+//                "88. Verify user is able to click on View Details hyperlink to view Total Annual Value Shipped Changed",
+//                "89. Verify user is able to view Average Value per Conveyance",
+//                "90. Verify user is able to click on View Details hyperlink to view Average Value per Conveyance",
+//                "91. Verify user is able to view Maximum Value per Conveyance Changed",
+//                "92. Verify user is able to click on View Details hyperlink to view Maximum Value per Conveyance Changed",
+//                "93. Verify User is able to check Vessel Conveyance Used Changed",
+//                "94. Verify user is able to click on View Details hyperlink to view Vessel Conveyance Used Changed",
+//                "95. Verify User is able to check View all Changes in Shipment Exposure tab",
+//                "96. Verify User is able to view newly added location in Transit Location Inv",
+//                "97. Verify User is able to click on View Details hyperlink and verify data for newly added location in Transit Inv",
+//                "98. Verify User is able to remove location in Transit Location Inv",
+//                "99. Verify User is able to click on View Details hyperlink and verify data for removed location in Transit Inv",
+//                "100. Verify user is able to check Total Values(Selling Price) Changed and Percentage",
+//                "101. Verify User is able to click on View Details hyperlink and verify data for Total Values(Selling Price) in Transit Inv",
+//                "102. Verify user is able to check Total Values(Replacement Cost) Changed and Percentage",
+//                "103. Verify User is able to click on View Details hyperlink and verify data for Total Values(Replacement Cost) in Transit Inv",
+//                "104. Verify User is able to see Missing or Duplicate Locations in Transit Loc Inv",
+//                "105. Verify User is able to click on View Details hyperlink and verify missing or duplicated data in Transit Inv",
+//                "106. Verify User is able to check View all Changes in Transit Location Inv Tab",
+//                "107. Verify User is able to check Maximum value shipped per shipment has changed",
+//                "108. Verify User is able to click on View Details hyperlink and verify data for Maximum value shipped per shipment has changed",
+//                "109. Verify User is able to check Overall total (Annual Value Shipped) changed",
+//                "110. Verify User is able to click on View Details hyperlink and verify data for Overall total (Annual Value Shipped) changed",
+//                "111. Verify User is able to check Missing or Duplication data in Product flow tab",
+//                "112. Verify User is able to click on View Details hyperlink and verify data for Missing or Duplication data in Product flow tab",
+//                "113. Verify User is able to check View all Changes in Product Flow Tab"
+//                "114. Verify User is able to check New Driver added in Driver & Auto List tab",
+//                "115. Verify User is able to click on View Details hyperlink and verify data for a newly added driver",
+//                "116. Verify User is able to check removed driver in Driver & Auto List tab",
+//                "117. Verify User is able to click on View Details hyperlink and verify data for a removed driver",
+//                "118. Verify User is able to check Driver(s) Location Changed in Driver & Auto List tab",
+//                "119. Verify User is able to click on View Details hyperlink and verify data for a Driver(s) Location Changed",
+//                "120. Verify User is able to check New Auto added in Driver & Auto List tab",
+//                "121. Verify User is able to click on View Details hyperlink and verify data for a newly added Auto",
+//                "122. Verify User is able to check removed Auto in Driver & Auto List tab",
+//                "123. Verify User is able to click on View Details hyperlink and verify data for a removed Auto",
+//                "124. Verify User is able to check Auto Garage Location Changed in Driver & Auto List tab",
+//                "125. Verify User is able to click on View Details hyperlink and verify data for a Auto(s) garaging Location Changed",
+//                "126. Verify User is able to get records for Missing VIN number or Missing Driver's License",
+//                "127. Verify User is able to click on View Details hyperlink and verify data for Missing or Duplication VIN Number in Autos & Drivers tab",
+//                "128. Verify User is able to click on View Details hyperlink and verify data for Missing or Duplication Driving License in Autos & Drivers tab",
+//                "129. Verify User is able to check View all Changes for Autos & Drivers tab",
+//                "130. Verify User is able to check New Country Added in International Liab Locations tab",
+//                "131. Verify User is able to click on View Details hyperlink and verify data for a newly added location in International Liab Locations",
+//                "132. Verify User is able to check removed country in International Liab Locations tab",
+//                "133. Verify User is able to click on View Details hyperlink and verify data for location removed in International Liab Locations",
+//                "134. Verify User is able to check Payroll value changed for US Nationals",
+//                "135, Verify User is able to click on View Details hyperlink and verify data for Payroll value changed for US Nationals in International Liab Locations",
+//                "136. Verify User is able to check Payroll value changed for Local Nationals",
+//                "137. Verify User is able to click on View Details hyperlink and verify data for Payroll value changed for local Nationals in International Liab Locations",
+//                "138. Verify User is able to check Payroll value changed for 3rd Country Nationals",
+//                "139. Verify User is able to click on View Details hyperlink and verify data for Payroll value changed for 3rd Country Nationals in International Liab Locations",
+//                "140. Verify User is able to check the number of employees changed for US Nationals, Local and 3rd country",
+//                "141. Verify User is able to click on View Details hyperlink and verify data for no of employees value changed for US nationals in International Liab Locations",
+//                "142. Verify User is able to click on View Details hyperlink and verify data for no of employees value changed for Local nationals in International Liab Locations",
+//                "143. Verify User is able to click on View Details hyperlink and verify data for no of employees value changed for 3rd country nationals in International Liab Locations",
+//                "144. Verify User is able to check Duplicate or Missing data in International Liab Locations tab",
+//                "145. Verify User is able to click on View Details hyperlink and verify missing or duplicate data in International Liab Locations",
+//                "146. Verify User is able to check View all Changes for International Liab Locations tab",
+//                "147. Verify User is able to add new location in Dependent BI worksheet",
+//                "148. Verify User is able to click on View Details hyperlink and verify data for a newly added location in Dependent BI",
+//                "149. Verify User is able to remove location in Dependent BI worksheet",
+//                "150. Verify User is able to click on View Details hyperlink and verify data for removed location in Dependent BI",
+//                "151. Verify User is able to check changed location in Dependent BI worksheet",
+//                "152. Verify User is able to click on View Details hyperlink and verify data for changed location in Dependent BI",
+//                "153. Verify User is able to check Duplicate or Missing data in Dependent BI tab",
+//                "154. Verify User is able to click on View Details hyperlink and verify data for missing or duplicate in Dependent BI",
+//                "155. Verify User is able to check View all Changes for Dependent BI tab",
+//                "156. Verify User is able to check BI Value Changed in BI Worksheet - CE",
+//                "157. Verify User is able to click on View Details hyperlink and verify data BI Value Changed in BI Worksheet",
+//                "158. Verify User is able to check Overall BI Value Changed in BI Worksheet - CE",
+//                "159. Verify User is able to click on View Details hyperlink and verify data Overall BI Value Changed in BI Worksheet",
+//                "160. Verify User is able to check Negative value detected for Annual Net Profit/(Net Loss) Before Tax in BI Worksheet - CE",
+//                "161. Verify User is able to click on View Details hyperlink and verify data Negative value detected for Annual Net Profit/(Net Loss) Before Tax in BI Worksheet",
+//                "162. Verify User is able to check View All Changes in BI Worksheet - CE",
+//                "163. Verify User is able to check Overall BI Value Changed in B.I.(Single-location) - STD worksheet",
+//                "164. Verify User is able to check BI Value(Actual) Changed in B.I. (Single location) - STD",
+//                "165. Verify User is able to click on View Details hyperlink and verify data for BI Value(Actual) Changed in B.I. (Single location) - STD",
+//                "166. Verify User is able to check BI Value(Projected) Changed in B.I. (Single location) - STD",
+//                "167. Verify User is able to click on View Details hyperlink and verify data for BI Value(Projected) Changed in B.I. (Single location) - STD",
+//                "168. Verify User is able to check View All Changes in B.I. (Single location) - STD",
+//                "169. Verify User is able to check Overall BI Value Changed in B.I.(Multi-location) - STD worksheet",
+//                "170. Verify User is able to click on View Details hyperlink and verify data Overall BI Value Changed in B.I.(Multi-location) - STD worksheet",
+//                "171. Verify User is able to add new location and check Totalling in B.I.(Multi-location) - STD",
+//                "172. Verify User is able to click on View Details hyperlink and verify data for a newly added location in B.I.(Multi-location) - STD",
+//                "173. Verify User is able to check removed location and check Totalling in B.I.(Multi-location) - STD",
+//                "174. Verify User is able to click on View Details hyperlink and verify data for remove location in B.I.(Multi-location) - STD",
+//                "175. Verify User is able to check BI Value Changed in B.I.(Multi-location) - STD",
+//                "176. Verify User is able to click on View Details hyperlink and verify data for BI value changed in B.I.(Multi-location) - STD",
+//                "177. Verify User is able to check View All Changes in B.I.(Multi-location) - STD worksheet",
+//                "178. Verify User is able to check Newly added State(s)/ Class Code in Workers Comp Tab",
+//                "179. Verify User is able to click on View Details hyperlink and verify data for Newly added State(s)/ Class Code in Workers Comp Tab",
+//                "180. Verify User is able to check removed State(s)/ Class Code in Workers Comp Tab",
+//                "181. Verify User is able to click on View Details hyperlink and verify data for Removed State(s)/ Class Code in Workers Comp Tab",
+//                "182. Verify User is able to check Total Payroll (Including RSUs) Value Changed in Workers Comp Tab",
+//                "183. Verify User is able to check Employee count (Current) changed in Workers Comp Tab",
+//                "184. Verify User is able to check Employee count (Projected) changed in Workers Comp Tab",
+//                "185. Verify User is able to RSU Values(Projected) Changed in Workers Comp Tab",
+//                "186. Verify User is able to RSU Values(Current) Changed in Workers Comp Tab",
+//                "187. Verify User is able to check Total Payroll (Including RSUs) Value (Projected) Changed in Workers Comp Tab",
+//                "188. Verify User is able to check Total Payroll (Including RSUs) Value (Current) Changed in Workers Comp Tab",
+//                "189. Verify User is able to check Duplicate or Missing data in Workers Comp tab",
+//                "190. Verify User is able to click on View Details hyperlink and verify data for missing or duplicate in Workers Comp Tab",
+//                "191. Verify User is able to check View all Changes for Workers Comp tab",
+//                "192. Verify User is able to check Estimated Annual Gross value changed",
+//                "193. Verify User is able to click on View Details hyperlink and verify data for Estimated Annual Gross value changed",
+//                "194. Verify User is able to check New location added without adding values in Product or Sales/Service revenue in Revenue and Liability tab",
+//                "195. Verify user is able to check Total square footage changed for Cloned RFR",
+//                "196. Verify user is able to see In Revenue & Liability Tab, Replacements and Deleted messages are being displayed even after adding and deleted new Content",
+//                "197. Verify User is able to able to compare Different BI Worksheet in BI Worksheet",
+//                "198. Verify the SOC information for each tab should be displayed in Seperate sheets in the Exported excel.",
+//                "199. Verify The Location Linked with SOV can be Displayed in the the SOC page"
+
+
+//   ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//                //  CLAIMS - Done
+//                "11. Verify user is able to view the Review Tab in Claim detail screen"
+//                "300.1. Verify The “Review” tab is visible for all Claim Practices - Managing Liability, Property and Casualty, Workers Compensation"
+//
+//                 //Claim File Review - Done
+//                "12. Verify On selecting the “Review” tab, the “Claim File Review” details in XXXX should be displayed",
+//                "13. Verify Review tab displayed in autoselected on submitting at least one Review or any detail was added to the Review Report section (Parties, Allegation, Policies, or Recommendation).",
+//                "14. “Claim File Review” section, Verify user is displayed \"Assigned To ''Multiselect Dropdown field with dropdrown values (list of all Claim Consultants, Claims Intake Coordinator (CICs ), Claim Coverage Manager(CCM) and Claim Admin)",
+//                "18. Verify email address of selected users should be included in the “To” field while sending the email post clicking on \"Submit Review\".",
+//                "19. Verify user is displayed error alert message in the popup and filed get highlighted in red- \"Assigned To value is mandatory. Select at least one value from the dropdown\". When user clicks on \"Submit Review\" button without selecting the value in mandatory field",
+//                "22. Verify user is displayed \"Review Description\" Text Editor field",
+//                "23. Verify user is able to enter 2500 characters Alphanumeric (includes Special Characters) in Review Description Field.",
+//                "24. Verify user is displayed \"Severity'' drop down field with values: (Normal, Urgent)",
+//                "25. Verify user is displayed \"Severity\" dropdown field with default value of Normal",
+//                "26. Verify user is able to select dropdown values of Severity field.",
+//                "27. Verify user is displayed \"Review Status\" dropdown field with default value of Open",
+//                "28. Verify user is displayed \"Review Status'' drop down field with values: (Open, Completed)",
+//                "29. Verify user is able to select dropdown values of Review Status field.",
+//                "30. Verify user is displayed checkbox field label as \"Attach Review\"",
+//                "31. Verify On selecting the Attach Review checkbox, the pdf downloadable review report should get attached",
+//                "32. Verify Attach Review checkbox field should be in the unselected mode by default",
+//                "33. Verify user is able to submit the Claim file Review by clicking on the Submit Review Button and an email should be sent to the configured user.",
+//                "34. On successfull email sent, validate the Alert popup displayed with title - Success",
+//                "35. Verify user is able to close successful email sent alert pop up on clicking \"OK\" button",
+//                "38. Verify user is able to view all claim reviews on the right side of the window under Section Title: Review History",
+//                "39. Verify user is able to view top 3 recent review logs with details",
+//                "40. Validate Review history details (Date Section,Review Status,Review History Title, Review Message, Attachment)",
+//                "41. Verify if multiple users are selected then display the first user name followed by the count of remaining ) Eg: Jesse Attix assigned to Darren Cartwright+2 (refer image in left)",
+//                "42. Verify on hovering “plus count icon” display other names in comma separated format in the tooltip. (Eg: Darren White, Alex Attis) for Review History Title",
+//                "43. Verify user should display two lines of message entered in the “Review Description” field for Review Message",
+//                "44. Verify If the message goes beyond two lines user is displayed a “more” hyperlink for review message",
+//                "45. Verify user open the full message and display in the same section on clicking “more” hyperlink For Review message",
+//                "46. Verify If “Review Report” is attached while submitting the claim then submitted report should be displayed below the review message",
+//                "47. Verify user is able to download the review report submitted by clicking on the document name hyperlink"
+//
+//                //  -------------- 9.0 Preview All Tab Changes ------------------
+//                "268. Verify if the \"Preview\" tab is available in the left tab of the create claim",
+//                "269. Verify the various sections in the \"Preview\" tab",
+//                "294. Verify if data is displayed in the \"Review History\" section"
+//
+//                    Download Review Report - Done
+//                "48. Verify User is redirect to new tab by clicking on \"view all\" button and view all the review history",
+//                "49. Verify Header grid should display Client Name, Claimant/Matter, Claim Type, Claim Number, DOL, Diary Date on new tab of review history",
+//                "52. Verify User is displayed log title as timestamp, from user, to users, review status & Severity for all review history (Eg: 04/14/2020 12.32 pm [ Jesse Attix assigned to Darren Wright, Darren White, Alex Attis] Normal & Open)",
+//                "53. Verify user is displayed log message as complete review description followed by attachment (if any) for all Review history details",
+//                "54. Verify user is able to download the reviews one by one by clicking on the document name hyperlink"
+
+////
+//                //Claim Adjustor --
+//
+//                "180. CR-Claim Adjustor grid- Verify is able to see the Layer and Carrier columns in the existing Claims grid.",
+//                "181. CR-Claim Adjustor grid- Verify user is displayed the columns in the following order (Follow up,Layer, Adjustor Name, Carrier, Job Position, Phone Number, Email, Action).",
+//                "182. CR-Claim Adjustor grid- Verify Layer and Carrier column should have sort filter and column search option",
+//                "183. CR-Claim Adjustor grid - Verify user is able to sort filter and search record by Layer",
+//                "184. CR-Claim Adjustor grid -Verify user is able to sort filter and search record by Carrier",
+//                "185. CR-Claim Adjustor grid -Verify User is display the list of adjustor based on the order in which the policies where selected.",
+//                "186. CR-Claim Adjustor grid - Verify If there are more than one adjustor of the same layer then the names is listed on alphabetical"
+//
+//
+//////                 //Parties - Done
+//                "55. In Review Report - Parties, Verify user is display the “Parties” table with the header “PARTIES”",
+//                "56. In Review Report - Parties, Verify Below “Review Report” header display “Claimant/Matter” name of the selected claims with the label “Claimant/Matter:”",
+//                "57. In Review Report - Parties, Verify user is able to add parties information in the review report section",
+//                "58. In Review Report - Parties, Verify user is displayed field label as \"Parties Named or Referenced in Compliant''",
+//                "59. In Review Report - Parties, Verify user is able to enter 255 characters Alphanumeric (Includes Special characters) in Parties Named or Referenced in Compliant field",
+//                "60. In Review Report - Parties, Verify user is restrict from entering values greater than specified field length of 255 characters in Parties Named or Referenced in Compliant",
+//                "61. In Review Report - Parties, Verify user is displayed alert message on entering already existing values(duplicate value) in Parties Named or Referenced in Compliant field and validate alert message \"Duplicate Entry: The Party name is already exist\"",
+//                "62. In Review Report - Parties, Verify user is display mandatory alert and field get highlighted on leaving mandatory Parties Named or Referenced in Compliant field blank.",
+//                "63. In Review Report - Parties, Validate mandatory alert for Parties Named or Referenced in Compliant field",
+//                "64. In Review Report - Parties, Verify user is displayed \"Client /N(Y)\" as label name of dropdown field with default value of \"N\"",
+//                "65. In Review Report - Parties, Verify user is displayed values \"Y, N\"in Client (Y/N) dropdown field",
+//                "66. In Review Report - Parties, Verify user is able to select dropdown values in Client (Y/N) field.",
+//                "67. In Review Report - Parties, Verify user is displayed \"Contacted WS re Claim (Y/N)\" as label name of dropdown field with default value of \"N\"",
+//                "68. In Review Report - Parties, Verify user is displayed values \"Y, N\"in Contacted WS re Claim (Y/N)) dropdown field",
+//                "69. In Review Report - Parties, Verify user is able to select dropdown values in Contacted WS re Claim (Y/N) .field",
+//                "70. In Review Report - Parties, Verify user is displayed \"Details\" as label name of Text field",
+//                "70.1. In Review Report - Parties, Verify user is able to change the existing values on clicking any cell in a row on edit mode",
+//                "71. In Review Report - Parties, Verify user is able to enter 1000 characters Alphanumeric (Includes Special characters) in Details field",
+//                "72. In Review Report - Parties, Verify user is restrict from entering values greater than specified field length of 1000 characters in details field",
+//                "73. In Review Report - Parties, Verify user is displayed delete icon under Action column",
+//                "74. In Review Report - Parties, Verify on clicking the delete icon, display the alert message in a pop-up screen and validate alert pop up message",
+//                "75. In Review Report - Parties, Verify on clicking “No” button in Alert pop up of delete action it should close the alert popup without further actions",
+//                "76. In Review Report - Parties, Verify on clicking “Yes” button in Alert pop up of delete action it remove selected record from Parties",
+//                "79. Review Report - In Parties table, Verify new row insert into the table on clicking “Add Row” button.",
+//                "77. In Review Report - Parties, Verify until the user selects a row, the values should be displayed as labels in the table on view mode",
+//                "80. Review Report -In Parties table, Verify the first row is pre-added into the table by default",
+//                "81. Review Report - In Parties table, Verify user is able to only edit & update the pre-added record"
+////
+//
+//                 //Allegation - Done
+//                "83. Review Report - In Allegation, Verify user is display “Allegation” accordion with the header “ALLEGATIONS”",
+//                "84. Review Report - In Allegation table , Verify user is displayed \"Allegations\" as label name of Text field",
+//                "85. In Review Report - In Allegation table, Verify user is able to enter 1000 characters Alphanumeric (Includes Special characters) in Allegations field",
+//                "86. Review Report - In Allegation table, Verify user is restrict from entering values greater than specified field length of 1000 characters in Allegations field",
+//                "87. Review Report - In Allegation table, Verify user is displayed \"Parties Involved\" as label name of Multi-select checkbox dropdown field",
+//                "88. Review Report - In Allegation table, Verify user is displayed \"party name which is added in the “Parties” table should be listed with checkbox \"in the Parties Involved dropdown field",
+//                "89. Review Report - In Allegation table, Verify in view mode, selected parties is displayed in the syntax <<PARTY 1>>; <<PARTY 2>>; <<PARTY #>>. Eg: Care Zone, Inc; Provengo LLC; USMC(Claimant) for Parties Involved field",
+//                "91. Review Report - In Allegation table, Verify user is display mandatory alert and field get highlighted on leaving mandatory Parties Involved field blank",
+//                "92. Review Report - In Allegation Parties, Validate mandatory pop up alert for Parties Involved field",
+//                "93. Review Report - In Allegation table , Verify user is displayed delete icon under Action column",
+//                "94. In Review Report - In allegations table, Verify on clicking the delete icon, display the alert message in a pop-up screen and validate alert pop up",
+//                "95. Review Report - In Allegations table, Verify on clicking “No” button in Alert pop up of delete action it should close the alert popup without further actions",
+//                "96. Review Report -In Allegation table , Verify on clicking “Yes” button in Alert pop up of delete action it remove selected record from Allegation",
+//                "88.1. In Review Report - In Allegation table, Verify until the user selects a row, the values should be displayed as labels in the table on view mode",
+//                "88.2. In Review Report - In Allegation table, Verify user is able to change the existing values on clicking any cell in a row on edit mode",
+//                "84.1. Review Report - In Allegation table, Verify new row insert into the table on clicking “Add Row” button."
+////
+//
+//                  //Policies and Notice Recommendations - Done
+//                "81.1. Verify if user is able to add new parties in the tab",
+//                "100. Review Report - In Policies table, Verify user is able to see see policies table already available in the “General/Policies/Dairy” should be replicated with “Show” dropdown, & “policy table”",
+//                "102. Review Report - Policies, Verify user is able to filter and view policies based on “show” dropdown for existing policy table",
+//                "103. Review Report - In Policies, Verifiy user is able to select a policy and update values for sort order, SIR/ Ded, Claim# & upload a document for Policy Documents, ACK, ROR for existing policy table",
+//                "104. Review Report - In Policies, Verify user is able to download an existing document from the policies",
+//                "106. Review Report - In Policies table, Verify user is displayed \"The party name which is marked as “Y” for Client(Y/N) in the “Parties” table should be listed in the Party Name dropdown field",
+//                "107. Review Report - In policies table, Verify in view mode, selected parties should be displayed as a label for Party Name field",
+//                "108. Review Report - In Policies table, Verify in Edit mode, dropdown should be displayed for Party Name field",
+//                "109. Review Report - In policies table, Verify user is display mandatory alert and field get highlighted on leaving mandatory Party Name field is blank",
+//                "110. Review Report - In Policies Parties, Validate mandatory pop up alert for Party Name field",
+//                "111. Review Report - In Policies table , Verify user is displayed \"Policies Placed\" as label name of Text field",
+//                "112. Review Report - In Policies table, Verify user is able to enter 255 characters Alphanumeric (Includes Special characters) in Policies Placed field",
+//                "113. Review Report - In Policies table, Verify user is restrict from entering values greater than specified field length of 255 characters in Policies Placed field",
+//                "117. Review Report - In Policies table , Verify user is displayed delete icon under Action column",
+//                "118. In Review Report - In Policies table, Verify on clicking the delete icon, display the alert message in a pop-up screen and validate alert pop up",
+//                "119. Review Report - In Policies table, Verify on clicking “No” button in Alert pop up of delete action it should close the alert popup without further actions",
+//                "120. Review Report -In Policies table , Verify on clicking “Yes” button in Alert pop up of delete action it remove selected record from Policies",
+//                "121. In Review Report - In Policies table, Verify until the user selects a row, the values should be displayed as labels in the table on view mode",
+//                "122. In Review Report - In Policies table, Verify user is able to change the existing values on clicking any cell in a row on edit mode",
+//                "123. Review Report - In Policies table, Verify add each row for the number of policies selected in the policy table. i.e Suppose 3 policies are selected then 3 rows should be auto-inserted into the table for the party (selected claim client) by default",
+//                "124. Review Report - In Policies table, Verify newly added row",
+//                "125. Review Report - In Policies table, Verify user is able to only edit & update the pre-added record",
+//                "187. Verify Policies header is rename to Policies & Notice Recommendation",
+//                "188. Verify User is displayed \"Notice Recommendation\" as Dropdown field",
+//                "189. Verify user displayed following values in “Notice Recommendation” dropdown column options",
+//                "190. Verify user is displayed new Colum “Recommendation Detail” in “Policies & Notice Recommendation” section",
+//                "192. Verify “Details of Notice Recommendation:” is visible only on adding a new row, double click to edit & single click to expand and show the detail",
+//                "193. Verify user is able to edit the values directly in the table column for “Details of Notice Recommendation:”"
+//
+//
+//                //Other Recommendations - Done
+//                "81.1. Verify if user is able to add new parties in the tab",
+//                "127. Review Report - In Recommended Action , Verify user is display the header “Other Recommendationsn” below “POLICIES” section,",
+//                "194. Verify “RECOMMENDED ACTION” header is rename to “OTHER RECOMMENDATION”",
+//                "128. Review Report - In Recommended Action table, Verify user is displayed \"Party Name\" as label name of dropdown field",
+//                "129. Review Report - In Recommended Action table, Verify user is displayed \"The parties which are in the “Parties” table should be listed in the Party Name\" dropdown field",
+//                "130. Review Report - In Recommended Action table, Verify user is able to select only one party name from the Party name dropdown field",
+//                "131. Review Report - In Recommended Action table, Verify user is display mandatory alert and field get highlighted on leaving mandatory Party Name field is blank",
+//                "132. Review Report - In Recommended Action, Validate mandatory pop up alert for Party Name field",
+//                "133. Review Report - In Recommended Action table, Verify user is displayed \"Action\" as label name of Text field",
+//                "134. Review Report - In Recommended Action table, Verify user is able to enter 1000 characters Alphanumeric (Includes Special characters) in Action field",
+//                "135. Review Report - In Recommended Action table, Verify user is restrict from entering values greater than specified field length of 1000 characters in Action field",
+//                "136. Review Report - In Recommended Action table , Verify user is displayed \"Details\" as label name of Text field",
+//                "136.1. Review Report - In Recommended Action table, Verify user is able to change the existing values on clicking any cell in a row on edit mode",
+//                "136.2. In Review Report - Verify a record with the entered party name should be auto-inserted into “Recommended Action” table, when a party name is created in the “Parties” table by default",
+//                "137. In Review Report - In Recommended Action table, Verify user is able to enter 1000 characters Alphanumeric (Includes Special characters) in Details field",
+//                "138. Review Report - In Recommended Action table, Verify user is restrict from entering values greater than specified field length of 1000 characters in Details field",
+//                "139. Review Report - In Recommended Action table , Verify user is displayed delete icon under Action column",
+//                "140. In Review Report - In Recommended Action table, Verify on clicking the delete icon, display the alert message in a pop-up screen and validate alert pop up",
+//                "141. Review Report - In Recommended Action table, Verify on clicking “No” button in Alert pop up of delete action it should close the alert popup without further actions",
+//                "142. Review Report - In Recommended Action table, Verify on clicking “Yes” button in Alert pop up of delete action it remove selected record from Policies",
+//                "143. Review Report - In Recommended Action, Verify until the user selects a row, the values should be displayed as labels in the table on view mode",
+//                "147. Review Report - In Recommended Action table, Verify User is able to edit & delete the default added rows as well"
+
+////                 //Download Report - Done
+//                "148. Download Review Report, Verify user is able to download the Review Report contain parties, allegations, policies & recommended action in the pdf file",
+//                "149. Download Review Report, Verify downloaded pdf file name",
+//                "150. Download Review Report, Validate claim Review Report.pdf"
+//
+////                ------------ Claims Listing Page ---------- Done
+//
+//                "151. Management Liability - Claim Summary Report, Verify user is displayed “Claims Summary Report” button in in “Basic Search” section on claims listing page",
+//                "152. Management Liability - Claim Summary Report, Verify user is able to download the Report of Claims Summary in the excel file on clicking “Claims Summary Report”",
+//                "153. Management Liability - Claim Summary Report, Verify exported excel file name format-<<MMDDYYYY>>.xlsx. Eg: Claim Summary Report - 05272020.xlsx",
+//                "154. Management Liability - Claim Summary Report, Validate downloaded excel report"
+
+//          -----------------------------------------------------------------------------------------------------------------------
+//                //Claim Detail Screen - Done
+//                "155. Claim Detail Screen, Verify user is display button “Link Claim File(s)” for claim is not linked or new claim or converting pending claim",
+//                "156. Claim Detail Screen - Claim Link, Verify user is display the link icon next to the “Claimant/Matter” column in the header table for the selected claim is already linked",
+//                "157. Claim Link Popup, Verify Claim Visibility Dropdown contain below values: (All Claims of Selected Client/Linked Claims of Selected Client/Unlinked Claims of Selected Client) and by default, “Linked Claims of Selected Client” is selected",
+//                "158. Claim Link Popup, Verify If “All Claims of Selected Client” is selected in Claim Visibility Dropdown then both claims which are linked already and claims which are not in the link should be listed in the Client Claim table",
+//                "160. Claim Link Popup, Verify if “Linked Claims of Selected Client” is selected in Claim Visibility Dropdown then only claims which are already linked should be listed in the Client Claim table",
+//                "161. Claim Link Popup, Verify If “Unlinked Claims of Selected Client” is selected in Claim Visibility Dropdown then claims which are not linked to the selected claim should be listed in the Client Claim Table",
+//                "163. Claim Link Popup- If the “Enable Link Edit Access” privilege is enabled, Verify Checkboxes is selected mode for claims which are already linked together & for the other claims the checkboxes is unselected.",
+//                "164. Claim Link Popup -If the “Enable Link Edit Access” privilege is enabled, Verify User is able to select or unselect all checkboxes in the table with the help of a checkbox available in the Client Claim Table header.",
+//                "165. Claim Link Popup, Verify popup is displayed by clicking on the “Linked Claim File(s)” button then the Linked Claim popup should have “Link Selected Claim Files” button"
+//
+//
+//
+//                //Claim Listing Page Pop-up - Done
+//                "155.1. Claim Listing Screen, Verify user is display button “Link Claim File(s)” for claim is not linked or new claim or converting pending claim",
+//                "157.1. Claim Link Popup, Verify Claim Visibility Dropdown contain below values: (All Claims of Selected Client/Linked Claims of Selected Client/Unlinked Claims of Selected Client) and by default, “Linked Claims of Selected Client” is selected",
+//                "158.1. Claim Link Popup, Verify If “All Claims of Selected Client” is selected in Claim Visibility Dropdown then both claims which are linked already and claims which are not in the link should be listed in the Client Claim table",
+//                "160.1. Claim Link Popup, Verify if “Linked Claims of Selected Client” is selected in Claim Visibility Dropdown then only claims which are already linked should be listed in the Client Claim table",
+//                "166. Claim Link Popup, Verify If the popup is displayed by clicking on “Link Icon” then the Linked Claim popup should have “Save Changes” button",
+//                "166.1. Claim Link Popup- Verify on clicking “Save Changes” button or “ Link Selected Claim Files” button,if one claim is selected then claims group is saved to the database",
+//                "166.2. Claim Link Popup- Verify user is displayed alert message ,If no claim is selected on clicking “Save Changes” button or “ Link Selected Claim Files” button",
+//                "166.3. Claim Link Popup- Listing Grouped Claims, Verify In “Enable View Link” privileges,the claims which are directly linked together alone is displayed in the “Linked Claims” table Eg: Suppose “Claim005” linked to “Claim002”, “Claim003” and “Claim003” linked to “Claim002”, “Claim004”",
+//                "166.4. Claim Link Popup-In “Enable Link Edit Acces”, for Listing Grouped Claims, Verify If “All Claims of Selected Client” is selected in Claim Visibility dropdown Claims which are directly linked to the selected claim should be listed at the top of the grid and checkbox should be in the selected mode",
+//                "166.5. Claim Link Popup - Listing Grouped Claims - In “Enable Link Edit Acces”, Verify If “All Claims of Selected Client” is selected in Claim Visibility dropdown Claims which are not linked but matching to the selected claim client should be listed below and checkbox should be open to select",
+//                "166.6. Claim Link Popup- Listing Grouped Claims- In “Enable Link Edit Acces”, Verify If “Linked Claims of Selected Client” is selected in Claim Visibility dropdown then Claims which are directly linked to the selected claim should be listed at the top of the grid and checkbox should be in the selected mode",
+//                "166.7. Claim Link Popup - Listing Grouped Claims, Verify If “Unlinked Claims of Selected Client” is selected in Claim Visibility dropdown then Claims which are not linked but matching to the selected claim client should be listed below and checkbox should be open to select"
+
+//                // Claim Listing Page - Done
+//                "167. Claim Link Popup - If “Enable View Link” privilege is enabled, Verify dropdown is prefilled with “Linked Claims of Selected Client” value and in non-editable mode",
+//                "176. Claim Listing - In the Claims listing table, Verify user is able to see “Link” icon in the “Claimant/Matter” column next the Claimant name.",
+//                "177. In the Claims listing - Verify icon is displayed only if multiple claims are already linked in the application else the icon is not be displayed",
+//                "178. In Claims listing - Verify user is able to click visible “Link” icon in the application",
+//                "179. In Claims listing - Verify user is displayed popup screen on clicking the “Link” icon"
+//
+//
+//                  // Validation in Listing Page -
+//                "200.1. Claim Link Popup, Verify user is able to see the linked claim popup on clicking Claim link icon available in claim listing and validate Claim Link Popup",
+//                "201. Verify privileged users are able to see the 2 tabs : Claim Dashboard and Claim Listing",
+//                "202. Verify By default, the “Tab View” should be enabled only for below listed users Claims Intake Co-Ordinator (CIC), Claims Coverage Manager (CCM), Claims Executives (CE)",
+//                "204. Verify By default, “Claim Listing” should be displayed as landing screen for Claims Executives (CE)"
+//
+//                  // Download from Listing Page -
+//                "195. Download Review Report- Verify user is Display “CONFIDENTIAL AND FOR INTERNAL USE ONLY” text in red below the title CLAIM REVIEW REPORT.",
+//                "195.1. Download Review Report- Verify user is Display “CONFIDENTIAL AND FOR INTERNAL USE ONLY” text in red below the title CLAIM REVIEW REPORT",
+//                "196. Verify user is display Client Name and Matter name in Report",
+//                "197. Verify user display order sections as follows: Summary of Policies and other sections"
+//
+//                // Claim Detail Page ------
+//                "197.1. Verify the Field NCC is renamed to Complex / Non-Critical in General” section of “General/Policies/Diary” tab",
+//                "198. Verify the dropdown values for the field Complex / Non-Critical",
+//                "199. Verify If “Non-Complex” & “Non-Critical Claim” is selected for “NCC”(renamed as “Complex / Non- Critical”) then the “Review” tab should not be displayed",
+//                "200. Verify If the “Complex” is selected as value for “NCC”(renamed as “Complex / Non- Critical”) then following changes should be applied The “Review” tab of the Claim should be enabled only if user selected “Complex”"
+////
+////                // Claim Dashboard Page ---
+//                "206. In Claims Dashboard screen Verify user is displayed the Search Section with the following : WS Practice, Review Status, File Assigned To, Display Auto Claims checkbox, Reset Button, Search Button",
+//                "207. Verify in Search Section for WS Practice dropdown - default value is ALL and the following options are displayed : All, Property & Casualty, Management Liability",
+//                "208. In Dashboard Search section, Verify for Review Status - All is displayed as default value and following options are displayed in the drop down : All, Open, Completed",
+//                "209. In Dashboard Search section - File Assigned to - Verify user is able to search the user by typing the name of the User",
+//                "210. Verify user is displayed the checkbox \"Set as default” below the Claim Dashboard tab",
+//                "213. Verify By default, all “WS Practice” and all “Review Status” of Claims should be listed in the table grid in Dashboard tab",
+//                "214. Verify following Columns are displayed in the Dashboard grid : Client Name, Claimant / Matter, Claim Code, WS Consultant, DOL, Complex, Date Created",
+//                "215. Verify user is displayed the following columns for the workflow process in the dashboard: File Assigned, CCM Review, Noticed, ACK"
+//
+//                // Assignment of claim ---
+//                "218. Verify user is able to assign the Claim to the consultant from the dashboard if a claim file was not assigned to any consultant"
+//
+//
+//                // Dashboard  ---
+//                "218.1. Verify user is able to assign the Claim to the consultant from the dashboard if a claim file was not assigned to any consultant",
+//                "219. Verify if the Claim file is already assigned to Consultant from “Claim Detail Screen” but communication email was not send then selected Claim Consultant name should be pre-selected in the dropdown",
+//                "220. Verify user is displayed the message with field in Red color \"Mandatory Field\" when a mandatory field is left blank in Claim File Assignment popup",
+//                "224. Verify the email Template",
+//                "257. Download Dashboard Report, Verify user is display button “Claim Dashboard Report” before “Reset” button.",
+//                "258. Download Dashboard Report, Verify clicking on the “Claim Dashboard Report” button is download excel report containing the clients and their stages status available in the dashboard screen.",
+//                "259. Download Dashboard Report, Verify the format of download excel file name",
+//                "260. Download Dashboard Report, Validated the downloaded excel file details"
+//
+//                //Claim Listing  -----
+//                "229. Adjustor Duplication - Verify user is display alert popup if the same duplicating claim adjustor name is entered but not chosen from the suggesting dropdown",
+//                "230. Adjustor Duplication- Validate the alert popup",
+//                "231. Adjustor Duplication - Verify clicking on “No” the popup is close and highlight the “Adjustor Name” field and the dropdown with corresponding values should be opened for users selection.",
+//                "232. Adjustor Duplication - Verify clicking on “Yes” button the popup is close and create a new adjustor name with the same value again and move to the next field",
+//                "233. Send Email - Notify Email - In the “Send Email” tab, Verify if “Notify Email” is selected and the user entered an email address with the following domain",
+//                "234. Send Email - Notify Email - In the “Send Email” tab, Verify the imported email address is prefilled in “To” filled while selecting the “Notify Email” option."
+//
+//                // Temporary Claim File ---
+//
+//                "235. Temporary Claim File Name - Verify user is display checkbox “Temporary Claim File” at the top of the “Client” field in the “General / Policies/ Diary” tab",
+//                "236. Temporary Claim File Name - Verify selecting the “Temporary Claim File” checkbox, replace the existing “Client” field by \"Temporary Client Name *\"",
+//                "237. Temporary Claim File Name - Verify Temporary Client Name * is mandatory Text” formatted field"
+
+//                // Claim Listing Page ----
+//                "239. Verify user is display a note message “* Temporary Claim File” to the left of “Claim Summary Report” button in search section in the “Claim Listing Screen”.",
+//                "240. Verify user is display a note message “* Temporary Claim File” to the left of “Claim Summary Report” button in search section in the “Claim Dashboard Screen”.",
+//                "241. Verify user is display a note message “* Temporary Claim File” in the “Report Mode” listing screen.",
+//                "242. In all the search section, Verify the user is able to see both EPIC Client name and Temporary Client name in typeahead suggestion in Client Name column",
+//                "243. Verify the temporary client is differentiated with a “*” symbol in the suggestion listing",
+//                "246. Edit Temporary Claim File- Verify user is display “Map to EPIC Client” button next to “Temporary Client Name” field",
+//                "247. Edit Temporary Claim File - Verify user display pop up on clicking Map to EPIC Client” button",
+//                "248. Edit Temporary Claim File - Validate the pop up details",
+//                "249. Edit Temporary Claim File- Verify Clicking on “Cancel” button should close the popup without any further changes",
+//                "250. Edit Temporary Claim File- Verify Clicking on “Update” button should close the popup and display confirmation popup",
+//                "251. Edit Temporary Claim File - Validate the confirmation pop up details",
+//                "252. Edit Temporary Claim File - Verify Clicking on “No” is close the popup",
+//                "253. Edit Temporary Claim File - Verify Clicking on “Yes” is close the popup and convert the temporary claim file to epic client claim file.",
+//                "254. Edit Temporary Claim File - Verify the tag <<SELECTED EPIC CLIENT NAME>> is replaced with epic client name selected in the previous popup",
+//                "256. Edit Temporary Claim File - Verify the temporary claim edit changes is enabled also for new claims after clicking on “Update” button or returning to the “General / Policies/Diary” tab."
+////
+//                -------- To be Fixed --------
+//                "261. Verify if a user is able to link the new claim to the existing claims using the \"Link Claim Files\" button",
+//                "262. Verify if the claim link is present in the header for the claims that are already linked",
+//                "263. Verify if claim pop-up is displayed on click of \"Claim link\" icon in the claim listing page"
+//
+//
+//
+//
+//
+//                --------- 7.0 Review Request Email ---------
+//                "283. Verify if the From email ID matches the logged in user name"
+//
+//                 ---------- 8.0 Manage Review Servicing Team --------------
+//                "284. Verify if \"Manage Review Servicing\" option is available in the \"Home\" menu",
+//                "285. Verify if the \"Group Name\" is available in the \"Manage Review Group\" screen",
+//                "286. Verify if \"Update Members\" and \"Cancel\" buttons are available in the page",
+//                "287. Verify if a pop-up is displayed on clicking on \"Add new group name\"",
+//                "288. Verify error message is displayed on click of \"Create\" without filling mandatory field",
+//                "289. Verify \"Duplicate\" error message is displayed when the existing group name is entered",
+//                "290. Verify if a new group name is given then a new group is created",
+//                "291. Verify if clicking on \"Cancel\" closes the pop-up",
+//                "292. Verify if the newly added group is present in the drop down list of the group name",
+//                "293. Verify if clicking on \"Update Members” button save the changes made in “Group Member Table” related to the selected group"
+////
+//                // Claim Assignment Notification -
+//                "226. Claim Assignment Notification - Verify user is display the claim assignment notification popup only for the claims which are created from the first of the 2021 year alone.",
+//                "227. Claim Assignment Notification - Verify user is not display the claim assignment notification popup only for the claims which are created before Jan 01, 2021 year",
+//                "228. Noticed Status - Verify user is able to see click for notes hyperlink in noticed status should be available all time after claim assignment"
+
+//                // Defects
+//                "11.1. CLAIM-728 Verify user is able to view all tab names in manage liability",
+//                "274.1. CLAIM-740 Verify user is able to view Review history details under the review tab",
+//                "275.1. CLAIM-944 Verify user is able to view *Temporary claim file in exported pdf document",
+//                "275.2. CLAIM-614 Verify user is able to view Claimant in Review report",
+//                "276. CLAIM-930 Verify user is able to view temporary client in policies after saving",
+//                "277. CLAIM-947 Verify the user is able to view the changed client name in the review tab on converting the temporary file to epic client.",
+//                "278. CLAIM-931 Verify user is able to view complete name of temporary clients",
+//                "279. CLAIM-943 Verify user is able to view Epic client converted from temporary client in claims dashboard",
+//                "280. CLAIM-739 Verify Claims Dashboard spelling on the listing page",
+//                "281. CLAIM-730 Verify alert pop up message upon setting default check box on listing page",
+//                "282. CLAIM-932 Verify user is navigated to the right page on clicking \"Generate Acord Form\" side menu",
+//                "296. CLAIM-911 Verify if user is able to submit notes only post entering the mandatory fields in the \"Click For Notes\" pop-up",
+//                "297. CLAIM-926 Verify if the temporary claim file* note message is displayed in the exported review report",
+//                "298. CLAIM-897 Verify if the dashboard report is exported with the applied filter"
+//                "299. CLAIM-785 Verify if inline message is displayed for \"Click For Notes\" in claim dashboard screen"
+//
+//
+//
+//                ------ To be added-------
+//
+//
+//
+
+                "300. CLAIM-784 Verify if username is displayed in the notes pop-up in claim dashboard screen",
+                "301. CLAIM-749 Verify if the filters are all cleared once navigated back from \"Pending Claim\" pop-up",
+                "302. Verify if user is able to select all the options from \"Assigned To\" drop down list and the count is matched with the actual count",
+                "303. CLAIM-397 Verify validation error message for telephone number entered in Claimant/Matter tab"
+
+
         );
+
 
         // Get the Logger and Configuration details
         logger = LogManager.getLogger("WebTest");
@@ -861,6 +1440,7 @@ public class WebTest {
         String browserName = config.app.getProperty("selenium.webdriver.name");
         int browserWidth = Integer.parseInt(config.app.getProperty("selenium.webdriver.width"));
         int browserHeight = Integer.parseInt(config.app.getProperty("selenium.webdriver.height"));
+
 
         // Try to do the QIF activities and Browser initialization
         try {
@@ -876,12 +1456,21 @@ public class WebTest {
             logger.info("Getting the Project Details from QIF...");
             project1 = qifClient.getProject(config.qif.getProperty("qif.project.gui"));
             project2 = qifClient.getProject(config.qif.getProperty("qif.project2.gui"));
+            project3 = qifClient.getProject(config.qif.getProperty("qif.project3.gui"));
+            //project3 = qifClient.getProject(config.qif.getProperty("qif.project3.gui"));
+            project4 = qifClient.getProject(config.qif.getProperty("qif.project4.gui"));
 
             logger.info("Getting all the GUI Test Cases for the Project (" + project1.projectName + ") from QIF...");
             guiTestCases = qifClient.getGUITestCases(project1.projectId, false, null);
 
             logger.info("Getting all the GUI Test Cases for the Project (" + project2.projectName + ") from QIF...");
             guiTestCases.addAll(qifClient.getGUITestCases(project2.projectId, false, null));
+
+            logger.info("Getting all the GUI Test Cases for the Project (" + project3.projectName + ") from QIF...");
+            guiTestCases.addAll(qifClient.getGUITestCases(project3.projectId, false, null));
+
+            logger.info("Getting all the GUI Test Cases for the Project (" + project4.projectName + ") from QIF...");
+            guiTestCases.addAll(qifClient.getGUITestCases(project4.projectId, false, null));
 
             List<TestCaseGUI> obsolted_GuiTestCases = new ArrayList<>();
             for (TestCaseGUI testCase : guiTestCases) {
@@ -940,6 +1529,12 @@ public class WebTest {
             logger.info("Total GUI Test Cases fetched for Project (" +
                     project2.projectName + ") from QIF: " + guiTestCases.size());
 
+            logger.info("Total GUI Test Cases fetched for Project (" +
+                    project3.projectName + ") from QIF: " + guiTestCases.size());
+
+            logger.info("Total GUI Test Cases fetched for Project (" +
+                    project4.projectName + ") from QIF: " + guiTestCases.size());
+
             logger.info("Initializing the Browser on (" + browserName + ") Web Driver...");
             Browser.initialize(browserName);
             logger.info("Setting the Browser Window Size to (" +
@@ -986,8 +1581,7 @@ public class WebTest {
     @Test(dataProvider = "QIFDP")
     //Iterable<DynamicTest> executeTests() {
     public void QIFTests(String sTestDescrition) throws IOException, ParseException, InterruptedException {
-
-		/*List<DynamicTest> guiTests = new ArrayList<>();
+        /*List<DynamicTest> guiTests = new ArrayList<>();
 		// Make sure the Setup is completed correctly
 		if (!isSetUp) {
 			// Do a generic Test if the Setup failed
@@ -1134,6 +1728,8 @@ public class WebTest {
             XSSFWorkbook currentExcelWorkbook = new XSSFWorkbook();
             String sCurrentExcelSheetName = "";
             String typeData = "";
+            String Exportdatetime= "";
+            String Importdatetime= "";
             for (TestCaseStep testStep : testCase.testCaseSteps) {
                 Thread.sleep(2000);
 
@@ -1155,7 +1751,7 @@ public class WebTest {
                         WebDriverWait wait = new WebDriverWait(Browser.webDriver, 60);
                         wait.until(pageLoadCondition);
                         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading")));
-                        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
+//                        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("dx-loadindicator-content")));
                         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("homeLoaderBG")));
                         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ag-overlay-loading-center")));
                         // Initialize the Objects required to perform actions
@@ -1174,24 +1770,41 @@ public class WebTest {
                                 break;
 
                             case "click":
+//                             [id^="lb_General_"] %2%
+                                WebElement elementToClick ;
+                                String css = testAction.action.fieldName;
+                                if(testAction.action.fieldName.contains(" %"))
+                                {
+                                     css = testAction.action.fieldName.split(" %")[0];
+                                    int index = Integer.parseInt(testAction.action.fieldName.split(" %")[1].split("%")[0]);
+                                    elementToClick = Browser.webDriver.findElements(By.cssSelector(css)).get(index);
+                                }
+                                else
+                                {
+                                    elementToClick = Browser.webDriver.findElement(By.cssSelector(css));
+                                }
                                 try {
                                     new WebDriverWait(Browser.webDriver, waitTime)
-                                            .until(ExpectedConditions.elementToBeClickable(
-                                                    By.cssSelector(testAction.action.fieldName)
+
+                                    .until(ExpectedConditions.elementToBeClickable(
+
+                                    By.cssSelector(css)
+
                                             ));
                                     // Field clicking action
-                                    if (Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getAttribute("type").equals("checkbox")) {
+                                    if (elementToClick.getAttribute("type").equals("checkbox")) {
                                         if (testAction.action.fieldValue.equals("true") &&
-                                                !Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).isSelected()) {
-                                            Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
+                                                !elementToClick.isSelected()) {
+                                            elementToClick.click();
                                         } else if (testAction.action.fieldValue.equals("false") &&
-                                                Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).isSelected()) {
-                                            Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
+                                                elementToClick.isSelected()) {
+                                            elementToClick.click();
                                         }
                                     } else {
-                                        Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).click();
+                                        elementToClick.click();
                                     }
                                 } catch (Exception ex) {
+                                    System.out.println("Errorrrrrrrrr");
                                 }
                                 break;
 
@@ -1217,6 +1830,7 @@ public class WebTest {
 
                             case "replace":
                                 typeData = testAction.action.fieldValue;
+
 
                                 if (testAction.action.fieldValue.contains("readDataFile")) {
                                     typeData = excelOperation.readDataFromExcel(testAction.action.fieldValue);
@@ -1391,6 +2005,10 @@ public class WebTest {
                             case "wait-display":
                                 // Waiting for Field to be visible action
                                 integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+
+
+
+
                                 (new WebDriverWait(Browser.webDriver, integerValue))
                                         .until(ExpectedConditions.visibilityOfElementLocated(
                                                 By.cssSelector(testAction.action.fieldName)
@@ -1400,6 +2018,7 @@ public class WebTest {
                             case "wait-enable":
                                 // Waiting for Field to be enabled action
                                 integerValue = Integer.parseInt(testAction.action.fieldValue) / 1000;
+
                                 (new WebDriverWait(Browser.webDriver, integerValue))
                                         .until(ExpectedConditions.elementToBeClickable(
                                                 By.cssSelector(testAction.action.fieldName)
@@ -1408,10 +2027,12 @@ public class WebTest {
 
                             case "javascriptclick":
                                 // Waiting for Field to be enabled action
-                                JavascriptExecutor js = (JavascriptExecutor) Browser.webDriver;
+                                    JavascriptExecutor js = (JavascriptExecutor) Browser.webDriver;
+
                                 js.executeScript("arguments[0].click();", Browser.webDriver.findElement(
                                         By.cssSelector(testAction.action.fieldName)));
                                 break;
+
 
                             case "scrolldown":
                                 // Waiting for Field to be enabled action
@@ -1419,6 +2040,8 @@ public class WebTest {
                                 j.executeScript("window.scrollTo(0, 9999)");
                                 Thread.sleep(1000);
                                 break;
+
+
                             case "scrollup":
                                 // Waiting for Field to be enabled action
                                 JavascriptExecutor jse = (JavascriptExecutor) Browser.webDriver;
@@ -1507,7 +2130,17 @@ public class WebTest {
                                 break;
 
                             case "checkdownladedfile":
+//
+//                                    Date date = new Date();
+//                                    DateFormat df = new SimpleDateFormat("MMddyyyy");
+//                                    // Use Madrid's time zone to format the date in
+//                                    df.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+//                                    String currectDate = df.format(date);
+//                                    String tabName = StringUtils.substringBetween(testAction.action.fieldName, "(", ",").trim();
+
+
                                 String DownloadDir = System.getProperty("user.home") + "\\Downloads\\";
+                                //String DownloadDir =tabName+" "+currectDate+".pdf";
                                 File dir = new File(DownloadDir);
                                 File[] files = dir.listFiles();
 
@@ -1557,12 +2190,14 @@ public class WebTest {
                                 String filename = lastModifiedFile.getName();
                                 String filenameDate = "";
 
-                                if (testAction.action.fieldName.equals("Date")) {
+                                if (testAction.action.fieldName.contains("Date")) {
                                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
                                     LocalDateTime now = LocalDateTime.now();
                                     String currentDate = dtf.format(now);
-                                    String version = StringUtils.substringBetween(filename, "ERRORLOG_VIL.", "_").trim();
-                                    filenameDate = testAction.action.fieldValue.concat(version).concat("_").concat(currentDate).concat(".txt");
+//                                    String version = StringUtils.substringBetween(filename, "ERRORLOG_VIL.", "_").trim();
+//                                    filenameDate = testAction.action.fieldValue.concat(version).concat("_").concat(currentDate).concat(".txt");
+                                    filenameDate = testAction.action.fieldValue.concat(" "+currentDate).concat(".xlsx");
+
                                     testAction.action.fieldValue = filenameDate;
                                 }
 
@@ -1720,9 +2355,12 @@ public class WebTest {
                                 break;
 
                             case "setcurrentexcel":
+                                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
+                                LocalDateTime now = LocalDateTime.now();
+                                String currentDate = dtf.format(now);
                                 currentExcelWorkbook = new XSSFWorkbook(new FileInputStream(
                                         System.getProperty("user.home")
-                                                + "\\Downloads\\" + testAction.action.fieldValue));
+                                                + "\\Downloads\\" + testAction.action.fieldValue.concat(" "+currentDate).concat(".xlsx")));
                                 break;
 
                             case "setcurrentexcelsheet":
@@ -2033,6 +2671,390 @@ public class WebTest {
                                 }
                                 break;
 
+                            case "verifyversion":
+                                try {
+                                    Date date = new Date();
+                                    DateFormat df = new SimpleDateFormat("MMddyyyy");
+                                    // Use Madrid's time zone to format the date in
+                                    df.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+                                    String currectDateTime =df.format(date);
+                                    System.out.println("Date and time in Madrid: " + df.format(date));
+                                    try {
+                                        sText = Browser.webDriver.findElement(
+                                                By.cssSelector(testAction.action.fieldName)
+                                        ).getText().trim();
+                                    }catch (NullPointerException ex) {
+                                    }
+                                    try {
+                                        sValue = Browser.webDriver.findElement(
+                                                By.cssSelector(testAction.action.fieldName)
+                                        ).getAttribute("value").trim();
+                                    } catch (NullPointerException ex) {
+                                    }
+                                    try {
+                                        sinnerHTML = Browser.webDriver.findElement(
+                                                By.cssSelector(testAction.action.fieldName)
+                                        ).getAttribute("innerhtml").trim();
+                                    } catch (NullPointerException ex) {
+                                    }
+                                    if (!(sText.equals(testAction.action.fieldValue + "_" + currectDateTime.trim())
+                                            || sValue.equals(testAction.action.fieldValue + "_" + currectDateTime.trim())
+                                            || sinnerHTML.equals(testAction.action.fieldValue + "_" + currectDateTime.trim())
+                                            || sText.equals(typeData))){
+                                        stepResult.status = "Fail";
+                                        stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+                                                "does not match the value given (" + testAction.action.fieldValue +
+                                                ") , Got [" + sText + sValue + sinnerHTML + "]";
+                                        logger.error(stepResult.actualResult);
+                                    }
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                                break;
+
+                            case "newtab" :
+                                try {
+                                    String mainWindowHandle = Browser.webDriver.getWindowHandle();
+                                    Set<String> allWindowHandles = Browser.webDriver.getWindowHandles();
+                                    Iterator<String> iterator = allWindowHandles.iterator();
+
+                                    // Here we will check if child window has other child windows and will fetch the heading of the child window
+                                    while (iterator.hasNext()) {
+                                        String ChildWindow = iterator.next();
+                                            if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
+                                            Browser.webDriver.switchTo().window(ChildWindow);
+                                            //WebElement text = WebDriver.findElement(By.id("sampleHeading"));
+                                            //System.out.println("Heading of child window is " + text.getText());
+                                        }
+                                        else
+                                        {
+                                            Browser.webDriver.switchTo().window(mainWindowHandle);
+                                        }
+                                    }
+                                }
+
+                                catch(Exception e){
+                                    e.printStackTrace();
+                                }
+                                break;
+
+                            case "oldtab":
+                                try {
+                                    String mainWindowHandle = Browser.webDriver.getWindowHandle();
+                                    Browser.webDriver.switchTo().window(mainWindowHandle);
+                                    Browser.webDriver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
+                                    Browser.webDriver.switchTo().defaultContent();
+                                }
+
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                            case "iframe" :
+                             try {
+                                 WebElement iFrameElement = Browser.webDriver
+                                         .findElement(By.cssSelector(testAction.action.fieldName));
+                                 //Browser.webDriver.switchTo().frame(0);
+                                 Browser.webDriver.switchTo().frame(iFrameElement);
+                                 //Browser.webDriver.switchTo().defaultContent();
+                             }
+                             catch (Exception e)
+                             {
+                                 e.printStackTrace();
+                             }
+                             break;
+
+                            case "outofiframe" :
+                                try{
+                                    Browser.webDriver.switchTo().defaultContent();
+                                }
+                                catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            case "exportcurrentdatetime":
+                                try {
+                                    Date date = new Date();
+                                    DateFormat df = new SimpleDateFormat("M/d/yyyy | h:mm");
+
+                                    // Use Madrid's time zone to format the date in
+                                    df.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+                                    Exportdatetime =df.format(date);
+                                    System.out.println("Date and time in Madrid: " + Exportdatetime);
+//                                    sText=Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getText().trim();
+//                                    if(!sText.contains(currectDateTime)) {
+//                                        stepResult.status = "Fail";
+//                                        stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+//                                                "does not match the value given (" + currectDateTime +
+//                                                ") , Got [" + sText + "]";
+//                                        logger.error(stepResult.actualResult);
+//                                    }
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                                break;
+
+                            case "importcurrentdatetime":
+
+                                try {
+                                    Date date = new Date();
+                                    DateFormat df = new SimpleDateFormat("M/d/yyyy | h:mm");
+
+                                    // Use Madrid's time zone to format the date in
+                                    df.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+                                    Importdatetime =df.format(date);
+                                    System.out.println("Date and time in Madrid: " + Importdatetime);
+//                                    sText=Browser.webDriver.findElement(By.cssSelector(testAction.action.fieldName)).getText().trim();
+//                                    if(!sText.contains(currectDateTime)) {
+//                                        stepResult.status = "Fail";
+//                                        stepResult.actualResult = "Field (" + testAction.action.fieldName + ")" +
+//                                                "does not match the value given (" + currectDateTime +
+//                                                ") , Got [" + sText + "]";
+//                                        logger.error(stepResult.actualResult);
+//                                    }
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                                break;
+
+                            case "match-exportdatetime":
+
+                                // Validate Test in filed contains specific text
+                                String stextValue = Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ).getText();
+                                System.out.println("Date and time in Madrid: " + Exportdatetime);
+                                try {
+
+                                    Assert.assertTrue(
+
+                                            stextValue.contains(Exportdatetime),
+                                            "Text in Field (" + testAction.action.fieldName + ") should contain [" +
+                                                    Exportdatetime + "] and Got [" + stextValue + "]"
+
+                                    );
+                                } catch (AssertionError e) {
+                                    throw new Exception("Text in Field (" + testAction.action.fieldName + ") should contain [" +
+                                            Exportdatetime + "] but Got [" + stextValue + "]");
+                                }
+                                break;
+
+                            case "match-importdatetime":
+                                // Validate Test in filed contains specific text
+                                String stextvalue = Browser.webDriver.findElement(
+                                        By.cssSelector(testAction.action.fieldName)
+                                ).getText();
+                                System.out.println("Date and time in Madrid: " + Importdatetime);
+                                try {
+                                    Assert.assertTrue(
+
+                                            stextvalue.contains(Importdatetime),
+                                            "Text in Field (" + testAction.action.fieldName + ") should contain [" +
+                                                    Importdatetime + "] and Got [" + stextvalue + "]"
+
+                                    );
+                                } catch (AssertionError e) {
+                                    throw new Exception("Text in Field (" + testAction.action.fieldName + ") should contain [" +
+                                            Importdatetime + "] but Got [" + stextvalue + "]");
+                                }
+                                break;
+
+                            case "checkpdfcontent":
+                                try{
+//                                    Date date = new Date();
+//                                    DateFormat df = new SimpleDateFormat("MMddyyyy");
+//                                    // Use Madrid's time zone to format the date in
+//                                    df.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+//                                    String currectDate =df.format(date);
+
+
+//                                    Values(JRSK, Inc. (DBA Away) - Summary of Changes - View All Changes -,True)
+
+                                    String tabName = StringUtils.substringBetween(testAction.action.fieldName, "(", ",").trim();
+                                    String action = StringUtils.substringBetween(testAction.action.fieldName, ",", ")").trim();
+
+                                    //String pdfFileName=tabName+" "+currectDate+".pdf";
+                                    String pdfFileName=tabName+".pdf";
+                                    //System.out.println("Date and time in Madrid: " + df.format(date));
+
+                                    URL TestURL = new URL("file:////" + System.getProperty("user.home") + "\\Downloads\\"+pdfFileName);
+                                    InputStream in = TestURL.openStream();
+                                    BufferedInputStream bf = new BufferedInputStream(in);
+                                    PDDocument doc = PDDocument.load(bf);
+                                    PDFTextStripper pdfStrip = new PDFTextStripper();
+                                    String content = pdfStrip.getText(doc);
+                                    System.out.println(content);
+                                    if(action.equals("true") && !testAction.action.fieldValue.contains(content)){
+                                        stepResult.status = "Fail";
+                                        stepResult.actualResult = "Value (" + testAction.action.fieldValue + ")" +
+                                                "does not match in pdf file";
+                                        logger.error(stepResult.actualResult);
+
+                                    }
+                                    else if(action.equals("false") && testAction.action.fieldValue.contains(content)){
+                                        stepResult.status = "Fail";
+                                        stepResult.actualResult = "Value (" + testAction.action.fieldValue + ")" +
+                                                "does match in pdf file";
+                                        logger.error(stepResult.actualResult);
+
+                                    }else{
+                                        stepResult.status = "Fail";
+                                        stepResult.actualResult = "Value (" + testAction.action.fieldValue + ")" +
+                                                "please check your test case";
+                                        logger.error(stepResult.actualResult);
+                                    }
+
+                                    doc.close();
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+                                break;
+
+                                case "checkpdfcontentforclaims":
+                                try{
+//                                    Date date = new Date();
+//                                    DateFormat df = new SimpleDateFormat("MMddyyyy");
+//                                    // Use Madrid's time zone to format the date in
+//                                    df.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles"));
+//                                    String currectDate =df.format(date);
+
+
+//                                    Values(JRSK, Inc. (DBA Away) - Summary of Changes - View All Changes -,True)
+
+                                    String tabName = StringUtils.substringBetween(testAction.action.fieldName, "(", ",").trim();
+                                    String action = StringUtils.substringBetween(testAction.action.fieldName, ",", ")").trim();
+
+                                    //String pdfFileName=tabName+" "+currectDate+".pdf";
+                                    String pdfFileName=tabName+".pdf";
+                                    //System.out.println("Date and time in Madrid: " + df.format(date));
+
+                                    URL TestURL = new URL("file:////" + System.getProperty("user.home") + "\\Downloads\\"+pdfFileName);
+                                    InputStream in = TestURL.openStream();
+                                    BufferedInputStream bf = new BufferedInputStream(in);
+                                    PDDocument doc = PDDocument.load(bf);
+                                    PDFTextStripper pdfStrip = new PDFTextStripper();
+                                    String content = pdfStrip.getText(doc);
+                                    System.out.println(content);
+//                                    if(action.equals("true") && !content.contains(testAction.action.fieldValue)){
+//                                        stepResult.status = "Fail";
+//                                        stepResult.actualResult = "Value (" + testAction.action.fieldValue + ")" +
+//                                                "does not match in pdf file";
+//                                        logger.error(stepResult.actualResult);
+//
+//                                    }
+                                    if(!content.contains(testAction.action.fieldValue)) {
+                                        stepResult.status = "Fail";
+                                        stepResult.actualResult = "Value (" + testAction.action.fieldValue + ")" +
+                                                "does match in pdf file";
+                                        logger.error(stepResult.actualResult);
+                                    }
+
+//                                    }else{
+//                                        stepResult.status = "Fail";
+//                                        stepResult.actualResult = "Value (" + testAction.action.fieldValue + ")" +
+//                                                "please check your test case";
+//                                        logger.error(stepResult.actualResult);
+//                                    }
+
+                                    doc.close();
+                                }
+                                    catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+                                break;
+
+
+//                            case "checkdownladedfileforclaims":
+//                                String DownloadDir = System.getProperty("user.home") + "\\Downloads\\";
+//                                File dir = new File(DownloadDir);
+//                                File[] files = dir.listFiles();
+//                                File lastModifiedFile = files[0];
+//                                long length1 = 0;
+//                                long length2 = 0;
+//                                do {
+//                                    files = dir.listFiles();
+//                                    lastModifiedFile = files[0];
+//                                    for (int l = 1; l < files.length; l++) {
+//                                        if (lastModifiedFile.lastModified() < files[l].lastModified()) {
+//                                            lastModifiedFile = files[l];
+//                                        }
+//                                    }
+//                                    System.out.println("in While File Name:" + lastModifiedFile.getName());
+//                                    if (lastModifiedFile.getName().endsWith("crdownload")) {
+//                                        Thread.sleep(10000);
+//                                    }
+//                                    else
+//                                        break;
+//                                }
+//                                while (true);
+//                                dir = new File(DownloadDir);
+//                                files = dir.listFiles();
+//                                lastModifiedFile = files[0];
+//                                for (int m = 1; m < files.length; m++) {
+//                                    if (lastModifiedFile.lastModified() < files[m].lastModified()) {
+//                                        lastModifiedFile = files[m];
+//                                    }
+//                                }
+//                                try {
+//                                    Thread.sleep(5000);
+//                                } catch (InterruptedException e) {
+//                                    e.printStackTrace();
+//                                }
+//                                files = dir.listFiles();
+//                                lastModifiedFile = files[0];
+//                                for (int n = 1; n < files.length; n++) {
+//                                    if (lastModifiedFile.lastModified() < files[n].lastModified()) {
+//                                        lastModifiedFile = files[n];
+//                                    }
+//                                }
+//                                String filename = lastModifiedFile.getName();
+//                                String filenameDate="";
+//                                String fileExtension="";
+//                                if(filename.lastIndexOf(".") != -1 && filename.lastIndexOf(".") != 0)
+//                                    fileExtension = filename.substring(filename.lastIndexOf(".")+1);
+//                                if(testAction.action.fieldName.equals("pdf")){
+//                                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
+//                                    LocalDateTime now = LocalDateTime.now();
+//                                    String currentDate = dtf.format(now);
+////                                        String version = StringUtils.substringBetween(filename, "ERRORLOG_VIL.","_").trim();
+//                                    filenameDate = testAction.action.fieldValue + " " + currentDate + ".pdf";
+//                                    testAction.action.fieldValue=filenameDate;
+//                                }
+//                                if(testAction.action.fieldName.equals("zip")){
+//                                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
+//                                    LocalDateTime now = LocalDateTime.now();
+//                                    String currentDate = dtf.format(now);
+////                                        String version = StringUtils.substringBetween(filename, "ERRORLOG_VIL.","_").trim();
+//                                    filenameDate = testAction.action.fieldValue + currentDate + ".zip";
+//                                    testAction.action.fieldValue=filenameDate;
+//                                }
+//                                if(testAction.action.fieldName.equals("Date")){
+//                                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMddyyyy");
+//                                    LocalDateTime now = LocalDateTime.now();
+//                                    String currentDate = dtf.format(now);
+//                                    String version = StringUtils.substringBetween(filename, "ERRORLOG_VIL.","_").trim();
+//                                    filenameDate = testAction.action.fieldValue.concat(version).concat("_").concat(currentDate).concat(".txt");
+//                                    testAction.action.fieldValue=filenameDate;
+//                                }
+//
+//                                if (!(filename.equalsIgnoreCase(testAction.action.fieldValue))) {
+//                                    stepResult.status = "Fail";
+//                                    stepResult.actualResult = "File Name" +
+//                                            " does not match the value given (" + testAction.action.fieldValue +
+//                                            ") , Got [" + filename + "]";
+//                                    logger.error(stepResult.actualResult);
+//                                }
+//                                break;
+//
+
+
+
                             default:
                                 // Unknown action type
                                 throw new Exception("Unknown Action Type (" +
@@ -2177,4 +3199,6 @@ public class WebTest {
         logger.info(new String(new char[80]).replace("\0", "="));
         Browser.shutDown();
     }
+
+
 }
