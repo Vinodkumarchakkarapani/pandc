@@ -24,6 +24,7 @@ public class Configuration {
 			this.qif = new Properties();
 			Path appConfig = Paths.get(rootPath,"src/main/resources", "app.properties");
 			Path qifConfig = Paths.get(rootPath,"src/main/resources", "qif.properties");
+
 			// Get the Properties from Resource files
 			this.app.load(new FileInputStream(appConfig.toFile()));
 			this.qif.load(new FileInputStream(qifConfig.toFile()));

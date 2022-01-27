@@ -1,0 +1,147 @@
+#Declaring objects with css and xpath locators
+@objects
+  Breadcrumbs                        css    .container-fluid .title-top .d-none
+  Header                             css    #main-id .admin-header-wrapper
+  TabBreadcrumbs                     css    .container-fluid .title-top .breadcrumb-tab
+  NamedInsured                       css    .container-fluid .name-insured
+  TabHeader                          css    #ExcessTab
+  Label-*                            css    .container-fluid .tab-grid-container #myTabContent label
+  Input-*                            css    .container-fluid .tab-grid-container #myTabContent input
+  Select-*                           css    .container-fluid .tab-grid-container #myTabContent select
+  TextArea-*                         css    .container-fluid .tab-grid-container #myTabContent textarea
+  H2Text-*                           css    .container-fluid .tab-grid-container #myTabContent h2
+  H1Text-*                           css    .container-fluid .tab-grid-container #myTabContent h1
+  Span-*                             css    .container-fluid .tab-grid-container #myTabContent span
+  Anchor-*                           css    .container-fluid .tab-grid-container #myTabContent a
+  Button-*                           css    .container-fluid .tab-grid-container #myTabContent button
+
+#RFRUMBExcessLiability.gspec Page
+= RFRUMBExcessLiability.gspec page =
+  #This is for Desktop
+   @on desktop
+
+       #Breadcrumbs properties
+        Breadcrumbs:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #Header properties
+        Header:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #TabBreadcrumbs properties
+        TabBreadcrumbs:
+           css display is "block"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #NamedInsured properties
+        NamedInsured:
+           css display is "flex"
+           css color contains "33, 37, 41"
+           css font-size is "16px"
+
+       #TabHeader properties
+        TabHeader:
+           css display is "block"
+           css color contains "73, 80, 87"
+           css font-size is "14px"
+
+       #Label properties
+        @for [10-11] as index
+           Label-${index}:
+              css display is "block"
+              css color contains "33, 37, 41"
+              css font-size is "16px"
+
+       #Label properties
+        @for [12, 17] as index
+           Label-${index}:
+              css display is "inline-block"
+              css color contains "255, 255, 255"
+              css font-size is "14px"
+
+       #Label properties
+        @for [13-16, ] as index
+           Label-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Input properties
+        @for [27] as index
+           Input-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Input properties
+        @for [30-31, 33-34, 36-37, 39-40] as index
+           Input-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Button properties
+        @for [3-4] as index
+           Button-${index}:
+              css display is "block"
+              css color contains "255, 255, 255"
+              css font-size is "12px"
+
+       #TextArea properties
+        @for [3] as index
+           TextArea-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #H1Text properties
+        @for [3-4] as index
+           H1Text-${index}:
+              css display is "block"
+              css color contains "31, 42, 68"
+              css font-size is "18px"
+
+       #Span properties
+        @for [7] as index
+           Span-${index}:
+              css display is "block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Span properties
+        @for [8, 11] as index
+           Span-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "12px"
+
+       #Span properties
+        @for [9] as index
+           Span-${index}:
+              css display is "inline-block"
+              css color contains "31, 42, 68"
+              css font-size is "14px"
+
+       #Span properties
+        @for [10] as index
+           Span-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+       #Anchor properties
+        @for [5-7] as index
+           Anchor-${index}:
+              css display is "block"
+              css color contains "255, 255, 255"
+              css font-size is "12px"
+
+
+
+
+

@@ -1,0 +1,137 @@
+#Declaring objects with css and xpath locators
+@objects
+  Breadcrumbs                        css    .breadcrumb-tab
+  Header                             css    #main-id .new-admin-header
+  TabBreadcrumbs                     css    #main-id .container-fluid .breadcrumb-tab
+  InfoHeader                         css    #main-id .name-insured
+  Label-*                            css    #main-id label
+  Input-*                            css    #main-id input
+  Select-*                           css    #main-id select
+  TextArea-*                         css    #main-id textarea
+  Anchor-*                           css    #main-id a
+  Button-*                           css    #main-id button
+  Td-*                               css    #main-id td
+
+
+#RFRCasualtyExposureProductLiability Page
+= RFRCasualtyExposureProductLiability page =
+  #This is for Desktop
+     @on desktop
+
+         #Breadcrumbs properties
+          Breadcrumbs:
+            css display is "block"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+         #Header properties
+          Header:
+            css display is "block"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+         #TabBreadcrumbs properties
+          TabBreadcrumbs:
+            css display is "block"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+         #InfoHeader properties
+          InfoHeader:
+            css display is "flex"
+            css color contains "33, 37, 41"
+            css font-size is "16px"
+
+         #Label properties
+          @for [100] as index
+            Label-${index}:
+              css display is "inline-block"
+              css color contains "255, 255, 255"
+              css font-size is "14px"
+         #Label properties
+          @for [101 - 107] as index
+            Label-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+         #Input properties
+          @for [182 - 183, 188 , 189, 191, 192, 194, 195, 197, 198, 200, 201] as index
+            Input-${index}:
+              css display is "inline-block"
+              css color contains "91, 103, 112"
+              css font-size is "14px"
+
+         #TextArea properties
+          TextArea-3:
+            css display is "block"
+            css color contains "91, 103, 112"
+            css font-size is "14px"
+
+         #Anchor properties
+          Anchor-3:
+            css display is "block"
+            css color contains "0, 123, 255"
+            css font-size is "16px"
+
+         #Anchor properties
+          Anchor-6:
+            css display is "block"
+            css color contains "120, 190, 32"
+            css font-size is "14px"
+
+         #Anchor properties
+          Anchor-7:
+            css display is "block"
+            css color contains "31, 42, 68"
+            css font-size is "14px"
+
+         #Anchor properties
+          Anchor-15:
+            css display is "block"
+            css color contains "0, 115, 150"
+            css font-size is "14px"
+
+         #Anchor properties
+          Anchor-16:
+            css display is "block"
+            css color contains "0, 115, 150"
+            css font-size is "14px"
+
+         #Anchor properties
+          @for [17 - 23] as index
+            Anchor-${index}:
+              css display is "block"
+              css color contains "255, 255, 255"
+              css font-size is "16px"
+
+         #Anchor properties
+          Anchor-25:
+            css display is "block"
+            css color contains "73, 80, 87"
+            css font-size is "14px"
+
+         #Anchor properties
+          @for [24, 26 - 30] as index
+            Anchor-${index}:
+              css display is "block"
+              css color contains "255, 255, 255"
+              css font-size is "14px"
+
+         #Button properties
+          Button-18:
+            css display is "block"
+            css color contains "255, 255, 255"
+            css font-size is "12px"
+
+         #Button properties
+          Button-19:
+            css display is "block"
+            css color contains "255, 255, 255"
+            css font-size is "12px"
+
+         #TD properties
+          Td-264:
+            css display is "table-cell"
+            css color contains "31, 42, 68"
+            css font-size is "14px"

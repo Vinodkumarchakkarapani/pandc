@@ -39,3 +39,5 @@ buildNumber.properties
 # IntelliJ Project files
 .idea/
 *.iml
+/screenshots/
+logs

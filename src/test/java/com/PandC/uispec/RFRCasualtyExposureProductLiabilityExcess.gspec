@@ -11,7 +11,6 @@
   Anchor-*                           css    #main-id a
   Button-*                           css    #main-id button
 
-
 #RFRCasualtyExposureProductLiabilityExcess Page
 = RFRCasualtyExposureProductLiabilityExcess page =
   #This is for Desktop
@@ -62,7 +61,7 @@
             css font-size is "14px"
 
          #Input properties
-          @for [207 - 208, 210 - 211, 213 - 214, 216 - 217, 219 - 220, 222 - 223, 225 - 226, ] as index
+          @for [207 - 208, 210 - 211, 213 - 214, 216 - 217, 219 - 220, 222 - 223, 225 - 226 ] as index
              Input-${index}:
                css display is "inline-block"
                css color contains "91, 103, 112"
