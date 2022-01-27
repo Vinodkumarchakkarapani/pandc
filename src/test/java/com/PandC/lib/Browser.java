@@ -40,9 +40,9 @@ public class Browser {
 	public static void initialize(String driver) throws Exception {
 		switch (driver.toLowerCase()) {
 			case "chrome":
-				WebDriverManager.chromedriver().setup();
+				//WebDriverManager.chromedriver().setup();
 				//webDriver = new ChromeDriver();
-				//System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "\\src\\drivers\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "\\src\\drivers\\chromedriver.exe");
 
 
 				/*proxy = new BrowserMobProxyServer();
